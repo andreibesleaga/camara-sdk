@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Camara from 'camara';
+import Camara from 'camara-sdk';
 
 const client = new Camara({
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',

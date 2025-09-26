@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'camara/core/api-promise';
+import { APIPromise } from 'camara-sdk/core/api-promise';
 
 import util from 'node:util';
-import Camara from 'camara';
-import { APIUserAbortError } from 'camara';
+import Camara from 'camara-sdk';
+import { APIUserAbortError } from 'camara-sdk';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

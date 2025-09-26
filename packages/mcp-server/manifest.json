@@ -1,0 +1,97 @@
+{
+  "dxt_version": "0.2",
+  "name": "camara-mcp",
+  "version": "0.0.1",
+  "description": "The official MCP Server for the Camara API",
+  "author": {
+    "name": "Camara"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreibesleaga/camara-sdk.git"
+  },
+  "homepage": "https://github.com/andreibesleaga/camara-sdk/tree/main/packages/mcp-server#readme",
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY}",
+        "CAMARA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_NOTIFICATIONS_API_KEY}",
+        "CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY}",
+        "CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY}",
+        "CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY}",
+        "CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY}",
+        "CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY}",
+        "CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY}",
+        "CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY}"
+      }
+    }
+  },
+  "user_config": {
+    "CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY": {
+      "title": "device_location_notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_NOTIFICATIONS_API_KEY": {
+      "title": "notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY": {
+      "title": "population_density_data_notifications_api_key",
+      "description": "Bearer authentication for notifications",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY": {
+      "title": "region_device_count_notifications_api_key",
+      "description": "Bearer authentication for notifications",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY": {
+      "title": "connectivity_insights_notifications_api_key",
+      "description": "Bearer authorization for notifications",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY": {
+      "title": "sim_swap_notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY": {
+      "title": "device_roaming_status_notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY": {
+      "title": "device_reachability_status_notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
+    "CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY": {
+      "title": "connected_network_type_notifications_api_key",
+      "description": "",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "tools": [],
+  "tools_generated": true,
+  "compatibility": {
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  },
+  "keywords": ["api"]
+}

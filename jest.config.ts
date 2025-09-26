@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^camara$': '<rootDir>/src/index.ts',
-    '^camara/(.*)$': '<rootDir>/src/$1',
+    '^camara-sdk$': '<rootDir>/src/index.ts',
+    '^camara-sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

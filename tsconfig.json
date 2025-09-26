@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "camara/*": ["./src/*"],
-      "camara": ["./src/index.ts"]
+      "camara-sdk/*": ["./src/*"],
+      "camara-sdk": ["./src/index.ts"]
     },
     "noEmit": true,
 

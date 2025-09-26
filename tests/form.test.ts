@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'camara/internal/uploads';
-import { toFile } from 'camara/core/uploads';
+import { multipartFormRequestOptions, createForm } from 'camara-sdk/internal/uploads';
+import { toFile } from 'camara-sdk/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {
