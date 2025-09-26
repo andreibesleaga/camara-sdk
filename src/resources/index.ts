@@ -13,6 +13,8 @@ export { Connectivityinsights } from './connectivityinsights/connectivityinsight
 export { Customerinsights } from './customerinsights/customerinsights';
 export {
   Deviceidentifier,
+  type DeviceIdentifierDevice,
+  type DeviceIdentifierDeviceIpv4Addr,
   type DeviceIdentifierRequestBody,
   type DeviceidentifierRetrieveIdentifierResponse,
   type DeviceidentifierRetrievePpidResponse,
