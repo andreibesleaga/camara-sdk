@@ -1,7 +1,7 @@
 {
   "name": "camara",
   "version": "0.0.1",
-  "description": "The official TypeScript library for the Camara API",
+  "description": "TypeScript library for the Camara API",
   "author": "Camara <>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
