@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "camara/*": ["./dist/src/*"],
-      "camara": ["./dist/src/index.ts"]
+      "camara-sdk/*": ["./dist/src/*"],
+      "camara-sdk": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,
