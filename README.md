@@ -6,7 +6,7 @@ This library provides convenient access to the Camara REST API from server-side 
 
 The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainless.com/).
+It is generated with [Stainless](https://www.stainless.com/) from https://github.com/andreibesleaga/camara-openapi full OpenAPI gathering spec from official https://github.com/camaraproject.
 
 ## Installation
 
