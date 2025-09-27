@@ -8,6 +8,9 @@ The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/) from https://github.com/andreibesleaga/camara-openapi full OpenAPI gathering spec from official https://github.com/camaraproject.
 
+This project also contains an genrated MCP Server for CAMARA Full APIs, to be installed with npx and run with your AI assistant:
+https://github.com/andreibesleaga/camara-sdk/tree/main/packages/mcp-server
+
 ## Installation
 
 ```sh
