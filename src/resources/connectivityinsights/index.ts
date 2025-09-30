@@ -3,10 +3,10 @@
 export { Connectivityinsights } from './connectivityinsights';
 export {
   Subscriptions,
-  type ConnectivityInsightsConfig,
-  type ConnectivityInsightsProtocol,
-  type ConnectivityInsightsSubscription,
-  type ConnectivityInsightsSubscriptionEventType,
+  type Config,
+  type EventType,
+  type Protocol,
+  type Subscription,
   type SubscriptionListResponse,
   type SubscriptionDeleteResponse,
   type SubscriptionCreateParams,

@@ -15,13 +15,13 @@ export class Callforwardingsignal extends APIResource {
    * @example
    * ```ts
    * const response =
-   *   await client.callforwardingsignal.createCallForwarding();
+   *   await client.callforwardingsignal.checkActiveForwardings();
    * ```
    */
-  createCallForwarding(
-    params: CallforwardingsignalCreateCallForwardingParams,
+  checkActiveForwardings(
+    params: CallforwardingsignalCheckActiveForwardingsParams,
     options?: RequestOptions,
-  ): APIPromise<CallforwardingsignalCreateCallForwardingResponse> {
+  ): APIPromise<CallforwardingsignalCheckActiveForwardingsResponse> {
     const { 'x-correlator': xCorrelator, ...body } = params;
     return this._client.post('/callforwardingsignal/call-forwardings', {
       body,
@@ -40,13 +40,13 @@ export class Callforwardingsignal extends APIResource {
    * @example
    * ```ts
    * const response =
-   *   await client.callforwardingsignal.createUnconditionalCallForwarding();
+   *   await client.callforwardingsignal.checkUnconditionalForwarding();
    * ```
    */
-  createUnconditionalCallForwarding(
-    params: CallforwardingsignalCreateUnconditionalCallForwardingParams,
+  checkUnconditionalForwarding(
+    params: CallforwardingsignalCheckUnconditionalForwardingParams,
     options?: RequestOptions,
-  ): APIPromise<CallforwardingsignalCreateUnconditionalCallForwardingResponse> {
+  ): APIPromise<CallforwardingsignalCheckUnconditionalForwardingResponse> {
     const { 'x-correlator': xCorrelator, ...body } = params;
     return this._client.post('/callforwardingsignal/unconditional-call-forwardings', {
       body,
@@ -65,7 +65,7 @@ export class Callforwardingsignal extends APIResource {
  * two-legged authentication. If provided/valued with three-legged authentication a
  * 422-UNNECESSARY_IDENTIFIER error code is returned.
  */
-export interface CallForwardingSignal {
+export interface CreateCallForwardingSignal {
   /**
    * A public identifier addressing a telephone subscription. In mobile networks it
    * corresponds to the MSISDN (Mobile Station International Subscriber Directory
@@ -84,7 +84,7 @@ export interface CallForwardingSignal {
  * not reachable), 'conditional_no_answer' (call forwarded if the device doesn't
  * answer the incoming call).
  */
-export type CallforwardingsignalCreateCallForwardingResponse = Array<
+export type CallforwardingsignalCheckActiveForwardingsResponse = Array<
   'inactive' | 'unconditional' | 'conditional_busy' | 'conditional_not_reachable' | 'conditional_no_answer'
 >;
 
@@ -92,14 +92,14 @@ export type CallforwardingsignalCreateCallForwardingResponse = Array<
  * resource containing the information about the Unconditional Call Forwarding
  * Service for the given phone number (PhoneNumber)
  */
-export interface CallforwardingsignalCreateUnconditionalCallForwardingResponse {
+export interface CallforwardingsignalCheckUnconditionalForwardingResponse {
   /**
    * Indicates if the unconditional call forwarding service is active.
    */
   active?: boolean;
 }
 
-export interface CallforwardingsignalCreateCallForwardingParams {
+export interface CallforwardingsignalCheckActiveForwardingsParams {
   /**
    * Body param: A public identifier addressing a telephone subscription. In mobile
    * networks it corresponds to the MSISDN (Mobile Station International Subscriber
@@ -114,7 +114,7 @@ export interface CallforwardingsignalCreateCallForwardingParams {
   'x-correlator'?: string;
 }
 
-export interface CallforwardingsignalCreateUnconditionalCallForwardingParams {
+export interface CallforwardingsignalCheckUnconditionalForwardingParams {
   /**
    * Body param: A public identifier addressing a telephone subscription. In mobile
    * networks it corresponds to the MSISDN (Mobile Station International Subscriber
@@ -131,10 +131,10 @@ export interface CallforwardingsignalCreateUnconditionalCallForwardingParams {
 
 export declare namespace Callforwardingsignal {
   export {
-    type CallForwardingSignal as CallForwardingSignal,
-    type CallforwardingsignalCreateCallForwardingResponse as CallforwardingsignalCreateCallForwardingResponse,
-    type CallforwardingsignalCreateUnconditionalCallForwardingResponse as CallforwardingsignalCreateUnconditionalCallForwardingResponse,
-    type CallforwardingsignalCreateCallForwardingParams as CallforwardingsignalCreateCallForwardingParams,
-    type CallforwardingsignalCreateUnconditionalCallForwardingParams as CallforwardingsignalCreateUnconditionalCallForwardingParams,
+    type CreateCallForwardingSignal as CreateCallForwardingSignal,
+    type CallforwardingsignalCheckActiveForwardingsResponse as CallforwardingsignalCheckActiveForwardingsResponse,
+    type CallforwardingsignalCheckUnconditionalForwardingResponse as CallforwardingsignalCheckUnconditionalForwardingResponse,
+    type CallforwardingsignalCheckActiveForwardingsParams as CallforwardingsignalCheckActiveForwardingsParams,
+    type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams,
   };
 }

@@ -21,10 +21,10 @@ export const tool: Tool = {
     type: 'object',
     properties: {
       config: {
-        $ref: '#/$defs/connectivity_insights_config',
+        $ref: '#/$defs/config',
       },
       protocol: {
-        $ref: '#/$defs/connectivity_insights_protocol',
+        $ref: '#/$defs/protocol',
       },
       sink: {
         type: 'string',
@@ -34,7 +34,7 @@ export const tool: Tool = {
         type: 'array',
         description: 'Camara Event types eligible to be delivered by this subscription.\n',
         items: {
-          $ref: '#/$defs/connectivity_insights_subscription_event_type',
+          $ref: '#/$defs/event_type',
         },
       },
       sinkCredential: {
@@ -56,7 +56,7 @@ export const tool: Tool = {
     },
     required: ['config', 'protocol', 'sink', 'types'],
     $defs: {
-      connectivity_insights_config: {
+      config: {
         type: 'object',
         description:
           'Implementation-specific configuration parameters needed by the\nsubscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`,\n`subscriptionMaxEvents`, `initialEvent`\nSpecific event type attributes must be defined in `subscriptionDetail`\nNote: if a request is performed for several event type, all subscribed\nevent will use same `config` parameters.\n',
@@ -181,12 +181,12 @@ export const tool: Tool = {
         },
         required: ['subscriptionDetail'],
       },
-      connectivity_insights_protocol: {
+      protocol: {
         type: 'string',
         description: 'Identifier of a delivery protocol. Only HTTP is allowed for now',
         enum: ['HTTP', 'MQTT3', 'MQTT5', 'AMQP', 'NATS', 'KAFKA'],
       },
-      connectivity_insights_subscription_event_type: {
+      event_type: {
         type: 'string',
         description: 'event-type - Event triggered when an event-type event occurred',
         enum: ['org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'],

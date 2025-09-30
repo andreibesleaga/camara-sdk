@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'cancel_webrtc_sessions',
+  name: 'delete_webrtc_sessions',
   description:
     "Cancel a 1-1 media session (as originator),\nDecline a 1-1 media session (as receiver),\nTerminate a 1-1 an ongoing media session\n** The client shall construct the API path using the mediaSessionId supplied in the session creation response (origination) or in the invitation notification (termination). **'\n",
   inputSchema: {
@@ -37,7 +37,7 @@ export const tool: Tool = {
 
 export const handler = async (client: Camara, args: Record<string, unknown> | undefined) => {
   const { mediaSessionId, ...body } = args as any;
-  const response = await client.webrtc.sessions.cancel(mediaSessionId, body).asResponse();
+  const response = await client.webrtc.sessions.delete(mediaSessionId, body).asResponse();
   return asTextContentResult(await response.text());
 };
 
