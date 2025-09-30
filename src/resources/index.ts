@@ -3,18 +3,16 @@
 export {
   Callforwardingsignal,
   type CallForwardingSignal,
-  type CallforwardingsignalCheckActiveForwardingsResponse,
-  type CallforwardingsignalCheckUnconditionalForwardingResponse,
-  type CallforwardingsignalCheckActiveForwardingsParams,
-  type CallforwardingsignalCheckUnconditionalForwardingParams,
+  type CallforwardingsignalCreateCallForwardingResponse,
+  type CallforwardingsignalCreateUnconditionalCallForwardingResponse,
+  type CallforwardingsignalCreateCallForwardingParams,
+  type CallforwardingsignalCreateUnconditionalCallForwardingParams,
 } from './callforwardingsignal';
 export { Connectednetworktype } from './connectednetworktype/connectednetworktype';
 export { Connectivityinsights } from './connectivityinsights/connectivityinsights';
 export { Customerinsights } from './customerinsights/customerinsights';
 export {
   Deviceidentifier,
-  type DeviceIdentifierDevice,
-  type DeviceIdentifierDeviceIpv4Addr,
   type DeviceIdentifierRequestBody,
   type DeviceidentifierRetrieveIdentifierResponse,
   type DeviceidentifierRetrievePpidResponse,

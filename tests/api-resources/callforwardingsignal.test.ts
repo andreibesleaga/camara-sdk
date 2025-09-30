@@ -17,8 +17,8 @@ const client = new Camara({
 
 describe('resource callforwardingsignal', () => {
   // Prism tests are disabled
-  test.skip('checkActiveForwardings', async () => {
-    const responsePromise = client.callforwardingsignal.checkActiveForwardings({});
+  test.skip('createCallForwarding', async () => {
+    const responsePromise = client.callforwardingsignal.createCallForwarding({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -29,8 +29,8 @@ describe('resource callforwardingsignal', () => {
   });
 
   // Prism tests are disabled
-  test.skip('checkUnconditionalForwarding', async () => {
-    const responsePromise = client.callforwardingsignal.checkUnconditionalForwarding({});
+  test.skip('createUnconditionalCallForwarding', async () => {
+    const responsePromise = client.callforwardingsignal.createUnconditionalCallForwarding({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

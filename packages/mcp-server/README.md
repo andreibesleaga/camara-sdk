@@ -280,8 +280,8 @@ The following tools are available in this MCP server.
 
 ### Resource `callforwardingsignal`:
 
-- `check_active_forwardings_callforwardingsignal` (`write`): This endpoint provides information about which type of call forwarding service is active. More than one service can be active, e.g. conditional and unconditional. This endpoint exceeds the main scope of the Call Forwarding Signal API, for this reason an error code 501 can be returned.
-- `check_unconditional_forwarding_callforwardingsignal` (`write`): This endpoint provides information about the status of the unconditional call forwarding, being active or not.
+- `create_call_forwarding_callforwardingsignal` (`write`): This endpoint provides information about which type of call forwarding service is active. More than one service can be active, e.g. conditional and unconditional. This endpoint exceeds the main scope of the Call Forwarding Signal API, for this reason an error code 501 can be returned.
+- `create_unconditional_call_forwarding_callforwardingsignal` (`write`): This endpoint provides information about the status of the unconditional call forwarding, being active or not.
 
 ### Resource `devicelocation.subscriptions`:
 
@@ -311,7 +311,7 @@ The following tools are available in this MCP server.
   in the session creation response (origination) or in the invitation notification
   (termination). **
 
-- `delete_webrtc_sessions` (`write`): Cancel a 1-1 media session (as originator),
+- `cancel_webrtc_sessions` (`write`): Cancel a 1-1 media session (as originator),
   Decline a 1-1 media session (as receiver),
   Terminate a 1-1 an ongoing media session
   ** The client shall construct the API path using the mediaSessionId supplied in the session creation response (origination) or in the invitation notification (termination). **'

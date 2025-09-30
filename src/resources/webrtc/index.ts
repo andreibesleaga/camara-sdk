@@ -6,7 +6,7 @@ export {
   type SdpDescriptor,
   type SessionCreateParams,
   type SessionRetrieveParams,
-  type SessionDeleteParams,
+  type SessionCancelParams,
   type SessionUpdateStatusParams,
 } from './sessions';
 export { Webrtc } from './webrtc';
