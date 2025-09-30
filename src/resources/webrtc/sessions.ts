@@ -78,12 +78,12 @@ export class Sessions extends APIResource {
    *
    * @example
    * ```ts
-   * await client.webrtc.sessions.delete('mediaSessionId');
+   * await client.webrtc.sessions.cancel('mediaSessionId');
    * ```
    */
-  delete(
+  cancel(
     mediaSessionID: string,
-    params: SessionDeleteParams | null | undefined = {},
+    params: SessionCancelParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<void> {
     const { 'x-correlator': xCorrelator } = params ?? {};
@@ -383,7 +383,7 @@ export interface SessionRetrieveParams {
   'x-correlator'?: string;
 }
 
-export interface SessionDeleteParams {
+export interface SessionCancelParams {
   /**
    * Correlation id for the different services
    */
@@ -513,7 +513,7 @@ export declare namespace Sessions {
     type SdpDescriptor as SdpDescriptor,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
-    type SessionDeleteParams as SessionDeleteParams,
+    type SessionCancelParams as SessionCancelParams,
     type SessionUpdateStatusParams as SessionUpdateStatusParams,
   };
 }

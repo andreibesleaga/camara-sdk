@@ -89,13 +89,13 @@ Methods:
 Types:
 
 - <code><a href="./src/resources/callforwardingsignal.ts">CallForwardingSignal</a></code>
-- <code><a href="./src/resources/callforwardingsignal.ts">CallforwardingsignalCheckActiveForwardingsResponse</a></code>
-- <code><a href="./src/resources/callforwardingsignal.ts">CallforwardingsignalCheckUnconditionalForwardingResponse</a></code>
+- <code><a href="./src/resources/callforwardingsignal.ts">CallforwardingsignalCreateCallForwardingResponse</a></code>
+- <code><a href="./src/resources/callforwardingsignal.ts">CallforwardingsignalCreateUnconditionalCallForwardingResponse</a></code>
 
 Methods:
 
-- <code title="post /callforwardingsignal/call-forwardings">client.callforwardingsignal.<a href="./src/resources/callforwardingsignal.ts">checkActiveForwardings</a>({ ...params }) -> CallforwardingsignalCheckActiveForwardingsResponse</code>
-- <code title="post /callforwardingsignal/unconditional-call-forwardings">client.callforwardingsignal.<a href="./src/resources/callforwardingsignal.ts">checkUnconditionalForwarding</a>({ ...params }) -> CallforwardingsignalCheckUnconditionalForwardingResponse</code>
+- <code title="post /callforwardingsignal/call-forwardings">client.callforwardingsignal.<a href="./src/resources/callforwardingsignal.ts">createCallForwarding</a>({ ...params }) -> CallforwardingsignalCreateCallForwardingResponse</code>
+- <code title="post /callforwardingsignal/unconditional-call-forwardings">client.callforwardingsignal.<a href="./src/resources/callforwardingsignal.ts">createUnconditionalCallForwarding</a>({ ...params }) -> CallforwardingsignalCreateUnconditionalCallForwardingResponse</code>
 
 # Devicelocation
 
@@ -152,7 +152,7 @@ Methods:
 
 - <code title="post /webrtc/sessions">client.webrtc.sessions.<a href="./src/resources/webrtc/sessions.ts">create</a>({ ...params }) -> MediaSessionInformation</code>
 - <code title="get /webrtc/sessions/{mediaSessionId}">client.webrtc.sessions.<a href="./src/resources/webrtc/sessions.ts">retrieve</a>(mediaSessionID, { ...params }) -> MediaSessionInformation</code>
-- <code title="delete /webrtc/sessions/{mediaSessionId}">client.webrtc.sessions.<a href="./src/resources/webrtc/sessions.ts">delete</a>(mediaSessionID, { ...params }) -> void</code>
+- <code title="delete /webrtc/sessions/{mediaSessionId}">client.webrtc.sessions.<a href="./src/resources/webrtc/sessions.ts">cancel</a>(mediaSessionID, { ...params }) -> void</code>
 - <code title="put /webrtc/sessions/{mediaSessionId}/status">client.webrtc.sessions.<a href="./src/resources/webrtc/sessions.ts">updateStatus</a>(mediaSessionID, { ...params }) -> MediaSessionInformation</code>
 
 # Connectivityinsights
@@ -161,17 +161,17 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">Config</a></code>
-- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">Protocol</a></code>
-- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">Subscription</a></code>
-- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">SubscriptionEventType</a></code>
+- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">ConnectivityInsightsConfig</a></code>
+- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">ConnectivityInsightsProtocol</a></code>
+- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">ConnectivityInsightsSubscription</a></code>
+- <code><a href="./src/resources/connectivityinsights/subscriptions.ts">ConnectivityInsightsSubscriptionEventType</a></code>
 - <code><a href="./src/resources/connectivityinsights/subscriptions.ts">SubscriptionListResponse</a></code>
 - <code><a href="./src/resources/connectivityinsights/subscriptions.ts">SubscriptionDeleteResponse</a></code>
 
 Methods:
 
-- <code title="post /connectivityinsights/subscriptions">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">create</a>({ ...params }) -> Subscription</code>
-- <code title="get /connectivityinsights/subscriptions/{subscriptionId}">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">retrieve</a>(subscriptionID, { ...params }) -> Subscription</code>
+- <code title="post /connectivityinsights/subscriptions">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">create</a>({ ...params }) -> ConnectivityInsightsSubscription</code>
+- <code title="get /connectivityinsights/subscriptions/{subscriptionId}">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">retrieve</a>(subscriptionID, { ...params }) -> ConnectivityInsightsSubscription</code>
 - <code title="get /connectivityinsights/subscriptions">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">list</a>({ ...params }) -> SubscriptionListResponse</code>
 - <code title="delete /connectivityinsights/subscriptions/{subscriptionId}">client.connectivityinsights.subscriptions.<a href="./src/resources/connectivityinsights/subscriptions.ts">delete</a>(subscriptionID, { ...params }) -> SubscriptionDeleteResponse</code>
 
@@ -194,8 +194,6 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDevice</a></code>
-- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDeviceIpv4Addr</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierRequestBody</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrieveIdentifierResponse</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrievePpidResponse</a></code>

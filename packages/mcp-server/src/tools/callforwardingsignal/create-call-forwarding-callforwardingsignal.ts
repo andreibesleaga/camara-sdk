@@ -11,14 +11,14 @@ export const metadata: Metadata = {
   operation: 'write',
   tags: [],
   httpMethod: 'post',
-  httpPath: '/callforwardingsignal/unconditional-call-forwardings',
-  operationId: 'CallForwardingSignal_retrieveUnconditionalCallForwarding',
+  httpPath: '/callforwardingsignal/call-forwardings',
+  operationId: 'CallForwardingSignal_retrieveCallForwarding',
 };
 
 export const tool: Tool = {
-  name: 'check_unconditional_forwarding_callforwardingsignal',
+  name: 'create_call_forwarding_callforwardingsignal',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint provides information about the status of the unconditional call forwarding, being active or not.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  description: 'resource containing the information about the Unconditional Call Forwarding Service for the given phone number (PhoneNumber)',\n  properties: {\n    active: {\n      type: 'boolean',\n      description: 'Indicates if the unconditional call forwarding service is active.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint provides information about which type of call forwarding service is active. More than one service can be active, e.g. conditional and unconditional. This endpoint exceeds the main scope of the Call Forwarding Signal API, for this reason an error code 501 can be returned.\n\n# Response Schema\n```json\n{\n  type: 'array',\n  description: 'resource containing the list of the Call Forwarding Services active for the given phone number (PhoneNumber). The possible states are, \\'inactive\\' (no call forwarding service activated), \\'unconditional\\' (call forwarded independently from the device status), \\'conditional_busy\\' (call forwarded if the device is on an active call), \\'conditional_not_reachable\\' (call forwarded if the device is not reachable), \\'conditional_no_answer\\' (call forwarded if the device doesn\\'t answer the incoming call).',\n  items: {\n    type: 'string',\n    enum: [      'inactive',\n      'unconditional',\n      'conditional_busy',\n      'conditional_not_reachable',\n      'conditional_no_answer'\n    ]\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -45,7 +45,7 @@ export const tool: Tool = {
 export const handler = async (client: Camara, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
   return asTextContentResult(
-    await maybeFilter(jq_filter, await client.callforwardingsignal.checkUnconditionalForwarding(body)),
+    await maybeFilter(jq_filter, await client.callforwardingsignal.createCallForwarding(body)),
   );
 };
 

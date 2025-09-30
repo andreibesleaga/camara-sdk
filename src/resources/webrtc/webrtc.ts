@@ -5,8 +5,8 @@ import * as SessionsAPI from './sessions';
 import {
   MediaSessionInformation,
   SdpDescriptor,
+  SessionCancelParams,
   SessionCreateParams,
-  SessionDeleteParams,
   SessionRetrieveParams,
   SessionUpdateStatusParams,
   Sessions,
@@ -25,7 +25,7 @@ export declare namespace Webrtc {
     type SdpDescriptor as SdpDescriptor,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
-    type SessionDeleteParams as SessionDeleteParams,
+    type SessionCancelParams as SessionCancelParams,
     type SessionUpdateStatusParams as SessionUpdateStatusParams,
   };
 }

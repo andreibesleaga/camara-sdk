@@ -3,13 +3,13 @@
 import { APIResource } from '../../core/resource';
 import * as SubscriptionsAPI from './subscriptions';
 import {
-  Config,
-  Protocol,
-  Subscription,
+  ConnectivityInsightsConfig,
+  ConnectivityInsightsProtocol,
+  ConnectivityInsightsSubscription,
+  ConnectivityInsightsSubscriptionEventType,
   SubscriptionCreateParams,
   SubscriptionDeleteParams,
   SubscriptionDeleteResponse,
-  SubscriptionEventType,
   SubscriptionListParams,
   SubscriptionListResponse,
   SubscriptionRetrieveParams,
@@ -25,10 +25,10 @@ Connectivityinsights.Subscriptions = Subscriptions;
 export declare namespace Connectivityinsights {
   export {
     Subscriptions as Subscriptions,
-    type Config as Config,
-    type Protocol as Protocol,
-    type Subscription as Subscription,
-    type SubscriptionEventType as SubscriptionEventType,
+    type ConnectivityInsightsConfig as ConnectivityInsightsConfig,
+    type ConnectivityInsightsProtocol as ConnectivityInsightsProtocol,
+    type ConnectivityInsightsSubscription as ConnectivityInsightsSubscription,
+    type ConnectivityInsightsSubscriptionEventType as ConnectivityInsightsSubscriptionEventType,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionDeleteResponse as SubscriptionDeleteResponse,
     type SubscriptionCreateParams as SubscriptionCreateParams,
