@@ -194,6 +194,8 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDevice</a></code>
+- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDeviceIpv4Addr</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierRequestBody</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrieveIdentifierResponse</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrievePpidResponse</a></code>
