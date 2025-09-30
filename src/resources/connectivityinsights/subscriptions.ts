@@ -12,7 +12,7 @@ export class Subscriptions extends APIResource {
    *
    * @example
    * ```ts
-   * const subscription =
+   * const connectivityInsightsSubscription =
    *   await client.connectivityinsights.subscriptions.create({
    *     config: {
    *       subscriptionDetail: {
@@ -29,7 +29,10 @@ export class Subscriptions extends APIResource {
    *   });
    * ```
    */
-  create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<Subscription> {
+  create(
+    params: SubscriptionCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<ConnectivityInsightsSubscription> {
     const { 'x-correlator': xCorrelator, ...body } = params;
     return this._client.post('/connectivityinsights/subscriptions', {
       body,
@@ -46,7 +49,7 @@ export class Subscriptions extends APIResource {
    *
    * @example
    * ```ts
-   * const subscription =
+   * const connectivityInsightsSubscription =
    *   await client.connectivityinsights.subscriptions.retrieve(
    *     'qs15-h556-rt89-1298',
    *   );
@@ -56,7 +59,7 @@ export class Subscriptions extends APIResource {
     subscriptionID: string,
     params: SubscriptionRetrieveParams | null | undefined = {},
     options?: RequestOptions,
-  ): APIPromise<Subscription> {
+  ): APIPromise<ConnectivityInsightsSubscription> {
     const { 'x-correlator': xCorrelator } = params ?? {};
     return this._client.get(path`/connectivityinsights/subscriptions/${subscriptionID}`, {
       ...options,
@@ -73,7 +76,7 @@ export class Subscriptions extends APIResource {
    *
    * @example
    * ```ts
-   * const subscriptions =
+   * const connectivityInsightsSubscriptions =
    *   await client.connectivityinsights.subscriptions.list();
    * ```
    */
@@ -126,11 +129,11 @@ export class Subscriptions extends APIResource {
  * performed for several event type, all subscribed event will use same `config`
  * parameters.
  */
-export interface Config {
+export interface ConnectivityInsightsConfig {
   /**
    * The detail of the requested event subscription
    */
-  subscriptionDetail: Config.SubscriptionDetail;
+  subscriptionDetail: ConnectivityInsightsConfig.SubscriptionDetail;
 
   /**
    * Set to `true` by API consumer if consumer wants to get an event as soon as the
@@ -156,7 +159,7 @@ export interface Config {
   subscriptionMaxEvents?: number;
 }
 
-export namespace Config {
+export namespace ConnectivityInsightsConfig {
   /**
    * The detail of the requested event subscription
    */
@@ -371,12 +374,12 @@ export namespace Config {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type Protocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type ConnectivityInsightsProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
 
 /**
  * Represents a event-type subscription.
  */
-export interface Subscription {
+export interface ConnectivityInsightsSubscription {
   /**
    * Implementation-specific configuration parameters needed by the subscription
    * manager for acquiring events. In CAMARA we have predefined attributes like
@@ -385,12 +388,12 @@ export interface Subscription {
    * performed for several event type, all subscribed event will use same `config`
    * parameters.
    */
-  config: Config;
+  config: ConnectivityInsightsConfig;
 
   /**
    * Identifier of a delivery protocol. Only HTTP is allowed for now
    */
-  protocol: Protocol;
+  protocol: ConnectivityInsightsProtocol;
 
   /**
    * The address to which events shall be delivered using the selected protocol.
@@ -407,7 +410,7 @@ export interface Subscription {
   /**
    * Camara Event types eligible to be delivered by this subscription.
    */
-  types: Array<SubscriptionEventType>;
+  types: Array<ConnectivityInsightsSubscriptionEventType>;
 
   /**
    * Date when the event subscription will expire. Only provided when
@@ -449,10 +452,10 @@ export interface Subscription {
 /**
  * event-type - Event triggered when an event-type event occurred
  */
-export type SubscriptionEventType =
+export type ConnectivityInsightsSubscriptionEventType =
   'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality';
 
-export type SubscriptionListResponse = Array<Subscription>;
+export type SubscriptionListResponse = Array<ConnectivityInsightsSubscription>;
 
 /**
  * Response for a event-type subscription request managed asynchronously (Creation
@@ -476,12 +479,12 @@ export interface SubscriptionCreateParams {
    * `subscriptionDetail` Note: if a request is performed for several event type, all
    * subscribed event will use same `config` parameters.
    */
-  config: Config;
+  config: ConnectivityInsightsConfig;
 
   /**
    * Body param: Identifier of a delivery protocol. Only HTTP is allowed for now
    */
-  protocol: Protocol;
+  protocol: ConnectivityInsightsProtocol;
 
   /**
    * Body param: The address to which events shall be delivered using the selected
@@ -492,7 +495,7 @@ export interface SubscriptionCreateParams {
   /**
    * Body param: Camara Event types eligible to be delivered by this subscription.
    */
-  types: Array<SubscriptionEventType>;
+  types: Array<ConnectivityInsightsSubscriptionEventType>;
 
   /**
    * Body param: A sink credential provides authentication or authorization
@@ -542,10 +545,10 @@ export interface SubscriptionDeleteParams {
 
 export declare namespace Subscriptions {
   export {
-    type Config as Config,
-    type Protocol as Protocol,
-    type Subscription as Subscription,
-    type SubscriptionEventType as SubscriptionEventType,
+    type ConnectivityInsightsConfig as ConnectivityInsightsConfig,
+    type ConnectivityInsightsProtocol as ConnectivityInsightsProtocol,
+    type ConnectivityInsightsSubscription as ConnectivityInsightsSubscription,
+    type ConnectivityInsightsSubscriptionEventType as ConnectivityInsightsSubscriptionEventType,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionDeleteResponse as SubscriptionDeleteResponse,
     type SubscriptionCreateParams as SubscriptionCreateParams,
