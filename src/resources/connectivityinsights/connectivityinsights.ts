@@ -3,10 +3,10 @@
 import { APIResource } from '../../core/resource';
 import * as SubscriptionsAPI from './subscriptions';
 import {
-  ConnectivityInsightsConfig,
-  ConnectivityInsightsProtocol,
-  ConnectivityInsightsSubscription,
-  ConnectivityInsightsSubscriptionEventType,
+  Config,
+  EventType,
+  Protocol,
+  Subscription,
   SubscriptionCreateParams,
   SubscriptionDeleteParams,
   SubscriptionDeleteResponse,
@@ -25,10 +25,10 @@ Connectivityinsights.Subscriptions = Subscriptions;
 export declare namespace Connectivityinsights {
   export {
     Subscriptions as Subscriptions,
-    type ConnectivityInsightsConfig as ConnectivityInsightsConfig,
-    type ConnectivityInsightsProtocol as ConnectivityInsightsProtocol,
-    type ConnectivityInsightsSubscription as ConnectivityInsightsSubscription,
-    type ConnectivityInsightsSubscriptionEventType as ConnectivityInsightsSubscriptionEventType,
+    type Config as Config,
+    type EventType as EventType,
+    type Protocol as Protocol,
+    type Subscription as Subscription,
     type SubscriptionListResponse as SubscriptionListResponse,
     type SubscriptionDeleteResponse as SubscriptionDeleteResponse,
     type SubscriptionCreateParams as SubscriptionCreateParams,

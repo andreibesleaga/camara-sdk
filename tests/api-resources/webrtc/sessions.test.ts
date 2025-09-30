@@ -77,8 +77,8 @@ describe('resource sessions', () => {
   });
 
   // Prism tests are disabled
-  test.skip('cancel', async () => {
-    const responsePromise = client.webrtc.sessions.cancel('mediaSessionId');
+  test.skip('delete', async () => {
+    const responsePromise = client.webrtc.sessions.delete('mediaSessionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -89,10 +89,10 @@ describe('resource sessions', () => {
   });
 
   // Prism tests are disabled
-  test.skip('cancel: request options and params are passed correctly', async () => {
+  test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.webrtc.sessions.cancel(
+      client.webrtc.sessions.delete(
         'mediaSessionId',
         { 'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46' },
         { path: '/_stainless_unknown_path' },
