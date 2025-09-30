@@ -17,16 +17,14 @@ import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
 import {
-  CallForwardingSignal,
   Callforwardingsignal,
-  CallforwardingsignalCreateCallForwardingParams,
-  CallforwardingsignalCreateCallForwardingResponse,
-  CallforwardingsignalCreateUnconditionalCallForwardingParams,
-  CallforwardingsignalCreateUnconditionalCallForwardingResponse,
+  CallforwardingsignalCheckActiveForwardingsParams,
+  CallforwardingsignalCheckActiveForwardingsResponse,
+  CallforwardingsignalCheckUnconditionalForwardingParams,
+  CallforwardingsignalCheckUnconditionalForwardingResponse,
+  CreateCallForwardingSignal,
 } from './resources/callforwardingsignal';
 import {
-  DeviceIdentifierDevice,
-  DeviceIdentifierDeviceIpv4Addr,
   DeviceIdentifierRequestBody,
   Deviceidentifier,
   DeviceidentifierRetrieveIdentifierParams,
@@ -1087,11 +1085,11 @@ export declare namespace Camara {
 
   export {
     Callforwardingsignal as Callforwardingsignal,
-    type CallForwardingSignal as CallForwardingSignal,
-    type CallforwardingsignalCreateCallForwardingResponse as CallforwardingsignalCreateCallForwardingResponse,
-    type CallforwardingsignalCreateUnconditionalCallForwardingResponse as CallforwardingsignalCreateUnconditionalCallForwardingResponse,
-    type CallforwardingsignalCreateCallForwardingParams as CallforwardingsignalCreateCallForwardingParams,
-    type CallforwardingsignalCreateUnconditionalCallForwardingParams as CallforwardingsignalCreateUnconditionalCallForwardingParams,
+    type CreateCallForwardingSignal as CreateCallForwardingSignal,
+    type CallforwardingsignalCheckActiveForwardingsResponse as CallforwardingsignalCheckActiveForwardingsResponse,
+    type CallforwardingsignalCheckUnconditionalForwardingResponse as CallforwardingsignalCheckUnconditionalForwardingResponse,
+    type CallforwardingsignalCheckActiveForwardingsParams as CallforwardingsignalCheckActiveForwardingsParams,
+    type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams,
   };
 
   export { Devicelocation as Devicelocation };
@@ -1125,8 +1123,6 @@ export declare namespace Camara {
 
   export {
     Deviceidentifier as Deviceidentifier,
-    type DeviceIdentifierDevice as DeviceIdentifierDevice,
-    type DeviceIdentifierDeviceIpv4Addr as DeviceIdentifierDeviceIpv4Addr,
     type DeviceIdentifierRequestBody as DeviceIdentifierRequestBody,
     type DeviceidentifierRetrieveIdentifierResponse as DeviceidentifierRetrieveIdentifierResponse,
     type DeviceidentifierRetrievePpidResponse as DeviceidentifierRetrievePpidResponse,
