@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.0 (2025-10-01)
+
+Full Changelog: [v0.1.2...v0.2.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.1.2...v0.2.0)
+
+### Features
+
+* **api:** manual updates ([7608de3](https://github.com/andreibesleaga/camara-sdk/commit/7608de378bf7d4ee48fa8ada7e72114940f8149b))
+* **api:** manual updates ([543f86d](https://github.com/andreibesleaga/camara-sdk/commit/543f86d2092c2634aa5eefeaf57b9bf7dab53c3d))
+* **api:** manual updates ([447bfda](https://github.com/andreibesleaga/camara-sdk/commit/447bfdadc5017f39a13ba0e0da57a95c0babe849))
+
+
+### Bug Fixes
+
+* **mcp:** fix cli argument parsing logic ([9e7e2d5](https://github.com/andreibesleaga/camara-sdk/commit/9e7e2d544a474ee0fc202dbc73c79e3da9af49dd))
+* **mcp:** resolve a linting issue in server code ([0276d87](https://github.com/andreibesleaga/camara-sdk/commit/0276d87f8c9f3104c82f97c2e1de5a1791fbb5ac))
+
+
+### Chores
+
+* **internal:** remove .eslintcache ([81b1583](https://github.com/andreibesleaga/camara-sdk/commit/81b15838e48ce8bc8f62cca306342b7ab603c33a))
+* update lockfile ([2c04216](https://github.com/andreibesleaga/camara-sdk/commit/2c0421689aef2914bbacd82f2580f3a6afbaff5d))
+
 ## 0.1.2 (2025-09-27)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.1.1...v0.1.2)
