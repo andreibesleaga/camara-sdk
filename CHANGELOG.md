@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2025-10-06)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([87d12b5](https://github.com/andreibesleaga/camara-sdk/commit/87d12b5b86f1d799a6f3850c6a73412fc474e54b))
+
 ## 0.2.0 (2025-10-01)
 
 Full Changelog: [v0.1.2...v0.2.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.1.2...v0.2.0)
