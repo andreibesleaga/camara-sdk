@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'check_subscriber_change_numberrecycling',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCheck whether the subscriber of the phone number has changed.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    phoneNumberRecycled: {\n      type: 'boolean',\n      description: 'Set to true (Boolean, not string) when there has been a change in the subscriber associated with the specific phone number after “specifiedDate”.\\n'\n    }\n  },\n  required: [    'phoneNumberRecycled'\n  ]\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCheck whether the subscriber of the phone number has changed.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/numberrecycling_check_subscriber_change_response',\n  $defs: {\n    numberrecycling_check_subscriber_change_response: {\n      type: 'object',\n      properties: {\n        phoneNumberRecycled: {\n          type: 'boolean',\n          description: 'Set to true (Boolean, not string) when there has been a change in the subscriber associated with the specific phone number after “specifiedDate”.\\n'\n        }\n      },\n      required: [        'phoneNumberRecycled'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
