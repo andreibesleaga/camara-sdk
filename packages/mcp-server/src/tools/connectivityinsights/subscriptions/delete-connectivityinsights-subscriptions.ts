@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'delete_connectivityinsights_subscriptions',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete a given subscription by ID\n\n# Response Schema\n```json\n{\n  type: 'object',\n  description: 'Response for a event-type subscription request managed asynchronously\\n(Creation or Deletion)\\n',\n  properties: {\n    subscriptionId: {\n      type: 'string',\n      description: 'When this information is contained within an event notification, it SHALL be referred to as `subscriptionId` as per the Commonalities Event Notification Model.\\n'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nDelete a given subscription by ID\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/subscription_delete_response',\n  $defs: {\n    subscription_delete_response: {\n      type: 'object',\n      description: 'Response for a event-type subscription request managed asynchronously\\n(Creation or Deletion)\\n',\n      properties: {\n        subscriptionId: {\n          type: 'string',\n          description: 'When this information is contained within an event notification, it SHALL be referred to as `subscriptionId` as per the Commonalities Event Notification Model.\\n'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
