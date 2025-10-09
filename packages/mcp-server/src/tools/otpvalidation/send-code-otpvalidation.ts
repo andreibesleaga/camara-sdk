@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'send_code_otpvalidation',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nSends an SMS with the desired message and an OTP code to the received phone number.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  description: 'Structure to provide authentication identifier',\n  properties: {\n    authenticationId: {\n      type: 'string',\n      description: 'unique id of the verification attempt the code belongs to.'\n    }\n  },\n  required: [    'authenticationId'\n  ]\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nSends an SMS with the desired message and an OTP code to the received phone number.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/otpvalidation_send_code_response',\n  $defs: {\n    otpvalidation_send_code_response: {\n      type: 'object',\n      description: 'Structure to provide authentication identifier',\n      properties: {\n        authenticationId: {\n          type: 'string',\n          description: 'unique id of the verification attempt the code belongs to.'\n        }\n      },\n      required: [        'authenticationId'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {

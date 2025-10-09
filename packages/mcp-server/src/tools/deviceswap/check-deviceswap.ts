@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'check_deviceswap',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCheck if device swap has been performed during a past period\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    swapped: {\n      type: 'boolean',\n      description: 'Indicates whether the device has been swapped during the period within the provided age.'\n    }\n  },\n  required: [    'swapped'\n  ]\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCheck if device swap has been performed during a past period\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/deviceswap_check_response',\n  $defs: {\n    deviceswap_check_response: {\n      type: 'object',\n      properties: {\n        swapped: {\n          type: 'boolean',\n          description: 'Indicates whether the device has been swapped during the period within the provided age.'\n        }\n      },\n      required: [        'swapped'\n      ]\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {

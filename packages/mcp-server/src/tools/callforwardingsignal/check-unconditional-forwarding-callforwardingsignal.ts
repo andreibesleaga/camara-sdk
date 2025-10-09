@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'check_unconditional_forwarding_callforwardingsignal',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint provides information about the status of the unconditional call forwarding, being active or not.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  description: 'resource containing the information about the Unconditional Call Forwarding Service for the given phone number (PhoneNumber)',\n  properties: {\n    active: {\n      type: 'boolean',\n      description: 'Indicates if the unconditional call forwarding service is active.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nThis endpoint provides information about the status of the unconditional call forwarding, being active or not.\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/callforwardingsignal_check_unconditional_forwarding_response',\n  $defs: {\n    callforwardingsignal_check_unconditional_forwarding_response: {\n      type: 'object',\n      description: 'resource containing the information about the Unconditional Call Forwarding Service for the given phone number (PhoneNumber)',\n      properties: {\n        active: {\n          type: 'boolean',\n          description: 'Indicates if the unconditional call forwarding service is active.'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
