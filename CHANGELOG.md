@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.2 (2025-10-09)
+
+Full Changelog: [v0.2.1...v0.2.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.2.1...v0.2.2)
+
+### Chores
+
+* extract some types in mcp docs ([1ba53ce](https://github.com/andreibesleaga/camara-sdk/commit/1ba53ce2c886cb9d2b387beccb815601e6aaa44e))
+* **internal:** use npm pack for build uploads ([c772f51](https://github.com/andreibesleaga/camara-sdk/commit/c772f51fdc63dcf292c9a46df5884a10619cfc52))
+
 ## 0.2.1 (2025-10-06)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.2.0...v0.2.1)
