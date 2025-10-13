@@ -18,7 +18,7 @@ const client = new Camara({
 describe('resource knowyourcustomerfillIn', () => {
   // Prism tests are disabled
   test.skip('create', async () => {
-    const responsePromise = client.knowyourcustomerfillIn.create();
+    const responsePromise = client.knowyourcustomerfillIn.create({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -26,16 +26,5 @@ describe('resource knowyourcustomerfillIn', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('create: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.knowyourcustomerfillIn.create(
-        { phoneNumber: '+34629255833', 'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46' },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(Camara.NotFoundError);
   });
 });
