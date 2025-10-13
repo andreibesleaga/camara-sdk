@@ -19,10 +19,10 @@ export class KnowyourcustomerfillIn extends APIResource {
    * ```
    */
   create(
-    params: KnowyourcustomerfillInCreateParams | null | undefined = {},
+    params: KnowyourcustomerfillInCreateParams,
     options?: RequestOptions,
   ): APIPromise<KnowyourcustomerfillInCreateResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params ?? {};
+    const { 'x-correlator': xCorrelator, ...body } = params;
     return this._client.post('/knowyourcustomerfill-in/fill-in', {
       body,
       ...options,
