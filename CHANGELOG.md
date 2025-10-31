@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2025-10-31)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* **mcpb:** pin @anthropic-ai/mcpb version ([3159da5](https://github.com/andreibesleaga/camara-sdk/commit/3159da5f6b8702e0c844677fd529e2aa13ecc049))
+
 ## 0.3.0 (2025-10-13)
 
 Full Changelog: [v0.2.2...v0.3.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.2.2...v0.3.0)
