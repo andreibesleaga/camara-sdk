@@ -190,11 +190,6 @@ export interface MediaSessionInformation {
   originatorName?: string;
 
   /**
-   * The description of the event that has happened within the session
-   */
-  reason?: string;
-
-  /**
    * Subscriber address (Sender or Receiver)
    */
   receiverAddress?: string;
@@ -203,11 +198,6 @@ export interface MediaSessionInformation {
    * Friendly name of the call terminator
    */
   receiverName?: string;
-
-  /**
-   * The sequence number of the notification sent to client
-   */
-  sequenceNumber?: number;
 
   /**
    * A correlator that the server instructs the client to use for end to end
@@ -324,11 +314,6 @@ export interface SessionCreateParams {
   originatorName?: string;
 
   /**
-   * Body param: The description of the event that has happened within the session
-   */
-  reason?: string;
-
-  /**
    * Body param: Subscriber address (Sender or Receiver)
    */
   receiverAddress?: string;
@@ -337,11 +322,6 @@ export interface SessionCreateParams {
    * Body param: Friendly name of the call terminator
    */
   receiverName?: string;
-
-  /**
-   * Body param: The sequence number of the notification sent to client
-   */
-  sequenceNumber?: number;
 
   /**
    * Body param: A correlator that the server instructs the client to use for end to
@@ -455,11 +435,6 @@ export interface SessionUpdateStatusParams {
   originatorName?: string;
 
   /**
-   * Body param: The description of the event that has happened within the session
-   */
-  reason?: string;
-
-  /**
    * Body param: Subscriber address (Sender or Receiver)
    */
   receiverAddress?: string;
@@ -468,11 +443,6 @@ export interface SessionUpdateStatusParams {
    * Body param: Friendly name of the call terminator
    */
   receiverName?: string;
-
-  /**
-   * Body param: The sequence number of the notification sent to client
-   */
-  sequenceNumber?: number;
 
   /**
    * Body param: A correlator that the server instructs the client to use for end to
