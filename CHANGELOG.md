@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.0 (2025-11-05)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **mcp:** enable optional code execution tool on http mcp servers ([3a5547c](https://github.com/andreibesleaga/camara-sdk/commit/3a5547c5c9989bf4f5df8a6fc337dd1658286a50))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([aa97794](https://github.com/andreibesleaga/camara-sdk/commit/aa977940152cc465ce740da785b16115936b5f35))
+* mcp code tool explicit error message when missing a run function ([a7a792f](https://github.com/andreibesleaga/camara-sdk/commit/a7a792f42d0cb21e3f1fcbb8561f2e5b9ed4395c))
+* use structured error when code execution tool errors ([97266c9](https://github.com/andreibesleaga/camara-sdk/commit/97266c9c9105a003a85e98c681f3f83f4acd435e))
+
 ## 0.4.0 (2025-11-03)
 
 Full Changelog: [v0.3.1...v0.4.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.3.1...v0.4.0)
