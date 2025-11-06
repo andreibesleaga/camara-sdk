@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.1 (2025-11-06)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* **internal:** codegen related update ([6357c15](https://github.com/andreibesleaga/camara-sdk/commit/6357c15e3ea36a487a04356477c8d58a34d528e2))
+* **mcp:** add friendlier MCP code tool errors on incorrect method invocations ([d27cc28](https://github.com/andreibesleaga/camara-sdk/commit/d27cc28793d35d8102cf597f6b69d3f4500cd9a0))
+* **mcp:** add line numbers to code tool errors ([f352d34](https://github.com/andreibesleaga/camara-sdk/commit/f352d34d5f07af6f54321ad2d02061769c06e58c))
+
+
+### Documentation
+
+* **mcp:** add a README button for one-click add to Cursor ([c494f9a](https://github.com/andreibesleaga/camara-sdk/commit/c494f9ad00e37d55b8724b70fe42dac45a58180c))
+
 ## 0.5.0 (2025-11-05)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.4.0...v0.5.0)
