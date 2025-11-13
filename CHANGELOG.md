@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.2 (2025-11-13)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.1...v0.5.2)
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on jq failure ([7804096](https://github.com/andreibesleaga/camara-sdk/commit/7804096e901bd0c5d70083f3ed606f241d83a25d))
+
+
+### Chores
+
+* **internal:** codegen related update ([3b45bd5](https://github.com/andreibesleaga/camara-sdk/commit/3b45bd56bccbedc5ce76a0774298db01176c5633))
+* **mcp:** clarify http auth error ([48265ba](https://github.com/andreibesleaga/camara-sdk/commit/48265ba5724776c4a091169547be0e79e77c5125))
+
+
+### Documentation
+
+* **mcp:** add a README link to add server to VS Code or Claude Code ([9c07222](https://github.com/andreibesleaga/camara-sdk/commit/9c07222d9754f78e3d352b4cf98726e81ec37deb))
+
 ## 0.5.1 (2025-11-06)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.0...v0.5.1)
