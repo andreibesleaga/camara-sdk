@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { maybeFilter } from 'camara-mcp/filtering';
-import { Metadata, asTextContentResult } from 'camara-mcp/tools/types';
+import { isJqError, maybeFilter } from 'camara-mcp/filtering';
+import { Metadata, asErrorResult, asTextContentResult } from 'camara-mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import Camara from 'camara-sdk';
@@ -80,7 +80,16 @@ export const tool: Tool = {
 
 export const handler = async (client: Camara, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(jq_filter, await client.deviceidentifier.retrieveType(body)));
+  try {
+    return asTextContentResult(
+      await maybeFilter(jq_filter, await client.deviceidentifier.retrieveType(body)),
+    );
+  } catch (error) {
+    if (isJqError(error)) {
+      return asErrorResult(error.message);
+    }
+    throw error;
+  }
 };
 
 export default { metadata, tool, handler };
