@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.3 (2025-11-19)
+
+Full Changelog: [v0.5.2...v0.5.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.2...v0.5.3)
+
+### Chores
+
+* **internal:** configure MCP Server hosting ([5fd2e55](https://github.com/andreibesleaga/camara-sdk/commit/5fd2e554c5ecfc291dcf69af1930413478ad529a))
+* **mcp:** upgrade jq-web ([cc5550a](https://github.com/andreibesleaga/camara-sdk/commit/cc5550a73229d8bf3373637451af13eb4a1b4003))
+
 ## 0.5.2 (2025-11-13)
 
 Full Changelog: [v0.5.1...v0.5.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.1...v0.5.2)
