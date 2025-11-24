@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export const tool: Tool = {
   name: 'update_status_webrtc_sessions',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpdate the status of the media session, this may include updating SDP media\n\nThe API consumer shall construct the API path using the `mediaSessionId` supplied in the session creation response (origination) or in the invitation notification (termination).\n\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/media_session_information',\n  $defs: {\n    media_session_information: {\n      type: 'object',\n      properties: {\n        answer: {\n          $ref: '#/$defs/sdp_descriptor'\n        },\n        callObjectRef: {\n          type: 'string',\n          description: 'The reference to the call object'\n        },\n        clientCorrelator: {\n          type: 'string',\n          description: 'A correlator that the client can use to tag this particular resource representation during a request to create a resource on the server. Note - This allows the client to recover from communication failures during resource creation and therefore avoids re-sending the message in such situations. In case the element is present, the WebRTC GW shall not alter its value, and shall provide it as part of the representation of this resource.'\n        },\n        mediaSessionId: {\n          type: 'string',\n          description: 'The media session ID created by the network. The mediaSessionId shall not be included in POST requests by the client, but must be included in the notifications from the network to the client device.'\n        },\n        offer: {\n          $ref: '#/$defs/sdp_descriptor'\n        },\n        offerRequired: {\n          type: 'boolean',\n          description: 'This element shall be included and set to true, if the session updates are received without SDP offer. This element indicates clients to send the offer.'\n        },\n        originatorAddress: {\n          type: 'string',\n          description: 'Subscriber address (Sender or Receiver)'\n        },\n        originatorName: {\n          type: 'string',\n          description: 'Friendly name of the call originator'\n        },\n        receiverAddress: {\n          type: 'string',\n          description: 'Subscriber address (Sender or Receiver)'\n        },\n        receiverName: {\n          type: 'string',\n          description: 'Friendly name of the call terminator'\n        },\n        serverCorrelator: {\n          type: 'string',\n          description: 'A correlator that the server instructs the client to use for end to end correlation.'\n        },\n        status: {\n          type: 'string',\n          description: 'Provides the status of the media session. During the session creation, this attribute SHALL NOT be included in the request.',\n          enum: [            'Initial',\n            'InProgress',\n            'Ringing',\n            'Proceeding',\n            'Connected',\n            'Terminated',\n            'Hold',\n            'Resume',\n            'SessionCancelled',\n            'Declined',\n            'Failed',\n            'Waiting',\n            'NoAnswer',\n            'NotReachable',\n            'Busy'\n          ]\n        }\n      }\n    },\n    sdp_descriptor: {\n      type: 'object',\n      description: '**OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\\nis used, the content of this element SHALL be embedded in a CDATA\\nsection.\\n\\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\\npresent in case there is no answer yet, or the session invitation has\\nbeen declined by the Terminating Participant.This element MUST NOT be\\npresent in a request from the application to the server to create a\\nsession.',\n      properties: {\n        sdp: {\n          type: 'string',\n          description: 'An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section'\n        }\n      }\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpdate the status of the media session, this may include updating SDP media\n\nThe API consumer shall construct the API path using the `mediaSessionId` supplied in the session creation response (origination) or in the invitation notification (termination).\n\n\n# Response Schema\n```json\n{\n  $ref: '#/$defs/media_session_information',\n  $defs: {\n    media_session_information: {\n      type: 'object',\n      properties: {\n        answer: {\n          $ref: '#/$defs/sdp_descriptor'\n        },\n        mediaSessionId: {\n          type: 'string',\n          description: 'The media session ID created by the network. The mediaSessionId shall not be included in POST requests by the client, but must be included in the notifications from the network to the client device.'\n        },\n        offer: {\n          $ref: '#/$defs/sdp_descriptor'\n        },\n        originatorAddress: {\n          type: 'string',\n          description: 'Subscriber address (Sender or Receiver)'\n        },\n        originatorName: {\n          type: 'string',\n          description: 'Friendly name of the call originator'\n        },\n        receiverAddress: {\n          type: 'string',\n          description: 'Subscriber address (Sender or Receiver)'\n        },\n        receiverName: {\n          type: 'string',\n          description: 'Friendly name of the call terminator'\n        },\n        status: {\n          type: 'string',\n          description: 'Provides the status of the media session. During the session creation, this attribute SHALL NOT be included in the request.',\n          enum: [            'Initial',\n            'InProgress',\n            'Ringing',\n            'Proceeding',\n            'Connected',\n            'Terminated',\n            'Hold',\n            'Resume',\n            'SessionCancelled',\n            'Declined',\n            'Failed',\n            'Waiting',\n            'NoAnswer',\n            'NotReachable',\n            'Busy'\n          ]\n        }\n      }\n    },\n    sdp_descriptor: {\n      type: 'object',\n      description: '**OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\\nis used, the content of this element SHALL be embedded in a CDATA\\nsection.\\n\\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\\npresent in case there is no answer yet, or the session invitation has\\nbeen declined by the Terminating Participant.This element MUST NOT be\\npresent in a request from the application to the server to create a\\nsession.',\n      properties: {\n        sdp: {\n          type: 'string',\n          description: 'An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section'\n        }\n      }\n    }\n  }\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
@@ -28,15 +28,6 @@ export const tool: Tool = {
       answer: {
         $ref: '#/$defs/sdp_descriptor',
       },
-      callObjectRef: {
-        type: 'string',
-        description: 'The reference to the call object',
-      },
-      clientCorrelator: {
-        type: 'string',
-        description:
-          'A correlator that the client can use to tag this particular resource representation during a request to create a resource on the server. Note - This allows the client to recover from communication failures during resource creation and therefore avoids re-sending the message in such situations. In case the element is present, the WebRTC GW shall not alter its value, and shall provide it as part of the representation of this resource.',
-      },
       body_mediaSessionId: {
         type: 'string',
         description:
@@ -44,11 +35,6 @@ export const tool: Tool = {
       },
       offer: {
         $ref: '#/$defs/sdp_descriptor',
-      },
-      offerRequired: {
-        type: 'boolean',
-        description:
-          'This element shall be included and set to true, if the session updates are received without SDP offer. This element indicates clients to send the offer.',
       },
       originatorAddress: {
         type: 'string',
@@ -65,10 +51,6 @@ export const tool: Tool = {
       receiverName: {
         type: 'string',
         description: 'Friendly name of the call terminator',
-      },
-      serverCorrelator: {
-        type: 'string',
-        description: 'A correlator that the server instructs the client to use for end to end correlation.',
       },
       status: {
         type: 'string',
