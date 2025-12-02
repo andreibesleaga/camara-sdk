@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.7.0 (2025-12-02)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **mcp:** add detail field to docs search tool ([f29c148](https://github.com/andreibesleaga/camara-sdk/commit/f29c1481b76df211a034fc0a1ccb9dc740f3e75f))
+
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on api error ([bf0629a](https://github.com/andreibesleaga/camara-sdk/commit/bf0629ac6673a375733c4e7e11441540b4c2b790))
+
+
+### Chores
+
+* **client:** fix logger property type ([99a1abd](https://github.com/andreibesleaga/camara-sdk/commit/99a1abd4e082638be0ba9c412ee76596df7b639a))
+
 ## 0.6.0 (2025-11-24)
 
 Full Changelog: [v0.5.3...v0.6.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.3...v0.6.0)
