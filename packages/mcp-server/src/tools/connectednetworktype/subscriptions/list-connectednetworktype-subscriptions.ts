@@ -46,7 +46,7 @@ export const handler = async (client: Camara, args: Record<string, unknown> | un
       await maybeFilter(jq_filter, await client.connectednetworktype.subscriptions.list(body)),
     );
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Camara.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
