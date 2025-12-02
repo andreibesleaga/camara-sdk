@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 (2025-12-02)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **mcp:** return logs on code tool errors ([0c34755](https://github.com/andreibesleaga/camara-sdk/commit/0c34755fff99f0d94e6c3758072706942a071922))
+
 ## 0.7.0 (2025-12-02)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.6.0...v0.7.0)
