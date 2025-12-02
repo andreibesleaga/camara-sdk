@@ -51,7 +51,7 @@ export const handler = async (client: Camara, args: Record<string, unknown> | un
   try {
     return asTextContentResult(await maybeFilter(jq_filter, await client.deviceswap.check(body)));
   } catch (error) {
-    if (isJqError(error)) {
+    if (error instanceof Camara.APIError || isJqError(error)) {
       return asErrorResult(error.message);
     }
     throw error;
