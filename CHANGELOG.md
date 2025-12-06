@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.1 (2025-12-06)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([85d455c](https://github.com/andreibesleaga/camara-sdk/commit/85d455cba0a64bc14820c4ca9a2b481a31ea61b0))
+
+
+### Chores
+
+* **internal:** codegen related update ([2e393b8](https://github.com/andreibesleaga/camara-sdk/commit/2e393b89e6f164be79c6a58c3cafa133fc7045b3))
+
 ## 0.9.0 (2025-12-06)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.8.0...v0.9.0)
