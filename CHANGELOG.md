@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.9.0 (2025-12-06)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **mcp:** add typescript check to code execution tool ([a282c38](https://github.com/andreibesleaga/camara-sdk/commit/a282c38c36911b0bf3faf8bc615192c0ff0e4cfa))
+* **mcp:** handle code mode calls in the Stainless API ([1f38252](https://github.com/andreibesleaga/camara-sdk/commit/1f382527b524659a9d5d5f980692c65a2bcd31e7))
+
+
+### Bug Fixes
+
+* **mcp:** return correct lines on typescript errors ([fcb9b18](https://github.com/andreibesleaga/camara-sdk/commit/fcb9b181547bd49f9efd82e5b9d8d1abd71a8bc4))
+
+
+### Chores
+
+* **internal:** upgrade eslint ([43698b5](https://github.com/andreibesleaga/camara-sdk/commit/43698b56ef33c75d957608f226f56812853b7e2f))
+* use latest @modelcontextprotocol/sdk ([caddb86](https://github.com/andreibesleaga/camara-sdk/commit/caddb861ca6e09d1b09dbb38337c77dee1e1af9f))
+
 ## 0.8.0 (2025-12-02)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.7.0...v0.8.0)
