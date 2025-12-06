@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.2 (2025-12-06)
+
+Full Changelog: [v0.9.1...v0.9.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.1...v0.9.2)
+
+### Chores
+
+* **internal:** codegen related update ([fce5ab2](https://github.com/andreibesleaga/camara-sdk/commit/fce5ab2ea89dca1099b52d3a3b919dea9e85f386))
+
 ## 0.9.1 (2025-12-06)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.0...v0.9.1)
