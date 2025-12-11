@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.3 (2025-12-11)
+
+Full Changelog: [v0.9.2...v0.9.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.2...v0.9.3)
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([6edfcfb](https://github.com/andreibesleaga/camara-sdk/commit/6edfcfb25b017f0b68a68ebc13b567b8fe8cf887))
+
+
+### Chores
+
+* **mcp:** update lockfile ([74c5d5b](https://github.com/andreibesleaga/camara-sdk/commit/74c5d5b691876004d229ffecd20d45f78d40b75a))
+
 ## 0.9.2 (2025-12-06)
 
 Full Changelog: [v0.9.1...v0.9.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.1...v0.9.2)
