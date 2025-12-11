@@ -63,6 +63,7 @@ export async function codeTool() {
       },
       body: JSON.stringify({
         project_name: 'camara',
+        client_opts: {},
         code,
       }),
     });
