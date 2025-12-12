@@ -28,12 +28,7 @@ export class Subscriptions extends APIResource {
    *     types: [
    *       'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed',
    *     ],
-   *     sinkCredential: {
-   *       credentialType: 'ACCESSTOKEN',
-   *       accessToken: 'xxx',
-   *       accessTokenExpiresUtc: '2024-02-17T16:23:45Z',
-   *       accessTokenType: 'bearer',
-   *     },
+   *     sinkCredential: { credentialType: 'ACCESSTOKEN' },
    *   });
    * ```
    */
