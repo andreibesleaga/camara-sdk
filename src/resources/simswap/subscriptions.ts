@@ -24,12 +24,7 @@ export class Subscriptions extends APIResource {
    *     types: [
    *       'org.camaraproject.sim-swap-subscriptions.v0.swapped',
    *     ],
-   *     sinkCredential: {
-   *       credentialType: 'ACCESSTOKEN',
-   *       accessToken: 'yJ2ZXIiOiIxLjAiLCJ0eXAiO...',
-   *       accessTokenExpiresUtc: '1717753038',
-   *       accessTokenType: 'bearer',
-   *     },
+   *     sinkCredential: { credentialType: 'ACCESSTOKEN' },
    *   });
    * ```
    */
