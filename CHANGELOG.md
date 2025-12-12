@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.4 (2025-12-12)
+
+Full Changelog: [v0.9.3...v0.9.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.3...v0.9.4)
+
+### Bug Fixes
+
+* **docs:** remove extraneous example object fields ([97616fc](https://github.com/andreibesleaga/camara-sdk/commit/97616fc751dfb4f16a4fafa5e23a9261dfbbe431))
+
 ## 0.9.3 (2025-12-11)
 
 Full Changelog: [v0.9.2...v0.9.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.2...v0.9.3)
