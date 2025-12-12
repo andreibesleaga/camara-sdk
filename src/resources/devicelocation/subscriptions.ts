@@ -19,14 +19,7 @@ export class Subscriptions extends APIResource {
    *     config: {
    *       subscriptionDetail: {
    *         device: { phoneNumber: '+12345678912' },
-   *         area: {
-   *           areaType: 'CIRCLE',
-   *           center: {
-   *             latitude: 50.735851,
-   *             longitude: 7.10066,
-   *           },
-   *           radius: 2000,
-   *         },
+   *         area: { areaType: 'CIRCLE' },
    *       },
    *       initialEvent: true,
    *       subscriptionMaxEvents: 10,
