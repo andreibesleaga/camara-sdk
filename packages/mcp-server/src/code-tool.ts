@@ -59,6 +59,7 @@ export async function codeTool() {
           CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: readEnv(
             'CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY',
           ),
+          CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL'),
         }),
       },
       body: JSON.stringify({
