@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.5 (2025-12-18)
+
+Full Changelog: [v0.9.4...v0.9.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.4...v0.9.5)
+
+### Bug Fixes
+
+* **mcp:** pass base url to code tool ([49ee523](https://github.com/andreibesleaga/camara-sdk/commit/49ee523145efc591d855a0c6244ff4173076cf6a))
+
 ## 0.9.4 (2025-12-12)
 
 Full Changelog: [v0.9.3...v0.9.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.3...v0.9.4)
