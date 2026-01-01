@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.0 (2026-01-01)
+
+Full Changelog: [v0.9.5...v0.10.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.5...v0.10.0)
+
+### ⚠ BREAKING CHANGES
+
+* **mcp:** remove deprecated tool schemes
+* **mcp:** **Migration:** To migrate, simply modify the command used to invoke the MCP server. Currently, the only supported tool scheme is code mode. Now, starting the server with just `node /path/to/mcp/server` or `npx package-name` will invoke code tools: changing your command to one of these is likely all you will need to do.
+
+### Features
+
+* **api:** api update ([90b3413](https://github.com/andreibesleaga/camara-sdk/commit/90b341307ac99d3bf1cdf8bb2b75a9d2525be553))
+
+
+### Chores
+
+* **mcp:** remove deprecated tool schemes ([ad529cb](https://github.com/andreibesleaga/camara-sdk/commit/ad529cb543814bb2ff157dff8c7d246d708093b4))
+
 ## 0.9.5 (2025-12-18)
 
 Full Changelog: [v0.9.4...v0.9.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.4...v0.9.5)
