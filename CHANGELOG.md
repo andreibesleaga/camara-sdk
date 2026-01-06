@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.1 (2026-01-06)
+
+Full Changelog: [v0.10.0...v0.10.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.0...v0.10.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool api output types ([810e8d5](https://github.com/andreibesleaga/camara-sdk/commit/810e8d528968c730d886631f9aa9be50bc10c78c))
+
+
+### Chores
+
+* **internal:** fix dockerfile ([998563a](https://github.com/andreibesleaga/camara-sdk/commit/998563ac77fba3854cd787a28dd9f70287bca0c3))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([c5eeeaf](https://github.com/andreibesleaga/camara-sdk/commit/c5eeeafa32644bdd35d79464bf37a3eb1860f54a))
+
 ## 0.10.0 (2026-01-01)
 
 Full Changelog: [v0.9.5...v0.10.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.5...v0.10.0)
