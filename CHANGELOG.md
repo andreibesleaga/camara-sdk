@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.2 (2026-01-07)
+
+Full Changelog: [v0.10.1...v0.10.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.1...v0.10.2)
+
+### Bug Fixes
+
+* **mcp:** update cloudflare worker host page ([bb9f432](https://github.com/andreibesleaga/camara-sdk/commit/bb9f432fce619eb76699e0fe940f7f8313c34e12))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([c9e8b4a](https://github.com/andreibesleaga/camara-sdk/commit/c9e8b4afd5550b586080102c588be2815f82edba))
+
 ## 0.10.1 (2026-01-06)
 
 Full Changelog: [v0.10.0...v0.10.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.0...v0.10.1)
