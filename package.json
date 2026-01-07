@@ -1,6 +1,6 @@
 {
   "name": "camara-sdk",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "description": "The official TypeScript library for the Camara API",
   "author": "Camara <>",
   "types": "dist/index.d.ts",
