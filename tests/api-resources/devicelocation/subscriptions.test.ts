@@ -43,7 +43,11 @@ describe('resource subscriptions', () => {
         subscriptionDetail: {
           area: { areaType: 'CIRCLE' },
           device: {
-            ipv4Address: { privateAddress: '84.125.93.10', publicAddress: '84.125.93.10', publicPort: 59765 },
+            ipv4Address: {
+              privateAddress: '84.125.93.10',
+              publicAddress: '84.125.93.10',
+              publicPort: 59765,
+            },
             ipv6Address: '2001:db8:85a3:8d3:1319:8a2e:370:7344',
             networkAccessIdentifier: '123456789@domain.com',
             phoneNumber: '+12345678912',
