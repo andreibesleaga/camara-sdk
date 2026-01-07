@@ -149,7 +149,9 @@ const response = await client.customerinsights.scoring.retrieve().asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: scoring, response: raw } = await client.customerinsights.scoring.retrieve().withResponse();
+const { data: scoring, response: raw } = await client.customerinsights.scoring
+  .retrieve()
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(scoring.scoringType);
 ```
