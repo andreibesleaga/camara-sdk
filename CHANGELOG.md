@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.3 (2026-01-07)
+
+Full Changelog: [v0.10.2...v0.10.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.2...v0.10.3)
+
+### Bug Fixes
+
+* **mcp:** fix options parsing ([89e444b](https://github.com/andreibesleaga/camara-sdk/commit/89e444b086a659d52cbdefdfd8a92597736aa316))
+
 ## 0.10.2 (2026-01-07)
 
 Full Changelog: [v0.10.1...v0.10.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.1...v0.10.2)
