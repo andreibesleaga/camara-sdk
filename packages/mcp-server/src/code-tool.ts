@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv } from './server';
+import { readEnv, readEnvOrError } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 /**
  * A tool that runs code against a copy of the SDK.
@@ -36,27 +36,27 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_NOTIFICATIONS_API_KEY: readEnv('CAMARA_NOTIFICATIONS_API_KEY'),
-          CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_NOTIFICATIONS_API_KEY: readEnvOrError('CAMARA_NOTIFICATIONS_API_KEY'),
+          CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY'),
-          CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: readEnvOrError('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY'),
+          CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY',
           ),
-          CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: readEnv(
+          CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: readEnvOrError(
             'CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY',
           ),
           CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL'),
