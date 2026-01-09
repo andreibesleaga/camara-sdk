@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.5 (2026-01-09)
+
+Full Changelog: [v0.10.4...v0.10.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.4...v0.10.5)
+
+### Bug Fixes
+
+* **mcp:** update code tool prompt ([4f6cea3](https://github.com/andreibesleaga/camara-sdk/commit/4f6cea30516273d52dfc9576087994fdd068beb2))
+
 ## 0.10.4 (2026-01-08)
 
 Full Changelog: [v0.10.3...v0.10.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.3...v0.10.4)
