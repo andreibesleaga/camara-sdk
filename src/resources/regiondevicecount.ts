@@ -85,7 +85,7 @@ export interface RegiondevicecountGetCountResponse {
 
 export interface RegiondevicecountGetCountParams {
   /**
-   * Body param:
+   * Body param
    */
   area?: RegiondevicecountGetCountParams.Area;
 
