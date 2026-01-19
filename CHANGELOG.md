@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.6 (2026-01-17)
+
+Full Changelog: [v0.10.5...v0.10.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.5...v0.10.6)
+
+### Chores
+
+* fix typo in descriptions ([8b37f6a](https://github.com/andreibesleaga/camara-sdk/commit/8b37f6a8c4693eb645efa795a5bfad9ae0ffabde))
+* **internal:** bump MCP dependencies ([9c1dc50](https://github.com/andreibesleaga/camara-sdk/commit/9c1dc50e7100cbfd932db3770b8c21b2a2889d6c))
+* **internal:** codegen related update ([40bf744](https://github.com/andreibesleaga/camara-sdk/commit/40bf744ded77574a99fb7fd56c7ef66871f70fc3))
+* **internal:** codegen related update ([fe02a25](https://github.com/andreibesleaga/camara-sdk/commit/fe02a258e05a48017005e642036625a11af478f4))
+* **internal:** codegen related update ([953183d](https://github.com/andreibesleaga/camara-sdk/commit/953183d916ff6bfa7f8fab12904f3840db4f6cb6))
+* **internal:** codegen related update ([e9be82c](https://github.com/andreibesleaga/camara-sdk/commit/e9be82c3674604b77b1e37216d4d8563c6c9a550))
+* **internal:** update `actions/checkout` version ([9fb0e01](https://github.com/andreibesleaga/camara-sdk/commit/9fb0e012ae676037e240e84fffb8407b4219f99e))
+* **internal:** upgrade babel, qs, js-yaml ([e617eb7](https://github.com/andreibesleaga/camara-sdk/commit/e617eb7dc88eddc6e3a58420e14ee8dfc868ed36))
+* **mcp:** add intent param to execute tool ([63f1b17](https://github.com/andreibesleaga/camara-sdk/commit/63f1b17938a795e1bfa62bb12e80677fec4f958c))
+* **mcp:** pass intent param to execute handler ([8278426](https://github.com/andreibesleaga/camara-sdk/commit/8278426a6bd90aca8aa941d2af85c67950c11e72))
+* **mcp:** upgrade dependencies ([ab66b81](https://github.com/andreibesleaga/camara-sdk/commit/ab66b81046654722a4efeed14754ee962fd35086))
+
 ## 0.10.5 (2026-01-09)
 
 Full Changelog: [v0.10.4...v0.10.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.4...v0.10.5)
