@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.7 (2026-01-23)
+
+Full Changelog: [v0.10.6...v0.10.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.6...v0.10.7)
+
+### Chores
+
+* configure new SDK language ([68d5a42](https://github.com/andreibesleaga/camara-sdk/commit/68d5a421f0ce295d422681f67f2879be443d67c7))
+
 ## 0.10.6 (2026-01-17)
 
 Full Changelog: [v0.10.5...v0.10.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.5...v0.10.6)
