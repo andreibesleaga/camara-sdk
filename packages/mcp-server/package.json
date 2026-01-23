@@ -1,6 +1,6 @@
 {
-  "name": "camara-mcp",
-  "version": "0.10.6",
+  "name": "camara-sdk-mcp",
+  "version": "0.10.7",
   "description": "Typescript MCP Server for the Camara API",
   "author": "Camara <>",
   "types": "dist/index.d.ts",
@@ -69,8 +69,8 @@
     "tsconfig-paths": "^4.0.0"
   },
   "imports": {
-    "camara-mcp": ".",
-    "camara-mcp/*": "./src/*"
+    "camara-sdk-mcp": ".",
+    "camara-sdk-mcp/*": "./src/*"
   },
   "exports": {
     ".": {
