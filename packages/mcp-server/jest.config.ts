@@ -7,8 +7,8 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^camara-mcp$': '<rootDir>/src/index.ts',
-    '^camara-mcp/(.*)$': '<rootDir>/src/$1',
+    '^camara-sdk-mcp$': '<rootDir>/src/index.ts',
+    '^camara-sdk-mcp/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   testPathIgnorePatterns: ['scripts'],
