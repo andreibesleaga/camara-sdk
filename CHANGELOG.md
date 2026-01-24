@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.10.8 (2026-01-24)
+
+Full Changelog: [v0.10.7...v0.10.8](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.7...v0.10.8)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([3c55fd4](https://github.com/andreibesleaga/camara-sdk/commit/3c55fd4f624235b64015d3ec98daa217284bce35))
+* **internal:** update lock file ([5f8da9c](https://github.com/andreibesleaga/camara-sdk/commit/5f8da9cc494cdcbe30e5cd2b90aa152386578893))
+
 ## 0.10.7 (2026-01-23)
 
 Full Changelog: [v0.10.6...v0.10.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.6...v0.10.7)
