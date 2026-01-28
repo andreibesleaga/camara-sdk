@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.10 (2026-01-28)
+
+Full Changelog: [v0.10.9...v0.10.10](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.9...v0.10.10)
+
+### Bug Fixes
+
+* **mcp:** allow falling back for required env variables ([8004dcd](https://github.com/andreibesleaga/camara-sdk/commit/8004dcd3227d32b54aa4b5cbe71e0d3da03a3828))
+
+
+### Chores
+
+* **internal:** codegen related update ([10f86f5](https://github.com/andreibesleaga/camara-sdk/commit/10f86f574e3a3d868ff5706238288235a05d76cd))
+
 ## 0.10.9 (2026-01-26)
 
 Full Changelog: [v0.10.8...v0.10.9](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.8...v0.10.9)
