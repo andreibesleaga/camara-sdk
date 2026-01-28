@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.11 (2026-01-28)
+
+Full Changelog: [v0.10.10...v0.10.11](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.10...v0.10.11)
+
+### Chores
+
+* **internal:** upgrade wrangler version ([32b857e](https://github.com/andreibesleaga/camara-sdk/commit/32b857ea47f800f6848f0c818d45842f58e82104))
+
 ## 0.10.10 (2026-01-28)
 
 Full Changelog: [v0.10.9...v0.10.10](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.9...v0.10.10)
