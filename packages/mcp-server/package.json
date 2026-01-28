@@ -1,6 +1,6 @@
 {
   "name": "camara-sdk-mcp",
-  "version": "0.10.9",
+  "version": "0.10.10",
   "description": "The official MCP Server for the Camara API",
   "author": "Camara <>",
   "types": "dist/index.d.ts",
