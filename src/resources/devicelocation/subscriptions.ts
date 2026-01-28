@@ -121,6 +121,11 @@ export class Subscriptions extends APIResource {
   }
 }
 
+/**
+ * The geofencing area where the monitor is active. This area is specified by API
+ * consumers in the subscription request. The same area definition is included in
+ * event notifications without any modifications.
+ */
 export interface DeviceLocationArea {
   /**
    * Type of this area. CIRCLE - The area is defined as a circle.
@@ -360,6 +365,11 @@ export namespace DeviceLocationSubscription {
      * The detail of the event subscription granted by the implementation.
      */
     export interface SubscriptionDetail {
+      /**
+       * The geofencing area where the monitor is active. This area is specified by API
+       * consumers in the subscription request. The same area definition is included in
+       * event notifications without any modifications.
+       */
       area: SubscriptionsAPI.DeviceLocationArea;
 
       /**
@@ -471,6 +481,11 @@ export namespace SubscriptionCreateParams {
      * The detail of the requested event subscription.
      */
     export interface SubscriptionDetail {
+      /**
+       * The geofencing area where the monitor is active. This area is specified by API
+       * consumers in the subscription request. The same area definition is included in
+       * event notifications without any modifications.
+       */
       area: SubscriptionsAPI.DeviceLocationArea;
 
       /**
