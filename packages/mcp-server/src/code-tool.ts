@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv, readEnvOrError } from './server';
+import { readEnv, requireValue } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 import { Camara } from 'camara-sdk';
 
@@ -71,40 +71,49 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ??
-            client.deviceLocationNotificationsAPIKey ??
-            undefined,
-          CAMARA_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey ?? undefined,
-          CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
-            client.populationDensityDataNotificationsAPIKey ??
-            undefined,
-          CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
-            client.regionDeviceCountNotificationsAPIKey ??
-            undefined,
-          CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
-            client.connectivityInsightsNotificationsAPIKey ??
-            undefined,
-          CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ??
-            client.simSwapNotificationsAPIKey ??
-            undefined,
-          CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
-            client.deviceRoamingStatusNotificationsAPIKey ??
-            undefined,
-          CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
-            client.deviceReachabilityStatusNotificationsAPIKey ??
-            undefined,
-          CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY:
-            readEnvOrError('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
-            client.connectedNetworkTypeNotificationsAPIKey ??
-            undefined,
+          CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ??
+              client.deviceLocationNotificationsAPIKey,
+            'set CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable or provide deviceLocationNotificationsAPIKey client option',
+          ),
+          CAMARA_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey,
+            'set CAMARA_NOTIFICATIONS_API_KEY environment variable or provide notificationsAPIKey client option',
+          ),
+          CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
+              client.populationDensityDataNotificationsAPIKey,
+            'set CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable or provide populationDensityDataNotificationsAPIKey client option',
+          ),
+          CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
+              client.regionDeviceCountNotificationsAPIKey,
+            'set CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable or provide regionDeviceCountNotificationsAPIKey client option',
+          ),
+          CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
+              client.connectivityInsightsNotificationsAPIKey,
+            'set CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable or provide connectivityInsightsNotificationsAPIKey client option',
+          ),
+          CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ?? client.simSwapNotificationsAPIKey,
+            'set CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable or provide simSwapNotificationsAPIKey client option',
+          ),
+          CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
+              client.deviceRoamingStatusNotificationsAPIKey,
+            'set CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceRoamingStatusNotificationsAPIKey client option',
+          ),
+          CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
+              client.deviceReachabilityStatusNotificationsAPIKey,
+            'set CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceReachabilityStatusNotificationsAPIKey client option',
+          ),
+          CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: requireValue(
+            readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
+              client.connectedNetworkTypeNotificationsAPIKey,
+            'set CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable or provide connectedNetworkTypeNotificationsAPIKey client option',
+          ),
           CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL') ?? client.baseURL ?? undefined,
         }),
       },
