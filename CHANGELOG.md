@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.5 (2026-01-29)
+
+Full Changelog: [v0.11.4...v0.11.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.4...v0.11.5)
+
+### Chores
+
+* update SDK settings ([51587c7](https://github.com/andreibesleaga/camara-sdk/commit/51587c7de14f93beb02fedc99bde170e83f51f0f))
+* update SDK settings ([26c7ede](https://github.com/andreibesleaga/camara-sdk/commit/26c7edefe6919ad61b6fdbc8ad610f5883169996))
+
 ## 0.11.4 (2026-01-29)
 
 Full Changelog: [v0.11.3...v0.11.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.3...v0.11.4)

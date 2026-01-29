@@ -1,6 +1,6 @@
 {
   "name": "camara-sdk-mcp",
-  "version": "0.11.4",
+  "version": "0.11.5",
   "description": "Typescript MCP Server for the Camara API",
   "author": "Camara <>",
   "types": "dist/index.d.ts",
