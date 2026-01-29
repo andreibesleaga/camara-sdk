@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.2 (2026-01-29)
+
+Full Changelog: [v0.11.1...v0.11.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.1...v0.11.2)
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([a3da5b9](https://github.com/andreibesleaga/camara-sdk/commit/a3da5b9920eb354fb6d088709cc18c0369ee6f91))
+
 ## 0.11.1 (2026-01-29)
 
 Full Changelog: [v0.11.0...v0.11.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.0...v0.11.1)
