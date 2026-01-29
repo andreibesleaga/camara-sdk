@@ -21,7 +21,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'camara_sdk_api',
-      version: '0.11.2',
+      version: '0.11.3',
     },
     { capabilities: { tools: {}, logging: {} } },
   );

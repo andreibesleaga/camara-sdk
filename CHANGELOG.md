@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.3 (2026-01-29)
+
+Full Changelog: [v0.11.2...v0.11.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.2...v0.11.3)
+
+### Chores
+
+* **mcp:** up tsconfig lib version to es2022 ([446a3db](https://github.com/andreibesleaga/camara-sdk/commit/446a3db9c69a8460b6ba6d87390d6fbfa0b669d9))
+
 ## 0.11.2 (2026-01-29)
 
 Full Changelog: [v0.11.1...v0.11.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.1...v0.11.2)
