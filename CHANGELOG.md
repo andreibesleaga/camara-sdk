@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.1 (2026-01-29)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.0...v0.11.1)
+
+### Bug Fixes
+
+* **publish:** use npm registry directly for trusted publishing support ([c971db1](https://github.com/andreibesleaga/camara-sdk/commit/c971db108c168a6c9150ed81334b3527c3c98711))
+
+
+### Chores
+
+* **internal:** codegen related update ([681b275](https://github.com/andreibesleaga/camara-sdk/commit/681b2754427a1c1d0421386d448e8da3f163b3e1))
+* update SDK settings ([e6fd14d](https://github.com/andreibesleaga/camara-sdk/commit/e6fd14d36cf8d6d0e7bd71b1db04fdc1cd2463c2))
+* update SDK settings ([7d01fab](https://github.com/andreibesleaga/camara-sdk/commit/7d01fabfc1f6a42d0ecac76c8b057032291ff293))
+
 ## 0.11.0 (2026-01-28)
 
 Full Changelog: [v0.10.11...v0.11.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.11...v0.11.0)
