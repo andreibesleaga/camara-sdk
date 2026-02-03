@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.6 (2026-02-03)
+
+Full Changelog: [v0.11.5...v0.11.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.5...v0.11.6)
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([bf9d2de](https://github.com/andreibesleaga/camara-sdk/commit/bf9d2de1d9af7e41eb1bd1aeb8b94b81c1df5cfb))
+
 ## 0.11.5 (2026-01-29)
 
 Full Changelog: [v0.11.4...v0.11.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.4...v0.11.5)
