@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.11.7 (2026-02-03)
+
+Full Changelog: [v0.11.6...v0.11.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.6...v0.11.7)
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([563f566](https://github.com/andreibesleaga/camara-sdk/commit/563f56665444159bf448e9d4c7239e7919d2238d))
+* **internal:** support oauth authorization code flow for MCP servers ([9dea4f8](https://github.com/andreibesleaga/camara-sdk/commit/9dea4f8b307cc69316f0cf8b273e3bff41ab3769))
+
 ## 0.11.6 (2026-02-03)
 
 Full Changelog: [v0.11.5...v0.11.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.5...v0.11.6)
