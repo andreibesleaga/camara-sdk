@@ -10,6 +10,9 @@ import {
   SessionRetrieveParams,
   SessionUpdateStatusParams,
   Sessions,
+  WebRtcCircleCoordinates,
+  WebRtcEllipsoidCoordinates,
+  WebRtcLocationDetails,
 } from './sessions';
 
 export class Webrtc extends APIResource {
@@ -23,6 +26,9 @@ export declare namespace Webrtc {
     Sessions as Sessions,
     type MediaSessionInformation as MediaSessionInformation,
     type SdpDescriptor as SdpDescriptor,
+    type WebRtcCircleCoordinates as WebRtcCircleCoordinates,
+    type WebRtcEllipsoidCoordinates as WebRtcEllipsoidCoordinates,
+    type WebRtcLocationDetails as WebRtcLocationDetails,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
     type SessionDeleteParams as SessionDeleteParams,

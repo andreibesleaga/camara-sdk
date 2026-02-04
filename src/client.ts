@@ -25,6 +25,8 @@ import {
   CreateCallForwardingSignal,
 } from './resources/callforwardingsignal';
 import {
+  DeviceIdentifierDevice,
+  DeviceIdentifierDeviceIpv4Addr,
   DeviceIdentifierRequestBody,
   Deviceidentifier,
   DeviceidentifierRetrieveIdentifierParams,
@@ -1124,6 +1126,8 @@ export declare namespace Camara {
 
   export {
     Deviceidentifier as Deviceidentifier,
+    type DeviceIdentifierDevice as DeviceIdentifierDevice,
+    type DeviceIdentifierDeviceIpv4Addr as DeviceIdentifierDeviceIpv4Addr,
     type DeviceIdentifierRequestBody as DeviceIdentifierRequestBody,
     type DeviceidentifierRetrieveIdentifierResponse as DeviceidentifierRetrieveIdentifierResponse,
     type DeviceidentifierRetrievePpidResponse as DeviceidentifierRetrievePpidResponse,
