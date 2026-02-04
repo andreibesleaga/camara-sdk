@@ -148,7 +148,7 @@ export interface MediaSessionInformation {
    * Details about the caller's location and related information. This object adheres
    * to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.
    */
-  locationDetails?: MediaSessionInformation.LocationDetails;
+  locationDetails?: WebRtcLocationDetails;
 
   /**
    * The media session ID created by the network. The mediaSessionId shall not be
@@ -210,117 +210,6 @@ export interface MediaSessionInformation {
     | 'Busy';
 }
 
-export namespace MediaSessionInformation {
-  /**
-   * Details about the caller's location and related information. This object adheres
-   * to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.
-   */
-  export interface LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    confidence?: LocationDetails.Confidence;
-
-    /**
-     * The coordinates of the caller's location, specific to the chosen shape.
-     */
-    coordinates?: LocationDetails.WebRtcCircleCoordinates | LocationDetails.WebRtcEllipsoidCoordinates;
-
-    /**
-     * The method used to obtain the location information.
-     *
-     * - **GPS:** Global Positioning System (highly accurate)
-     * - **DBH:** Device-Based Hybrid
-     * - **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location
-     * - **Other:** Other methods (e.g., landmarks, IP Based etc.)
-     */
-    method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other';
-
-    /**
-     * The shape representing the caller's location (Circle or Ellipsoid).
-     */
-    shape?: 'Circle' | 'Ellipsoid';
-
-    /**
-     * The timestamp (in ISO 8601 format) indicating when the location information was
-     * Calculated. \nThis is crucial for emergency services to assess the timeliness of
-     * the data. if not provided current timestamp will be used by default"
-     */
-    timestamp?: string;
-  }
-
-  export namespace LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    export interface Confidence {
-      /**
-       * The probability density function (PDF) associated with the confidence value.
-       */
-      pdf?: 'normal' | 'uniform';
-
-      /**
-       * The confidence value (percentage).
-       */
-      value?: number;
-    }
-
-    export interface WebRtcCircleCoordinates {
-      /**
-       * Latitude of the center point in decimal degrees (WGS84).
-       */
-      latitude: number;
-
-      /**
-       * Longitude of the center point in decimal degrees (WGS84).
-       */
-      longitude: number;
-
-      /**
-       * Radius of the circle in meters, indicating the uncertainty.
-       */
-      radius: number;
-    }
-
-    export interface WebRtcEllipsoidCoordinates {
-      /**
-       * Latitude in the WGS 84 geocentric coordinate system.
-       */
-      latitude: number;
-
-      /**
-       * Longitude in the WGS 84 geocentric coordinate system.
-       */
-      longitude: number;
-
-      /**
-       * Orientation of the ellipsoid in degrees.
-       */
-      orientation: number;
-
-      /**
-       * Length of the semi-major axis of the ellipsoid in meters.
-       */
-      semiMajorAxis: number;
-
-      /**
-       * Length of the semi-minor axis of the ellipsoid in meters.
-       */
-      semiMinorAxis: number;
-
-      /**
-       * Length of the vertical axis of the ellipsoid in meters.
-       */
-      verticalAxis: number;
-
-      /**
-       * Altitude (optional) in the WGS 84 geocentric coordinate system.
-       */
-      zAxis: number;
-    }
-  }
-}
-
 /**
  * **OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax
  * is used, the content of this element SHALL be embedded in a CDATA section.
@@ -336,6 +225,115 @@ export interface SdpDescriptor {
    * the content of this element SHALL be embedded in a CDATA section
    */
   sdp?: string;
+}
+
+export interface WebRtcCircleCoordinates {
+  /**
+   * Latitude of the center point in decimal degrees (WGS84).
+   */
+  latitude: number;
+
+  /**
+   * Longitude of the center point in decimal degrees (WGS84).
+   */
+  longitude: number;
+
+  /**
+   * Radius of the circle in meters, indicating the uncertainty.
+   */
+  radius: number;
+}
+
+export interface WebRtcEllipsoidCoordinates {
+  /**
+   * Latitude in the WGS 84 geocentric coordinate system.
+   */
+  latitude: number;
+
+  /**
+   * Longitude in the WGS 84 geocentric coordinate system.
+   */
+  longitude: number;
+
+  /**
+   * Orientation of the ellipsoid in degrees.
+   */
+  orientation: number;
+
+  /**
+   * Length of the semi-major axis of the ellipsoid in meters.
+   */
+  semiMajorAxis: number;
+
+  /**
+   * Length of the semi-minor axis of the ellipsoid in meters.
+   */
+  semiMinorAxis: number;
+
+  /**
+   * Length of the vertical axis of the ellipsoid in meters.
+   */
+  verticalAxis: number;
+
+  /**
+   * Altitude (optional) in the WGS 84 geocentric coordinate system.
+   */
+  zAxis: number;
+}
+
+/**
+ * Details about the caller's location and related information. This object adheres
+ * to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.
+ */
+export interface WebRtcLocationDetails {
+  /**
+   * The confidence level of the location information.
+   */
+  confidence?: WebRtcLocationDetails.Confidence;
+
+  /**
+   * The coordinates of the caller's location, specific to the chosen shape.
+   */
+  coordinates?: WebRtcCircleCoordinates | WebRtcEllipsoidCoordinates;
+
+  /**
+   * The method used to obtain the location information.
+   *
+   * - **GPS:** Global Positioning System (highly accurate)
+   * - **DBH:** Device-Based Hybrid
+   * - **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location
+   * - **Other:** Other methods (e.g., landmarks, IP Based etc.)
+   */
+  method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other';
+
+  /**
+   * The shape representing the caller's location (Circle or Ellipsoid).
+   */
+  shape?: 'Circle' | 'Ellipsoid';
+
+  /**
+   * The timestamp (in ISO 8601 format) indicating when the location information was
+   * Calculated. \nThis is crucial for emergency services to assess the timeliness of
+   * the data. if not provided current timestamp will be used by default"
+   */
+  timestamp?: string;
+}
+
+export namespace WebRtcLocationDetails {
+  /**
+   * The confidence level of the location information.
+   */
+  export interface Confidence {
+    /**
+     * The probability density function (PDF) associated with the confidence value.
+     */
+    pdf?: 'normal' | 'uniform';
+
+    /**
+     * The confidence value (percentage).
+     */
+    value?: number;
+  }
 }
 
 export interface SessionCreateParams {
@@ -367,7 +365,7 @@ export interface SessionCreateParams {
    * object adheres to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO
    * compatibility.
    */
-  locationDetails?: SessionCreateParams.LocationDetails;
+  locationDetails?: WebRtcLocationDetails;
 
   /**
    * Body param: The media session ID created by the network. The mediaSessionId
@@ -435,117 +433,6 @@ export interface SessionCreateParams {
   'x-correlator'?: string;
 }
 
-export namespace SessionCreateParams {
-  /**
-   * Details about the caller's location and related information. This object adheres
-   * to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.
-   */
-  export interface LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    confidence?: LocationDetails.Confidence;
-
-    /**
-     * The coordinates of the caller's location, specific to the chosen shape.
-     */
-    coordinates?: LocationDetails.WebRtcCircleCoordinates | LocationDetails.WebRtcEllipsoidCoordinates;
-
-    /**
-     * The method used to obtain the location information.
-     *
-     * - **GPS:** Global Positioning System (highly accurate)
-     * - **DBH:** Device-Based Hybrid
-     * - **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location
-     * - **Other:** Other methods (e.g., landmarks, IP Based etc.)
-     */
-    method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other';
-
-    /**
-     * The shape representing the caller's location (Circle or Ellipsoid).
-     */
-    shape?: 'Circle' | 'Ellipsoid';
-
-    /**
-     * The timestamp (in ISO 8601 format) indicating when the location information was
-     * Calculated. \nThis is crucial for emergency services to assess the timeliness of
-     * the data. if not provided current timestamp will be used by default"
-     */
-    timestamp?: string;
-  }
-
-  export namespace LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    export interface Confidence {
-      /**
-       * The probability density function (PDF) associated with the confidence value.
-       */
-      pdf?: 'normal' | 'uniform';
-
-      /**
-       * The confidence value (percentage).
-       */
-      value?: number;
-    }
-
-    export interface WebRtcCircleCoordinates {
-      /**
-       * Latitude of the center point in decimal degrees (WGS84).
-       */
-      latitude: number;
-
-      /**
-       * Longitude of the center point in decimal degrees (WGS84).
-       */
-      longitude: number;
-
-      /**
-       * Radius of the circle in meters, indicating the uncertainty.
-       */
-      radius: number;
-    }
-
-    export interface WebRtcEllipsoidCoordinates {
-      /**
-       * Latitude in the WGS 84 geocentric coordinate system.
-       */
-      latitude: number;
-
-      /**
-       * Longitude in the WGS 84 geocentric coordinate system.
-       */
-      longitude: number;
-
-      /**
-       * Orientation of the ellipsoid in degrees.
-       */
-      orientation: number;
-
-      /**
-       * Length of the semi-major axis of the ellipsoid in meters.
-       */
-      semiMajorAxis: number;
-
-      /**
-       * Length of the semi-minor axis of the ellipsoid in meters.
-       */
-      semiMinorAxis: number;
-
-      /**
-       * Length of the vertical axis of the ellipsoid in meters.
-       */
-      verticalAxis: number;
-
-      /**
-       * Altitude (optional) in the WGS 84 geocentric coordinate system.
-       */
-      zAxis: number;
-    }
-  }
-}
-
 export interface SessionRetrieveParams {
   /**
    * Correlation id for the different services
@@ -584,7 +471,7 @@ export interface SessionUpdateStatusParams {
    * object adheres to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO
    * compatibility.
    */
-  locationDetails?: SessionUpdateStatusParams.LocationDetails;
+  locationDetails?: WebRtcLocationDetails;
 
   /**
    * Body param: The media session ID created by the network. The mediaSessionId
@@ -652,121 +539,13 @@ export interface SessionUpdateStatusParams {
   'x-correlator'?: string;
 }
 
-export namespace SessionUpdateStatusParams {
-  /**
-   * Details about the caller's location and related information. This object adheres
-   * to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.
-   */
-  export interface LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    confidence?: LocationDetails.Confidence;
-
-    /**
-     * The coordinates of the caller's location, specific to the chosen shape.
-     */
-    coordinates?: LocationDetails.WebRtcCircleCoordinates | LocationDetails.WebRtcEllipsoidCoordinates;
-
-    /**
-     * The method used to obtain the location information.
-     *
-     * - **GPS:** Global Positioning System (highly accurate)
-     * - **DBH:** Device-Based Hybrid
-     * - **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location
-     * - **Other:** Other methods (e.g., landmarks, IP Based etc.)
-     */
-    method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other';
-
-    /**
-     * The shape representing the caller's location (Circle or Ellipsoid).
-     */
-    shape?: 'Circle' | 'Ellipsoid';
-
-    /**
-     * The timestamp (in ISO 8601 format) indicating when the location information was
-     * Calculated. \nThis is crucial for emergency services to assess the timeliness of
-     * the data. if not provided current timestamp will be used by default"
-     */
-    timestamp?: string;
-  }
-
-  export namespace LocationDetails {
-    /**
-     * The confidence level of the location information.
-     */
-    export interface Confidence {
-      /**
-       * The probability density function (PDF) associated with the confidence value.
-       */
-      pdf?: 'normal' | 'uniform';
-
-      /**
-       * The confidence value (percentage).
-       */
-      value?: number;
-    }
-
-    export interface WebRtcCircleCoordinates {
-      /**
-       * Latitude of the center point in decimal degrees (WGS84).
-       */
-      latitude: number;
-
-      /**
-       * Longitude of the center point in decimal degrees (WGS84).
-       */
-      longitude: number;
-
-      /**
-       * Radius of the circle in meters, indicating the uncertainty.
-       */
-      radius: number;
-    }
-
-    export interface WebRtcEllipsoidCoordinates {
-      /**
-       * Latitude in the WGS 84 geocentric coordinate system.
-       */
-      latitude: number;
-
-      /**
-       * Longitude in the WGS 84 geocentric coordinate system.
-       */
-      longitude: number;
-
-      /**
-       * Orientation of the ellipsoid in degrees.
-       */
-      orientation: number;
-
-      /**
-       * Length of the semi-major axis of the ellipsoid in meters.
-       */
-      semiMajorAxis: number;
-
-      /**
-       * Length of the semi-minor axis of the ellipsoid in meters.
-       */
-      semiMinorAxis: number;
-
-      /**
-       * Length of the vertical axis of the ellipsoid in meters.
-       */
-      verticalAxis: number;
-
-      /**
-       * Altitude (optional) in the WGS 84 geocentric coordinate system.
-       */
-      zAxis: number;
-    }
-  }
-}
-
 export declare namespace Sessions {
   export {
     type MediaSessionInformation as MediaSessionInformation,
     type SdpDescriptor as SdpDescriptor,
+    type WebRtcCircleCoordinates as WebRtcCircleCoordinates,
+    type WebRtcEllipsoidCoordinates as WebRtcEllipsoidCoordinates,
+    type WebRtcLocationDetails as WebRtcLocationDetails,
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
     type SessionDeleteParams as SessionDeleteParams,
