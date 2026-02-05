@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.13.0 (2026-02-05)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **mcp:** add initial server instructions ([05a038e](https://github.com/andreibesleaga/camara-sdk/commit/05a038ea00e62dcecdb2a5dfcc9c413ab3560da5))
+
+
+### Chores
+
+* **client:** restructure abort controller binding ([fab9a2e](https://github.com/andreibesleaga/camara-sdk/commit/fab9a2eeac6cf3e3ea17906ea200a1044d56e75f))
+* **internal:** refactor flag parsing for MCP servers and add debug flag ([eccfd17](https://github.com/andreibesleaga/camara-sdk/commit/eccfd1725371291e40877b3e155d68a9f7568837))
+
 ## 0.12.0 (2026-02-04)
 
 Full Changelog: [v0.11.7...v0.12.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.7...v0.12.0)
