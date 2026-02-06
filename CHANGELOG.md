@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.1 (2026-02-06)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.0...v0.13.1)
+
+### Bug Fixes
+
+* **client:** avoid removing abort listener too early ([8a1496b](https://github.com/andreibesleaga/camara-sdk/commit/8a1496bcea671e5703bc834decd94f6d488fab7b))
+
 ## 0.13.0 (2026-02-05)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.12.0...v0.13.0)
