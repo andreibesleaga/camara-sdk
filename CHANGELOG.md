@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.2 (2026-02-07)
+
+Full Changelog: [v0.13.1...v0.13.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.1...v0.13.2)
+
+### Chores
+
+* **internal:** add health check to MCP server when running in HTTP mode ([1247b3c](https://github.com/andreibesleaga/camara-sdk/commit/1247b3c7a8fc27aa5caeae9c240828f414dc7c9e))
+* **internal:** upgrade hono ([564fdb4](https://github.com/andreibesleaga/camara-sdk/commit/564fdb46bb4218dd3535c3f8887942676ad5de42))
+
 ## 0.13.1 (2026-02-06)
 
 Full Changelog: [v0.13.0...v0.13.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.0...v0.13.1)
