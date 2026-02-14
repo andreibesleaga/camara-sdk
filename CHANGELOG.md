@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.13.3 (2026-02-14)
+
+Full Changelog: [v0.13.2...v0.13.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.2...v0.13.3)
+
+### Chores
+
+* **internal:** allow basic filtering of methods allowed for MCP code mode ([ed0bc4b](https://github.com/andreibesleaga/camara-sdk/commit/ed0bc4b24ab22617bc68c74b8508ca22e2ce134c))
+* **internal:** always generate MCP server dockerfiles and upgrade associated dependencies ([1d2dfd5](https://github.com/andreibesleaga/camara-sdk/commit/1d2dfd5f5fff2e641b8d6915bcf28960b5e951e8))
+* **internal:** avoid type checking errors with ts-reset ([b159264](https://github.com/andreibesleaga/camara-sdk/commit/b1592642cb0470cc732741dcbb28b92c558038d7))
+* **internal:** improve layout of generated MCP server files ([e625fc1](https://github.com/andreibesleaga/camara-sdk/commit/e625fc1b8b5c2938e39e2cdc926da77001efabee))
+* **mcp:** forward STAINLESS_API_KEY to docs search endpoint ([1bb2edd](https://github.com/andreibesleaga/camara-sdk/commit/1bb2edd3a1ce5573f4cd319dc9edbdb9d1e807b7))
+
 ## 0.13.2 (2026-02-07)
 
 Full Changelog: [v0.13.1...v0.13.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.1...v0.13.2)
