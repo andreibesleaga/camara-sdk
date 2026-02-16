@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 (2026-02-16)
+
+Full Changelog: [v0.13.3...v0.14.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.3...v0.14.0)
+
+### Features
+
+* **api:** api update ([6a10049](https://github.com/andreibesleaga/camara-sdk/commit/6a100491860de13dead45bdc5c240f93c6936f50))
+
 ## 0.13.3 (2026-02-14)
 
 Full Changelog: [v0.13.2...v0.13.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.2...v0.13.3)
