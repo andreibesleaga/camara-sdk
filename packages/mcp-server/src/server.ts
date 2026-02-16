@@ -12,10 +12,9 @@ import Camara from 'camara-sdk';
 import { codeTool } from './code-tool';
 import docsSearchTool from './docs-search-tool';
 import { McpOptions } from './options';
+import { blockedMethodsForCodeTool } from './methods';
 import { HandlerFunction, McpTool } from './types';
-
-export { McpOptions } from './options';
-export { ClientOptions } from 'camara-sdk';
+import { readEnv } from './util';
 
 async function getInstructions() {
   // This API key is optional; providing it allows the server to fetch instructions for unreleased versions.
@@ -57,7 +56,7 @@ export const newMcpServer = async () =>
   new McpServer(
     {
       name: 'camara_sdk_api',
-      version: '0.13.2',
+      version: '0.13.3',
     },
     {
       instructions: await getInstructions(),
@@ -147,7 +146,11 @@ export async function initMcpServer(params: {
  * Selects the tools to include in the MCP Server based on the provided options.
  */
 export function selectTools(options?: McpOptions): McpTool[] {
-  const includedTools = [codeTool()];
+  const includedTools = [
+    codeTool({
+      blockedMethods: blockedMethodsForCodeTool(options),
+    }),
+  ];
   if (options?.includeDocsTools ?? true) {
     includedTools.push(docsSearchTool);
   }
@@ -164,27 +167,3 @@ export async function executeHandler(
 ) {
   return await handler(client, args || {});
 }
-
-export const readEnv = (env: string): string | undefined => {
-  if (typeof (globalThis as any).process !== 'undefined') {
-    return (globalThis as any).process.env?.[env]?.trim();
-  } else if (typeof (globalThis as any).Deno !== 'undefined') {
-    return (globalThis as any).Deno.env?.get?.(env)?.trim();
-  }
-  return;
-};
-
-export const readEnvOrError = (env: string): string => {
-  let envValue = readEnv(env);
-  if (envValue === undefined) {
-    throw new Error(`Environment variable ${env} is not set`);
-  }
-  return envValue;
-};
-
-export const requireValue = <T>(value: T | undefined, description: string): T => {
-  if (value === undefined) {
-    throw new Error(`Missing required value: ${description}`);
-  }
-  return value;
-};
