@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource subscriptions', () => {
-  // Mock server doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.deviceroamingstatus.subscriptions.create({
       config: { subscriptionDetail: {} },
@@ -33,7 +33,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Mock server doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.deviceroamingstatus.subscriptions.create({
       config: {
