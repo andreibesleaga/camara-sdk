@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource subscriptions', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('create: only required params', async () => {
     const responsePromise = client.devicelocation.subscriptions.create({
       config: { subscriptionDetail: { area: { areaType: 'CIRCLE' } } },
@@ -33,7 +33,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
+  // Mock server doesn't support callbacks yet
   test.skip('create: required and optional params', async () => {
     const response = await client.devicelocation.subscriptions.create({
       config: {
@@ -62,7 +62,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.devicelocation.subscriptions.retrieve('qs15-h556-rt89-1298');
     const rawResponse = await responsePromise.asResponse();
@@ -74,7 +74,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -86,7 +86,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.devicelocation.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -98,7 +98,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -109,7 +109,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');
     const rawResponse = await responsePromise.asResponse();
@@ -121,7 +121,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

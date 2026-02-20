@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource knowyourcustomermatch', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('match', async () => {
     const responsePromise = client.knowyourcustomermatch.match({});
     const rawResponse = await responsePromise.asResponse();
