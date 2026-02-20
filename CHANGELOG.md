@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.14.2 (2026-02-20)
+
+Full Changelog: [v0.14.1...v0.14.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.1...v0.14.2)
+
+### Chores
+
+* **internal:** remove mock server code ([1f306e3](https://github.com/andreibesleaga/camara-sdk/commit/1f306e350fb4808961e97f5e5fedf1cda1952874))
+* **mcp:** correctly update version in sync with sdk ([6a5f02b](https://github.com/andreibesleaga/camara-sdk/commit/6a5f02b538f730050d7f9fdea63e43b1115cc09c))
+* **test:** update skip reason message ([411af47](https://github.com/andreibesleaga/camara-sdk/commit/411af4739d0335e00138060344c073cbd23ba89d))
+* update mock server docs ([f43a6dd](https://github.com/andreibesleaga/camara-sdk/commit/f43a6dd0ab0a8f261cb419dcb08f2c3ac3f888eb))
+
 ## 0.14.1 (2026-02-20)
 
 Full Changelog: [v0.14.0...v0.14.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.0...v0.14.1)

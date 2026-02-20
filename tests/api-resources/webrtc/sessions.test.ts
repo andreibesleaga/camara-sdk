@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource sessions', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.webrtc.sessions.create({ registrationId: 'registrationId' });
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.webrtc.sessions.create({
       registrationId: 'registrationId',
@@ -58,7 +58,7 @@ describe('resource sessions', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.webrtc.sessions.retrieve('mediaSessionId');
     const rawResponse = await responsePromise.asResponse();
@@ -70,7 +70,7 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -82,7 +82,7 @@ describe('resource sessions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.webrtc.sessions.delete('mediaSessionId');
     const rawResponse = await responsePromise.asResponse();
@@ -94,7 +94,7 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -106,7 +106,7 @@ describe('resource sessions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateStatus', async () => {
     const responsePromise = client.webrtc.sessions.updateStatus('mediaSessionId');
     const rawResponse = await responsePromise.asResponse();
@@ -118,7 +118,7 @@ describe('resource sessions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateStatus: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

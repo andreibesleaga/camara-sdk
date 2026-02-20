@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource deviceidentifier', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveIdentifier', async () => {
     const responsePromise = client.deviceidentifier.retrieveIdentifier({});
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource deviceidentifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrievePpid', async () => {
     const responsePromise = client.deviceidentifier.retrievePpid({});
     const rawResponse = await responsePromise.asResponse();
@@ -40,7 +40,7 @@ describe('resource deviceidentifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveType', async () => {
     const responsePromise = client.deviceidentifier.retrieveType({});
     const rawResponse = await responsePromise.asResponse();

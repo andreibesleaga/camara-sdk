@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource scoring', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.customerinsights.scoring.retrieve({});
     const rawResponse = await responsePromise.asResponse();

@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource deviceswap', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('check', async () => {
     const responsePromise = client.deviceswap.check({});
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource deviceswap', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveDate', async () => {
     const responsePromise = client.deviceswap.retrieveDate({});
     const rawResponse = await responsePromise.asResponse();

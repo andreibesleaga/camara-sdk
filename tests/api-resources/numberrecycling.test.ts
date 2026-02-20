@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource numberrecycling', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkSubscriberChange: only required params', async () => {
     const responsePromise = client.numberrecycling.checkSubscriberChange({ specifiedDate: '2024-10-31' });
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource numberrecycling', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkSubscriberChange: required and optional params', async () => {
     const response = await client.numberrecycling.checkSubscriberChange({
       specifiedDate: '2024-10-31',

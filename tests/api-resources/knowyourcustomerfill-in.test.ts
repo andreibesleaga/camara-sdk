@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource knowyourcustomerfillIn', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create', async () => {
     const responsePromise = client.knowyourcustomerfillIn.create({});
     const rawResponse = await responsePromise.asResponse();

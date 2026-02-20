@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource qualityondemand', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveQosProfile', async () => {
     const responsePromise = client.qualityondemand.retrieveQosProfile('voice');
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource qualityondemand', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveQosProfile: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -40,7 +40,7 @@ describe('resource qualityondemand', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveQosProfiles', async () => {
     const responsePromise = client.qualityondemand.retrieveQosProfiles({});
     const rawResponse = await responsePromise.asResponse();

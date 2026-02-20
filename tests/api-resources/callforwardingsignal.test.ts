@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource callforwardingsignal', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkActiveForwardings', async () => {
     const responsePromise = client.callforwardingsignal.checkActiveForwardings({});
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource callforwardingsignal', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkUnconditionalForwarding', async () => {
     const responsePromise = client.callforwardingsignal.checkUnconditionalForwarding({});
     const rawResponse = await responsePromise.asResponse();
