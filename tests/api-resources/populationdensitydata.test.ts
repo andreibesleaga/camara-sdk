@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource populationdensitydata', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.populationdensitydata.retrieve({
       area: { areaType: 'POLYGON' },
@@ -32,7 +32,7 @@ describe('resource populationdensitydata', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.populationdensitydata.retrieve({
       area: { areaType: 'POLYGON' },

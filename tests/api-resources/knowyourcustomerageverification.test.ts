@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource knowyourcustomerageverification', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('verify: only required params', async () => {
     const responsePromise = client.knowyourcustomerageverification.verify({ ageThreshold: 18 });
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +28,7 @@ describe('resource knowyourcustomerageverification', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('verify: required and optional params', async () => {
     const response = await client.knowyourcustomerageverification.verify({
       ageThreshold: 18,

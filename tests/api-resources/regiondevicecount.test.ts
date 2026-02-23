@@ -16,7 +16,7 @@ const client = new Camara({
 });
 
 describe('resource regiondevicecount', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('getCount', async () => {
     const responsePromise = client.regiondevicecount.getCount({});
     const rawResponse = await responsePromise.asResponse();
