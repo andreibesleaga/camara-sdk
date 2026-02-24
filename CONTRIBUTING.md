@@ -60,7 +60,7 @@ $ yarn link camara-sdk
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global camara-sdk
+$ pnpm link --global camara-sdk
 ```
 
 ## Running tests
