@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.14.3 (2026-02-24)
+
+Full Changelog: [v0.14.2...v0.14.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.2...v0.14.3)
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([f7d52fb](https://github.com/andreibesleaga/camara-sdk/commit/f7d52fb960b6a3dbe60108e2d8a94db8439bb379))
+
+
+### Chores
+
+* **internal:** update agents version ([c217b5b](https://github.com/andreibesleaga/camara-sdk/commit/c217b5b642871c23e65ba96cf9beeae4cbb58f71))
+
 ## 0.14.2 (2026-02-20)
 
 Full Changelog: [v0.14.1...v0.14.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.1...v0.14.2)
