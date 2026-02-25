@@ -20,6 +20,10 @@ export const parseClientAuthHeaders = (req: IncomingMessage, required?: boolean)
     throw new Error('Missing required Authorization header; see WWW-Authenticate header for details.');
   }
 
+  const bearerToken =
+    Array.isArray(req.headers['x-camara-bearer-token']) ?
+      req.headers['x-camara-bearer-token'][0]
+    : req.headers['x-camara-bearer-token'];
   const deviceLocationNotificationsAPIKey =
     Array.isArray(req.headers['x-camara-device-location-notifications-api-key']) ?
       req.headers['x-camara-device-location-notifications-api-key'][0]
@@ -57,6 +61,7 @@ export const parseClientAuthHeaders = (req: IncomingMessage, required?: boolean)
       req.headers['x-camara-connected-network-type-notifications-api-key'][0]
     : req.headers['x-camara-connected-network-type-notifications-api-key'];
   return {
+    bearerToken,
     deviceLocationNotificationsAPIKey,
     notificationsAPIKey,
     populationDensityDataNotificationsAPIKey,
