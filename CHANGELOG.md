@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.1 (2026-02-25)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.0...v0.16.1)
+
+### Chores
+
+* **internal:** codegen related update ([5445e09](https://github.com/andreibesleaga/camara-sdk/commit/5445e096a0a763c09b3c2fd9e42004fa57aa83bf))
+* **internal:** make MCP code execution location configurable via a flag ([37c95fa](https://github.com/andreibesleaga/camara-sdk/commit/37c95fa01a22a4bdca65f0140699200b772d4c1c))
+
 ## 0.16.0 (2026-02-25)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.15.0...v0.16.0)
