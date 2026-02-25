@@ -26,9 +26,9 @@ export class Sessions extends APIResource {
    * ```
    */
   create(params: SessionCreateParams, options?: RequestOptions): APIPromise<MediaSessionInformation> {
-    const { registrationId, 'x-correlator': xCorrelator, ...body } = params;
+    const { registrationId, body_media_session_id, 'x-correlator': xCorrelator, ...body } = params;
     return this._client.post('/webrtc/sessions', {
-      body,
+      body: { mediaSessionId: body_media_session_id, ...body },
       ...options,
       headers: buildHeaders([
         {
@@ -114,9 +114,9 @@ export class Sessions extends APIResource {
     params: SessionUpdateStatusParams | null | undefined = {},
     options?: RequestOptions,
   ): APIPromise<MediaSessionInformation> {
-    const { 'x-correlator': xCorrelator, ...body } = params ?? {};
+    const { body_media_session_id, 'x-correlator': xCorrelator, ...body } = params ?? {};
     return this._client.put(path`/webrtc/sessions/${mediaSessionID}/status`, {
-      body,
+      body: { mediaSessionId: body_media_session_id, ...body },
       ...options,
       headers: buildHeaders([
         { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
@@ -372,7 +372,7 @@ export interface SessionCreateParams {
    * shall not be included in POST requests by the client, but must be included in
    * the notifications from the network to the client device.
    */
-  mediaSessionId?: string;
+  body_media_session_id?: string;
 
   /**
    * Body param: **OFFER**: An inlined session description in SDP format [RFC4566].If
@@ -478,7 +478,7 @@ export interface SessionUpdateStatusParams {
    * shall not be included in POST requests by the client, but must be included in
    * the notifications from the network to the client device.
    */
-  body_mediaSessionId?: string;
+  body_media_session_id?: string;
 
   /**
    * Body param: **OFFER**: An inlined session description in SDP format [RFC4566].If
