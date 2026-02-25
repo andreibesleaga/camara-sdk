@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.15.0 (2026-02-25)
+
+Full Changelog: [v0.14.3...v0.15.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.3...v0.15.0)
+
+### Features
+
+* **api:** manual updates ([e3603bc](https://github.com/andreibesleaga/camara-sdk/commit/e3603bccf15725e3605596713c756b308d98213a))
+
+
+### Chores
+
+* **internal:** upgrade @modelcontextprotocol/sdk and hono ([613bd6d](https://github.com/andreibesleaga/camara-sdk/commit/613bd6d2849e253b3c719f625b38d86ac077a80b))
+
 ## 0.14.3 (2026-02-24)
 
 Full Changelog: [v0.14.2...v0.14.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.2...v0.14.3)
