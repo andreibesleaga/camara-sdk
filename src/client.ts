@@ -119,6 +119,106 @@ export interface ClientOptions {
   bearerToken?: string | undefined;
 
   /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  customerInsightsToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  deviceSwapToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  kycAgeVerificationToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  kycFillInToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  kycMatchToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  tenureToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  numberRecyclingToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  otpValidationToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  callForwardingSignalToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  deviceLocationToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  populationDensityDataToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  regionDeviceCountToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  webRtcToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  connectivityInsightsToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  qualityOnDemandToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  deviceIdentifierToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  simSwapToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  deviceRoamingStatusToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  deviceReachabilityStatusToken?: string | undefined;
+
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  connectedNetworkTypeToken?: string | undefined;
+
+  /**
    * Defaults to process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'].
    */
   deviceLocationNotificationsAPIKey?: string | undefined;
@@ -129,17 +229,17 @@ export interface ClientOptions {
   notificationsAPIKey?: string | undefined;
 
   /**
-   * Bearer authentication for notifications
+   * Defaults to process.env['CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'].
    */
   populationDensityDataNotificationsAPIKey?: string | undefined;
 
   /**
-   * Bearer authentication for notifications
+   * Defaults to process.env['CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY'].
    */
   regionDeviceCountNotificationsAPIKey?: string | undefined;
 
   /**
-   * Bearer authorization for notifications
+   * Defaults to process.env['CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY'].
    */
   connectivityInsightsNotificationsAPIKey?: string | undefined;
 
@@ -237,6 +337,26 @@ export interface ClientOptions {
  */
 export class Camara {
   bearerToken: string;
+  customerInsightsToken: string;
+  deviceSwapToken: string;
+  kycAgeVerificationToken: string;
+  kycFillInToken: string;
+  kycMatchToken: string;
+  tenureToken: string;
+  numberRecyclingToken: string;
+  otpValidationToken: string;
+  callForwardingSignalToken: string;
+  deviceLocationToken: string;
+  populationDensityDataToken: string;
+  regionDeviceCountToken: string;
+  webRtcToken: string;
+  connectivityInsightsToken: string;
+  qualityOnDemandToken: string;
+  deviceIdentifierToken: string;
+  simSwapToken: string;
+  deviceRoamingStatusToken: string;
+  deviceReachabilityStatusToken: string;
+  connectedNetworkTypeToken: string;
   deviceLocationNotificationsAPIKey: string;
   notificationsAPIKey: string;
   populationDensityDataNotificationsAPIKey: string;
@@ -263,6 +383,26 @@ export class Camara {
    * API Client for interfacing with the Camara API.
    *
    * @param {string | undefined} [opts.bearerToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.customerInsightsToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.deviceSwapToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.kycAgeVerificationToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.kycFillInToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.kycMatchToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.tenureToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.numberRecyclingToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.otpValidationToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.callForwardingSignalToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.deviceLocationToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.populationDensityDataToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.regionDeviceCountToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.webRtcToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.connectivityInsightsToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.qualityOnDemandToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.deviceIdentifierToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.simSwapToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.deviceRoamingStatusToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.deviceReachabilityStatusToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.connectedNetworkTypeToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
    * @param {string | undefined} [opts.deviceLocationNotificationsAPIKey=process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.notificationsAPIKey=process.env['CAMARA_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.populationDensityDataNotificationsAPIKey=process.env['CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'] ?? undefined]
@@ -283,6 +423,26 @@ export class Camara {
   constructor({
     baseURL = readEnv('CAMARA_BASE_URL'),
     bearerToken = readEnv('CAMARA_BEARER_TOKEN'),
+    customerInsightsToken = readEnv('CAMARA_BEARER_TOKEN'),
+    deviceSwapToken = readEnv('CAMARA_BEARER_TOKEN'),
+    kycAgeVerificationToken = readEnv('CAMARA_BEARER_TOKEN'),
+    kycFillInToken = readEnv('CAMARA_BEARER_TOKEN'),
+    kycMatchToken = readEnv('CAMARA_BEARER_TOKEN'),
+    tenureToken = readEnv('CAMARA_BEARER_TOKEN'),
+    numberRecyclingToken = readEnv('CAMARA_BEARER_TOKEN'),
+    otpValidationToken = readEnv('CAMARA_BEARER_TOKEN'),
+    callForwardingSignalToken = readEnv('CAMARA_BEARER_TOKEN'),
+    deviceLocationToken = readEnv('CAMARA_BEARER_TOKEN'),
+    populationDensityDataToken = readEnv('CAMARA_BEARER_TOKEN'),
+    regionDeviceCountToken = readEnv('CAMARA_BEARER_TOKEN'),
+    webRtcToken = readEnv('CAMARA_BEARER_TOKEN'),
+    connectivityInsightsToken = readEnv('CAMARA_BEARER_TOKEN'),
+    qualityOnDemandToken = readEnv('CAMARA_BEARER_TOKEN'),
+    deviceIdentifierToken = readEnv('CAMARA_BEARER_TOKEN'),
+    simSwapToken = readEnv('CAMARA_BEARER_TOKEN'),
+    deviceRoamingStatusToken = readEnv('CAMARA_BEARER_TOKEN'),
+    deviceReachabilityStatusToken = readEnv('CAMARA_BEARER_TOKEN'),
+    connectedNetworkTypeToken = readEnv('CAMARA_BEARER_TOKEN'),
     deviceLocationNotificationsAPIKey = readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'),
     notificationsAPIKey = readEnv('CAMARA_NOTIFICATIONS_API_KEY'),
     populationDensityDataNotificationsAPIKey = readEnv(
@@ -301,6 +461,106 @@ export class Camara {
     if (bearerToken === undefined) {
       throw new Errors.CamaraError(
         "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an bearerToken option, like new Camara({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
+    if (customerInsightsToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an customerInsightsToken option, like new Camara({ customerInsightsToken: 'My Customer Insights Token' }).",
+      );
+    }
+    if (deviceSwapToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceSwapToken option, like new Camara({ deviceSwapToken: 'My Device Swap Token' }).",
+      );
+    }
+    if (kycAgeVerificationToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycAgeVerificationToken option, like new Camara({ kycAgeVerificationToken: 'My KYC Age Verification Token' }).",
+      );
+    }
+    if (kycFillInToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycFillInToken option, like new Camara({ kycFillInToken: 'My KYC Fill In Token' }).",
+      );
+    }
+    if (kycMatchToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycMatchToken option, like new Camara({ kycMatchToken: 'My KYC Match Token' }).",
+      );
+    }
+    if (tenureToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an tenureToken option, like new Camara({ tenureToken: 'My Tenure Token' }).",
+      );
+    }
+    if (numberRecyclingToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an numberRecyclingToken option, like new Camara({ numberRecyclingToken: 'My Number Recycling Token' }).",
+      );
+    }
+    if (otpValidationToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an otpValidationToken option, like new Camara({ otpValidationToken: 'My Otp Validation Token' }).",
+      );
+    }
+    if (callForwardingSignalToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an callForwardingSignalToken option, like new Camara({ callForwardingSignalToken: 'My Call Forwarding Signal Token' }).",
+      );
+    }
+    if (deviceLocationToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationToken option, like new Camara({ deviceLocationToken: 'My Device Location Token' }).",
+      );
+    }
+    if (populationDensityDataToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an populationDensityDataToken option, like new Camara({ populationDensityDataToken: 'My Population Density Data Token' }).",
+      );
+    }
+    if (regionDeviceCountToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an regionDeviceCountToken option, like new Camara({ regionDeviceCountToken: 'My Region Device Count Token' }).",
+      );
+    }
+    if (webRtcToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an webRtcToken option, like new Camara({ webRtcToken: 'My Web Rtc Token' }).",
+      );
+    }
+    if (connectivityInsightsToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectivityInsightsToken option, like new Camara({ connectivityInsightsToken: 'My Connectivity Insights Token' }).",
+      );
+    }
+    if (qualityOnDemandToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an qualityOnDemandToken option, like new Camara({ qualityOnDemandToken: 'My Quality On Demand Token' }).",
+      );
+    }
+    if (deviceIdentifierToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceIdentifierToken option, like new Camara({ deviceIdentifierToken: 'My Device Identifier Token' }).",
+      );
+    }
+    if (simSwapToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an simSwapToken option, like new Camara({ simSwapToken: 'My Sim Swap Token' }).",
+      );
+    }
+    if (deviceRoamingStatusToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceRoamingStatusToken option, like new Camara({ deviceRoamingStatusToken: 'My Device Roaming Status Token' }).",
+      );
+    }
+    if (deviceReachabilityStatusToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceReachabilityStatusToken option, like new Camara({ deviceReachabilityStatusToken: 'My Device Reachability Status Token' }).",
+      );
+    }
+    if (connectedNetworkTypeToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectedNetworkTypeToken option, like new Camara({ connectedNetworkTypeToken: 'My Connected Network Type Token' }).",
       );
     }
     if (deviceLocationNotificationsAPIKey === undefined) {
@@ -351,6 +611,26 @@ export class Camara {
 
     const options: ClientOptions = {
       bearerToken,
+      customerInsightsToken,
+      deviceSwapToken,
+      kycAgeVerificationToken,
+      kycFillInToken,
+      kycMatchToken,
+      tenureToken,
+      numberRecyclingToken,
+      otpValidationToken,
+      callForwardingSignalToken,
+      deviceLocationToken,
+      populationDensityDataToken,
+      regionDeviceCountToken,
+      webRtcToken,
+      connectivityInsightsToken,
+      qualityOnDemandToken,
+      deviceIdentifierToken,
+      simSwapToken,
+      deviceRoamingStatusToken,
+      deviceReachabilityStatusToken,
+      connectedNetworkTypeToken,
       deviceLocationNotificationsAPIKey,
       notificationsAPIKey,
       populationDensityDataNotificationsAPIKey,
@@ -382,6 +662,26 @@ export class Camara {
     this._options = options;
 
     this.bearerToken = bearerToken;
+    this.customerInsightsToken = customerInsightsToken;
+    this.deviceSwapToken = deviceSwapToken;
+    this.kycAgeVerificationToken = kycAgeVerificationToken;
+    this.kycFillInToken = kycFillInToken;
+    this.kycMatchToken = kycMatchToken;
+    this.tenureToken = tenureToken;
+    this.numberRecyclingToken = numberRecyclingToken;
+    this.otpValidationToken = otpValidationToken;
+    this.callForwardingSignalToken = callForwardingSignalToken;
+    this.deviceLocationToken = deviceLocationToken;
+    this.populationDensityDataToken = populationDensityDataToken;
+    this.regionDeviceCountToken = regionDeviceCountToken;
+    this.webRtcToken = webRtcToken;
+    this.connectivityInsightsToken = connectivityInsightsToken;
+    this.qualityOnDemandToken = qualityOnDemandToken;
+    this.deviceIdentifierToken = deviceIdentifierToken;
+    this.simSwapToken = simSwapToken;
+    this.deviceRoamingStatusToken = deviceRoamingStatusToken;
+    this.deviceReachabilityStatusToken = deviceReachabilityStatusToken;
+    this.connectedNetworkTypeToken = connectedNetworkTypeToken;
     this.deviceLocationNotificationsAPIKey = deviceLocationNotificationsAPIKey;
     this.notificationsAPIKey = notificationsAPIKey;
     this.populationDensityDataNotificationsAPIKey = populationDensityDataNotificationsAPIKey;
@@ -407,6 +707,26 @@ export class Camara {
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
       bearerToken: this.bearerToken,
+      customerInsightsToken: this.customerInsightsToken,
+      deviceSwapToken: this.deviceSwapToken,
+      kycAgeVerificationToken: this.kycAgeVerificationToken,
+      kycFillInToken: this.kycFillInToken,
+      kycMatchToken: this.kycMatchToken,
+      tenureToken: this.tenureToken,
+      numberRecyclingToken: this.numberRecyclingToken,
+      otpValidationToken: this.otpValidationToken,
+      callForwardingSignalToken: this.callForwardingSignalToken,
+      deviceLocationToken: this.deviceLocationToken,
+      populationDensityDataToken: this.populationDensityDataToken,
+      regionDeviceCountToken: this.regionDeviceCountToken,
+      webRtcToken: this.webRtcToken,
+      connectivityInsightsToken: this.connectivityInsightsToken,
+      qualityOnDemandToken: this.qualityOnDemandToken,
+      deviceIdentifierToken: this.deviceIdentifierToken,
+      simSwapToken: this.simSwapToken,
+      deviceRoamingStatusToken: this.deviceRoamingStatusToken,
+      deviceReachabilityStatusToken: this.deviceReachabilityStatusToken,
+      connectedNetworkTypeToken: this.connectedNetworkTypeToken,
       deviceLocationNotificationsAPIKey: this.deviceLocationNotificationsAPIKey,
       notificationsAPIKey: this.notificationsAPIKey,
       populationDensityDataNotificationsAPIKey: this.populationDensityDataNotificationsAPIKey,
@@ -438,21 +758,91 @@ export class Camara {
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([
+      await this.customerInsightsopenIDAuth(opts),
       await this.openIDAuth(opts),
+      await this.deviceSwapopenIDAuth(opts),
+      await this.knowYourCustomerAgeVerificationopenIDAuth(opts),
+      await this.knowYourCustomerFillInopenIDAuth(opts),
+      await this.knowYourCustomerMatchopenIDAuth(opts),
+      await this.tenureopenIDAuth(opts),
+      await this.numberRecyclingopenIDAuth(opts),
+      await this.otpValidationopenIDAuth(opts),
+      await this.callForwardingSignalopenIDAuth(opts),
+      await this.deviceLocationopenIDAuth(opts),
       await this.deviceLocationnotificationsBearerAuth(opts),
       await this.notificationsBearerAuth(opts),
+      await this.populationDensityDataopenIDAuth(opts),
       await this.populationDensityDatanotificationsBearerAuth(opts),
+      await this.regionDeviceCountopenIDAuth(opts),
       await this.regionDeviceCountnotificationsBearerAuth(opts),
+      await this.webRtCopenIDAuth(opts),
+      await this.connectivityInsightsopenIDAuth(opts),
       await this.connectivityInsightsnotificationsBearerAuth(opts),
+      await this.qualityOnDemandopenIDAuth(opts),
+      await this.deviceIdentifieropenIDAuth(opts),
+      await this.simSwapopenIDAuth(opts),
       await this.simSwapnotificationsBearerAuth(opts),
+      await this.deviceRoamingStatusopenIDAuth(opts),
       await this.deviceRoamingStatusnotificationsBearerAuth(opts),
+      await this.deviceReachabilityStatusopenIDAuth(opts),
       await this.deviceReachabilityStatusnotificationsBearerAuth(opts),
+      await this.connectedNetworkTypeopenIDAuth(opts),
       await this.connectedNetworkTypenotificationsBearerAuth(opts),
     ]);
   }
 
+  protected async customerInsightsopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.customerInsightsToken}` }]);
+  }
+
   protected async openIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
+  }
+
+  protected async deviceSwapopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.deviceSwapToken}` }]);
+  }
+
+  protected async knowYourCustomerAgeVerificationopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.kycAgeVerificationToken}` }]);
+  }
+
+  protected async knowYourCustomerFillInopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.kycFillInToken}` }]);
+  }
+
+  protected async knowYourCustomerMatchopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.kycMatchToken}` }]);
+  }
+
+  protected async tenureopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.tenureToken}` }]);
+  }
+
+  protected async numberRecyclingopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.numberRecyclingToken}` }]);
+  }
+
+  protected async otpValidationopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.otpValidationToken}` }]);
+  }
+
+  protected async callForwardingSignalopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.callForwardingSignalToken}` }]);
+  }
+
+  protected async deviceLocationopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.deviceLocationToken}` }]);
   }
 
   protected async deviceLocationnotificationsBearerAuth(
@@ -465,10 +855,22 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.notificationsAPIKey}` }]);
   }
 
+  protected async populationDensityDataopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.populationDensityDataToken}` }]);
+  }
+
   protected async populationDensityDatanotificationsBearerAuth(
     opts: FinalRequestOptions,
   ): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.populationDensityDataNotificationsAPIKey}` }]);
+  }
+
+  protected async regionDeviceCountopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.regionDeviceCountToken}` }]);
   }
 
   protected async regionDeviceCountnotificationsBearerAuth(
@@ -477,10 +879,34 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.regionDeviceCountNotificationsAPIKey}` }]);
   }
 
+  protected async webRtCopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.webRtcToken}` }]);
+  }
+
+  protected async connectivityInsightsopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.connectivityInsightsToken}` }]);
+  }
+
   protected async connectivityInsightsnotificationsBearerAuth(
     opts: FinalRequestOptions,
   ): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.connectivityInsightsNotificationsAPIKey}` }]);
+  }
+
+  protected async qualityOnDemandopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.qualityOnDemandToken}` }]);
+  }
+
+  protected async deviceIdentifieropenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.deviceIdentifierToken}` }]);
+  }
+
+  protected async simSwapopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.simSwapToken}` }]);
   }
 
   protected async simSwapnotificationsBearerAuth(
@@ -489,16 +915,34 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.simSwapNotificationsAPIKey}` }]);
   }
 
+  protected async deviceRoamingStatusopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.deviceRoamingStatusToken}` }]);
+  }
+
   protected async deviceRoamingStatusnotificationsBearerAuth(
     opts: FinalRequestOptions,
   ): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceRoamingStatusNotificationsAPIKey}` }]);
   }
 
+  protected async deviceReachabilityStatusopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.deviceReachabilityStatusToken}` }]);
+  }
+
   protected async deviceReachabilityStatusnotificationsBearerAuth(
     opts: FinalRequestOptions,
   ): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceReachabilityStatusNotificationsAPIKey}` }]);
+  }
+
+  protected async connectedNetworkTypeopenIDAuth(
+    opts: FinalRequestOptions,
+  ): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.connectedNetworkTypeToken}` }]);
   }
 
   protected async connectedNetworkTypenotificationsBearerAuth(
