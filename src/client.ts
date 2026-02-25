@@ -114,6 +114,11 @@ import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
   /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  bearerToken?: string | undefined;
+
+  /**
    * Defaults to process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'].
    */
   deviceLocationNotificationsAPIKey?: string | undefined;
@@ -231,6 +236,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Camara API.
  */
 export class Camara {
+  bearerToken: string;
   deviceLocationNotificationsAPIKey: string;
   notificationsAPIKey: string;
   populationDensityDataNotificationsAPIKey: string;
@@ -256,6 +262,7 @@ export class Camara {
   /**
    * API Client for interfacing with the Camara API.
    *
+   * @param {string | undefined} [opts.bearerToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
    * @param {string | undefined} [opts.deviceLocationNotificationsAPIKey=process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.notificationsAPIKey=process.env['CAMARA_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.populationDensityDataNotificationsAPIKey=process.env['CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'] ?? undefined]
@@ -275,6 +282,7 @@ export class Camara {
    */
   constructor({
     baseURL = readEnv('CAMARA_BASE_URL'),
+    bearerToken = readEnv('CAMARA_BEARER_TOKEN'),
     deviceLocationNotificationsAPIKey = readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'),
     notificationsAPIKey = readEnv('CAMARA_NOTIFICATIONS_API_KEY'),
     populationDensityDataNotificationsAPIKey = readEnv(
@@ -290,6 +298,11 @@ export class Camara {
     connectedNetworkTypeNotificationsAPIKey = readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
+    if (bearerToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an bearerToken option, like new Camara({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
     if (deviceLocationNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
         "The CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationNotificationsAPIKey option, like new Camara({ deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key' }).",
@@ -337,6 +350,7 @@ export class Camara {
     }
 
     const options: ClientOptions = {
+      bearerToken,
       deviceLocationNotificationsAPIKey,
       notificationsAPIKey,
       populationDensityDataNotificationsAPIKey,
@@ -367,6 +381,7 @@ export class Camara {
 
     this._options = options;
 
+    this.bearerToken = bearerToken;
     this.deviceLocationNotificationsAPIKey = deviceLocationNotificationsAPIKey;
     this.notificationsAPIKey = notificationsAPIKey;
     this.populationDensityDataNotificationsAPIKey = populationDensityDataNotificationsAPIKey;
@@ -391,6 +406,7 @@ export class Camara {
       logLevel: this.logLevel,
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
+      bearerToken: this.bearerToken,
       deviceLocationNotificationsAPIKey: this.deviceLocationNotificationsAPIKey,
       notificationsAPIKey: this.notificationsAPIKey,
       populationDensityDataNotificationsAPIKey: this.populationDensityDataNotificationsAPIKey,
@@ -422,6 +438,7 @@ export class Camara {
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([
+      await this.openIDAuth(opts),
       await this.deviceLocationnotificationsBearerAuth(opts),
       await this.notificationsBearerAuth(opts),
       await this.populationDensityDatanotificationsBearerAuth(opts),
@@ -432,6 +449,10 @@ export class Camara {
       await this.deviceReachabilityStatusnotificationsBearerAuth(opts),
       await this.connectedNetworkTypenotificationsBearerAuth(opts),
     ]);
+  }
+
+  protected async openIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
   protected async deviceLocationnotificationsBearerAuth(

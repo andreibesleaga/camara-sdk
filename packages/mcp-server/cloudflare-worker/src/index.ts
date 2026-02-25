@@ -18,6 +18,15 @@ const serverConfig: ServerConfig = {
   logoUrl: undefined, // Set a custom logo url to appear during the OAuth flow
   clientProperties: [
     {
+      key: 'bearerToken',
+      label: 'Bearer Token',
+      description: '',
+      required: true,
+      default: undefined,
+      placeholder: 'My Bearer Token',
+      type: 'password',
+    },
+    {
       key: 'deviceLocationNotificationsAPIKey',
       label: 'Device Location Notifications API Key',
       description: '',
