@@ -18,6 +18,7 @@
       "command": "node",
       "args": ["${__dirname}/index.js"],
       "env": {
+        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
         "CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY}",
         "CAMARA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_NOTIFICATIONS_API_KEY}",
         "CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY}",
@@ -31,6 +32,12 @@
     }
   },
   "user_config": {
+    "CAMARA_BEARER_TOKEN": {
+      "title": "bearer_token",
+      "description": "",
+      "required": true,
+      "type": "string"
+    },
     "CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY": {
       "title": "device_location_notifications_api_key",
       "description": "",

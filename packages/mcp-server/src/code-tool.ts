@@ -99,6 +99,10 @@ export function codeTool({ blockedMethods }: { blockedMethods: SdkMethod[] | und
         ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
+          CAMARA_BEARER_TOKEN: requireValue(
+            readEnv('CAMARA_BEARER_TOKEN') ?? client.bearerToken,
+            'set CAMARA_BEARER_TOKEN environment variable or provide bearerToken client option',
+          ),
           CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
             readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ??
               client.deviceLocationNotificationsAPIKey,
