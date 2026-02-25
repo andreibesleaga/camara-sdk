@@ -2,14 +2,14 @@
   "include": ["src", "tests", "examples"],
   "exclude": [],
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2020"],
+    "target": "es2022",
+    "lib": ["es2022"],
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "camara-mcp/*": ["./src/*"],
-      "camara-mcp": ["./src/index.ts"]
+      "camara-sdk-mcp/*": ["./src/*"],
+      "camara-sdk-mcp": ["./src/index.ts"]
     },
     "noEmit": true,
 

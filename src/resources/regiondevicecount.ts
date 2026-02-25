@@ -21,23 +21,14 @@ export class Regiondevicecount extends APIResource {
    * @example
    * ```ts
    * const response = await client.regiondevicecount.getCount({
-   *   area: {
-   *     areaType: 'CIRCLE',
-   *     center: { latitude: 45.754114, longitude: 4.860374 },
-   *     radius: 800,
-   *   },
+   *   area: { areaType: 'CIRCLE' },
    *   endtime: '2023-07-04T14:27:08.312+02:00',
    *   filter: {
    *     roamingStatus: ['roaming'],
    *     deviceType: ['human device', 'IoT device'],
    *   },
    *   sink: 'https://endpoint.example.com/sink',
-   *   sinkCredential: {
-   *     credentialType: 'ACCESSTOKEN',
-   *     accessToken: 'yJ2ZXIiOiIxLjAiLCJ0eXAiO...',
-   *     accessTokenExpiresUtc: '1717753038',
-   *     accessTokenType: 'bearer',
-   *   },
+   *   sinkCredential: { credentialType: 'ACCESSTOKEN' },
    *   starttime: '2023-07-03T14:27:08.312+02:00',
    * });
    * ```
@@ -94,7 +85,7 @@ export interface RegiondevicecountGetCountResponse {
 
 export interface RegiondevicecountGetCountParams {
   /**
-   * Body param:
+   * Body param
    */
   area?: RegiondevicecountGetCountParams.Area;
 

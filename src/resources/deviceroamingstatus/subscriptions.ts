@@ -27,12 +27,7 @@ export class Subscriptions extends APIResource {
    *     types: [
    *       'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status',
    *     ],
-   *     sinkCredential: {
-   *       credentialType: 'ACCESSTOKEN',
-   *       accessToken: 'xxx',
-   *       accessTokenExpiresUtc: '2024-02-17T16:23:45Z',
-   *       accessTokenType: 'bearer',
-   *     },
+   *     sinkCredential: { credentialType: 'ACCESSTOKEN' },
    *   });
    * ```
    */

@@ -1,7 +1,8 @@
 import { makeOAuthConsent } from './app';
 import { McpAgent } from 'agents/mcp';
 import OAuthProvider from '@cloudflare/workers-oauth-provider';
-import { McpOptions, initMcpServer, server, ClientOptions } from 'camara-mcp/server';
+import { McpOptions, initMcpServer, server, ClientOptions } from 'camara-sdk-mcp/server';
+import type { ExportedHandler } from '@cloudflare/workers-types';
 
 type MCPProps = {
   clientProps: ClientOptions;
@@ -16,6 +17,15 @@ const serverConfig: ServerConfig = {
   instructionsUrl: undefined, // Set a url for where you show users how to get an API key
   logoUrl: undefined, // Set a custom logo url to appear during the OAuth flow
   clientProperties: [
+    {
+      key: 'bearerToken',
+      label: 'Bearer Token',
+      description: '',
+      required: true,
+      default: undefined,
+      placeholder: 'My Bearer Token',
+      type: 'password',
+    },
     {
       key: 'deviceLocationNotificationsAPIKey',
       label: 'Device Location Notifications API Key',
@@ -153,7 +163,9 @@ export default new OAuthProvider({
     // @ts-expect-error
     '/mcp': MyMCP.serve('/mcp'), // Streaming HTTP
   },
-  defaultHandler: makeOAuthConsent(serverConfig),
+  // Type assertion needed due to Headers type mismatch between Hono and @cloudflare/workers-types
+  // At runtime, Hono's fetch handler is fully compatible with ExportedHandler
+  defaultHandler: makeOAuthConsent(serverConfig) as unknown as ExportedHandler,
   authorizeEndpoint: '/authorize',
   tokenEndpoint: '/token',
   clientRegistrationEndpoint: '/register',

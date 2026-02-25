@@ -23,6 +23,7 @@ describe('instantiate client', () => {
     const client = new Camara({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -98,6 +99,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         logger: logger,
         logLevel: 'debug',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -115,6 +117,7 @@ describe('instantiate client', () => {
 
     test('default logLevel is warn', async () => {
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -140,6 +143,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         logger: logger,
         logLevel: 'info',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -167,6 +171,7 @@ describe('instantiate client', () => {
       process.env['CAMARA_LOG'] = 'debug';
       const client = new Camara({
         logger: logger,
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -195,6 +200,7 @@ describe('instantiate client', () => {
       process.env['CAMARA_LOG'] = 'not a log level';
       const client = new Camara({
         logger: logger,
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -224,6 +230,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         logger: logger,
         logLevel: 'off',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -252,6 +259,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         logger: logger,
         logLevel: 'debug',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -272,6 +280,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -289,6 +298,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -306,6 +316,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -323,6 +334,7 @@ describe('instantiate client', () => {
   test('custom fetch', async () => {
     const client = new Camara({
       baseURL: 'http://localhost:5000/',
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -349,6 +361,7 @@ describe('instantiate client', () => {
     // make sure the global fetch type is assignable to our Fetch type
     const client = new Camara({
       baseURL: 'http://localhost:5000/',
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -365,6 +378,7 @@ describe('instantiate client', () => {
   test('custom signal', async () => {
     const client = new Camara({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -405,6 +419,7 @@ describe('instantiate client', () => {
 
     const client = new Camara({
       baseURL: 'http://localhost:5000/',
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -425,6 +440,7 @@ describe('instantiate client', () => {
     test('trailing slash', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/custom/path/',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -441,6 +457,7 @@ describe('instantiate client', () => {
     test('no trailing slash', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/custom/path',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -461,6 +478,7 @@ describe('instantiate client', () => {
     test('explicit option', () => {
       const client = new Camara({
         baseURL: 'https://example.com',
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -477,6 +495,7 @@ describe('instantiate client', () => {
     test('env variable', () => {
       process.env['CAMARA_BASE_URL'] = 'https://example.com/from_env';
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -493,6 +512,7 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['CAMARA_BASE_URL'] = ''; // empty
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -509,6 +529,7 @@ describe('instantiate client', () => {
     test('blank env variable', () => {
       process.env['CAMARA_BASE_URL'] = '  '; // blank
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -524,6 +545,7 @@ describe('instantiate client', () => {
 
     test('in request options', () => {
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -541,6 +563,7 @@ describe('instantiate client', () => {
 
     test('in request options overridden by client options', () => {
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -560,6 +583,7 @@ describe('instantiate client', () => {
     test('in request options overridden by env variable', () => {
       process.env['CAMARA_BASE_URL'] = 'http://localhost:5000/env';
       const client = new Camara({
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -579,6 +603,7 @@ describe('instantiate client', () => {
   test('maxRetries option is correctly set', () => {
     const client = new Camara({
       maxRetries: 4,
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -593,6 +618,7 @@ describe('instantiate client', () => {
 
     // default
     const client2 = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -611,6 +637,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/',
         maxRetries: 3,
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -645,6 +672,7 @@ describe('instantiate client', () => {
         baseURL: 'http://localhost:5000/',
         defaultHeaders: { 'X-Test-Header': 'test-value' },
         defaultQuery: { 'test-param': 'test-value' },
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -671,6 +699,7 @@ describe('instantiate client', () => {
       const client = new Camara({
         baseURL: 'http://localhost:5000/',
         timeout: 1000,
+        bearerToken: 'My Bearer Token',
         deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
         notificationsAPIKey: 'My Notifications API Key',
         populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -708,6 +737,7 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
+    process.env['CAMARA_BEARER_TOKEN'] = 'My Bearer Token';
     process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'] = 'My Device Location Notifications API Key';
     process.env['CAMARA_NOTIFICATIONS_API_KEY'] = 'My Notifications API Key';
     process.env['CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'] =
@@ -724,6 +754,7 @@ describe('instantiate client', () => {
     process.env['CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY'] =
       'My Connected Network Type Notifications API Key';
     const client = new Camara();
+    expect(client.bearerToken).toBe('My Bearer Token');
     expect(client.deviceLocationNotificationsAPIKey).toBe('My Device Location Notifications API Key');
     expect(client.notificationsAPIKey).toBe('My Notifications API Key');
     expect(client.populationDensityDataNotificationsAPIKey).toBe(
@@ -747,6 +778,7 @@ describe('instantiate client', () => {
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
+    process.env['CAMARA_BEARER_TOKEN'] = 'another My Bearer Token';
     process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'] =
       'another My Device Location Notifications API Key';
     process.env['CAMARA_NOTIFICATIONS_API_KEY'] = 'another My Notifications API Key';
@@ -764,6 +796,7 @@ describe('instantiate client', () => {
     process.env['CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY'] =
       'another My Connected Network Type Notifications API Key';
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -774,6 +807,7 @@ describe('instantiate client', () => {
       deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key',
       connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key',
     });
+    expect(client.bearerToken).toBe('My Bearer Token');
     expect(client.deviceLocationNotificationsAPIKey).toBe('My Device Location Notifications API Key');
     expect(client.notificationsAPIKey).toBe('My Notifications API Key');
     expect(client.populationDensityDataNotificationsAPIKey).toBe(
@@ -798,6 +832,7 @@ describe('instantiate client', () => {
 
 describe('request building', () => {
   const client = new Camara({
+    bearerToken: 'My Bearer Token',
     deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
     notificationsAPIKey: 'My Notifications API Key',
     populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -827,6 +862,7 @@ describe('request building', () => {
 
 describe('default encoder', () => {
   const client = new Camara({
+    bearerToken: 'My Bearer Token',
     deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
     notificationsAPIKey: 'My Notifications API Key',
     populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -922,6 +958,7 @@ describe('retries', () => {
     };
 
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -964,6 +1001,7 @@ describe('retries', () => {
     };
 
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -1000,6 +1038,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -1041,6 +1080,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -1082,6 +1122,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -1124,6 +1165,7 @@ describe('retries', () => {
     };
 
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -1165,6 +1207,7 @@ describe('retries', () => {
     };
 
     const client = new Camara({
+      bearerToken: 'My Bearer Token',
       deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
       notificationsAPIKey: 'My Notifications API Key',
       populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',

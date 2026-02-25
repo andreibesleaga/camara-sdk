@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource otpvalidation', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('sendCode: only required params', async () => {
     const responsePromise = client.otpvalidation.sendCode({
       message: '{{code}} is your short code to authenticate with Cool App via SMS',
@@ -31,7 +32,7 @@ describe('resource otpvalidation', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('sendCode: required and optional params', async () => {
     const response = await client.otpvalidation.sendCode({
       message: '{{code}} is your short code to authenticate with Cool App via SMS',
@@ -40,7 +41,7 @@ describe('resource otpvalidation', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('validateCode: only required params', async () => {
     const responsePromise = client.otpvalidation.validateCode({
       authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105',
@@ -55,7 +56,7 @@ describe('resource otpvalidation', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('validateCode: required and optional params', async () => {
     const response = await client.otpvalidation.validateCode({
       authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105',

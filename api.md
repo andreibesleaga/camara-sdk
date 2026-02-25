@@ -147,6 +147,9 @@ Types:
 
 - <code><a href="./src/resources/webrtc/sessions.ts">MediaSessionInformation</a></code>
 - <code><a href="./src/resources/webrtc/sessions.ts">SdpDescriptor</a></code>
+- <code><a href="./src/resources/webrtc/sessions.ts">WebRtcCircleCoordinates</a></code>
+- <code><a href="./src/resources/webrtc/sessions.ts">WebRtcEllipsoidCoordinates</a></code>
+- <code><a href="./src/resources/webrtc/sessions.ts">WebRtcLocationDetails</a></code>
 
 Methods:
 
@@ -194,6 +197,8 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDevice</a></code>
+- <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierDeviceIpv4Addr</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceIdentifierRequestBody</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrieveIdentifierResponse</a></code>
 - <code><a href="./src/resources/deviceidentifier.ts">DeviceidentifierRetrievePpidResponse</a></code>

@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource callforwardingsignal', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkActiveForwardings', async () => {
     const responsePromise = client.callforwardingsignal.checkActiveForwardings({});
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +29,7 @@ describe('resource callforwardingsignal', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkUnconditionalForwarding', async () => {
     const responsePromise = client.callforwardingsignal.checkUnconditionalForwarding({});
     const rawResponse = await responsePromise.asResponse();

@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource numberrecycling', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkSubscriberChange: only required params', async () => {
     const responsePromise = client.numberrecycling.checkSubscriberChange({ specifiedDate: '2024-10-31' });
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +29,7 @@ describe('resource numberrecycling', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('checkSubscriberChange: required and optional params', async () => {
     const response = await client.numberrecycling.checkSubscriberChange({
       specifiedDate: '2024-10-31',

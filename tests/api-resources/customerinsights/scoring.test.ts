@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource scoring', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.customerinsights.scoring.retrieve({});
     const rawResponse = await responsePromise.asResponse();

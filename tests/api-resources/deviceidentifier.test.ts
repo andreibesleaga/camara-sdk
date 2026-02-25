@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource deviceidentifier', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveIdentifier', async () => {
     const responsePromise = client.deviceidentifier.retrieveIdentifier({});
     const rawResponse = await responsePromise.asResponse();
@@ -28,7 +29,7 @@ describe('resource deviceidentifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrievePpid', async () => {
     const responsePromise = client.deviceidentifier.retrievePpid({});
     const rawResponse = await responsePromise.asResponse();
@@ -40,7 +41,7 @@ describe('resource deviceidentifier', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveType', async () => {
     const responsePromise = client.deviceidentifier.retrieveType({});
     const rawResponse = await responsePromise.asResponse();

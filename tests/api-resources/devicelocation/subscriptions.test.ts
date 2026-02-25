@@ -3,6 +3,7 @@
 import Camara from 'camara-sdk';
 
 const client = new Camara({
+  bearerToken: 'My Bearer Token',
   deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key',
   notificationsAPIKey: 'My Notifications API Key',
   populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key',
@@ -16,7 +17,7 @@ const client = new Camara({
 });
 
 describe('resource subscriptions', () => {
-  // Prism doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.devicelocation.subscriptions.create({
       config: { subscriptionDetail: { area: { areaType: 'CIRCLE' } } },
@@ -33,7 +34,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism doesn't support callbacks yet
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.devicelocation.subscriptions.create({
       config: {
@@ -43,7 +44,11 @@ describe('resource subscriptions', () => {
         subscriptionDetail: {
           area: { areaType: 'CIRCLE' },
           device: {
-            ipv4Address: { privateAddress: '84.125.93.10', publicAddress: '84.125.93.10', publicPort: 59765 },
+            ipv4Address: {
+              privateAddress: '84.125.93.10',
+              publicAddress: '84.125.93.10',
+              publicPort: 59765,
+            },
             ipv6Address: '2001:db8:85a3:8d3:1319:8a2e:370:7344',
             networkAccessIdentifier: '123456789@domain.com',
             phoneNumber: '+12345678912',
@@ -58,7 +63,7 @@ describe('resource subscriptions', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.devicelocation.subscriptions.retrieve('qs15-h556-rt89-1298');
     const rawResponse = await responsePromise.asResponse();
@@ -70,7 +75,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -82,7 +87,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.devicelocation.subscriptions.list();
     const rawResponse = await responsePromise.asResponse();
@@ -94,7 +99,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -105,7 +110,7 @@ describe('resource subscriptions', () => {
     ).rejects.toThrow(Camara.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');
     const rawResponse = await responsePromise.asResponse();
@@ -117,7 +122,7 @@ describe('resource subscriptions', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

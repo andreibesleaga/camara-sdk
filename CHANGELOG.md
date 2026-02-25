@@ -1,5 +1,505 @@
 # Changelog
 
+## 0.15.0 (2026-02-25)
+
+Full Changelog: [v0.14.3...v0.15.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.3...v0.15.0)
+
+### Features
+
+* **api:** manual updates ([e3603bc](https://github.com/andreibesleaga/camara-sdk/commit/e3603bccf15725e3605596713c756b308d98213a))
+
+
+### Chores
+
+* **internal:** upgrade @modelcontextprotocol/sdk and hono ([613bd6d](https://github.com/andreibesleaga/camara-sdk/commit/613bd6d2849e253b3c719f625b38d86ac077a80b))
+
+## 0.14.3 (2026-02-24)
+
+Full Changelog: [v0.14.2...v0.14.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.2...v0.14.3)
+
+### Bug Fixes
+
+* **docs/contributing:** correct pnpm link command ([f7d52fb](https://github.com/andreibesleaga/camara-sdk/commit/f7d52fb960b6a3dbe60108e2d8a94db8439bb379))
+
+
+### Chores
+
+* **internal:** update agents version ([c217b5b](https://github.com/andreibesleaga/camara-sdk/commit/c217b5b642871c23e65ba96cf9beeae4cbb58f71))
+
+## 0.14.2 (2026-02-20)
+
+Full Changelog: [v0.14.1...v0.14.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.1...v0.14.2)
+
+### Chores
+
+* **internal:** remove mock server code ([1f306e3](https://github.com/andreibesleaga/camara-sdk/commit/1f306e350fb4808961e97f5e5fedf1cda1952874))
+* **mcp:** correctly update version in sync with sdk ([6a5f02b](https://github.com/andreibesleaga/camara-sdk/commit/6a5f02b538f730050d7f9fdea63e43b1115cc09c))
+* **test:** update skip reason message ([411af47](https://github.com/andreibesleaga/camara-sdk/commit/411af4739d0335e00138060344c073cbd23ba89d))
+* update mock server docs ([f43a6dd](https://github.com/andreibesleaga/camara-sdk/commit/f43a6dd0ab0a8f261cb419dcb08f2c3ac3f888eb))
+
+## 0.14.1 (2026-02-20)
+
+Full Changelog: [v0.14.0...v0.14.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.0...v0.14.1)
+
+### Bug Fixes
+
+* **mcp:** initialize SDK lazily to avoid failing the connection on init errors ([e224ec6](https://github.com/andreibesleaga/camara-sdk/commit/e224ec6a001bd60aafab9a8ae72df3f62d155a56))
+
+
+### Chores
+
+* **internal/client:** fix form-urlencoded requests ([7f2e1d7](https://github.com/andreibesleaga/camara-sdk/commit/7f2e1d715654b19329e22468b8c3a763bbb281c3))
+* **internal:** allow setting x-stainless-api-key header on mcp server requests ([f5bffd9](https://github.com/andreibesleaga/camara-sdk/commit/f5bffd977dfa9e920d5b11c5bad7711d266c5b8e))
+* **internal:** cache fetch instruction calls in MCP server ([a19f7bd](https://github.com/andreibesleaga/camara-sdk/commit/a19f7bd8dc2cf40572a9da85e10e7a227a2e2f93))
+
+## 0.14.0 (2026-02-16)
+
+Full Changelog: [v0.13.3...v0.14.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.3...v0.14.0)
+
+### Features
+
+* **api:** api update ([6a10049](https://github.com/andreibesleaga/camara-sdk/commit/6a100491860de13dead45bdc5c240f93c6936f50))
+
+## 0.13.3 (2026-02-14)
+
+Full Changelog: [v0.13.2...v0.13.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.2...v0.13.3)
+
+### Chores
+
+* **internal:** allow basic filtering of methods allowed for MCP code mode ([ed0bc4b](https://github.com/andreibesleaga/camara-sdk/commit/ed0bc4b24ab22617bc68c74b8508ca22e2ce134c))
+* **internal:** always generate MCP server dockerfiles and upgrade associated dependencies ([1d2dfd5](https://github.com/andreibesleaga/camara-sdk/commit/1d2dfd5f5fff2e641b8d6915bcf28960b5e951e8))
+* **internal:** avoid type checking errors with ts-reset ([b159264](https://github.com/andreibesleaga/camara-sdk/commit/b1592642cb0470cc732741dcbb28b92c558038d7))
+* **internal:** improve layout of generated MCP server files ([e625fc1](https://github.com/andreibesleaga/camara-sdk/commit/e625fc1b8b5c2938e39e2cdc926da77001efabee))
+* **mcp:** forward STAINLESS_API_KEY to docs search endpoint ([1bb2edd](https://github.com/andreibesleaga/camara-sdk/commit/1bb2edd3a1ce5573f4cd319dc9edbdb9d1e807b7))
+
+## 0.13.2 (2026-02-07)
+
+Full Changelog: [v0.13.1...v0.13.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.1...v0.13.2)
+
+### Chores
+
+* **internal:** add health check to MCP server when running in HTTP mode ([1247b3c](https://github.com/andreibesleaga/camara-sdk/commit/1247b3c7a8fc27aa5caeae9c240828f414dc7c9e))
+* **internal:** upgrade hono ([564fdb4](https://github.com/andreibesleaga/camara-sdk/commit/564fdb46bb4218dd3535c3f8887942676ad5de42))
+
+## 0.13.1 (2026-02-06)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.13.0...v0.13.1)
+
+### Bug Fixes
+
+* **client:** avoid removing abort listener too early ([8a1496b](https://github.com/andreibesleaga/camara-sdk/commit/8a1496bcea671e5703bc834decd94f6d488fab7b))
+
+## 0.13.0 (2026-02-05)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **mcp:** add initial server instructions ([05a038e](https://github.com/andreibesleaga/camara-sdk/commit/05a038ea00e62dcecdb2a5dfcc9c413ab3560da5))
+
+
+### Chores
+
+* **client:** restructure abort controller binding ([fab9a2e](https://github.com/andreibesleaga/camara-sdk/commit/fab9a2eeac6cf3e3ea17906ea200a1044d56e75f))
+* **internal:** refactor flag parsing for MCP servers and add debug flag ([eccfd17](https://github.com/andreibesleaga/camara-sdk/commit/eccfd1725371291e40877b3e155d68a9f7568837))
+
+## 0.12.0 (2026-02-04)
+
+Full Changelog: [v0.11.7...v0.12.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.7...v0.12.0)
+
+### Features
+
+* **api:** manual updates ([2aeb9c5](https://github.com/andreibesleaga/camara-sdk/commit/2aeb9c52d75fa0b5ddc0d1b06ee8c1c52efc9017))
+
+## 0.11.7 (2026-02-03)
+
+Full Changelog: [v0.11.6...v0.11.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.6...v0.11.7)
+
+### Chores
+
+* **client:** do not parse responses with empty content-length ([563f566](https://github.com/andreibesleaga/camara-sdk/commit/563f56665444159bf448e9d4c7239e7919d2238d))
+* **internal:** support oauth authorization code flow for MCP servers ([9dea4f8](https://github.com/andreibesleaga/camara-sdk/commit/9dea4f8b307cc69316f0cf8b273e3bff41ab3769))
+
+## 0.11.6 (2026-02-03)
+
+Full Changelog: [v0.11.5...v0.11.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.5...v0.11.6)
+
+### Bug Fixes
+
+* **client:** avoid memory leak with abort signals ([bf9d2de](https://github.com/andreibesleaga/camara-sdk/commit/bf9d2de1d9af7e41eb1bd1aeb8b94b81c1df5cfb))
+
+## 0.11.5 (2026-01-29)
+
+Full Changelog: [v0.11.4...v0.11.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.4...v0.11.5)
+
+### Chores
+
+* update SDK settings ([51587c7](https://github.com/andreibesleaga/camara-sdk/commit/51587c7de14f93beb02fedc99bde170e83f51f0f))
+* update SDK settings ([26c7ede](https://github.com/andreibesleaga/camara-sdk/commit/26c7edefe6919ad61b6fdbc8ad610f5883169996))
+
+## 0.11.4 (2026-01-29)
+
+Full Changelog: [v0.11.3...v0.11.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.3...v0.11.4)
+
+### Chores
+
+* update SDK settings ([a772b5f](https://github.com/andreibesleaga/camara-sdk/commit/a772b5ff01b4aa64238bf5b9f8004aa1d1ba5599))
+* update SDK settings ([ee9db2b](https://github.com/andreibesleaga/camara-sdk/commit/ee9db2b802ee5d36a47067a4178d2af3f637956e))
+
+## 0.11.3 (2026-01-29)
+
+Full Changelog: [v0.11.2...v0.11.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.2...v0.11.3)
+
+### Chores
+
+* **mcp:** up tsconfig lib version to es2022 ([446a3db](https://github.com/andreibesleaga/camara-sdk/commit/446a3db9c69a8460b6ba6d87390d6fbfa0b669d9))
+
+## 0.11.2 (2026-01-29)
+
+Full Changelog: [v0.11.1...v0.11.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.1...v0.11.2)
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([a3da5b9](https://github.com/andreibesleaga/camara-sdk/commit/a3da5b9920eb354fb6d088709cc18c0369ee6f91))
+
+## 0.11.1 (2026-01-29)
+
+Full Changelog: [v0.11.0...v0.11.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.11.0...v0.11.1)
+
+### Bug Fixes
+
+* **publish:** use npm registry directly for trusted publishing support ([c971db1](https://github.com/andreibesleaga/camara-sdk/commit/c971db108c168a6c9150ed81334b3527c3c98711))
+
+
+### Chores
+
+* **internal:** codegen related update ([681b275](https://github.com/andreibesleaga/camara-sdk/commit/681b2754427a1c1d0421386d448e8da3f163b3e1))
+* update SDK settings ([e6fd14d](https://github.com/andreibesleaga/camara-sdk/commit/e6fd14d36cf8d6d0e7bd71b1db04fdc1cd2463c2))
+* update SDK settings ([7d01fab](https://github.com/andreibesleaga/camara-sdk/commit/7d01fabfc1f6a42d0ecac76c8b057032291ff293))
+
+## 0.11.0 (2026-01-28)
+
+Full Changelog: [v0.10.11...v0.11.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.11...v0.11.0)
+
+### Features
+
+* **api:** api update ([d843daa](https://github.com/andreibesleaga/camara-sdk/commit/d843daa6c6bbebf07a13386d6d45e09f2853b856))
+
+## 0.10.11 (2026-01-28)
+
+Full Changelog: [v0.10.10...v0.10.11](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.10...v0.10.11)
+
+### Chores
+
+* **internal:** upgrade wrangler version ([32b857e](https://github.com/andreibesleaga/camara-sdk/commit/32b857ea47f800f6848f0c818d45842f58e82104))
+
+## 0.10.10 (2026-01-28)
+
+Full Changelog: [v0.10.9...v0.10.10](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.9...v0.10.10)
+
+### Bug Fixes
+
+* **mcp:** allow falling back for required env variables ([8004dcd](https://github.com/andreibesleaga/camara-sdk/commit/8004dcd3227d32b54aa4b5cbe71e0d3da03a3828))
+
+
+### Chores
+
+* **internal:** codegen related update ([10f86f5](https://github.com/andreibesleaga/camara-sdk/commit/10f86f574e3a3d868ff5706238288235a05d76cd))
+
+## 0.10.9 (2026-01-26)
+
+Full Changelog: [v0.10.8...v0.10.9](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.8...v0.10.9)
+
+### Chores
+
+* update SDK settings ([4a83768](https://github.com/andreibesleaga/camara-sdk/commit/4a83768955be991c2231987bd9cfb37d0f14d2f9))
+
+## 0.10.8 (2026-01-24)
+
+Full Changelog: [v0.10.7...v0.10.8](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.7...v0.10.8)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([3c55fd4](https://github.com/andreibesleaga/camara-sdk/commit/3c55fd4f624235b64015d3ec98daa217284bce35))
+* **internal:** update lock file ([5f8da9c](https://github.com/andreibesleaga/camara-sdk/commit/5f8da9cc494cdcbe30e5cd2b90aa152386578893))
+
+## 0.10.7 (2026-01-23)
+
+Full Changelog: [v0.10.6...v0.10.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.6...v0.10.7)
+
+### Chores
+
+* configure new SDK language ([68d5a42](https://github.com/andreibesleaga/camara-sdk/commit/68d5a421f0ce295d422681f67f2879be443d67c7))
+
+## 0.10.6 (2026-01-17)
+
+Full Changelog: [v0.10.5...v0.10.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.5...v0.10.6)
+
+### Chores
+
+* fix typo in descriptions ([8b37f6a](https://github.com/andreibesleaga/camara-sdk/commit/8b37f6a8c4693eb645efa795a5bfad9ae0ffabde))
+* **internal:** bump MCP dependencies ([9c1dc50](https://github.com/andreibesleaga/camara-sdk/commit/9c1dc50e7100cbfd932db3770b8c21b2a2889d6c))
+* **internal:** codegen related update ([40bf744](https://github.com/andreibesleaga/camara-sdk/commit/40bf744ded77574a99fb7fd56c7ef66871f70fc3))
+* **internal:** codegen related update ([fe02a25](https://github.com/andreibesleaga/camara-sdk/commit/fe02a258e05a48017005e642036625a11af478f4))
+* **internal:** codegen related update ([953183d](https://github.com/andreibesleaga/camara-sdk/commit/953183d916ff6bfa7f8fab12904f3840db4f6cb6))
+* **internal:** codegen related update ([e9be82c](https://github.com/andreibesleaga/camara-sdk/commit/e9be82c3674604b77b1e37216d4d8563c6c9a550))
+* **internal:** update `actions/checkout` version ([9fb0e01](https://github.com/andreibesleaga/camara-sdk/commit/9fb0e012ae676037e240e84fffb8407b4219f99e))
+* **internal:** upgrade babel, qs, js-yaml ([e617eb7](https://github.com/andreibesleaga/camara-sdk/commit/e617eb7dc88eddc6e3a58420e14ee8dfc868ed36))
+* **mcp:** add intent param to execute tool ([63f1b17](https://github.com/andreibesleaga/camara-sdk/commit/63f1b17938a795e1bfa62bb12e80677fec4f958c))
+* **mcp:** pass intent param to execute handler ([8278426](https://github.com/andreibesleaga/camara-sdk/commit/8278426a6bd90aca8aa941d2af85c67950c11e72))
+* **mcp:** upgrade dependencies ([ab66b81](https://github.com/andreibesleaga/camara-sdk/commit/ab66b81046654722a4efeed14754ee962fd35086))
+
+## 0.10.5 (2026-01-09)
+
+Full Changelog: [v0.10.4...v0.10.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.4...v0.10.5)
+
+### Bug Fixes
+
+* **mcp:** update code tool prompt ([4f6cea3](https://github.com/andreibesleaga/camara-sdk/commit/4f6cea30516273d52dfc9576087994fdd068beb2))
+
+## 0.10.4 (2026-01-08)
+
+Full Changelog: [v0.10.3...v0.10.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.3...v0.10.4)
+
+### Bug Fixes
+
+* **mcp:** fix env parsing ([52d1f8b](https://github.com/andreibesleaga/camara-sdk/commit/52d1f8baa5f75004e8febe48268edc8ca6116f30))
+
+## 0.10.3 (2026-01-07)
+
+Full Changelog: [v0.10.2...v0.10.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.2...v0.10.3)
+
+### Bug Fixes
+
+* **mcp:** fix options parsing ([89e444b](https://github.com/andreibesleaga/camara-sdk/commit/89e444b086a659d52cbdefdfd8a92597736aa316))
+
+## 0.10.2 (2026-01-07)
+
+Full Changelog: [v0.10.1...v0.10.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.1...v0.10.2)
+
+### Bug Fixes
+
+* **mcp:** update cloudflare worker host page ([bb9f432](https://github.com/andreibesleaga/camara-sdk/commit/bb9f432fce619eb76699e0fe940f7f8313c34e12))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([c9e8b4a](https://github.com/andreibesleaga/camara-sdk/commit/c9e8b4afd5550b586080102c588be2815f82edba))
+
+## 0.10.1 (2026-01-06)
+
+Full Changelog: [v0.10.0...v0.10.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.10.0...v0.10.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool api output types ([810e8d5](https://github.com/andreibesleaga/camara-sdk/commit/810e8d528968c730d886631f9aa9be50bc10c78c))
+
+
+### Chores
+
+* **internal:** fix dockerfile ([998563a](https://github.com/andreibesleaga/camara-sdk/commit/998563ac77fba3854cd787a28dd9f70287bca0c3))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([c5eeeaf](https://github.com/andreibesleaga/camara-sdk/commit/c5eeeafa32644bdd35d79464bf37a3eb1860f54a))
+
+## 0.10.0 (2026-01-01)
+
+Full Changelog: [v0.9.5...v0.10.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.5...v0.10.0)
+
+### ⚠ BREAKING CHANGES
+
+* **mcp:** remove deprecated tool schemes
+* **mcp:** **Migration:** To migrate, simply modify the command used to invoke the MCP server. Currently, the only supported tool scheme is code mode. Now, starting the server with just `node /path/to/mcp/server` or `npx package-name` will invoke code tools: changing your command to one of these is likely all you will need to do.
+
+### Features
+
+* **api:** api update ([90b3413](https://github.com/andreibesleaga/camara-sdk/commit/90b341307ac99d3bf1cdf8bb2b75a9d2525be553))
+
+
+### Chores
+
+* **mcp:** remove deprecated tool schemes ([ad529cb](https://github.com/andreibesleaga/camara-sdk/commit/ad529cb543814bb2ff157dff8c7d246d708093b4))
+
+## 0.9.5 (2025-12-18)
+
+Full Changelog: [v0.9.4...v0.9.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.4...v0.9.5)
+
+### Bug Fixes
+
+* **mcp:** pass base url to code tool ([49ee523](https://github.com/andreibesleaga/camara-sdk/commit/49ee523145efc591d855a0c6244ff4173076cf6a))
+
+## 0.9.4 (2025-12-12)
+
+Full Changelog: [v0.9.3...v0.9.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.3...v0.9.4)
+
+### Bug Fixes
+
+* **docs:** remove extraneous example object fields ([97616fc](https://github.com/andreibesleaga/camara-sdk/commit/97616fc751dfb4f16a4fafa5e23a9261dfbbe431))
+
+## 0.9.3 (2025-12-11)
+
+Full Changelog: [v0.9.2...v0.9.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.2...v0.9.3)
+
+### Bug Fixes
+
+* **mcp:** add client instantiation options to code tool ([6edfcfb](https://github.com/andreibesleaga/camara-sdk/commit/6edfcfb25b017f0b68a68ebc13b567b8fe8cf887))
+
+
+### Chores
+
+* **mcp:** update lockfile ([74c5d5b](https://github.com/andreibesleaga/camara-sdk/commit/74c5d5b691876004d229ffecd20d45f78d40b75a))
+
+## 0.9.2 (2025-12-06)
+
+Full Changelog: [v0.9.1...v0.9.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.1...v0.9.2)
+
+### Chores
+
+* **internal:** codegen related update ([fce5ab2](https://github.com/andreibesleaga/camara-sdk/commit/fce5ab2ea89dca1099b52d3a3b919dea9e85f386))
+
+## 0.9.1 (2025-12-06)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([85d455c](https://github.com/andreibesleaga/camara-sdk/commit/85d455cba0a64bc14820c4ca9a2b481a31ea61b0))
+
+
+### Chores
+
+* **internal:** codegen related update ([2e393b8](https://github.com/andreibesleaga/camara-sdk/commit/2e393b89e6f164be79c6a58c3cafa133fc7045b3))
+
+## 0.9.0 (2025-12-06)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **mcp:** add typescript check to code execution tool ([a282c38](https://github.com/andreibesleaga/camara-sdk/commit/a282c38c36911b0bf3faf8bc615192c0ff0e4cfa))
+* **mcp:** handle code mode calls in the Stainless API ([1f38252](https://github.com/andreibesleaga/camara-sdk/commit/1f382527b524659a9d5d5f980692c65a2bcd31e7))
+
+
+### Bug Fixes
+
+* **mcp:** return correct lines on typescript errors ([fcb9b18](https://github.com/andreibesleaga/camara-sdk/commit/fcb9b181547bd49f9efd82e5b9d8d1abd71a8bc4))
+
+
+### Chores
+
+* **internal:** upgrade eslint ([43698b5](https://github.com/andreibesleaga/camara-sdk/commit/43698b56ef33c75d957608f226f56812853b7e2f))
+* use latest @modelcontextprotocol/sdk ([caddb86](https://github.com/andreibesleaga/camara-sdk/commit/caddb861ca6e09d1b09dbb38337c77dee1e1af9f))
+
+## 0.8.0 (2025-12-02)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **mcp:** return logs on code tool errors ([0c34755](https://github.com/andreibesleaga/camara-sdk/commit/0c34755fff99f0d94e6c3758072706942a071922))
+
+## 0.7.0 (2025-12-02)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **mcp:** add detail field to docs search tool ([f29c148](https://github.com/andreibesleaga/camara-sdk/commit/f29c1481b76df211a034fc0a1ccb9dc740f3e75f))
+
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on api error ([bf0629a](https://github.com/andreibesleaga/camara-sdk/commit/bf0629ac6673a375733c4e7e11441540b4c2b790))
+
+
+### Chores
+
+* **client:** fix logger property type ([99a1abd](https://github.com/andreibesleaga/camara-sdk/commit/99a1abd4e082638be0ba9c412ee76596df7b639a))
+
+## 0.6.0 (2025-11-24)
+
+Full Changelog: [v0.5.3...v0.6.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.3...v0.6.0)
+
+### Features
+
+* **api:** api update ([a68c013](https://github.com/andreibesleaga/camara-sdk/commit/a68c013a6c4f4dd88d1bfa4de9bd680baec2d4af))
+
+## 0.5.3 (2025-11-19)
+
+Full Changelog: [v0.5.2...v0.5.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.2...v0.5.3)
+
+### Chores
+
+* **internal:** configure MCP Server hosting ([5fd2e55](https://github.com/andreibesleaga/camara-sdk/commit/5fd2e554c5ecfc291dcf69af1930413478ad529a))
+* **mcp:** upgrade jq-web ([cc5550a](https://github.com/andreibesleaga/camara-sdk/commit/cc5550a73229d8bf3373637451af13eb4a1b4003))
+
+## 0.5.2 (2025-11-13)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.1...v0.5.2)
+
+### Bug Fixes
+
+* **mcp:** return tool execution error on jq failure ([7804096](https://github.com/andreibesleaga/camara-sdk/commit/7804096e901bd0c5d70083f3ed606f241d83a25d))
+
+
+### Chores
+
+* **internal:** codegen related update ([3b45bd5](https://github.com/andreibesleaga/camara-sdk/commit/3b45bd56bccbedc5ce76a0774298db01176c5633))
+* **mcp:** clarify http auth error ([48265ba](https://github.com/andreibesleaga/camara-sdk/commit/48265ba5724776c4a091169547be0e79e77c5125))
+
+
+### Documentation
+
+* **mcp:** add a README link to add server to VS Code or Claude Code ([9c07222](https://github.com/andreibesleaga/camara-sdk/commit/9c07222d9754f78e3d352b4cf98726e81ec37deb))
+
+## 0.5.1 (2025-11-06)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* **internal:** codegen related update ([6357c15](https://github.com/andreibesleaga/camara-sdk/commit/6357c15e3ea36a487a04356477c8d58a34d528e2))
+* **mcp:** add friendlier MCP code tool errors on incorrect method invocations ([d27cc28](https://github.com/andreibesleaga/camara-sdk/commit/d27cc28793d35d8102cf597f6b69d3f4500cd9a0))
+* **mcp:** add line numbers to code tool errors ([f352d34](https://github.com/andreibesleaga/camara-sdk/commit/f352d34d5f07af6f54321ad2d02061769c06e58c))
+
+
+### Documentation
+
+* **mcp:** add a README button for one-click add to Cursor ([c494f9a](https://github.com/andreibesleaga/camara-sdk/commit/c494f9ad00e37d55b8724b70fe42dac45a58180c))
+
+## 0.5.0 (2025-11-05)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **mcp:** enable optional code execution tool on http mcp servers ([3a5547c](https://github.com/andreibesleaga/camara-sdk/commit/3a5547c5c9989bf4f5df8a6fc337dd1658286a50))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([aa97794](https://github.com/andreibesleaga/camara-sdk/commit/aa977940152cc465ce740da785b16115936b5f35))
+* mcp code tool explicit error message when missing a run function ([a7a792f](https://github.com/andreibesleaga/camara-sdk/commit/a7a792f42d0cb21e3f1fcbb8561f2e5b9ed4395c))
+* use structured error when code execution tool errors ([97266c9](https://github.com/andreibesleaga/camara-sdk/commit/97266c9c9105a003a85e98c681f3f83f4acd435e))
+
+## 0.4.0 (2025-11-03)
+
+Full Changelog: [v0.3.1...v0.4.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.3.1...v0.4.0)
+
+### Features
+
+* **api:** api update ([4863262](https://github.com/andreibesleaga/camara-sdk/commit/486326291aed6318fed7425f8e5281c0dc140288))
+
+## 0.3.1 (2025-10-31)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* **mcpb:** pin @anthropic-ai/mcpb version ([3159da5](https://github.com/andreibesleaga/camara-sdk/commit/3159da5f6b8702e0c844677fd529e2aa13ecc049))
+
 ## 0.3.0 (2025-10-13)
 
 Full Changelog: [v0.2.2...v0.3.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.2.2...v0.3.0)

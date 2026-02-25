@@ -25,6 +25,8 @@ import {
   CreateCallForwardingSignal,
 } from './resources/callforwardingsignal';
 import {
+  DeviceIdentifierDevice,
+  DeviceIdentifierDeviceIpv4Addr,
   DeviceIdentifierRequestBody,
   Deviceidentifier,
   DeviceidentifierRetrieveIdentifierParams,
@@ -111,6 +113,11 @@ import {
 import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
+  /**
+   * Defaults to process.env['CAMARA_BEARER_TOKEN'].
+   */
+  bearerToken?: string | undefined;
+
   /**
    * Defaults to process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'].
    */
@@ -229,6 +236,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Camara API.
  */
 export class Camara {
+  bearerToken: string;
   deviceLocationNotificationsAPIKey: string;
   notificationsAPIKey: string;
   populationDensityDataNotificationsAPIKey: string;
@@ -242,7 +250,7 @@ export class Camara {
   baseURL: string;
   maxRetries: number;
   timeout: number;
-  logger: Logger | undefined;
+  logger: Logger;
   logLevel: LogLevel | undefined;
   fetchOptions: MergedRequestInit | undefined;
 
@@ -254,6 +262,7 @@ export class Camara {
   /**
    * API Client for interfacing with the Camara API.
    *
+   * @param {string | undefined} [opts.bearerToken=process.env['CAMARA_BEARER_TOKEN'] ?? undefined]
    * @param {string | undefined} [opts.deviceLocationNotificationsAPIKey=process.env['CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.notificationsAPIKey=process.env['CAMARA_NOTIFICATIONS_API_KEY'] ?? undefined]
    * @param {string | undefined} [opts.populationDensityDataNotificationsAPIKey=process.env['CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'] ?? undefined]
@@ -273,6 +282,7 @@ export class Camara {
    */
   constructor({
     baseURL = readEnv('CAMARA_BASE_URL'),
+    bearerToken = readEnv('CAMARA_BEARER_TOKEN'),
     deviceLocationNotificationsAPIKey = readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'),
     notificationsAPIKey = readEnv('CAMARA_NOTIFICATIONS_API_KEY'),
     populationDensityDataNotificationsAPIKey = readEnv(
@@ -288,6 +298,11 @@ export class Camara {
     connectedNetworkTypeNotificationsAPIKey = readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
+    if (bearerToken === undefined) {
+      throw new Errors.CamaraError(
+        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an bearerToken option, like new Camara({ bearerToken: 'My Bearer Token' }).",
+      );
+    }
     if (deviceLocationNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
         "The CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationNotificationsAPIKey option, like new Camara({ deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key' }).",
@@ -335,6 +350,7 @@ export class Camara {
     }
 
     const options: ClientOptions = {
+      bearerToken,
       deviceLocationNotificationsAPIKey,
       notificationsAPIKey,
       populationDensityDataNotificationsAPIKey,
@@ -365,6 +381,7 @@ export class Camara {
 
     this._options = options;
 
+    this.bearerToken = bearerToken;
     this.deviceLocationNotificationsAPIKey = deviceLocationNotificationsAPIKey;
     this.notificationsAPIKey = notificationsAPIKey;
     this.populationDensityDataNotificationsAPIKey = populationDensityDataNotificationsAPIKey;
@@ -389,6 +406,7 @@ export class Camara {
       logLevel: this.logLevel,
       fetch: this.fetch,
       fetchOptions: this.fetchOptions,
+      bearerToken: this.bearerToken,
       deviceLocationNotificationsAPIKey: this.deviceLocationNotificationsAPIKey,
       notificationsAPIKey: this.notificationsAPIKey,
       populationDensityDataNotificationsAPIKey: this.populationDensityDataNotificationsAPIKey,
@@ -420,6 +438,7 @@ export class Camara {
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([
+      await this.openIDAuth(opts),
       await this.deviceLocationnotificationsBearerAuth(opts),
       await this.notificationsBearerAuth(opts),
       await this.populationDensityDatanotificationsBearerAuth(opts),
@@ -430,6 +449,10 @@ export class Camara {
       await this.deviceReachabilityStatusnotificationsBearerAuth(opts),
       await this.connectedNetworkTypenotificationsBearerAuth(opts),
     ]);
+  }
+
+  protected async openIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
+    return buildHeaders([{ Authorization: `Bearer ${this.bearerToken}` }]);
   }
 
   protected async deviceLocationnotificationsBearerAuth(
@@ -722,7 +745,7 @@ export class Camara {
       loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
-      const errJSON = safeJSON(errText);
+      const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
       loggerFor(this).debug(
@@ -763,9 +786,10 @@ export class Camara {
     controller: AbortController,
   ): Promise<Response> {
     const { signal, method, ...options } = init || {};
-    if (signal) signal.addEventListener('abort', () => controller.abort());
+    const abort = this._makeAbort(controller);
+    if (signal) signal.addEventListener('abort', abort, { once: true });
 
-    const timeout = setTimeout(() => controller.abort(), ms);
+    const timeout = setTimeout(abort, ms);
 
     const isReadableBody =
       ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
@@ -932,6 +956,12 @@ export class Camara {
     return headers.values;
   }
 
+  private _makeAbort(controller: AbortController) {
+    // note: we can't just inline this method inside `fetchWithTimeout()` because then the closure
+    //       would capture all request options, and cause a memory leak.
+    return () => controller.abort();
+  }
+
   private buildBody({ options: { body, headers: rawHeaders } }: { options: FinalRequestOptions }): {
     bodyHeaders: HeadersLike;
     body: BodyInit | undefined;
@@ -964,6 +994,14 @@ export class Camara {
         (Symbol.iterator in body && 'next' in body && typeof body.next === 'function'))
     ) {
       return { bodyHeaders: undefined, body: Shims.ReadableStreamFrom(body as AsyncIterable<Uint8Array>) };
+    } else if (
+      typeof body === 'object' &&
+      headers.values.get('content-type') === 'application/x-www-form-urlencoded'
+    ) {
+      return {
+        bodyHeaders: { 'content-type': 'application/x-www-form-urlencoded' },
+        body: this.stringifyQuery(body as Record<string, unknown>),
+      };
     } else {
       return this.#encoder({ body, headers });
     }
@@ -1123,6 +1161,8 @@ export declare namespace Camara {
 
   export {
     Deviceidentifier as Deviceidentifier,
+    type DeviceIdentifierDevice as DeviceIdentifierDevice,
+    type DeviceIdentifierDeviceIpv4Addr as DeviceIdentifierDeviceIpv4Addr,
     type DeviceIdentifierRequestBody as DeviceIdentifierRequestBody,
     type DeviceidentifierRetrieveIdentifierResponse as DeviceidentifierRetrieveIdentifierResponse,
     type DeviceidentifierRetrievePpidResponse as DeviceidentifierRetrievePpidResponse,

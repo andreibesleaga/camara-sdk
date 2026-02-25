@@ -16,16 +16,7 @@ export class Populationdensitydata extends APIResource {
    * ```ts
    * const populationdensitydata =
    *   await client.populationdensitydata.retrieve({
-   *     area: {
-   *       areaType: 'POLYGON',
-   *       boundary: [
-   *         { latitude: 45.754114, longitude: 4.860374 },
-   *         { latitude: 45.753845, longitude: 4.863185 },
-   *         { latitude: 45.75249, longitude: 4.861876 },
-   *         { latitude: 45.751224, longitude: 4.861125 },
-   *         { latitude: 45.751442, longitude: 4.859827 },
-   *       ],
-   *     },
+   *     area: { areaType: 'POLYGON' },
    *     endTime: '2024-04-23T14:44:18.165Z',
    *     startTime: '2024-04-23T14:44:18.165Z',
    *     precision: 7,
