@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.16.0 (2026-02-25)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** manual updates ([112af40](https://github.com/andreibesleaga/camara-sdk/commit/112af4029b7386c82da7eeb4adb63cd078838c57))
+* **api:** manual updates ([39071a4](https://github.com/andreibesleaga/camara-sdk/commit/39071a494b111b4ecdffa416bb0e3e52aa074e4a))
+
+
+### Chores
+
+* **internal:** unconfigure MCP Server hosting ([b8d9b9a](https://github.com/andreibesleaga/camara-sdk/commit/b8d9b9ada5c4d8680182f37a3eacf8c7f91be45c))
+
 ## 0.15.0 (2026-02-25)
 
 Full Changelog: [v0.14.3...v0.15.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.14.3...v0.15.0)

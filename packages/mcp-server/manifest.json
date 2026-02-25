@@ -1,7 +1,7 @@
 {
   "dxt_version": "0.2",
   "name": "camara-sdk-mcp",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "The official MCP Server for the Camara API",
   "author": {
     "name": "Camara"
@@ -21,26 +21,6 @@
       ],
       "env": {
         "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
-        "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
         "CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY}",
         "CAMARA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_NOTIFICATIONS_API_KEY}",
         "CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY": "${user_config.CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY}",
@@ -54,126 +34,6 @@
     }
   },
   "user_config": {
-    "CAMARA_BEARER_TOKEN": {
-      "title": "bearer_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "customer_insights_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "device_swap_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "kyc_age_verification_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "kyc_fill_in_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "kyc_match_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "tenure_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "number_recycling_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "otp_validation_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "call_forwarding_signal_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "device_location_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "population_density_data_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "region_device_count_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "web_rtc_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "connectivity_insights_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "quality_on_demand_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "device_identifier_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "sim_swap_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "device_roaming_status_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
-    "CAMARA_BEARER_TOKEN": {
-      "title": "device_reachability_status_token",
-      "description": "",
-      "required": true,
-      "type": "string"
-    },
     "CAMARA_BEARER_TOKEN": {
       "title": "connected_network_type_token",
       "description": "",
