@@ -1,6 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import fs from 'node:fs';
+import path from 'node:path';
+import url from 'node:url';
+import { newDenoHTTPWorker } from '@valtown/deno-http-worker';
+import { workerPath } from './code-tool-paths.cjs';
 import {
+  ContentBlock,
   McpRequestContext,
   McpTool,
   Metadata,
@@ -12,6 +18,8 @@ import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import { readEnv, requireValue } from './util';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 import { SdkMethod } from './methods';
+import { McpCodeExecutionMode } from './options';
+import { ClientOptions } from 'camara-sdk';
 
 const prompt = `Runs JavaScript code to interact with the Camara API.
 
@@ -40,9 +48,19 @@ Variables will not persist between calls, so make sure to return or log any data
  * we expose a single tool that can be used to search for endpoints by name, resource, operation, or tag, and then
  * a generic endpoint that can be used to invoke any endpoint with the provided arguments.
  *
- * @param endpoints - The endpoints to include in the list.
+ * @param blockedMethods - The methods to block for code execution. Blocking is done by simple string
+ * matching, so it is not secure against obfuscation. For stronger security, block in the downstream API
+ * with limited API keys.
+ * @param codeExecutionMode - Whether to execute code in a local Deno environment or in a remote
+ * sandbox environment hosted by Stainless.
  */
-export function codeTool({ blockedMethods }: { blockedMethods: SdkMethod[] | undefined }): McpTool {
+export function codeTool({
+  blockedMethods,
+  codeExecutionMode,
+}: {
+  blockedMethods: SdkMethod[] | undefined;
+  codeExecutionMode: McpCodeExecutionMode;
+}): McpTool {
   const metadata: Metadata = { resource: 'all', operation: 'write', tags: [] };
   const tool: Tool = {
     name: 'execute',
@@ -62,6 +80,7 @@ export function codeTool({ blockedMethods }: { blockedMethods: SdkMethod[] | und
       required: ['code'],
     },
   };
+
   const handler = async ({
     reqContext,
     args,
@@ -70,9 +89,6 @@ export function codeTool({ blockedMethods }: { blockedMethods: SdkMethod[] | und
     args: any;
   }): Promise<ToolCallResult> => {
     const code = args.code as string;
-    const intent = args.intent as string | undefined;
-    const client = reqContext.client;
-
     // Do very basic blocking of code that includes forbidden method names.
     //
     // WARNING: This is not secure against obfuscation and other evasion methods. If
@@ -89,94 +105,324 @@ export function codeTool({ blockedMethods }: { blockedMethods: SdkMethod[] | und
       }
     }
 
-    const codeModeEndpoint =
-      readEnv('CODE_MODE_ENDPOINT_URL') ?? 'https://api.stainless.com/api/ai/code-tool';
-
-    // Setting a Stainless API key authenticates requests to the code tool endpoint.
-    const res = await fetch(codeModeEndpoint, {
-      method: 'POST',
-      headers: {
-        ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
-        'Content-Type': 'application/json',
-        client_envs: JSON.stringify({
-          CAMARA_BEARER_TOKEN: requireValue(
-            readEnv('CAMARA_BEARER_TOKEN') ?? client.bearerToken,
-            'set CAMARA_BEARER_TOKEN environment variable or provide bearerToken client option',
-          ),
-          CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ??
-              client.deviceLocationNotificationsAPIKey,
-            'set CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable or provide deviceLocationNotificationsAPIKey client option',
-          ),
-          CAMARA_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey,
-            'set CAMARA_NOTIFICATIONS_API_KEY environment variable or provide notificationsAPIKey client option',
-          ),
-          CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
-              client.populationDensityDataNotificationsAPIKey,
-            'set CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable or provide populationDensityDataNotificationsAPIKey client option',
-          ),
-          CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
-              client.regionDeviceCountNotificationsAPIKey,
-            'set CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable or provide regionDeviceCountNotificationsAPIKey client option',
-          ),
-          CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
-              client.connectivityInsightsNotificationsAPIKey,
-            'set CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable or provide connectivityInsightsNotificationsAPIKey client option',
-          ),
-          CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ?? client.simSwapNotificationsAPIKey,
-            'set CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable or provide simSwapNotificationsAPIKey client option',
-          ),
-          CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
-              client.deviceRoamingStatusNotificationsAPIKey,
-            'set CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceRoamingStatusNotificationsAPIKey client option',
-          ),
-          CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
-              client.deviceReachabilityStatusNotificationsAPIKey,
-            'set CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceReachabilityStatusNotificationsAPIKey client option',
-          ),
-          CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: requireValue(
-            readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
-              client.connectedNetworkTypeNotificationsAPIKey,
-            'set CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable or provide connectedNetworkTypeNotificationsAPIKey client option',
-          ),
-          CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL') ?? client.baseURL ?? undefined,
-        }),
-      },
-      body: JSON.stringify({
-        project_name: 'camara',
-        code,
-        intent,
-        client_opts: {},
-      } satisfies WorkerInput),
-    });
-
-    if (!res.ok) {
-      throw new Error(
-        `${res.status}: ${
-          res.statusText
-        } error when trying to contact Code Tool server. Details: ${await res.text()}`,
-      );
+    if (codeExecutionMode === 'local') {
+      return await localDenoHandler({ reqContext, args });
+    } else {
+      return await remoteStainlessHandler({ reqContext, args });
     }
-
-    const { is_error, result, log_lines, err_lines } = (await res.json()) as WorkerOutput;
-    const hasLogs = log_lines.length > 0 || err_lines.length > 0;
-    const output = {
-      result,
-      ...(log_lines.length > 0 && { log_lines }),
-      ...(err_lines.length > 0 && { err_lines }),
-    };
-    if (is_error) {
-      return asErrorResult(typeof result === 'string' && !hasLogs ? result : JSON.stringify(output, null, 2));
-    }
-    return asTextContentResult(output);
   };
 
   return { metadata, tool, handler };
 }
+
+const remoteStainlessHandler = async ({
+  reqContext,
+  args,
+}: {
+  reqContext: McpRequestContext;
+  args: any;
+}): Promise<ToolCallResult> => {
+  const code = args.code as string;
+  const intent = args.intent as string | undefined;
+  const client = reqContext.client;
+
+  const codeModeEndpoint = readEnv('CODE_MODE_ENDPOINT_URL') ?? 'https://api.stainless.com/api/ai/code-tool';
+
+  // Setting a Stainless API key authenticates requests to the code tool endpoint.
+  const res = await fetch(codeModeEndpoint, {
+    method: 'POST',
+    headers: {
+      ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
+      'Content-Type': 'application/json',
+      client_envs: JSON.stringify({
+        CAMARA_BEARER_TOKEN: requireValue(
+          readEnv('CAMARA_BEARER_TOKEN') ?? client.bearerToken,
+          'set CAMARA_BEARER_TOKEN environment variable or provide bearerToken client option',
+        ),
+        CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ?? client.deviceLocationNotificationsAPIKey,
+          'set CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable or provide deviceLocationNotificationsAPIKey client option',
+        ),
+        CAMARA_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey,
+          'set CAMARA_NOTIFICATIONS_API_KEY environment variable or provide notificationsAPIKey client option',
+        ),
+        CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
+            client.populationDensityDataNotificationsAPIKey,
+          'set CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable or provide populationDensityDataNotificationsAPIKey client option',
+        ),
+        CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
+            client.regionDeviceCountNotificationsAPIKey,
+          'set CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable or provide regionDeviceCountNotificationsAPIKey client option',
+        ),
+        CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
+            client.connectivityInsightsNotificationsAPIKey,
+          'set CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable or provide connectivityInsightsNotificationsAPIKey client option',
+        ),
+        CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ?? client.simSwapNotificationsAPIKey,
+          'set CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable or provide simSwapNotificationsAPIKey client option',
+        ),
+        CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
+            client.deviceRoamingStatusNotificationsAPIKey,
+          'set CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceRoamingStatusNotificationsAPIKey client option',
+        ),
+        CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
+            client.deviceReachabilityStatusNotificationsAPIKey,
+          'set CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceReachabilityStatusNotificationsAPIKey client option',
+        ),
+        CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: requireValue(
+          readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
+            client.connectedNetworkTypeNotificationsAPIKey,
+          'set CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable or provide connectedNetworkTypeNotificationsAPIKey client option',
+        ),
+        CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL') ?? client.baseURL ?? undefined,
+      }),
+    },
+    body: JSON.stringify({
+      project_name: 'camara',
+      code,
+      intent,
+      client_opts: {},
+    } satisfies WorkerInput),
+  });
+
+  if (!res.ok) {
+    throw new Error(
+      `${res.status}: ${
+        res.statusText
+      } error when trying to contact Code Tool server. Details: ${await res.text()}`,
+    );
+  }
+
+  const { is_error, result, log_lines, err_lines } = (await res.json()) as WorkerOutput;
+  const hasLogs = log_lines.length > 0 || err_lines.length > 0;
+  const output = {
+    result,
+    ...(log_lines.length > 0 && { log_lines }),
+    ...(err_lines.length > 0 && { err_lines }),
+  };
+  if (is_error) {
+    return asErrorResult(typeof result === 'string' && !hasLogs ? result : JSON.stringify(output, null, 2));
+  }
+  return asTextContentResult(output);
+};
+
+const localDenoHandler = async ({
+  reqContext,
+  args,
+}: {
+  reqContext: McpRequestContext;
+  args: unknown;
+}): Promise<ToolCallResult> => {
+  const client = reqContext.client;
+  const baseURLHostname = new URL(client.baseURL).hostname;
+  const { code } = args as { code: string };
+
+  let denoPath: string;
+
+  const packageRoot = path.resolve(path.dirname(workerPath), '..');
+  const packageNodeModulesPath = path.resolve(packageRoot, 'node_modules');
+
+  // Check if deno is in PATH
+  const { execSync } = await import('node:child_process');
+  try {
+    execSync('command -v deno', { stdio: 'ignore' });
+    denoPath = 'deno';
+  } catch {
+    try {
+      // Use deno binary in node_modules if it's found
+      const denoNodeModulesPath = path.resolve(packageNodeModulesPath, 'deno', 'bin.cjs');
+      await fs.promises.access(denoNodeModulesPath, fs.constants.X_OK);
+      denoPath = denoNodeModulesPath;
+    } catch {
+      return asErrorResult(
+        'Deno is required for code execution but was not found. ' +
+          'Install it from https://deno.land or run: npm install deno',
+      );
+    }
+  }
+
+  const allowReadPaths = [
+    'code-tool-worker.mjs',
+    `${workerPath.replace(/([\/\\]node_modules)[\/\\].+$/, '$1')}/`,
+    packageRoot,
+  ];
+
+  // Follow symlinks in node_modules to allow read access to workspace-linked packages
+  try {
+    const sdkPkgName = 'camara-sdk';
+    const sdkDir = path.resolve(packageNodeModulesPath, sdkPkgName);
+    const realSdkDir = fs.realpathSync(sdkDir);
+    if (realSdkDir !== sdkDir) {
+      allowReadPaths.push(realSdkDir);
+    }
+  } catch {
+    // Ignore if symlink resolution fails
+  }
+
+  const allowRead = allowReadPaths.join(',');
+
+  const worker = await newDenoHTTPWorker(url.pathToFileURL(workerPath), {
+    denoExecutable: denoPath,
+    runFlags: [
+      `--node-modules-dir=manual`,
+      `--allow-read=${allowRead}`,
+      `--allow-net=${baseURLHostname}`,
+      // Allow environment variables because instantiating the client will try to read from them,
+      // even though they are not set.
+      '--allow-env',
+    ],
+    printOutput: true,
+    spawnOptions: {
+      cwd: path.dirname(workerPath),
+    },
+  });
+
+  try {
+    const resp = await new Promise<Response>((resolve, reject) => {
+      worker.addEventListener('exit', (exitCode) => {
+        reject(new Error(`Worker exited with code ${exitCode}`));
+      });
+
+      const opts: ClientOptions = {
+        baseURL: client.baseURL,
+        bearerToken: client.bearerToken,
+        customerInsightsToken: client.customerInsightsToken,
+        deviceSwapToken: client.deviceSwapToken,
+        kycAgeVerificationToken: client.kycAgeVerificationToken,
+        kycFillInToken: client.kycFillInToken,
+        kycMatchToken: client.kycMatchToken,
+        tenureToken: client.tenureToken,
+        numberRecyclingToken: client.numberRecyclingToken,
+        otpValidationToken: client.otpValidationToken,
+        callForwardingSignalToken: client.callForwardingSignalToken,
+        deviceLocationToken: client.deviceLocationToken,
+        populationDensityDataToken: client.populationDensityDataToken,
+        regionDeviceCountToken: client.regionDeviceCountToken,
+        webRtcToken: client.webRtcToken,
+        connectivityInsightsToken: client.connectivityInsightsToken,
+        qualityOnDemandToken: client.qualityOnDemandToken,
+        deviceIdentifierToken: client.deviceIdentifierToken,
+        simSwapToken: client.simSwapToken,
+        deviceRoamingStatusToken: client.deviceRoamingStatusToken,
+        deviceReachabilityStatusToken: client.deviceReachabilityStatusToken,
+        connectedNetworkTypeToken: client.connectedNetworkTypeToken,
+        deviceLocationNotificationsAPIKey: client.deviceLocationNotificationsAPIKey,
+        notificationsAPIKey: client.notificationsAPIKey,
+        populationDensityDataNotificationsAPIKey: client.populationDensityDataNotificationsAPIKey,
+        regionDeviceCountNotificationsAPIKey: client.regionDeviceCountNotificationsAPIKey,
+        connectivityInsightsNotificationsAPIKey: client.connectivityInsightsNotificationsAPIKey,
+        simSwapNotificationsAPIKey: client.simSwapNotificationsAPIKey,
+        deviceRoamingStatusNotificationsAPIKey: client.deviceRoamingStatusNotificationsAPIKey,
+        deviceReachabilityStatusNotificationsAPIKey: client.deviceReachabilityStatusNotificationsAPIKey,
+        connectedNetworkTypeNotificationsAPIKey: client.connectedNetworkTypeNotificationsAPIKey,
+        defaultHeaders: {
+          'X-Stainless-MCP': 'true',
+        },
+      };
+
+      const req = worker.request(
+        'http://localhost',
+        {
+          headers: {
+            'content-type': 'application/json',
+          },
+          method: 'POST',
+        },
+        (resp) => {
+          const body: Uint8Array[] = [];
+          resp.on('error', (err) => {
+            reject(err);
+          });
+          resp.on('data', (chunk) => {
+            body.push(chunk);
+          });
+          resp.on('end', () => {
+            resolve(
+              new Response(Buffer.concat(body).toString(), {
+                status: resp.statusCode ?? 200,
+                headers: resp.headers as any,
+              }),
+            );
+          });
+        },
+      );
+
+      const body = JSON.stringify({
+        opts,
+        code,
+      });
+
+      req.write(body, (err) => {
+        if (err != null) {
+          reject(err);
+        }
+      });
+
+      req.end();
+    });
+
+    if (resp.status === 200) {
+      const { result, log_lines, err_lines } = (await resp.json()) as WorkerOutput;
+      const returnOutput: ContentBlock | null =
+        result == null ? null : (
+          {
+            type: 'text',
+            text: typeof result === 'string' ? result : JSON.stringify(result),
+          }
+        );
+      const logOutput: ContentBlock | null =
+        log_lines.length === 0 ?
+          null
+        : {
+            type: 'text',
+            text: log_lines.join('\n'),
+          };
+      const errOutput: ContentBlock | null =
+        err_lines.length === 0 ?
+          null
+        : {
+            type: 'text',
+            text: 'Error output:\n' + err_lines.join('\n'),
+          };
+      return {
+        content: [returnOutput, logOutput, errOutput].filter((block) => block !== null),
+      };
+    } else {
+      const { result, log_lines, err_lines } = (await resp.json()) as WorkerOutput;
+      const messageOutput: ContentBlock | null =
+        result == null ? null : (
+          {
+            type: 'text',
+            text: typeof result === 'string' ? result : JSON.stringify(result),
+          }
+        );
+      const logOutput: ContentBlock | null =
+        log_lines.length === 0 ?
+          null
+        : {
+            type: 'text',
+            text: log_lines.join('\n'),
+          };
+      const errOutput: ContentBlock | null =
+        err_lines.length === 0 ?
+          null
+        : {
+            type: 'text',
+            text: 'Error output:\n' + err_lines.join('\n'),
+          };
+      return {
+        content: [messageOutput, logOutput, errOutput].filter((block) => block !== null),
+        isError: true,
+      };
+    }
+  } finally {
+    worker.terminate();
+  }
+};
