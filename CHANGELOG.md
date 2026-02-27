@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.17.0 (2026-02-27)
+
+Full Changelog: [v0.16.2...v0.17.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.2...v0.17.0)
+
+### Features
+
+* **mcp:** add an option to disable code tool ([f88a671](https://github.com/andreibesleaga/camara-sdk/commit/f88a671922a58c8b0af3d68d91c2b04fcd123ef8))
+
+
+### Bug Fixes
+
+* **mcp:** update prompt ([feaf82f](https://github.com/andreibesleaga/camara-sdk/commit/feaf82f3e09bab86cac4dda0b88f73c354a17d1d))
+
+
+### Chores
+
+* **internal:** move stringifyQuery implementation to internal function ([0f9638d](https://github.com/andreibesleaga/camara-sdk/commit/0f9638de6ad77f7f2558ce37ede65b6a74c7026e))
+
 ## 0.16.2 (2026-02-26)
 
 Full Changelog: [v0.16.1...v0.16.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.1...v0.16.2)
