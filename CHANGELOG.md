@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.2 (2026-02-26)
+
+Full Changelog: [v0.16.1...v0.16.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.1...v0.16.2)
+
+### Chores
+
+* **internal:** fix MCP Dockerfiles so they can be built without buildkit ([0814ff8](https://github.com/andreibesleaga/camara-sdk/commit/0814ff82c8bd20a3b4503727f56062e6f0aae99f))
+* **internal:** fix MCP Dockerfiles so they can be built without buildkit ([12ae352](https://github.com/andreibesleaga/camara-sdk/commit/12ae35282a84dc3462432529b64beeb2117f6144))
+
 ## 0.16.1 (2026-02-25)
 
 Full Changelog: [v0.16.0...v0.16.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.0...v0.16.1)
