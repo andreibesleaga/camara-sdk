@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Region Device Count
+ */
 export class Regiondevicecount extends APIResource {
   /**
    * Get the number of devices in the specified area during a certain time interval.

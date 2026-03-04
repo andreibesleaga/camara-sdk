@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Population Density Data
+ */
 export class Populationdensitydata extends APIResource {
   /**
    * Retrieves population density estimation together with the estimation range

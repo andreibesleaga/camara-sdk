@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * KYC Tenure
+ */
 export class Tenure extends APIResource {
   /**
    * Verifies a specified length of tenure, based on a provided date, for a network

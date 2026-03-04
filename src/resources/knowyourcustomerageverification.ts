@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Know Your Customer Age Verification
+ */
 export class Knowyourcustomerageverification extends APIResource {
   /**
    * Verify that the age of the subscriber associated with a phone number is equal to

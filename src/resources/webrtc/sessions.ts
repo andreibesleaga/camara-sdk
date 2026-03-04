@@ -6,6 +6,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * WebRTC Call Handling
+ */
 export class Sessions extends APIResource {
   /**
    * Creates a voice and/or video session

@@ -5,6 +5,9 @@ import { APIPromise } from '../../core/api-promise';
 import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 
+/**
+ * Customer Insights
+ */
 export class Scoring extends APIResource {
   /**
    * Retrieves Scoring information, for the user associated with the provided

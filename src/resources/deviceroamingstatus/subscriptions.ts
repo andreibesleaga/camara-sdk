@@ -6,6 +6,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Device Roaming Status Subscriptions
+ */
 export class Subscriptions extends APIResource {
   /**
    * Create a device roaming status event subscription for a device
