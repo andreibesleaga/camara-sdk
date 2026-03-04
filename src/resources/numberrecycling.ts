@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Number Recycling
+ */
 export class Numberrecycling extends APIResource {
   /**
    * Check whether the subscriber of the phone number has changed.

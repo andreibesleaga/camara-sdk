@@ -6,6 +6,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Device Reachability Status Subscriptions
+ */
 export class Subscriptions extends APIResource {
   /**
    * Create a device reachability status event subscription for a device

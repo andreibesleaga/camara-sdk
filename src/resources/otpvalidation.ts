@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * One Time Password SMS
+ */
 export class Otpvalidation extends APIResource {
   /**
    * Sends an SMS with the desired message and an OTP code to the received phone

@@ -6,6 +6,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Device Identifier
+ */
 export class Deviceidentifier extends APIResource {
   /**
    * Get details about the specific device being used by a given mobile subscriber

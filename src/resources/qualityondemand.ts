@@ -6,6 +6,9 @@ import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 import { path } from '../internal/utils/path';
 
+/**
+ * QoS Profiles
+ */
 export class Qualityondemand extends APIResource {
   /**
    * Returns a QoS Profile that matches the given name.

@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Know Your Customer Match
+ */
 export class Knowyourcustomermatch extends APIResource {
   /**
    * Verify matching of a number of attributes related to a customer identity against
