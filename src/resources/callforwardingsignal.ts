@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Call Forwarding Signal
+ */
 export class Callforwardingsignal extends APIResource {
   /**
    * This endpoint provides information about which type of call forwarding service

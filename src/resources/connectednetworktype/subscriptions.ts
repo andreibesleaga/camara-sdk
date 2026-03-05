@@ -6,6 +6,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Connected Network Type Subscriptions
+ */
 export class Subscriptions extends APIResource {
   /**
    * Create a subscription for receiving notifications on changes to the connected

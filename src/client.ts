@@ -1459,21 +1459,57 @@ export class Camara {
   static toFile = Uploads.toFile;
 
   customerinsights: API.Customerinsights = new API.Customerinsights(this);
+  /**
+   * Device Swap
+   */
   deviceswap: API.Deviceswap = new API.Deviceswap(this);
+  /**
+   * Know Your Customer Age Verification
+   */
   knowyourcustomerageverification: API.Knowyourcustomerageverification =
     new API.Knowyourcustomerageverification(this);
+  /**
+   * Know Your Customer Fill-in
+   */
   knowyourcustomerfillIn: API.KnowyourcustomerfillIn = new API.KnowyourcustomerfillIn(this);
+  /**
+   * Know Your Customer Match
+   */
   knowyourcustomermatch: API.Knowyourcustomermatch = new API.Knowyourcustomermatch(this);
+  /**
+   * KYC Tenure
+   */
   tenure: API.Tenure = new API.Tenure(this);
+  /**
+   * Number Recycling
+   */
   numberrecycling: API.Numberrecycling = new API.Numberrecycling(this);
+  /**
+   * One Time Password SMS
+   */
   otpvalidation: API.Otpvalidation = new API.Otpvalidation(this);
+  /**
+   * Call Forwarding Signal
+   */
   callforwardingsignal: API.Callforwardingsignal = new API.Callforwardingsignal(this);
   devicelocation: API.Devicelocation = new API.Devicelocation(this);
+  /**
+   * Population Density Data
+   */
   populationdensitydata: API.Populationdensitydata = new API.Populationdensitydata(this);
+  /**
+   * Region Device Count
+   */
   regiondevicecount: API.Regiondevicecount = new API.Regiondevicecount(this);
   webrtc: API.Webrtc = new API.Webrtc(this);
   connectivityinsights: API.Connectivityinsights = new API.Connectivityinsights(this);
+  /**
+   * QoS Profiles
+   */
   qualityondemand: API.Qualityondemand = new API.Qualityondemand(this);
+  /**
+   * Device Identifier
+   */
   deviceidentifier: API.Deviceidentifier = new API.Deviceidentifier(this);
   simswap: API.Simswap = new API.Simswap(this);
   deviceroamingstatus: API.Deviceroamingstatus = new API.Deviceroamingstatus(this);

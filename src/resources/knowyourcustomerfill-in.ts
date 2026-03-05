@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Know Your Customer Fill-in
+ */
 export class KnowyourcustomerfillIn extends APIResource {
   /**
    * Providing information related to a customer identity stored the account data

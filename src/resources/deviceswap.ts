@@ -5,6 +5,9 @@ import { APIPromise } from '../core/api-promise';
 import { buildHeaders } from '../internal/headers';
 import { RequestOptions } from '../internal/request-options';
 
+/**
+ * Device Swap
+ */
 export class Deviceswap extends APIResource {
   /**
    * Check if device swap has been performed during a past period

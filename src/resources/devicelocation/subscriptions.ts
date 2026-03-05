@@ -7,6 +7,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Device Geofencing Subscriptions
+ */
 export class Subscriptions extends APIResource {
   /**
    * Create a subscription for a device to receive notifications when the device

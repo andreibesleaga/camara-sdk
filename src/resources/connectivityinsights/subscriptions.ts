@@ -6,6 +6,9 @@ import { buildHeaders } from '../../internal/headers';
 import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
+/**
+ * Connectivity Insights Subscriptions
+ */
 export class Subscriptions extends APIResource {
   /**
    * Create a Connectivity insights subscription for a device
