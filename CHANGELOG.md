@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.17.1 (2026-03-05)
+
+Full Changelog: [v0.17.0...v0.17.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.0...v0.17.1)
+
+### Chores
+
+* **internal:** codegen related update ([03318ae](https://github.com/andreibesleaga/camara-sdk/commit/03318ae3c3f825690aee3e0d01bfa2c35e6fef97))
+* **internal:** use x-stainless-mcp-client-envs header for MCP remote code tool calls ([de6693f](https://github.com/andreibesleaga/camara-sdk/commit/de6693f4e04716f405cbe01106bb9b246dced873))
+* **mcp-server:** return access instructions for 404 without API key ([5496a56](https://github.com/andreibesleaga/camara-sdk/commit/5496a56ca322c83cdfc7c597f813d965be339f4f))
+
 ## 0.17.0 (2026-02-27)
 
 Full Changelog: [v0.16.2...v0.17.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.16.2...v0.17.0)
