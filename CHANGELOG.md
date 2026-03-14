@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.17.2 (2026-03-14)
+
+Full Changelog: [v0.17.1...v0.17.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.1...v0.17.2)
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([e8ad7b8](https://github.com/andreibesleaga/camara-sdk/commit/e8ad7b8cc063cd1ae287f02cc87453db10c2b4f0))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([d391ecc](https://github.com/andreibesleaga/camara-sdk/commit/d391ecc419aafecc90bb51d07d61ff9fccb8864b))
+* **internal:** bump @modelcontextprotocol/sdk, @hono/node-server, and minimatch ([39c55eb](https://github.com/andreibesleaga/camara-sdk/commit/39c55eb795d5cca940d83c855e64751ce413720e))
+* **internal:** codegen related update ([b1e6c10](https://github.com/andreibesleaga/camara-sdk/commit/b1e6c103d361ac331958d29217cf73d47908d6d9))
+* **internal:** make generated MCP servers compatible with Cloudflare worker environments ([f96265e](https://github.com/andreibesleaga/camara-sdk/commit/f96265ed4feabfc868c65e86dd78fc3c1589d44c))
+* **internal:** support x-stainless-mcp-client-envs header in MCP servers ([c8230a6](https://github.com/andreibesleaga/camara-sdk/commit/c8230a6565d67a80fa07b335a618b47fd9cdffdb))
+* **internal:** update dependencies to address dependabot vulnerabilities ([d2272bc](https://github.com/andreibesleaga/camara-sdk/commit/d2272bc2d1b42b7052e80f564e2c166226a45da6))
+* **mcp-server:** improve instructions ([9ff3c38](https://github.com/andreibesleaga/camara-sdk/commit/9ff3c38d1f9b0fb14585d41601ecf1c47eb2755e))
+* use proper capitalization for WebSockets ([583ddf1](https://github.com/andreibesleaga/camara-sdk/commit/583ddf1f1c44e7d9f97e072060b2409b0f315c03))
+
 ## 0.17.1 (2026-03-05)
 
 Full Changelog: [v0.17.0...v0.17.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.0...v0.17.1)
