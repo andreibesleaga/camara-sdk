@@ -1,10 +1,5 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import fs from 'node:fs';
-import path from 'node:path';
-import url from 'node:url';
-import { newDenoHTTPWorker } from '@valtown/deno-http-worker';
-import { workerPath } from './code-tool-paths.cjs';
 import {
   ContentBlock,
   McpRequestContext,
@@ -149,61 +144,65 @@ const remoteStainlessHandler = async ({
 
   const codeModeEndpoint = readEnv('CODE_MODE_ENDPOINT_URL') ?? 'https://api.stainless.com/api/ai/code-tool';
 
+  const localClientEnvs = {
+    CAMARA_BEARER_TOKEN: requireValue(
+      readEnv('CAMARA_BEARER_TOKEN') ?? client.bearerToken,
+      'set CAMARA_BEARER_TOKEN environment variable or provide bearerToken client option',
+    ),
+    CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ?? client.deviceLocationNotificationsAPIKey,
+      'set CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable or provide deviceLocationNotificationsAPIKey client option',
+    ),
+    CAMARA_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey,
+      'set CAMARA_NOTIFICATIONS_API_KEY environment variable or provide notificationsAPIKey client option',
+    ),
+    CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
+        client.populationDensityDataNotificationsAPIKey,
+      'set CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable or provide populationDensityDataNotificationsAPIKey client option',
+    ),
+    CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
+        client.regionDeviceCountNotificationsAPIKey,
+      'set CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable or provide regionDeviceCountNotificationsAPIKey client option',
+    ),
+    CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
+        client.connectivityInsightsNotificationsAPIKey,
+      'set CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable or provide connectivityInsightsNotificationsAPIKey client option',
+    ),
+    CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ?? client.simSwapNotificationsAPIKey,
+      'set CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable or provide simSwapNotificationsAPIKey client option',
+    ),
+    CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
+        client.deviceRoamingStatusNotificationsAPIKey,
+      'set CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceRoamingStatusNotificationsAPIKey client option',
+    ),
+    CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
+        client.deviceReachabilityStatusNotificationsAPIKey,
+      'set CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceReachabilityStatusNotificationsAPIKey client option',
+    ),
+    CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: requireValue(
+      readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
+        client.connectedNetworkTypeNotificationsAPIKey,
+      'set CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable or provide connectedNetworkTypeNotificationsAPIKey client option',
+    ),
+    CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL') ?? client.baseURL ?? undefined,
+  };
+  // Merge any upstream client envs from the request header, with upstream values taking precedence.
+  const mergedClientEnvs = { ...localClientEnvs, ...reqContext.upstreamClientEnvs };
+
   // Setting a Stainless API key authenticates requests to the code tool endpoint.
   const res = await fetch(codeModeEndpoint, {
     method: 'POST',
     headers: {
       ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
       'Content-Type': 'application/json',
-      'x-stainless-mcp-client-envs': JSON.stringify({
-        CAMARA_BEARER_TOKEN: requireValue(
-          readEnv('CAMARA_BEARER_TOKEN') ?? client.bearerToken,
-          'set CAMARA_BEARER_TOKEN environment variable or provide bearerToken client option',
-        ),
-        CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY') ?? client.deviceLocationNotificationsAPIKey,
-          'set CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable or provide deviceLocationNotificationsAPIKey client option',
-        ),
-        CAMARA_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_NOTIFICATIONS_API_KEY') ?? client.notificationsAPIKey,
-          'set CAMARA_NOTIFICATIONS_API_KEY environment variable or provide notificationsAPIKey client option',
-        ),
-        CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY') ??
-            client.populationDensityDataNotificationsAPIKey,
-          'set CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable or provide populationDensityDataNotificationsAPIKey client option',
-        ),
-        CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY') ??
-            client.regionDeviceCountNotificationsAPIKey,
-          'set CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable or provide regionDeviceCountNotificationsAPIKey client option',
-        ),
-        CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY') ??
-            client.connectivityInsightsNotificationsAPIKey,
-          'set CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable or provide connectivityInsightsNotificationsAPIKey client option',
-        ),
-        CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY') ?? client.simSwapNotificationsAPIKey,
-          'set CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable or provide simSwapNotificationsAPIKey client option',
-        ),
-        CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY') ??
-            client.deviceRoamingStatusNotificationsAPIKey,
-          'set CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceRoamingStatusNotificationsAPIKey client option',
-        ),
-        CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY') ??
-            client.deviceReachabilityStatusNotificationsAPIKey,
-          'set CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable or provide deviceReachabilityStatusNotificationsAPIKey client option',
-        ),
-        CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY: requireValue(
-          readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY') ??
-            client.connectedNetworkTypeNotificationsAPIKey,
-          'set CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable or provide connectedNetworkTypeNotificationsAPIKey client option',
-        ),
-        CAMARA_BASE_URL: readEnv('CAMARA_BASE_URL') ?? client.baseURL ?? undefined,
-      }),
+      'x-stainless-mcp-client-envs': JSON.stringify(mergedClientEnvs),
     },
     body: JSON.stringify({
       project_name: 'camara',
@@ -246,6 +245,13 @@ const localDenoHandler = async ({
   reqContext: McpRequestContext;
   args: unknown;
 }): Promise<ToolCallResult> => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const url = await import('node:url');
+  const { newDenoHTTPWorker } = await import('@valtown/deno-http-worker');
+  const { getWorkerPath } = await import('./code-tool-paths.cjs');
+  const workerPath = getWorkerPath();
+
   const client = reqContext.client;
   const baseURLHostname = new URL(client.baseURL).hostname;
   const { code } = args as { code: string };
@@ -307,6 +313,9 @@ const localDenoHandler = async ({
     printOutput: true,
     spawnOptions: {
       cwd: path.dirname(workerPath),
+      // Merge any upstream client envs into the Deno subprocess environment,
+      // with the upstream env vars taking precedence.
+      env: { ...process.env, ...reqContext.upstreamClientEnvs },
     },
   });
 
@@ -316,42 +325,46 @@ const localDenoHandler = async ({
         reject(new Error(`Worker exited with code ${exitCode}`));
       });
 
-      const opts: ClientOptions = {
-        baseURL: client.baseURL,
-        bearerToken: client.bearerToken,
-        customerInsightsToken: client.customerInsightsToken,
-        deviceSwapToken: client.deviceSwapToken,
-        kycAgeVerificationToken: client.kycAgeVerificationToken,
-        kycFillInToken: client.kycFillInToken,
-        kycMatchToken: client.kycMatchToken,
-        tenureToken: client.tenureToken,
-        numberRecyclingToken: client.numberRecyclingToken,
-        otpValidationToken: client.otpValidationToken,
-        callForwardingSignalToken: client.callForwardingSignalToken,
-        deviceLocationToken: client.deviceLocationToken,
-        populationDensityDataToken: client.populationDensityDataToken,
-        regionDeviceCountToken: client.regionDeviceCountToken,
-        webRtcToken: client.webRtcToken,
-        connectivityInsightsToken: client.connectivityInsightsToken,
-        qualityOnDemandToken: client.qualityOnDemandToken,
-        deviceIdentifierToken: client.deviceIdentifierToken,
-        simSwapToken: client.simSwapToken,
-        deviceRoamingStatusToken: client.deviceRoamingStatusToken,
-        deviceReachabilityStatusToken: client.deviceReachabilityStatusToken,
-        connectedNetworkTypeToken: client.connectedNetworkTypeToken,
-        deviceLocationNotificationsAPIKey: client.deviceLocationNotificationsAPIKey,
-        notificationsAPIKey: client.notificationsAPIKey,
-        populationDensityDataNotificationsAPIKey: client.populationDensityDataNotificationsAPIKey,
-        regionDeviceCountNotificationsAPIKey: client.regionDeviceCountNotificationsAPIKey,
-        connectivityInsightsNotificationsAPIKey: client.connectivityInsightsNotificationsAPIKey,
-        simSwapNotificationsAPIKey: client.simSwapNotificationsAPIKey,
-        deviceRoamingStatusNotificationsAPIKey: client.deviceRoamingStatusNotificationsAPIKey,
-        deviceReachabilityStatusNotificationsAPIKey: client.deviceReachabilityStatusNotificationsAPIKey,
-        connectedNetworkTypeNotificationsAPIKey: client.connectedNetworkTypeNotificationsAPIKey,
-        defaultHeaders: {
-          'X-Stainless-MCP': 'true',
-        },
-      };
+      // Strip null/undefined values so that the worker SDK client can fall back to
+      // reading from environment variables (including any upstreamClientEnvs).
+      const opts: ClientOptions = Object.fromEntries(
+        Object.entries({
+          baseURL: client.baseURL,
+          bearerToken: client.bearerToken,
+          customerInsightsToken: client.customerInsightsToken,
+          deviceSwapToken: client.deviceSwapToken,
+          kycAgeVerificationToken: client.kycAgeVerificationToken,
+          kycFillInToken: client.kycFillInToken,
+          kycMatchToken: client.kycMatchToken,
+          tenureToken: client.tenureToken,
+          numberRecyclingToken: client.numberRecyclingToken,
+          otpValidationToken: client.otpValidationToken,
+          callForwardingSignalToken: client.callForwardingSignalToken,
+          deviceLocationToken: client.deviceLocationToken,
+          populationDensityDataToken: client.populationDensityDataToken,
+          regionDeviceCountToken: client.regionDeviceCountToken,
+          webRtcToken: client.webRtcToken,
+          connectivityInsightsToken: client.connectivityInsightsToken,
+          qualityOnDemandToken: client.qualityOnDemandToken,
+          deviceIdentifierToken: client.deviceIdentifierToken,
+          simSwapToken: client.simSwapToken,
+          deviceRoamingStatusToken: client.deviceRoamingStatusToken,
+          deviceReachabilityStatusToken: client.deviceReachabilityStatusToken,
+          connectedNetworkTypeToken: client.connectedNetworkTypeToken,
+          deviceLocationNotificationsAPIKey: client.deviceLocationNotificationsAPIKey,
+          notificationsAPIKey: client.notificationsAPIKey,
+          populationDensityDataNotificationsAPIKey: client.populationDensityDataNotificationsAPIKey,
+          regionDeviceCountNotificationsAPIKey: client.regionDeviceCountNotificationsAPIKey,
+          connectivityInsightsNotificationsAPIKey: client.connectivityInsightsNotificationsAPIKey,
+          simSwapNotificationsAPIKey: client.simSwapNotificationsAPIKey,
+          deviceRoamingStatusNotificationsAPIKey: client.deviceRoamingStatusNotificationsAPIKey,
+          deviceReachabilityStatusNotificationsAPIKey: client.deviceReachabilityStatusNotificationsAPIKey,
+          connectedNetworkTypeNotificationsAPIKey: client.connectedNetworkTypeNotificationsAPIKey,
+          defaultHeaders: {
+            'X-Stainless-MCP': 'true',
+          },
+        }).filter(([_, v]) => v != null),
+      ) as ClientOptions;
 
       const req = worker.request(
         'http://localhost',
