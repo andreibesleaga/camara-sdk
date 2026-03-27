@@ -26,7 +26,7 @@ export const newMcpServer = async ({
   new McpServer(
     {
       name: 'camara_sdk_api',
-      version: '0.17.2',
+      version: '0.17.3',
     },
     {
       instructions: await getInstructions({ stainlessApiKey, customInstructionsPath }),

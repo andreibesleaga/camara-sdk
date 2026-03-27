@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.17.3 (2026-03-27)
+
+Full Changelog: [v0.17.2...v0.17.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.2...v0.17.3)
+
+### Bug Fixes
+
+* **mcp:** bump agents version in cloudflare worker MCP servers ([7a4cf3d](https://github.com/andreibesleaga/camara-sdk/commit/7a4cf3d743f4e35081272bef79df8c7faa4e177f))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([7fe27f1](https://github.com/andreibesleaga/camara-sdk/commit/7fe27f168e22041bdc2aa2cab0855df46ffda05d))
+* **internal:** fix MCP server TS errors that occur with required client options ([63c3284](https://github.com/andreibesleaga/camara-sdk/commit/63c3284ac71fcd3eacd8ed4196c482437cd90e37))
+* **internal:** support custom-instructions-path flag in MCP servers ([b757794](https://github.com/andreibesleaga/camara-sdk/commit/b7577948a31653c82717088ebc3cc8470d79edb5))
+* **internal:** update gitignore ([a52efec](https://github.com/andreibesleaga/camara-sdk/commit/a52efece69d8de19728c89d42b6e95a7af8d7c1b))
+* update SDK settings ([9afc398](https://github.com/andreibesleaga/camara-sdk/commit/9afc39859515cc222f25cfccee6604e6074c2a95))
+* update SDK settings ([27b74f5](https://github.com/andreibesleaga/camara-sdk/commit/27b74f5915b6390bf4ed516de49795c927ddc5fb))
+
 ## 0.17.2 (2026-03-17)
 
 Full Changelog: [v0.17.1...v0.17.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.1...v0.17.2)
