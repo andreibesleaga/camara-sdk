@@ -327,44 +327,88 @@ const localDenoHandler = async ({
 
       // Strip null/undefined values so that the worker SDK client can fall back to
       // reading from environment variables (including any upstreamClientEnvs).
-      const opts: ClientOptions = Object.fromEntries(
-        Object.entries({
-          baseURL: client.baseURL,
-          bearerToken: client.bearerToken,
-          customerInsightsToken: client.customerInsightsToken,
-          deviceSwapToken: client.deviceSwapToken,
-          kycAgeVerificationToken: client.kycAgeVerificationToken,
-          kycFillInToken: client.kycFillInToken,
-          kycMatchToken: client.kycMatchToken,
-          tenureToken: client.tenureToken,
-          numberRecyclingToken: client.numberRecyclingToken,
-          otpValidationToken: client.otpValidationToken,
-          callForwardingSignalToken: client.callForwardingSignalToken,
-          deviceLocationToken: client.deviceLocationToken,
-          populationDensityDataToken: client.populationDensityDataToken,
-          regionDeviceCountToken: client.regionDeviceCountToken,
-          webRtcToken: client.webRtcToken,
-          connectivityInsightsToken: client.connectivityInsightsToken,
-          qualityOnDemandToken: client.qualityOnDemandToken,
-          deviceIdentifierToken: client.deviceIdentifierToken,
-          simSwapToken: client.simSwapToken,
-          deviceRoamingStatusToken: client.deviceRoamingStatusToken,
-          deviceReachabilityStatusToken: client.deviceReachabilityStatusToken,
-          connectedNetworkTypeToken: client.connectedNetworkTypeToken,
-          deviceLocationNotificationsAPIKey: client.deviceLocationNotificationsAPIKey,
-          notificationsAPIKey: client.notificationsAPIKey,
-          populationDensityDataNotificationsAPIKey: client.populationDensityDataNotificationsAPIKey,
-          regionDeviceCountNotificationsAPIKey: client.regionDeviceCountNotificationsAPIKey,
-          connectivityInsightsNotificationsAPIKey: client.connectivityInsightsNotificationsAPIKey,
-          simSwapNotificationsAPIKey: client.simSwapNotificationsAPIKey,
-          deviceRoamingStatusNotificationsAPIKey: client.deviceRoamingStatusNotificationsAPIKey,
-          deviceReachabilityStatusNotificationsAPIKey: client.deviceReachabilityStatusNotificationsAPIKey,
-          connectedNetworkTypeNotificationsAPIKey: client.connectedNetworkTypeNotificationsAPIKey,
-          defaultHeaders: {
-            'X-Stainless-MCP': 'true',
-          },
-        }).filter(([_, v]) => v != null),
-      ) as ClientOptions;
+      const opts = {
+        ...(client.baseURL != null ? { baseURL: client.baseURL } : undefined),
+        ...(client.bearerToken != null ? { bearerToken: client.bearerToken } : undefined),
+        ...(client.customerInsightsToken != null ?
+          { customerInsightsToken: client.customerInsightsToken }
+        : undefined),
+        ...(client.deviceSwapToken != null ? { deviceSwapToken: client.deviceSwapToken } : undefined),
+        ...(client.kycAgeVerificationToken != null ?
+          { kycAgeVerificationToken: client.kycAgeVerificationToken }
+        : undefined),
+        ...(client.kycFillInToken != null ? { kycFillInToken: client.kycFillInToken } : undefined),
+        ...(client.kycMatchToken != null ? { kycMatchToken: client.kycMatchToken } : undefined),
+        ...(client.tenureToken != null ? { tenureToken: client.tenureToken } : undefined),
+        ...(client.numberRecyclingToken != null ?
+          { numberRecyclingToken: client.numberRecyclingToken }
+        : undefined),
+        ...(client.otpValidationToken != null ?
+          { otpValidationToken: client.otpValidationToken }
+        : undefined),
+        ...(client.callForwardingSignalToken != null ?
+          { callForwardingSignalToken: client.callForwardingSignalToken }
+        : undefined),
+        ...(client.deviceLocationToken != null ?
+          { deviceLocationToken: client.deviceLocationToken }
+        : undefined),
+        ...(client.populationDensityDataToken != null ?
+          { populationDensityDataToken: client.populationDensityDataToken }
+        : undefined),
+        ...(client.regionDeviceCountToken != null ?
+          { regionDeviceCountToken: client.regionDeviceCountToken }
+        : undefined),
+        ...(client.webRtcToken != null ? { webRtcToken: client.webRtcToken } : undefined),
+        ...(client.connectivityInsightsToken != null ?
+          { connectivityInsightsToken: client.connectivityInsightsToken }
+        : undefined),
+        ...(client.qualityOnDemandToken != null ?
+          { qualityOnDemandToken: client.qualityOnDemandToken }
+        : undefined),
+        ...(client.deviceIdentifierToken != null ?
+          { deviceIdentifierToken: client.deviceIdentifierToken }
+        : undefined),
+        ...(client.simSwapToken != null ? { simSwapToken: client.simSwapToken } : undefined),
+        ...(client.deviceRoamingStatusToken != null ?
+          { deviceRoamingStatusToken: client.deviceRoamingStatusToken }
+        : undefined),
+        ...(client.deviceReachabilityStatusToken != null ?
+          { deviceReachabilityStatusToken: client.deviceReachabilityStatusToken }
+        : undefined),
+        ...(client.connectedNetworkTypeToken != null ?
+          { connectedNetworkTypeToken: client.connectedNetworkTypeToken }
+        : undefined),
+        ...(client.deviceLocationNotificationsAPIKey != null ?
+          { deviceLocationNotificationsAPIKey: client.deviceLocationNotificationsAPIKey }
+        : undefined),
+        ...(client.notificationsAPIKey != null ?
+          { notificationsAPIKey: client.notificationsAPIKey }
+        : undefined),
+        ...(client.populationDensityDataNotificationsAPIKey != null ?
+          { populationDensityDataNotificationsAPIKey: client.populationDensityDataNotificationsAPIKey }
+        : undefined),
+        ...(client.regionDeviceCountNotificationsAPIKey != null ?
+          { regionDeviceCountNotificationsAPIKey: client.regionDeviceCountNotificationsAPIKey }
+        : undefined),
+        ...(client.connectivityInsightsNotificationsAPIKey != null ?
+          { connectivityInsightsNotificationsAPIKey: client.connectivityInsightsNotificationsAPIKey }
+        : undefined),
+        ...(client.simSwapNotificationsAPIKey != null ?
+          { simSwapNotificationsAPIKey: client.simSwapNotificationsAPIKey }
+        : undefined),
+        ...(client.deviceRoamingStatusNotificationsAPIKey != null ?
+          { deviceRoamingStatusNotificationsAPIKey: client.deviceRoamingStatusNotificationsAPIKey }
+        : undefined),
+        ...(client.deviceReachabilityStatusNotificationsAPIKey != null ?
+          { deviceReachabilityStatusNotificationsAPIKey: client.deviceReachabilityStatusNotificationsAPIKey }
+        : undefined),
+        ...(client.connectedNetworkTypeNotificationsAPIKey != null ?
+          { connectedNetworkTypeNotificationsAPIKey: client.connectedNetworkTypeNotificationsAPIKey }
+        : undefined),
+        defaultHeaders: {
+          'X-Stainless-MCP': 'true',
+        },
+      } satisfies Partial<ClientOptions> as ClientOptions;
 
       const req = worker.request(
         'http://localhost',
