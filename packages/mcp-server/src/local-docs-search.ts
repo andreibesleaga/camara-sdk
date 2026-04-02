@@ -82,6 +82,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "curl https://api.example.com/camara/customerinsights/scoring/retrieve \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
+      php: {
+        method: 'customerinsights->scoring->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$scoring = $client->customerinsights->scoring->retrieve(\n  idDocument: 'idDocument',\n  phoneNumber: '+4960513',\n  scoringType: 'gaugeMetric',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($scoring);",
+      },
       typescript: {
         method: 'client.customerinsights.scoring.retrieve',
         example:
@@ -115,6 +120,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/deviceswap/retrieve-date \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34666111333"\n        }\'',
       },
+      php: {
+        method: 'deviceswap->retrieveDate',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceswap->retrieveDate(\n  phoneNumber: '+34666111333',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.deviceswap.retrieveDate',
         example:
@@ -147,6 +157,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/deviceswap/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "maxAge": 120,\n          "phoneNumber": "+34666111333"\n        }\'',
+      },
+      php: {
+        method: 'deviceswap->check',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceswap->check(\n  maxAge: 120,\n  phoneNumber: '+34666111333',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
       typescript: {
         method: 'client.deviceswap.check',
@@ -198,6 +213,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/knowyourcustomerageverification/verify \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "ageThreshold": 18,\n          "phoneNumber": "+34629255833"\n        }\'',
       },
+      php: {
+        method: 'knowyourcustomerageverification->verify',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->knowyourcustomerageverification->verify(\n  ageThreshold: 18,\n  birthdate: '1978-08-22',\n  email: 'federicaSanchez.Arjona@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  givenName: 'Federica',\n  idDocument: '66666666q',\n  includeContentLock: true,\n  includeParentalControl: true,\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  phoneNumber: '+34629255833',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.knowyourcustomerageverification.verify',
         example:
@@ -233,6 +253,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/knowyourcustomerfill-in/fill-in \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
+      },
+      php: {
+        method: 'knowyourcustomerfillIn->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$knowyourcustomerfillIn = $client->knowyourcustomerfillIn->create(\n  phoneNumber: '+34629255833',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($knowyourcustomerfillIn);",
       },
       typescript: {
         method: 'client.knowyourcustomerfillIn.create',
@@ -296,6 +321,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/knowyourcustomermatch/match \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
       },
+      php: {
+        method: 'knowyourcustomermatch->match',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->knowyourcustomermatch->match(\n  address: 'Tokyo-to Chiyoda-ku Iidabashi 3-10-10',\n  birthdate: '1978-08-22',\n  cityOfBirth: 'Madrid',\n  country: 'JP',\n  countryOfBirth: 'ES',\n  email: 'abc@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  gender: 'OTHER',\n  givenName: 'Federica',\n  houseNumberExtension: 'VVVV',\n  idDocument: '66666666q',\n  idDocumentExpiryDate: '2027-07-12',\n  idDocumentType: 'passport',\n  locality: 'ZZZZ',\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  nameKanaHankaku: 'federica',\n  nameKanaZenkaku: 'Ｆｅｄｅｒｉｃａ',\n  nationality: 'ES',\n  phoneNumber: '+34629255833',\n  postalCode: '1028460',\n  region: 'Tokyo',\n  streetName: 'Nicolas Salmeron',\n  streetNumber: '4',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.knowyourcustomermatch.match',
         example:
@@ -331,6 +361,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/tenure/check-tenure \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "tenureDate": "2023-07-03",\n          "phoneNumber": "+123456789"\n        }\'',
       },
+      php: {
+        method: 'tenure->verify',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->tenure->verify(\n  tenureDate: '2023-07-03',\n  phoneNumber: '+123456789',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.tenure.verify',
         example:
@@ -364,6 +399,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/numberrecycling/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "specifiedDate": "2024-10-31",\n          "phoneNumber": "+123456789"\n        }\'',
+      },
+      php: {
+        method: 'numberrecycling->checkSubscriberChange',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->numberrecycling->checkSubscriberChange(\n  specifiedDate: '2024-10-31',\n  phoneNumber: '+123456789',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
       typescript: {
         method: 'client.numberrecycling.checkSubscriberChange',
@@ -399,6 +439,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/otpvalidation/send-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "message": "{{code}} is your short code to authenticate with Cool App via SMS",\n          "phoneNumber": "+346661113334"\n        }\'',
       },
+      php: {
+        method: 'otpvalidation->sendCode',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->otpvalidation->sendCode(\n  message: '{{code}} is your short code to authenticate with Cool App via SMS',\n  phoneNumber: '+346661113334',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.otpvalidation.sendCode',
         example:
@@ -431,6 +476,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/otpvalidation/validate-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "authenticationId": "ea0840f3-3663-4149-bd10-c7c6b8912105",\n          "code": "AJY3"\n        }\'',
+      },
+      php: {
+        method: 'otpvalidation->validateCode',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$result = $client->otpvalidation->validateCode(\n  authenticationID: 'ea0840f3-3663-4149-bd10-c7c6b8912105',\n  code: 'AJY3',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($result);",
       },
       typescript: {
         method: 'client.otpvalidation.validateCode',
@@ -468,6 +518,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/callforwardingsignal/unconditional-call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
       },
+      php: {
+        method: 'callforwardingsignal->checkUnconditionalForwarding',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->callforwardingsignal->checkUnconditionalForwarding(\n  phoneNumber: '+123456789', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.callforwardingsignal.checkUnconditionalForwarding',
         example:
@@ -503,6 +558,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/callforwardingsignal/call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
+      },
+      php: {
+        method: 'callforwardingsignal->checkActiveForwardings',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->callforwardingsignal->checkActiveForwardings(\n  phoneNumber: '+123456789', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($response);",
       },
       typescript: {
         method: 'client.callforwardingsignal.checkActiveForwardings',
@@ -547,6 +607,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "initialEvent": true,\n            "subscriptionExpireTime": "2024-03-22T05:40:58.469Z",\n            "subscriptionMaxEvents": 10,\n            "subscriptionDetail": {\n              "area": {\n                "areaType": "CIRCLE"\n              },\n              "device": {\n                "phoneNumber": "+12345678912"\n              }\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://notificationSendServer12.supertelco.com",\n          "types": [\n            "org.camaraproject.geofencing-subscriptions.v0.area-entered"\n          ]\n        }\'',
       },
+      php: {
+        method: 'devicelocation->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscription = $client->devicelocation->subscriptions->create(\n  config: [\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2024-03-22T05:40:58.469Z'\n    ),\n    'subscriptionMaxEvents' => 10,\n    'subscriptionDetail' => [\n      'area' => ['areaType' => 'CIRCLE'],\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@domain.com',\n        'phoneNumber' => '+12345678912',\n      ],\n    ],\n  ],\n  protocol: DeviceLocationProtocol::HTTP,\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: [\n    DeviceLocationSubscriptionEventType::ORG_CAMARAPROJECT_GEOFENCING_SUBSCRIPTIONS_V0_AREA_ENTERED,\n  ],\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceLocationSubscription);",
+      },
       typescript: {
         method: 'client.devicelocation.subscriptions.create',
         example:
@@ -580,6 +645,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'devicelocation->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscriptions = $client->devicelocation->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceLocationSubscriptions);",
       },
       typescript: {
         method: 'client.devicelocation.subscriptions.list',
@@ -616,6 +686,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'devicelocation->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscription = $client->devicelocation->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceLocationSubscription);",
+      },
       typescript: {
         method: 'client.devicelocation.subscriptions.retrieve',
         example:
@@ -649,6 +724,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'devicelocation->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->devicelocation->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
       typescript: {
         method: 'client.devicelocation.subscriptions.delete',
@@ -694,6 +774,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/populationdensitydata/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "POLYGON"\n          },\n          "endTime": "2024-04-23T14:44:18.165Z",\n          "startTime": "2024-04-23T14:44:18.165Z",\n          "sink": "https://endpoint.example.com/sink"\n        }\'',
       },
+      php: {
+        method: 'populationdensitydata->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$populationdensitydata = $client->populationdensitydata->retrieve(\n  area: ['areaType' => 'POLYGON'],\n  endTime: new \\DateTimeImmutable('2024-04-23T14:44:18.165Z'),\n  startTime: new \\DateTimeImmutable('2024-04-23T14:44:18.165Z'),\n  precision: 7,\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($populationdensitydata);",
+      },
       typescript: {
         method: 'client.populationdensitydata.retrieve',
         example:
@@ -735,6 +820,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/regiondevicecount/count \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "endtime": "2023-07-04T14:27:08.312+02:00",\n          "sink": "https://endpoint.example.com/sink",\n          "starttime": "2023-07-03T14:27:08.312+02:00"\n        }\'',
+      },
+      php: {
+        method: 'regiondevicecount->getCount',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->regiondevicecount->getCount(\n  area: ['areaType' => 'CIRCLE'],\n  endtime: new \\DateTimeImmutable('2023-07-04T14:27:08.312+02:00'),\n  filter: [\n    'deviceType' => ['human device', 'IoT device'],\n    'roamingStatus' => ['roaming'],\n  ],\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  starttime: new \\DateTimeImmutable('2023-07-03T14:27:08.312+02:00'),\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
       typescript: {
         method: 'client.regiondevicecount.getCount',
@@ -784,6 +874,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/webrtc/sessions \\\n    -X POST \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'webrtc->sessions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->create(\n  registrationID: 'registrationId',\n  answer: ['sdp' => 'sdp'],\n  callType: 'REGULAR',\n  locationDetails: [\n    'confidence' => ['pdf' => 'normal', 'value' => 0],\n    'coordinates' => ['latitude' => 0, 'longitude' => 0, 'radius' => 0],\n    'method' => 'GPS',\n    'shape' => 'Circle',\n    'timestamp' => new \\DateTimeImmutable('2019-12-27T18:11:19.117Z'),\n  ],\n  bodyMediaSessionID: '0AEE1B58BAEEDA3EABA42B32EBB3DFE07E9CFF402EAF9EED8EF',\n  offer: [\n    'sdp' => \"v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n\",\n  ],\n  originatorAddress: 'tel:+17085852753',\n  originatorName: 'tel:+17085852753',\n  receiverAddress: 'tel:+17085854000',\n  receiverName: 'tel:+17085854000',\n  status: 'Ringing',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($mediaSessionInformation);",
+      },
       typescript: {
         method: 'client.webrtc.sessions.create',
         example:
@@ -820,6 +915,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'webrtc->sessions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->retrieve(\n  'mediaSessionId', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($mediaSessionInformation);",
+      },
       typescript: {
         method: 'client.webrtc.sessions.retrieve',
         example:
@@ -853,6 +953,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'webrtc->sessions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$result = $client->webrtc->sessions->delete(\n  'mediaSessionId', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($result);",
       },
       typescript: {
         method: 'client.webrtc.sessions.delete',
@@ -903,6 +1008,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID/status \\\n    -X PUT \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'webrtc->sessions->updateStatus',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->updateStatus(\n  'mediaSessionId',\n  answer: ['sdp' => 'sdp'],\n  callType: 'REGULAR',\n  locationDetails: [\n    'confidence' => ['pdf' => 'normal', 'value' => 0],\n    'coordinates' => ['latitude' => 0, 'longitude' => 0, 'radius' => 0],\n    'method' => 'GPS',\n    'shape' => 'Circle',\n    'timestamp' => new \\DateTimeImmutable('2019-12-27T18:11:19.117Z'),\n  ],\n  bodyMediaSessionID: '0AEE1B58BAEEDA3EABA42B32EBB3DFE07E9CFF402EAF9EED8EF',\n  offer: ['sdp' => 'sdp'],\n  originatorAddress: 'tel:+11234567899',\n  originatorName: 'Alice',\n  receiverAddress: 'tel:+11234567899',\n  receiverName: 'Bob',\n  status: 'Ringing',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($mediaSessionInformation);",
+      },
       typescript: {
         method: 'client.webrtc.sessions.updateStatus',
         example:
@@ -945,6 +1055,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "applicationProfileId": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",\n              "device": {}\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"\n          ]\n        }\'',
       },
+      php: {
+        method: 'connectivityinsights->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->create(\n  config: [\n    'subscriptionDetail' => [\n      'applicationProfileID' => '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@domain.com',\n        'phoneNumber' => '+123456789',\n      ],\n      'applicationServer' => [\n        'ipv4Address' => '192.168.0.1/24',\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n      ],\n      'applicationServerPorts' => [\n        'ports' => [5060, 5070], 'ranges' => [['from' => 5010, 'to' => 5020]]\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-07-03T12:27:08.312Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: Protocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    EventType::ORG_CAMARAPROJECT_CONNECTIVITY_INSIGHTS_SUBSCRIPTIONS_V0_NETWORK_QUALITY,\n  ],\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($subscription);",
+      },
       typescript: {
         method: 'client.connectivityinsights.subscriptions.create',
         example:
@@ -979,6 +1094,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'connectivityinsights->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscriptions = $client->connectivityinsights->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscriptions);",
       },
       typescript: {
         method: 'client.connectivityinsights.subscriptions.list',
@@ -1015,6 +1135,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'connectivityinsights->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
+      },
       typescript: {
         method: 'client.connectivityinsights.subscriptions.retrieve',
         example:
@@ -1048,6 +1173,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'connectivityinsights->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
       typescript: {
         method: 'client.connectivityinsights.subscriptions.delete',
@@ -1089,6 +1219,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/qualityondemand/retrieve-qos-profiles \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "name": "voice"\n        }\'',
       },
+      php: {
+        method: 'qualityondemand->retrieveQosProfiles',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$qosProfiles = $client->qualityondemand->retrieveQosProfiles(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '203.0.113.0',\n      'publicAddress' => '203.0.113.0',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@domain.com',\n    'phoneNumber' => '+123456789',\n  ],\n  name: 'voice',\n  status: QosProfileStatus::ACTIVE,\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($qosProfiles);",
+      },
       typescript: {
         method: 'client.qualityondemand.retrieveQosProfiles',
         example:
@@ -1124,6 +1259,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/qualityondemand/qos-profiles/$NAME \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'qualityondemand->retrieveQosProfile',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$qosProfile = $client->qualityondemand->retrieveQosProfile(\n  'voice', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($qosProfile);",
       },
       typescript: {
         method: 'client.qualityondemand.retrieveQosProfile',
@@ -1162,6 +1302,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "curl https://api.example.com/camara/deviceidentifier/retrieve-identifier \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
+      php: {
+        method: 'deviceidentifier->retrieveIdentifier',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrieveIdentifier(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.deviceidentifier.retrieveIdentifier',
         example:
@@ -1199,6 +1344,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "curl https://api.example.com/camara/deviceidentifier/retrieve-type \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
+      php: {
+        method: 'deviceidentifier->retrieveType',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrieveType(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
+      },
       typescript: {
         method: 'client.deviceidentifier.retrieveType',
         example:
@@ -1235,6 +1385,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           "curl https://api.example.com/camara/deviceidentifier/retrieve-ppid \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+      },
+      php: {
+        method: 'deviceidentifier->retrievePpid',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrievePpid(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
       typescript: {
         method: 'client.deviceidentifier.retrievePpid',
@@ -1278,6 +1433,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "phoneNumber": "+123456789"\n            },\n            "subscriptionExpireTime": "2025-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 10\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.sim-swap-subscriptions.v0.swapped"\n          ]\n        }\'',
       },
+      php: {
+        method: 'simswap->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscription = $client->simswap->subscriptions->create(\n  config: [\n    'subscriptionDetail' => ['phoneNumber' => '+123456789'],\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2025-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 10,\n  ],\n  protocol: SimSwapProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    SimSwapSubscriptionEventType::ORG_CAMARAPROJECT_SIM_SWAP_SUBSCRIPTIONS_V0_SWAPPED,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($simSwapSubscription);",
+      },
       typescript: {
         method: 'client.simswap.subscriptions.create',
         example:
@@ -1311,6 +1471,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'simswap->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscriptions = $client->simswap->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($simSwapSubscriptions);",
       },
       typescript: {
         method: 'client.simswap.subscriptions.list',
@@ -1347,6 +1512,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'simswap->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscription = $client->simswap->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($simSwapSubscription);",
+      },
       typescript: {
         method: 'client.simswap.subscriptions.retrieve',
         example:
@@ -1380,6 +1550,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'simswap->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->simswap->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
       typescript: {
         method: 'client.simswap.subscriptions.delete',
@@ -1423,6 +1598,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"\n          ]\n        }\'',
       },
+      php: {
+        method: 'deviceroamingstatus->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscription = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: DeviceRoamingStatusProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    DeviceRoamingStatusSubscriptionEventType::ORG_CAMARAPROJECT_DEVICE_ROAMING_STATUS_SUBSCRIPTIONS_V0_ROAMING_STATUS,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceRoamingStatusSubscription);",
+      },
       typescript: {
         method: 'client.deviceroamingstatus.subscriptions.create',
         example:
@@ -1456,6 +1636,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'deviceroamingstatus->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscriptions = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($deviceRoamingStatusSubscriptions);",
       },
       typescript: {
         method: 'client.deviceroamingstatus.subscriptions.list',
@@ -1492,6 +1677,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'deviceroamingstatus->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscription = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceRoamingStatusSubscription);",
+      },
       typescript: {
         method: 'client.deviceroamingstatus.subscriptions.retrieve',
         example:
@@ -1525,6 +1715,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'deviceroamingstatus->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->deviceroamingstatus->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
       typescript: {
         method: 'client.deviceroamingstatus.subscriptions.delete',
@@ -1568,6 +1763,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"\n          ]\n        }\'',
       },
+      php: {
+        method: 'devicereachabilitystatus->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscription = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: DeviceReachabilityStatusProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    DeviceReachabilityStatusSubscriptionEventType::ORG_CAMARAPROJECT_DEVICE_REACHABILITY_STATUS_SUBSCRIPTIONS_V0_REACHABILITY_DATA,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceReachabilityStatusSubscription);",
+      },
       typescript: {
         method: 'client.devicereachabilitystatus.subscriptions.create',
         example:
@@ -1601,6 +1801,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'devicereachabilitystatus->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscriptions = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($deviceReachabilityStatusSubscriptions);",
       },
       typescript: {
         method: 'client.devicereachabilitystatus.subscriptions.list',
@@ -1637,6 +1842,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'devicereachabilitystatus->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscription = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceReachabilityStatusSubscription);",
+      },
       typescript: {
         method: 'client.devicereachabilitystatus.subscriptions.retrieve',
         example:
@@ -1670,6 +1880,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'devicereachabilitystatus->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->devicereachabilitystatus->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
       typescript: {
         method: 'client.devicereachabilitystatus.subscriptions.delete',
@@ -1715,6 +1930,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"\n          ]\n        }\'',
       },
+      php: {
+        method: 'connectednetworktype->subscriptions->create',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscription = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: ConnectedNetworkTypeProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    ConnectedNetworkTypeSubscriptionEventType::ORG_CAMARAPROJECT_CONNECTED_NETWORK_TYPE_SUBSCRIPTIONS_V0_NETWORK_TYPE_CHANGED,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($connectedNetworkTypeSubscription);",
+      },
       typescript: {
         method: 'client.connectednetworktype.subscriptions.create',
         example:
@@ -1748,6 +1968,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       http: {
         example:
           'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      },
+      php: {
+        method: 'connectednetworktype->subscriptions->list',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscriptions = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($connectedNetworkTypeSubscriptions);",
       },
       typescript: {
         method: 'client.connectednetworktype.subscriptions.list',
@@ -1784,6 +2009,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'connectednetworktype->subscriptions->retrieve',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscription = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($connectedNetworkTypeSubscription);",
+      },
       typescript: {
         method: 'client.connectednetworktype.subscriptions.retrieve',
         example:
@@ -1818,6 +2048,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
+      php: {
+        method: 'connectednetworktype->subscriptions->delete',
+        example:
+          "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectednetworktype->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
+      },
       typescript: {
         method: 'client.connectednetworktype.subscriptions.delete',
         example:
@@ -1842,6 +2077,11 @@ const EMBEDDED_READMES: { language: string; content: string }[] = [
     language: 'cli',
     content:
       "# Camara CLI\n\nThe official CLI for the Camara REST API.\n\nIt is generated with [Stainless](https://www.stainless.com/).\n\n## Installation\n\n### Installing with Go\n\nTo test or install the CLI locally, you need [Go](https://go.dev/doc/install) version 1.22 or later installed.\n\n~~~sh\ngo install 'github.com/stainless-sdks/camara-cli/cmd/camara@latest'\n~~~\n\nOnce you have run `go install`, the binary is placed in your Go bin directory:\n\n- **Default location**: `$HOME/go/bin` (or `$GOPATH/bin` if GOPATH is set)\n- **Check your path**: Run `go env GOPATH` to see the base directory\n\nIf commands aren't found after installation, add the Go bin directory to your PATH:\n\n~~~sh\n# Add to your shell profile (.zshrc, .bashrc, etc.)\nexport PATH=\"$PATH:$(go env GOPATH)/bin\"\n~~~\n\n### Running Locally\n\nAfter cloning the git repository for this project, you can use the\n`scripts/run` script to run the tool locally:\n\n~~~sh\n./scripts/run args...\n~~~\n\n## Usage\n\nThe CLI follows a resource-based command structure:\n\n~~~sh\ncamara [resource] <command> [flags...]\n~~~\n\n~~~sh\ncamara customerinsights:scoring retrieve \\\n  --bearer-token 'My Bearer Token'\n~~~\n\nFor details about specific commands, use the `--help` flag.\n\n### Environment variables\n\n| Environment variable                                      | Required |\n| --------------------------------------------------------- | -------- |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_BEARER_TOKEN`                                     | yes      |\n| `CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY`            | yes      |\n| `CAMARA_NOTIFICATIONS_API_KEY`                            | yes      |\n| `CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY`    | yes      |\n| `CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY`        | yes      |\n| `CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY`      | yes      |\n| `CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY`                   | yes      |\n| `CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY`      | yes      |\n| `CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY` | yes      |\n| `CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY`     | yes      |\n\n### Global flags\n\n- `--bearer-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--customer-insights-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-swap-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--kyc-age-verification-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--kyc-fill-in-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--kyc-match-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--tenure-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--number-recycling-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--otp-validation-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--call-forwarding-signal-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-location-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--population-density-data-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--region-device-count-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--web-rtc-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--connectivity-insights-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--quality-on-demand-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-identifier-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--sim-swap-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-roaming-status-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-reachability-status-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--connected-network-type-token` (can also be set with `CAMARA_BEARER_TOKEN` env var)\n- `--device-location-notifications-api-key` (can also be set with `CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY` env var)\n- `--notifications-api-key` (can also be set with `CAMARA_NOTIFICATIONS_API_KEY` env var)\n- `--population-density-data-notifications-api-key` (can also be set with `CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY` env var)\n- `--region-device-count-notifications-api-key` (can also be set with `CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY` env var)\n- `--connectivity-insights-notifications-api-key` (can also be set with `CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY` env var)\n- `--sim-swap-notifications-api-key` (can also be set with `CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY` env var)\n- `--device-roaming-status-notifications-api-key` (can also be set with `CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY` env var)\n- `--device-reachability-status-notifications-api-key` (can also be set with `CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY` env var)\n- `--connected-network-type-notifications-api-key` (can also be set with `CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY` env var)\n- `--help` - Show command line usage\n- `--debug` - Enable debug logging (includes HTTP request/response details)\n- `--version`, `-v` - Show the CLI version\n- `--base-url` - Use a custom API backend URL\n- `--format` - Change the output format (`auto`, `explore`, `json`, `jsonl`, `pretty`, `raw`, `yaml`)\n- `--format-error` - Change the output format for errors (`auto`, `explore`, `json`, `jsonl`, `pretty`, `raw`, `yaml`)\n- `--transform` - Transform the data output using [GJSON syntax](https://github.com/tidwall/gjson/blob/master/SYNTAX.md)\n- `--transform-error` - Transform the error output using [GJSON syntax](https://github.com/tidwall/gjson/blob/master/SYNTAX.md)\n\n### Passing files as arguments\n\nTo pass files to your API, you can use the `@myfile.ext` syntax:\n\n~~~bash\ncamara <command> --arg @abe.jpg\n~~~\n\nFiles can also be passed inside JSON or YAML blobs:\n\n~~~bash\ncamara <command> --arg '{image: \"@abe.jpg\"}'\n# Equivalent:\ncamara <command> <<YAML\narg:\n  image: \"@abe.jpg\"\nYAML\n~~~\n\nIf you need to pass a string literal that begins with an `@` sign, you can\nescape the `@` sign to avoid accidentally passing a file.\n\n~~~bash\ncamara <command> --username '\\@abe'\n~~~\n\n#### Explicit encoding\n\nFor JSON endpoints, the CLI tool does filetype sniffing to determine whether the\nfile contents should be sent as a string literal (for plain text files) or as a\nbase64-encoded string literal (for binary files). If you need to explicitly send\nthe file as either plain text or base64-encoded data, you can use\n`@file://myfile.txt` (for string encoding) or `@data://myfile.dat` (for\nbase64-encoding). Note that absolute paths will begin with `@file://` or\n`@data://`, followed by a third `/` (for example, `@file:///tmp/file.txt`).\n\n~~~bash\ncamara <command> --arg @data://file.txt\n~~~\n",
+  },
+  {
+    language: 'php',
+    content:
+      '# Camara PHP API Library\n\nThe Camara PHP library provides convenient access to the Camara REST API from any PHP 8.1.0+ application.\n\n## Installation\n\nTo use this package, install via Composer by adding the following to your application\'s `composer.json`:\n\n<!-- x-release-please-start-version -->\n```json\n{\n  "repositories": [\n    {\n      "type": "vcs",\n      "url": "git@github.com:andreibesleaga/camara-php.git"\n    }\n  ],\n  "require": {\n    "andreibesleaga/camara-php": "dev-main"\n  }\n}\n```\n<!-- x-release-please-end -->\n\n## Usage\n\n```php\n<?php\n\n$client = new Client(\n  bearerToken: getenv(\'CAMARA_BEARER_TOKEN\') ?: \'My Bearer Token\'\n);\n\n$scoring = $client->customerinsights->scoring->retrieve();\n\nvar_dump($scoring->scoringType);\n```',
   },
 ];
 
