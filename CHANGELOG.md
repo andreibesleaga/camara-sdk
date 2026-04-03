@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.17.5 (2026-04-03)
+
+Full Changelog: [v0.17.4...v0.17.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.4...v0.17.5)
+
+### Bug Fixes
+
+* **internal:** gitignore generated `oidc` dir ([cd70036](https://github.com/andreibesleaga/camara-sdk/commit/cd70036b9eb4d315f18f9f537f66b3e20a833f59))
+
+
+### Chores
+
+* **ci:** escape input path in publish-npm workflow ([7181d2f](https://github.com/andreibesleaga/camara-sdk/commit/7181d2f97f18eb8496b9ed51ec75df05e4597872))
+* **internal:** codegen related update ([3d9a6a5](https://github.com/andreibesleaga/camara-sdk/commit/3d9a6a590255a3f5509402d1c23c3a5e9fb1f6be))
+* **internal:** codegen related update ([154e3e9](https://github.com/andreibesleaga/camara-sdk/commit/154e3e959edc3fa9fc0247da04435802e5f12b6d))
+* **internal:** fix MCP docker image builds in yarn projects ([f7cbcb8](https://github.com/andreibesleaga/camara-sdk/commit/f7cbcb81266a120ef55bca1a4aa020cd2f470987))
+* **internal:** improve local docs search for MCP servers ([f5038bc](https://github.com/andreibesleaga/camara-sdk/commit/f5038bcbc0f4cfd476f829b2416cde4337ca50eb))
+* **internal:** improve local docs search for MCP servers ([0449fc6](https://github.com/andreibesleaga/camara-sdk/commit/0449fc693a58f92fbe00feac78bc555013c27174))
+* **internal:** support local docs search in MCP servers ([d06ee44](https://github.com/andreibesleaga/camara-sdk/commit/d06ee44d28847c86de76789c849230e98ba06dff))
+* **internal:** support type annotations when running MCP in local execution mode ([5255096](https://github.com/andreibesleaga/camara-sdk/commit/5255096f4acc77cc1b85a18c4577eaf0576db0ad))
+* **internal:** use link instead of file in MCP server package.json files ([a678bb0](https://github.com/andreibesleaga/camara-sdk/commit/a678bb0496cb07c7c3cdb37049612bc714d850dc))
+* **mcp-server:** add support for session id, forward client info ([6d81ea2](https://github.com/andreibesleaga/camara-sdk/commit/6d81ea266793252c73214628dd2482e0a8055842))
+* **mcp-server:** log client info ([f4740d6](https://github.com/andreibesleaga/camara-sdk/commit/f4740d60dd2512ea2f91579830d313f250478f12))
+
 ## 0.17.4 (2026-03-27)
 
 Full Changelog: [v0.17.3...v0.17.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.3...v0.17.4)
