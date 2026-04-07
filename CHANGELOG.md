@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.17.6 (2026-04-07)
+
+Full Changelog: [v0.17.5...v0.17.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.5...v0.17.6)
+
+### Chores
+
+* **internal:** fix MCP server import ordering ([73b56d3](https://github.com/andreibesleaga/camara-sdk/commit/73b56d320eb8b94fa0a6b92835dae677e29d7ef2))
+
 ## 0.17.5 (2026-04-03)
 
 Full Changelog: [v0.17.4...v0.17.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.4...v0.17.5)
