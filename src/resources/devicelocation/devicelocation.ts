@@ -2,21 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import * as SubscriptionsAPI from './subscriptions';
-import {
-  DeviceLocationArea,
-  DeviceLocationConfig,
-  DeviceLocationDevice,
-  DeviceLocationProtocol,
-  DeviceLocationSubscription,
-  DeviceLocationSubscriptionEventType,
-  SubscriptionCreateParams,
-  SubscriptionDeleteParams,
-  SubscriptionDeleteResponse,
-  SubscriptionListParams,
-  SubscriptionListResponse,
-  SubscriptionRetrieveParams,
-  Subscriptions,
-} from './subscriptions';
+import { DeviceLocationArea, DeviceLocationConfig, DeviceLocationDevice, DeviceLocationProtocol, DeviceLocationSubscription, DeviceLocationSubscriptionEventType, SubscriptionCreateParams, SubscriptionDeleteParams, SubscriptionDeleteResponse, SubscriptionListParams, SubscriptionListResponse, SubscriptionRetrieveParams, Subscriptions } from './subscriptions';
 
 export class Devicelocation extends APIResource {
   subscriptions: SubscriptionsAPI.Subscriptions = new SubscriptionsAPI.Subscriptions(this._client);
@@ -38,6 +24,6 @@ export declare namespace Devicelocation {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

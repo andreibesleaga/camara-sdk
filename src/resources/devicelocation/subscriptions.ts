@@ -37,15 +37,8 @@ export class Subscriptions extends APIResource {
    * ```
    */
   create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<DeviceLocationSubscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/devicelocation/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/devicelocation/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -59,19 +52,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DeviceLocationSubscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/devicelocation/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<DeviceLocationSubscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/devicelocation/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -83,18 +66,9 @@ export class Subscriptions extends APIResource {
    *   await client.devicelocation.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/devicelocation/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/devicelocation/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -108,19 +82,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/devicelocation/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/devicelocation/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -276,7 +240,7 @@ export namespace DeviceLocationDevice {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now.
  */
-export type DeviceLocationProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type DeviceLocationProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -407,11 +371,9 @@ export namespace DeviceLocationSubscription {
  *
  * area-left - Event triggered when the device leaves the given area
  */
-export type DeviceLocationSubscriptionEventType =
-  | 'org.camaraproject.geofencing-subscriptions.v0.area-entered'
-  | 'org.camaraproject.geofencing-subscriptions.v0.area-left';
+export type DeviceLocationSubscriptionEventType = 'org.camaraproject.geofencing-subscriptions.v0.area-entered' | 'org.camaraproject.geofencing-subscriptions.v0.area-left'
 
-export type SubscriptionListResponse = Array<DeviceLocationSubscription>;
+export type SubscriptionListResponse = Array<DeviceLocationSubscription>
 
 /**
  * Response for an event-type subscription request managed asynchronously (Creation
@@ -564,6 +526,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

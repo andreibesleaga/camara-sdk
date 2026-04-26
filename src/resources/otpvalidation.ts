@@ -22,19 +22,9 @@ export class Otpvalidation extends APIResource {
    * });
    * ```
    */
-  sendCode(
-    params: OtpvalidationSendCodeParams,
-    options?: RequestOptions,
-  ): APIPromise<OtpvalidationSendCodeResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/otpvalidation/send-code', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  sendCode(params: OtpvalidationSendCodeParams, options?: RequestOptions): APIPromise<OtpvalidationSendCodeResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/otpvalidation/send-code', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -49,15 +39,8 @@ export class Otpvalidation extends APIResource {
    * ```
    */
   validateCode(params: OtpvalidationValidateCodeParams, options?: RequestOptions): APIPromise<void> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/otpvalidation/validate-code', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { Accept: '*/*', ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/otpvalidation/validate-code', { body, ...options, headers: buildHeaders([{Accept: '*/*', ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -114,6 +97,6 @@ export declare namespace Otpvalidation {
   export {
     type OtpvalidationSendCodeResponse as OtpvalidationSendCodeResponse,
     type OtpvalidationSendCodeParams as OtpvalidationSendCodeParams,
-    type OtpvalidationValidateCodeParams as OtpvalidationValidateCodeParams,
+    type OtpvalidationValidateCodeParams as OtpvalidationValidateCodeParams
   };
 }

@@ -33,7 +33,7 @@ const client = new Camara({
   deviceRoamingStatusNotificationsAPIKey: 'My Device Roaming Status Notifications API Key',
   deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key',
   connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+  baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource callforwardingsignal', () => {

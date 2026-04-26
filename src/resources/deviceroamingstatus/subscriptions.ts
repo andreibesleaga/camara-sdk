@@ -34,19 +34,9 @@ export class Subscriptions extends APIResource {
    *   });
    * ```
    */
-  create(
-    params: SubscriptionCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<DeviceRoamingStatusSubscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/deviceroamingstatus/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<DeviceRoamingStatusSubscription> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/deviceroamingstatus/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -61,19 +51,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DeviceRoamingStatusSubscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/deviceroamingstatus/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<DeviceRoamingStatusSubscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/deviceroamingstatus/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -85,18 +65,9 @@ export class Subscriptions extends APIResource {
    *   await client.deviceroamingstatus.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/deviceroamingstatus/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/deviceroamingstatus/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -110,19 +81,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/deviceroamingstatus/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/deviceroamingstatus/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -290,7 +251,7 @@ export namespace DeviceRoamingStatusConfig {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type DeviceRoamingStatusProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type DeviceRoamingStatusProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -382,13 +343,9 @@ export interface DeviceRoamingStatusSubscription {
  * roaming-change-country - Event triggered when the device in roaming change
  * country code
  */
-export type DeviceRoamingStatusSubscriptionEventType =
-  | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status'
-  | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-on'
-  | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-off'
-  | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-change-country';
+export type DeviceRoamingStatusSubscriptionEventType = 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status' | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-on' | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-off' | 'org.camaraproject.device-roaming-status-subscriptions.v0.roaming-change-country'
 
-export type SubscriptionListResponse = Array<DeviceRoamingStatusSubscription>;
+export type SubscriptionListResponse = Array<DeviceRoamingStatusSubscription>
 
 /**
  * Response for a device reachability status operation managed asynchronously
@@ -492,6 +449,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

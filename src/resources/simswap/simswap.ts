@@ -2,19 +2,7 @@
 
 import { APIResource } from '../../core/resource';
 import * as SubscriptionsAPI from './subscriptions';
-import {
-  SimSwapConfig,
-  SimSwapProtocol,
-  SimSwapSubscription,
-  SimSwapSubscriptionEventType,
-  SubscriptionCreateParams,
-  SubscriptionDeleteParams,
-  SubscriptionDeleteResponse,
-  SubscriptionListParams,
-  SubscriptionListResponse,
-  SubscriptionRetrieveParams,
-  Subscriptions,
-} from './subscriptions';
+import { SimSwapConfig, SimSwapProtocol, SimSwapSubscription, SimSwapSubscriptionEventType, SubscriptionCreateParams, SubscriptionDeleteParams, SubscriptionDeleteResponse, SubscriptionListParams, SubscriptionListResponse, SubscriptionRetrieveParams, Subscriptions } from './subscriptions';
 
 export class Simswap extends APIResource {
   subscriptions: SubscriptionsAPI.Subscriptions = new SubscriptionsAPI.Subscriptions(this._client);
@@ -34,6 +22,6 @@ export declare namespace Simswap {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

@@ -21,19 +21,9 @@ export class Callforwardingsignal extends APIResource {
    *   await client.callforwardingsignal.checkActiveForwardings();
    * ```
    */
-  checkActiveForwardings(
-    params: CallforwardingsignalCheckActiveForwardingsParams,
-    options?: RequestOptions,
-  ): APIPromise<CallforwardingsignalCheckActiveForwardingsResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/callforwardingsignal/call-forwardings', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  checkActiveForwardings(params: CallforwardingsignalCheckActiveForwardingsParams, options?: RequestOptions): APIPromise<CallforwardingsignalCheckActiveForwardingsResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/callforwardingsignal/call-forwardings', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -46,19 +36,9 @@ export class Callforwardingsignal extends APIResource {
    *   await client.callforwardingsignal.checkUnconditionalForwarding();
    * ```
    */
-  checkUnconditionalForwarding(
-    params: CallforwardingsignalCheckUnconditionalForwardingParams,
-    options?: RequestOptions,
-  ): APIPromise<CallforwardingsignalCheckUnconditionalForwardingResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/callforwardingsignal/unconditional-call-forwardings', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  checkUnconditionalForwarding(params: CallforwardingsignalCheckUnconditionalForwardingParams, options?: RequestOptions): APIPromise<CallforwardingsignalCheckUnconditionalForwardingResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/callforwardingsignal/unconditional-call-forwardings', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -87,9 +67,7 @@ export interface CreateCallForwardingSignal {
  * not reachable), 'conditional_no_answer' (call forwarded if the device doesn't
  * answer the incoming call).
  */
-export type CallforwardingsignalCheckActiveForwardingsResponse = Array<
-  'inactive' | 'unconditional' | 'conditional_busy' | 'conditional_not_reachable' | 'conditional_no_answer'
->;
+export type CallforwardingsignalCheckActiveForwardingsResponse = Array<'inactive' | 'unconditional' | 'conditional_busy' | 'conditional_not_reachable' | 'conditional_no_answer'>
 
 /**
  * resource containing the information about the Unconditional Call Forwarding
@@ -138,6 +116,6 @@ export declare namespace Callforwardingsignal {
     type CallforwardingsignalCheckActiveForwardingsResponse as CallforwardingsignalCheckActiveForwardingsResponse,
     type CallforwardingsignalCheckUnconditionalForwardingResponse as CallforwardingsignalCheckUnconditionalForwardingResponse,
     type CallforwardingsignalCheckActiveForwardingsParams as CallforwardingsignalCheckActiveForwardingsParams,
-    type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams,
+    type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams
   };
 }

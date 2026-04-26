@@ -33,7 +33,7 @@ const client = new Camara({
   deviceRoamingStatusNotificationsAPIKey: 'My Device Roaming Status Notifications API Key',
   deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key',
   connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+  baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource numberrecycling', () => {
@@ -52,9 +52,9 @@ describe('resource numberrecycling', () => {
   // Mock server tests are disabled
   test.skip('checkSubscriberChange: required and optional params', async () => {
     const response = await client.numberrecycling.checkSubscriberChange({
-      specifiedDate: '2024-10-31',
-      phoneNumber: '+123456789',
-      'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
-    });
+    specifiedDate: '2024-10-31',
+    phoneNumber: '+123456789',
+    'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
+  });
   });
 });

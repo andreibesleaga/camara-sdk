@@ -36,19 +36,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  create(
-    params: SubscriptionCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<DeviceReachabilityStatusSubscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/devicereachabilitystatus/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<DeviceReachabilityStatusSubscription> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/devicereachabilitystatus/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -62,19 +52,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<DeviceReachabilityStatusSubscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/devicereachabilitystatus/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<DeviceReachabilityStatusSubscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/devicereachabilitystatus/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -86,18 +66,9 @@ export class Subscriptions extends APIResource {
    *   await client.devicereachabilitystatus.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/devicereachabilitystatus/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/devicereachabilitystatus/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -111,19 +82,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/devicereachabilitystatus/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/devicereachabilitystatus/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -289,7 +250,7 @@ export namespace DeviceReachabilityStatusConfig {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type DeviceReachabilityStatusProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type DeviceReachabilityStatusProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -378,12 +339,9 @@ export interface DeviceReachabilityStatusSubscription {
  *
  * reachability-disconnected - Event triggered when the device is not connected.
  */
-export type DeviceReachabilityStatusSubscriptionEventType =
-  | 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data'
-  | 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms'
-  | 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected';
+export type DeviceReachabilityStatusSubscriptionEventType = 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data' | 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms' | 'org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected'
 
-export type SubscriptionListResponse = Array<DeviceReachabilityStatusSubscription>;
+export type SubscriptionListResponse = Array<DeviceReachabilityStatusSubscription>
 
 /**
  * Response for a device reachability status operation managed asynchronously
@@ -487,6 +445,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

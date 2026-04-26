@@ -59,8 +59,8 @@ function getTSDiagnostics(code: string): string[] {
   const codeWithImport = [
     'import { Camara } from "camara-sdk";',
     functionSource.type === 'declaration' ?
-      `async function run(${functionSource.client}: Camara)`
-    : `const run: (${functionSource.client}: Camara) => Promise<unknown> =`,
+      `async function run(${functionSource.client}: Camara)` :
+      `const run: (${functionSource.client}: Camara) => Promise<unknown> =`,
     functionSource.code,
   ].join('\n');
   const sourcePath = path.resolve('code.ts');
@@ -108,53 +108,53 @@ function getTSDiagnostics(code: string): string[] {
 
 const fuse = new Fuse(
   [
-    'client.customerinsights.scoring.retrieve',
-    'client.deviceswap.check',
-    'client.deviceswap.retrieveDate',
-    'client.knowyourcustomerageverification.verify',
-    'client.knowyourcustomerfillIn.create',
-    'client.knowyourcustomermatch.match',
-    'client.tenure.verify',
-    'client.numberrecycling.checkSubscriberChange',
-    'client.otpvalidation.sendCode',
-    'client.otpvalidation.validateCode',
-    'client.callforwardingsignal.checkActiveForwardings',
-    'client.callforwardingsignal.checkUnconditionalForwarding',
-    'client.devicelocation.subscriptions.create',
-    'client.devicelocation.subscriptions.delete',
-    'client.devicelocation.subscriptions.list',
-    'client.devicelocation.subscriptions.retrieve',
-    'client.populationdensitydata.retrieve',
-    'client.regiondevicecount.getCount',
-    'client.webrtc.sessions.create',
-    'client.webrtc.sessions.delete',
-    'client.webrtc.sessions.retrieve',
-    'client.webrtc.sessions.updateStatus',
-    'client.connectivityinsights.subscriptions.create',
-    'client.connectivityinsights.subscriptions.delete',
-    'client.connectivityinsights.subscriptions.list',
-    'client.connectivityinsights.subscriptions.retrieve',
-    'client.qualityondemand.retrieveQosProfile',
-    'client.qualityondemand.retrieveQosProfiles',
-    'client.deviceidentifier.retrieveIdentifier',
-    'client.deviceidentifier.retrievePpid',
-    'client.deviceidentifier.retrieveType',
-    'client.simswap.subscriptions.create',
-    'client.simswap.subscriptions.delete',
-    'client.simswap.subscriptions.list',
-    'client.simswap.subscriptions.retrieve',
-    'client.deviceroamingstatus.subscriptions.create',
-    'client.deviceroamingstatus.subscriptions.delete',
-    'client.deviceroamingstatus.subscriptions.list',
-    'client.deviceroamingstatus.subscriptions.retrieve',
-    'client.devicereachabilitystatus.subscriptions.create',
-    'client.devicereachabilitystatus.subscriptions.delete',
-    'client.devicereachabilitystatus.subscriptions.list',
-    'client.devicereachabilitystatus.subscriptions.retrieve',
-    'client.connectednetworktype.subscriptions.create',
-    'client.connectednetworktype.subscriptions.delete',
-    'client.connectednetworktype.subscriptions.list',
-    'client.connectednetworktype.subscriptions.retrieve',
+    "client.customerinsights.scoring.retrieve",
+    "client.deviceswap.check",
+    "client.deviceswap.retrieveDate",
+    "client.knowyourcustomerageverification.verify",
+    "client.knowyourcustomerfillIn.create",
+    "client.knowyourcustomermatch.match",
+    "client.tenure.verify",
+    "client.numberrecycling.checkSubscriberChange",
+    "client.otpvalidation.sendCode",
+    "client.otpvalidation.validateCode",
+    "client.callforwardingsignal.checkActiveForwardings",
+    "client.callforwardingsignal.checkUnconditionalForwarding",
+    "client.devicelocation.subscriptions.create",
+    "client.devicelocation.subscriptions.delete",
+    "client.devicelocation.subscriptions.list",
+    "client.devicelocation.subscriptions.retrieve",
+    "client.populationdensitydata.retrieve",
+    "client.regiondevicecount.getCount",
+    "client.webrtc.sessions.create",
+    "client.webrtc.sessions.delete",
+    "client.webrtc.sessions.retrieve",
+    "client.webrtc.sessions.updateStatus",
+    "client.connectivityinsights.subscriptions.create",
+    "client.connectivityinsights.subscriptions.delete",
+    "client.connectivityinsights.subscriptions.list",
+    "client.connectivityinsights.subscriptions.retrieve",
+    "client.qualityondemand.retrieveQosProfile",
+    "client.qualityondemand.retrieveQosProfiles",
+    "client.deviceidentifier.retrieveIdentifier",
+    "client.deviceidentifier.retrievePpid",
+    "client.deviceidentifier.retrieveType",
+    "client.simswap.subscriptions.create",
+    "client.simswap.subscriptions.delete",
+    "client.simswap.subscriptions.list",
+    "client.simswap.subscriptions.retrieve",
+    "client.deviceroamingstatus.subscriptions.create",
+    "client.deviceroamingstatus.subscriptions.delete",
+    "client.deviceroamingstatus.subscriptions.list",
+    "client.deviceroamingstatus.subscriptions.retrieve",
+    "client.devicereachabilitystatus.subscriptions.create",
+    "client.devicereachabilitystatus.subscriptions.delete",
+    "client.devicereachabilitystatus.subscriptions.list",
+    "client.devicereachabilitystatus.subscriptions.retrieve",
+    "client.connectednetworktype.subscriptions.create",
+    "client.connectednetworktype.subscriptions.delete",
+    "client.connectednetworktype.subscriptions.list",
+    "client.connectednetworktype.subscriptions.retrieve"
   ],
   { threshold: 1, shouldSort: true },
 );
@@ -237,12 +237,7 @@ function parseError(code: string, error: unknown): string | undefined {
     // Deno uses V8; the first "<anonymous>:LINE:COLUMN" is the top of stack.
     const lineNumber = error.stack?.match(/<anonymous>:([0-9]+):[0-9]+/)?.[1];
     // -1 for the zero-based indexing
-    const line =
-      lineNumber &&
-      code
-        .split('\n')
-        .at(parseInt(lineNumber, 10) - 1)
-        ?.trim();
+    const line = lineNumber && code.split('\n').at(parseInt(lineNumber, 10) - 1)?.trim();
     return line ? `${message}\n  at line ${lineNumber}\n    ${line}` : message;
   } catch {
     return message;
@@ -254,9 +249,8 @@ const fetch = async (req: Request): Promise<Response> => {
 
   const runFunctionSource = code ? getRunFunctionSource(code) : null;
   if (!runFunctionSource) {
-    const message =
-      code ?
-        'The code is missing a top-level `run` function.'
+    const message = code
+      ? 'The code is missing a top-level `run` function.'
       : 'The code argument is missing. Provide one containing a top-level `run` function.';
     return Response.json(
       {
@@ -301,7 +295,7 @@ const fetch = async (req: Request): Promise<Response> => {
   try {
     let run_ = async (client: any) => {};
     run_ = (await tseval(`${code}\nexport default run;`)).default;
-    const result = await run_(makeSdkProxy(client, { path: ['client'] }));
+    const result = await run_(makeSdkProxy(client, { path: ["client"] }));
     return Response.json({
       is_error: false,
       result,

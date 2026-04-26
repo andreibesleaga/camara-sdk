@@ -55,19 +55,9 @@ export class Knowyourcustomerageverification extends APIResource {
    *   });
    * ```
    */
-  verify(
-    params: KnowyourcustomerageverificationVerifyParams,
-    options?: RequestOptions,
-  ): APIPromise<KnowyourcustomerageverificationVerifyResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/knowyourcustomerageverification/verify', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  verify(params: KnowyourcustomerageverificationVerifyParams, options?: RequestOptions): APIPromise<KnowyourcustomerageverificationVerifyResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/knowyourcustomerageverification/verify', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -204,6 +194,6 @@ export interface KnowyourcustomerageverificationVerifyParams {
 export declare namespace Knowyourcustomerageverification {
   export {
     type KnowyourcustomerageverificationVerifyResponse as KnowyourcustomerageverificationVerifyResponse,
-    type KnowyourcustomerageverificationVerifyParams as KnowyourcustomerageverificationVerifyParams,
+    type KnowyourcustomerageverificationVerifyParams as KnowyourcustomerageverificationVerifyParams
   };
 }
