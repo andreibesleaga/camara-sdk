@@ -33,7 +33,7 @@ const client = new Camara({
   deviceRoamingStatusNotificationsAPIKey: 'My Device Roaming Status Notifications API Key',
   deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key',
   connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+  baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource knowyourcustomerageverification', () => {
@@ -52,19 +52,19 @@ describe('resource knowyourcustomerageverification', () => {
   // Mock server tests are disabled
   test.skip('verify: required and optional params', async () => {
     const response = await client.knowyourcustomerageverification.verify({
-      ageThreshold: 18,
-      birthdate: '1978-08-22',
-      email: 'federicaSanchez.Arjona@example.com',
-      familyName: 'Sanchez Arjona',
-      familyNameAtBirth: 'YYYY',
-      givenName: 'Federica',
-      idDocument: '66666666q',
-      includeContentLock: true,
-      includeParentalControl: true,
-      middleNames: 'Sanchez',
-      name: 'Federica Sanchez Arjona',
-      phoneNumber: '+34629255833',
-      'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
-    });
+    ageThreshold: 18,
+    birthdate: '1978-08-22',
+    email: 'federicaSanchez.Arjona@example.com',
+    familyName: 'Sanchez Arjona',
+    familyNameAtBirth: 'YYYY',
+    givenName: 'Federica',
+    idDocument: '66666666q',
+    includeContentLock: true,
+    includeParentalControl: true,
+    middleNames: 'Sanchez',
+    name: 'Federica Sanchez Arjona',
+    phoneNumber: '+34629255833',
+    'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
+  });
   });
 });

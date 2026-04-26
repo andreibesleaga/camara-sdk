@@ -32,15 +32,8 @@ export class Subscriptions extends APIResource {
    * ```
    */
   create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<SimSwapSubscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/simswap/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/simswap/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -54,19 +47,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SimSwapSubscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/simswap/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<SimSwapSubscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/simswap/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -78,18 +61,9 @@ export class Subscriptions extends APIResource {
    *   await client.simswap.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/simswap/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/simswap/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -103,19 +77,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/simswap/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/simswap/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -164,7 +128,7 @@ export namespace SimSwapConfig {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type SimSwapProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type SimSwapProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -245,9 +209,9 @@ export interface SimSwapSubscription {
 /**
  * swapped - Event triggered when a sim swap occurs on the line
  */
-export type SimSwapSubscriptionEventType = 'org.camaraproject.sim-swap-subscriptions.v0.swapped';
+export type SimSwapSubscriptionEventType = 'org.camaraproject.sim-swap-subscriptions.v0.swapped'
 
-export type SubscriptionListResponse = Array<SimSwapSubscription>;
+export type SubscriptionListResponse = Array<SimSwapSubscription>
 
 /**
  * Response for a event-type subscription request managed asynchronously (Creation
@@ -350,6 +314,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

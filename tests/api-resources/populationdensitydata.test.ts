@@ -33,17 +33,17 @@ const client = new Camara({
   deviceRoamingStatusNotificationsAPIKey: 'My Device Roaming Status Notifications API Key',
   deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key',
   connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key',
-  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+  baseURL: process.env["TEST_API_BASE_URL"] ?? 'http://127.0.0.1:4010',
 });
 
 describe('resource populationdensitydata', () => {
   // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.populationdensitydata.retrieve({
-      area: { areaType: 'POLYGON' },
-      endTime: '2024-04-23T14:44:18.165Z',
-      startTime: '2024-04-23T14:44:18.165Z',
-    });
+    area: { areaType: 'POLYGON' },
+    endTime: '2024-04-23T14:44:18.165Z',
+    startTime: '2024-04-23T14:44:18.165Z',
+  });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -56,13 +56,13 @@ describe('resource populationdensitydata', () => {
   // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.populationdensitydata.retrieve({
-      area: { areaType: 'POLYGON' },
-      endTime: '2024-04-23T14:44:18.165Z',
-      startTime: '2024-04-23T14:44:18.165Z',
-      precision: 7,
-      sink: 'https://endpoint.example.com/sink',
-      sinkCredential: { credentialType: 'PLAIN' },
-      'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
-    });
+    area: { areaType: 'POLYGON' },
+    endTime: '2024-04-23T14:44:18.165Z',
+    startTime: '2024-04-23T14:44:18.165Z',
+    precision: 7,
+    sink: 'https://endpoint.example.com/sink',
+    sinkCredential: { credentialType: 'PLAIN' },
+    'x-correlator': 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',
+  });
   });
 });

@@ -29,18 +29,8 @@ export class Sessions extends APIResource {
    * ```
    */
   create(params: SessionCreateParams, options?: RequestOptions): APIPromise<MediaSessionInformation> {
-    const { registrationId, body_media_session_id, 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/webrtc/sessions', {
-      body: { mediaSessionId: body_media_session_id, ...body },
-      ...options,
-      headers: buildHeaders([
-        {
-          registrationId: registrationId,
-          ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined),
-        },
-        options?.headers,
-      ]),
-    });
+    const { registrationId, body_media_session_id, 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/webrtc/sessions', { body: { mediaSessionId: body_media_session_id, ...body }, ...options, headers: buildHeaders([{registrationId: registrationId, ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -56,19 +46,9 @@ export class Sessions extends APIResource {
    *   await client.webrtc.sessions.retrieve('mediaSessionId');
    * ```
    */
-  retrieve(
-    mediaSessionID: string,
-    params: SessionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<MediaSessionInformation> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/webrtc/sessions/${mediaSessionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(mediaSessionID: string, params: SessionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<MediaSessionInformation> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/webrtc/sessions/${mediaSessionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -82,19 +62,9 @@ export class Sessions extends APIResource {
    * await client.webrtc.sessions.delete('mediaSessionId');
    * ```
    */
-  delete(
-    mediaSessionID: string,
-    params: SessionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<void> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/webrtc/sessions/${mediaSessionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { Accept: '*/*', ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(mediaSessionID: string, params: SessionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<void> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/webrtc/sessions/${mediaSessionID}`, { ...options, headers: buildHeaders([{Accept: '*/*', ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -112,20 +82,9 @@ export class Sessions extends APIResource {
    *   );
    * ```
    */
-  updateStatus(
-    mediaSessionID: string,
-    params: SessionUpdateStatusParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<MediaSessionInformation> {
-    const { body_media_session_id, 'x-correlator': xCorrelator, ...body } = params ?? {};
-    return this._client.put(path`/webrtc/sessions/${mediaSessionID}/status`, {
-      body: { mediaSessionId: body_media_session_id, ...body },
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  updateStatus(mediaSessionID: string, params: SessionUpdateStatusParams | null | undefined = {}, options?: RequestOptions): APIPromise<MediaSessionInformation> {
+    const { body_media_session_id, 'x-correlator': xCorrelator, ...body } = params ?? {}
+    return this._client.put(path`/webrtc/sessions/${mediaSessionID}/status`, { body: { mediaSessionId: body_media_session_id, ...body }, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -195,22 +154,7 @@ export interface MediaSessionInformation {
    * Provides the status of the media session. During the session creation, this
    * attribute SHALL NOT be included in the request.
    */
-  status?:
-    | 'Initial'
-    | 'InProgress'
-    | 'Ringing'
-    | 'Proceeding'
-    | 'Connected'
-    | 'Terminated'
-    | 'Hold'
-    | 'Resume'
-    | 'SessionCancelled'
-    | 'Declined'
-    | 'Failed'
-    | 'Waiting'
-    | 'NoAnswer'
-    | 'NotReachable'
-    | 'Busy';
+  status?: 'Initial' | 'InProgress' | 'Ringing' | 'Proceeding' | 'Connected' | 'Terminated' | 'Hold' | 'Resume' | 'SessionCancelled' | 'Declined' | 'Failed' | 'Waiting' | 'NoAnswer' | 'NotReachable' | 'Busy';
 }
 
 /**
@@ -413,22 +357,7 @@ export interface SessionCreateParams {
    * Body param: Provides the status of the media session. During the session
    * creation, this attribute SHALL NOT be included in the request.
    */
-  status?:
-    | 'Initial'
-    | 'InProgress'
-    | 'Ringing'
-    | 'Proceeding'
-    | 'Connected'
-    | 'Terminated'
-    | 'Hold'
-    | 'Resume'
-    | 'SessionCancelled'
-    | 'Declined'
-    | 'Failed'
-    | 'Waiting'
-    | 'NoAnswer'
-    | 'NotReachable'
-    | 'Busy';
+  status?: 'Initial' | 'InProgress' | 'Ringing' | 'Proceeding' | 'Connected' | 'Terminated' | 'Hold' | 'Resume' | 'SessionCancelled' | 'Declined' | 'Failed' | 'Waiting' | 'NoAnswer' | 'NotReachable' | 'Busy';
 
   /**
    * Header param: Correlation id for the different services
@@ -519,22 +448,7 @@ export interface SessionUpdateStatusParams {
    * Body param: Provides the status of the media session. During the session
    * creation, this attribute SHALL NOT be included in the request.
    */
-  status?:
-    | 'Initial'
-    | 'InProgress'
-    | 'Ringing'
-    | 'Proceeding'
-    | 'Connected'
-    | 'Terminated'
-    | 'Hold'
-    | 'Resume'
-    | 'SessionCancelled'
-    | 'Declined'
-    | 'Failed'
-    | 'Waiting'
-    | 'NoAnswer'
-    | 'NotReachable'
-    | 'Busy';
+  status?: 'Initial' | 'InProgress' | 'Ringing' | 'Proceeding' | 'Connected' | 'Terminated' | 'Hold' | 'Resume' | 'SessionCancelled' | 'Declined' | 'Failed' | 'Waiting' | 'NoAnswer' | 'NotReachable' | 'Busy';
 
   /**
    * Header param: Correlation id for the different services
@@ -552,6 +466,6 @@ export declare namespace Sessions {
     type SessionCreateParams as SessionCreateParams,
     type SessionRetrieveParams as SessionRetrieveParams,
     type SessionDeleteParams as SessionDeleteParams,
-    type SessionUpdateStatusParams as SessionUpdateStatusParams,
+    type SessionUpdateStatusParams as SessionUpdateStatusParams
   };
 }

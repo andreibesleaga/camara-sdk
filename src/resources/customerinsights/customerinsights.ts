@@ -14,6 +14,6 @@ export declare namespace Customerinsights {
   export {
     Scoring as Scoring,
     type ScoringRetrieveResponse as ScoringRetrieveResponse,
-    type ScoringRetrieveParams as ScoringRetrieveParams,
+    type ScoringRetrieveParams as ScoringRetrieveParams
   };
 }
