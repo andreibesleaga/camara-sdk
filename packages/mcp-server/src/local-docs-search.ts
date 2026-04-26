@@ -69,28 +69,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.customerinsights.scoring.retrieve(idDocument?: string, phoneNumber?: string, scoringType?: 'gaugeMetric' | 'veritasIndex', x-correlator?: string): { scoringType: 'gaugeMetric' | 'veritasIndex'; scoringValue: number; }`\n\n**post** `/customerinsights/scoring/retrieve`\n\nRetrieves Scoring information, for the user associated with the provided `idDocument`, `phoneNumber` or the combination of both parameters.\nIt also allows to select the type of the Scoring scale measurement.\n\n### Parameters\n\n- `idDocument?: string`\n  Identification number associated to the official identity document in the country. It may contain alphanumeric characters.\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `scoringType?: 'gaugeMetric' | 'veritasIndex'`\n  Scoring type, i.e.: scale. API Client may use this field to indicate the Scoring in one of the defined scales; if this field is not informed, the API will return the Scoring in the scale configured by default in the system.\n\nAllowed values are:\n\n* `gaugeMetric`: ranges from index 850 (lowest risk) to index 300 (highest risk)\n* `veritasIndex`: ranges from index 0 (lowest risk) to index 19 (highest risk)\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ scoringType: 'gaugeMetric' | 'veritasIndex'; scoringValue: number; }`\n  Scoring information based on the individual's profile owned by a Telco Operator.\n\n  - `scoringType: 'gaugeMetric' | 'veritasIndex'`\n  - `scoringValue: number`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst scoring = await client.customerinsights.scoring.retrieve();\n\nconsole.log(scoring);\n```",
     perLanguage: {
-      cli: {
-        method: 'scoring retrieve',
-        example: "camara customerinsights:scoring retrieve \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.customerinsights.scoring.retrieve',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst scoring = await client.customerinsights.scoring.retrieve({ scoringType: 'gaugeMetric' });\n\nconsole.log(scoring.scoringType);",
       },
       go: {
         method: 'client.Customerinsights.Scoring.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tscoring, err := client.Customerinsights.Scoring.Get(context.TODO(), camara.CustomerinsightScoringGetParams{\n\t\tScoringType: camara.CustomerinsightScoringGetParamsScoringTypeGaugeMetric,\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", scoring.ScoringType)\n}\n',
       },
-      http: {
-        example:
-          "curl https://api.example.com/camara/customerinsights/scoring/retrieve \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+      cli: {
+        method: 'scoring retrieve',
+        example: "camara customerinsights:scoring retrieve \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'customerinsights->scoring->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$scoring = $client->customerinsights->scoring->retrieve(\n  idDocument: 'idDocument',\n  phoneNumber: '+4960513',\n  scoringType: 'gaugeMetric',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($scoring);",
       },
-      typescript: {
-        method: 'client.customerinsights.scoring.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst scoring = await client.customerinsights.scoring.retrieve({ scoringType: 'gaugeMetric' });\n\nconsole.log(scoring.scoringType);",
+          "curl https://api.example.com/camara/customerinsights/scoring/retrieve \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
     },
   },
@@ -107,28 +107,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_date\n\n`client.deviceswap.retrieveDate(phoneNumber?: string, x-correlator?: string): { latestDeviceChange: string; monitoredPeriod?: number; }`\n\n**post** `/deviceswap/retrieve-date`\n\nGet timestamp of last device swap for a mobile user account provided with phone number.\n\n### Parameters\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ latestDeviceChange: string; monitoredPeriod?: number; }`\n\n  - `latestDeviceChange: string`\n  - `monitoredPeriod?: number`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.deviceswap.retrieveDate();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'deviceswap retrieve_date',
-        example: "camara deviceswap retrieve-date \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceswap.retrieveDate',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.retrieveDate();\n\nconsole.log(response.latestDeviceChange);",
       },
       go: {
         method: 'client.Deviceswap.GetDate',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Deviceswap.GetDate(context.TODO(), camara.DeviceswapGetDateParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.LatestDeviceChange)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/deviceswap/retrieve-date \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34666111333"\n        }\'',
+      cli: {
+        method: 'deviceswap retrieve_date',
+        example: "camara deviceswap retrieve-date \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceswap->retrieveDate',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceswap->retrieveDate(\n  phoneNumber: '+34666111333',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.deviceswap.retrieveDate',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.retrieveDate();\n\nconsole.log(response.latestDeviceChange);",
+          'curl https://api.example.com/camara/deviceswap/retrieve-date \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34666111333"\n        }\'',
       },
     },
   },
@@ -145,28 +145,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## check\n\n`client.deviceswap.check(maxAge?: number, phoneNumber?: string, x-correlator?: string): { swapped: boolean; }`\n\n**post** `/deviceswap/check`\n\nCheck if device swap has been performed during a past period\n\n### Parameters\n\n- `maxAge?: number`\n  Period in hours to be checked for device swap.\n\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ swapped: boolean; }`\n\n  - `swapped: boolean`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.deviceswap.check();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'deviceswap check',
-        example: "camara deviceswap check \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceswap.check',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.check({ maxAge: 120 });\n\nconsole.log(response.swapped);",
       },
       go: {
         method: 'client.Deviceswap.Check',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Deviceswap.Check(context.TODO(), camara.DeviceswapCheckParams{\n\t\tMaxAge: camara.Int(120),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Swapped)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/deviceswap/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "maxAge": 120,\n          "phoneNumber": "+34666111333"\n        }\'',
+      cli: {
+        method: 'deviceswap check',
+        example: "camara deviceswap check \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceswap->check',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceswap->check(\n  maxAge: 120,\n  phoneNumber: '+34666111333',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.deviceswap.check',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.check({ maxAge: 120 });\n\nconsole.log(response.swapped);",
+          'curl https://api.example.com/camara/deviceswap/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "maxAge": 120,\n          "phoneNumber": "+34666111333"\n        }\'',
       },
     },
   },
@@ -199,29 +199,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## verify\n\n`client.knowyourcustomerageverification.verify(ageThreshold: number, birthdate?: string, email?: string, familyName?: string, familyNameAtBirth?: string, givenName?: string, idDocument?: string, includeContentLock?: boolean, includeParentalControl?: boolean, middleNames?: string, name?: string, phoneNumber?: string, x-correlator?: string): { ageCheck: 'true' | 'false' | 'not_available'; contentLock?: 'true' | 'false' | 'not_available'; identityMatchScore?: number; parentalControl?: 'true' | 'false' | 'not_available'; verifiedStatus?: boolean; }`\n\n**post** `/knowyourcustomerageverification/verify`\n\nVerify that the age of the subscriber associated with a phone number is equal to or greater than the specified age threshold value.\n\nAs it is possible that the person holding the contract and the end-user of the subscription may not be the same, the endpoint also admits a list of optional properties to be included in the request to improve the identification. The response may optionally include the `identityMatchScore` property with a value that indicates how certain it is that the information returned relates to the person that the API Client is requesting. To increase the reliability of the information returned, the API Provider may include in the response the `verifiedStatus` property, indicating whether the identity information in its possession has been verified against an identification document legally accepted as an age verification document (Note). Note: Depending on the country, credit-check or other mechanism can be used instead of official identification for Age Verification. For details, please contact API Provider.\n\nIf the API Client indicates request properties `includeContentLock` or `includeParentalControl` with value `true` and the API Provider implements this functionality, then the response will also include `contentLock` and `parentalControl` properties to indicate if the subscription has any kind of content filtering enabled. On the other hand, if the request properties are not included or the API Client specifies value `false`, then the response properties will not be returned. If the API Provider doesn't implement this functionality, request properties will be ignored and response properties won't be returned in any case.\n\n\n### Parameters\n\n- `ageThreshold: number`\n  The age to be verified. The indicated range is a global definition of maximum and minimum values allowed to be requested. It is important to note that this range might be more restrictive in some implementations due to local regulations of a country i.e. A country does not allow to request for an age under 18. This limitation must be informed during the onboarding process.\n\n- `birthdate?: string`\n  The birthdate of the customer, in RFC 3339 / ISO 8601 calendar date format (YYYY-MM-DD).\n\n- `email?: string`\n  Email address of the customer in the RFC specified format (local-part@domain).\n\n- `familyName?: string`\n  Last name, family name, or surname of the customer.\n\n- `familyNameAtBirth?: string`\n  Last/family/sur- name at birth of the customer.\n\n- `givenName?: string`\n  First/given name or compound first/given name of the customer.\n\n- `idDocument?: string`\n  Id number associated to the official identity document in the country. It may contain alphanumeric characters.\n\n- `includeContentLock?: boolean`\n  If this parameter is included in the request with value `true`, the response property `contentLock` will be returned. If it is not included or its value is `false`, the response property will not be returned.\n\n- `includeParentalControl?: boolean`\n  If this parameter is included in the request with value `true`, the response property `parentalControl` will be returned. If it is not included or its value is `false`, the response property will not be returned.\n\n- `middleNames?: string`\n  Middle name/s of the customer.\n\n- `name?: string`\n  Complete name of the customer, usually composed of first/given name and last/family/sur- name in a country.  Depending on the country, the order of first/give name and last/family/sur- name varies, and middle name could be included.  It can use givenName, middleNames, familyName and/or familyNameAtBirth. For example, in ESP, name+familyName; in NLD, it can be name+middleNames+familyName or name+middleNames+familyNameAtBirth, etc.\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ ageCheck: 'true' | 'false' | 'not_available'; contentLock?: 'true' | 'false' | 'not_available'; identityMatchScore?: number; parentalControl?: 'true' | 'false' | 'not_available'; verifiedStatus?: boolean; }`\n  Response to an age verification request\n\n  - `ageCheck: 'true' | 'false' | 'not_available'`\n  - `contentLock?: 'true' | 'false' | 'not_available'`\n  - `identityMatchScore?: number`\n  - `parentalControl?: 'true' | 'false' | 'not_available'`\n  - `verifiedStatus?: boolean`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.knowyourcustomerageverification.verify({ ageThreshold: 18 });\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'knowyourcustomerageverification verify',
+      typescript: {
+        method: 'client.knowyourcustomerageverification.verify',
         example:
-          "camara knowyourcustomerageverification verify \\\n  --bearer-token 'My Bearer Token' \\\n  --age-threshold 18",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomerageverification.verify({\n  ageThreshold: 18,\n  birthdate: '1978-08-22',\n  email: 'federicaSanchez.Arjona@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  givenName: 'Federica',\n  idDocument: '66666666q',\n  includeContentLock: true,\n  includeParentalControl: true,\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(response.identityMatchScore);",
       },
       go: {
         method: 'client.Knowyourcustomerageverification.Verify',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Knowyourcustomerageverification.Verify(context.TODO(), camara.KnowyourcustomerageverificationVerifyParams{\n\t\tAgeThreshold:           18,\n\t\tBirthdate:              camara.Time(time.Now()),\n\t\tEmail:                  camara.String("federicaSanchez.Arjona@example.com"),\n\t\tFamilyName:             camara.String("Sanchez Arjona"),\n\t\tFamilyNameAtBirth:      camara.String("YYYY"),\n\t\tGivenName:              camara.String("Federica"),\n\t\tIDDocument:             camara.String("66666666q"),\n\t\tIncludeContentLock:     camara.Bool(true),\n\t\tIncludeParentalControl: camara.Bool(true),\n\t\tMiddleNames:            camara.String("Sanchez"),\n\t\tName:                   camara.String("Federica Sanchez Arjona"),\n\t\tPhoneNumber:            camara.String("+34629255833"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.IdentityMatchScore)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'knowyourcustomerageverification verify',
         example:
-          'curl https://api.example.com/camara/knowyourcustomerageverification/verify \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "ageThreshold": 18,\n          "phoneNumber": "+34629255833"\n        }\'',
+          "camara knowyourcustomerageverification verify \\\n  --bearer-token 'My Bearer Token' \\\n  --age-threshold 18",
       },
       php: {
         method: 'knowyourcustomerageverification->verify',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->knowyourcustomerageverification->verify(\n  ageThreshold: 18,\n  birthdate: '1978-08-22',\n  email: 'federicaSanchez.Arjona@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  givenName: 'Federica',\n  idDocument: '66666666q',\n  includeContentLock: true,\n  includeParentalControl: true,\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  phoneNumber: '+34629255833',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.knowyourcustomerageverification.verify',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomerageverification.verify({\n  ageThreshold: 18,\n  birthdate: '1978-08-22',\n  email: 'federicaSanchez.Arjona@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  givenName: 'Federica',\n  idDocument: '66666666q',\n  includeContentLock: true,\n  includeParentalControl: true,\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(response.identityMatchScore);",
+          'curl https://api.example.com/camara/knowyourcustomerageverification/verify \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "ageThreshold": 18,\n          "phoneNumber": "+34629255833"\n        }\'',
       },
     },
   },
@@ -241,28 +241,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.knowyourcustomerfillIn.create(phoneNumber?: string, x-correlator?: string): { address?: string; birthdate?: string; cityOfBirth?: string; country?: string; countryOfBirth?: string; email?: string; familyName?: string; familyNameAtBirth?: string; gender?: 'MALE' | 'FEMALE' | 'OTHER'; givenName?: string; houseNumberExtension?: string; idDocument?: string; idDocumentExpiryDate?: string; idDocumentType?: string; locality?: string; middleNames?: string; name?: string; nameKanaHankaku?: string; nameKanaZenkaku?: string; nationality?: string; phoneNumber?: string; postalCode?: string; region?: string; streetName?: string; streetNumber?: string; }`\n\n**post** `/knowyourcustomerfill-in/fill-in`\n\nProviding information related to a customer identity stored the account data bound to the customer's phone number.\n\n### Parameters\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ address?: string; birthdate?: string; cityOfBirth?: string; country?: string; countryOfBirth?: string; email?: string; familyName?: string; familyNameAtBirth?: string; gender?: 'MALE' | 'FEMALE' | 'OTHER'; givenName?: string; houseNumberExtension?: string; idDocument?: string; idDocumentExpiryDate?: string; idDocumentType?: string; locality?: string; middleNames?: string; name?: string; nameKanaHankaku?: string; nameKanaZenkaku?: string; nationality?: string; phoneNumber?: string; postalCode?: string; region?: string; streetName?: string; streetNumber?: string; }`\n\n  - `address?: string`\n  - `birthdate?: string`\n  - `cityOfBirth?: string`\n  - `country?: string`\n  - `countryOfBirth?: string`\n  - `email?: string`\n  - `familyName?: string`\n  - `familyNameAtBirth?: string`\n  - `gender?: 'MALE' | 'FEMALE' | 'OTHER'`\n  - `givenName?: string`\n  - `houseNumberExtension?: string`\n  - `idDocument?: string`\n  - `idDocumentExpiryDate?: string`\n  - `idDocumentType?: string`\n  - `locality?: string`\n  - `middleNames?: string`\n  - `name?: string`\n  - `nameKanaHankaku?: string`\n  - `nameKanaZenkaku?: string`\n  - `nationality?: string`\n  - `phoneNumber?: string`\n  - `postalCode?: string`\n  - `region?: string`\n  - `streetName?: string`\n  - `streetNumber?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst knowyourcustomerfillIn = await client.knowyourcustomerfillIn.create();\n\nconsole.log(knowyourcustomerfillIn);\n```",
     perLanguage: {
-      cli: {
-        method: 'knowyourcustomerfill_in create',
-        example: "camara knowyourcustomerfill-in create \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.knowyourcustomerfillIn.create',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst knowyourcustomerfillIn = await client.knowyourcustomerfillIn.create({\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(knowyourcustomerfillIn.idDocument);",
       },
       go: {
         method: 'client.KnowyourcustomerfillIn.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tknowyourcustomerfillIn, err := client.KnowyourcustomerfillIn.New(context.TODO(), camara.KnowyourcustomerfillInNewParams{\n\t\tPhoneNumber: camara.String("+34629255833"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", knowyourcustomerfillIn.IDDocument)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/knowyourcustomerfill-in/fill-in \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
+      cli: {
+        method: 'knowyourcustomerfill_in create',
+        example: "camara knowyourcustomerfill-in create \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'knowyourcustomerfillIn->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$knowyourcustomerfillIn = $client->knowyourcustomerfillIn->create(\n  phoneNumber: '+34629255833',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($knowyourcustomerfillIn);",
       },
-      typescript: {
-        method: 'client.knowyourcustomerfillIn.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst knowyourcustomerfillIn = await client.knowyourcustomerfillIn.create({\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(knowyourcustomerfillIn.idDocument);",
+          'curl https://api.example.com/camara/knowyourcustomerfill-in/fill-in \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
       },
     },
   },
@@ -308,28 +308,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## match\n\n`client.knowyourcustomermatch.match(address?: string, birthdate?: string, cityOfBirth?: string, country?: string, countryOfBirth?: string, email?: string, familyName?: string, familyNameAtBirth?: string, gender?: 'MALE' | 'FEMALE' | 'OTHER', givenName?: string, houseNumberExtension?: string, idDocument?: string, idDocumentExpiryDate?: string, idDocumentType?: string, locality?: string, middleNames?: string, name?: string, nameKanaHankaku?: string, nameKanaZenkaku?: string, nationality?: string, phoneNumber?: string, postalCode?: string, region?: string, streetName?: string, streetNumber?: string, x-correlator?: string): { addressMatch?: match_result; addressMatchScore?: number; birthdateMatch?: match_result; cityOfBirthMatch?: match_result; cityOfBirthMatchScore?: number; countryMatch?: match_result; countryOfBirthMatch?: match_result; emailMatch?: match_result; emailMatchScore?: number; familyNameAtBirthMatch?: match_result; familyNameAtBirthMatchScore?: number; familyNameMatch?: match_result; familyNameMatchScore?: number; genderMatch?: match_result; givenNameMatch?: match_result; givenNameMatchScore?: number; houseNumberExtensionMatch?: match_result; idDocumentExpiryDateMatch?: match_result; idDocumentMatch?: match_result; idDocumentTypeMatch?: match_result; localityMatch?: match_result; localityMatchScore?: number; middleNamesMatch?: match_result; middleNamesMatchScore?: number; nameKanaHankakuMatch?: match_result; nameKanaHankakuMatchScore?: number; nameKanaZenkakuMatch?: match_result; nameKanaZenkakuMatchScore?: number; nameMatch?: match_result; nameMatchScore?: number; nationalityMatch?: match_result; postalCodeMatch?: match_result; regionMatch?: match_result; regionMatchScore?: number; streetNameMatch?: match_result; streetNameMatchScore?: number; streetNumberMatch?: match_result; streetNumberMatchScore?: number; }`\n\n**post** `/knowyourcustomermatch/match`\n\nVerify matching of a number of attributes related to a customer identity against the verified data bound to their phone number in the Operator systems. Regardless of whether the `phoneNumber` is explicitly stated in the request body, at least one of the other fields must be provided, otherwise a `HTTP 400 - KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` error will be returned.\n\nThe API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:\n  - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.\n  - **false**: the attribute provided does not match with the one in the Operator systems.\n  - **not_available**: the attribute is not available to validate.\n\n### Parameters\n\n- `address?: string`\n  Complete address of the customer.  For some countries, it is built following the usual concatenation of parameters in a country, but for other countries, this is not the case.  For some countries, it can use streetName, streetNumber and/or houseNumberExtension. For example, in ESP, streetName+streetNumber; in NLD, it can be streetName+streetNumber or streetName+streetNumber+houseNumberExtension.\n\n- `birthdate?: string`\n  The birthdate of the customer, in RFC 3339 / ISO 8601 calendar date format (YYYY-MM-DD).\n\n- `cityOfBirth?: string`\n  City where the customer was born.\n\n- `country?: string`\n  Country of the customer's address. Format ISO 3166-1 alpha-2\n\n- `countryOfBirth?: string`\n  Country where the customer was born. Format ISO 3166-1 alpha-2.\n\n- `email?: string`\n  Email address of the customer in the RFC specified format (local-part@domain).\n\n- `familyName?: string`\n  Last name, family name, or surname of the customer.\n\n- `familyNameAtBirth?: string`\n  Last/family/sur- name at birth of the customer.\n\n- `gender?: 'MALE' | 'FEMALE' | 'OTHER'`\n  Gender of the customer (Male/Female/Other).\n\n- `givenName?: string`\n  First/given name or compound first/given name of the customer.\n\n- `houseNumberExtension?: string`\n  Specific identifier of the house needed depending on the property type. For example, number of apartment in an apartment building.\n\n- `idDocument?: string`\n  Id number associated to the official identity document in the country. It may contain alphanumeric characters.\n\n- `idDocumentExpiryDate?: string`\n  Expiration date of the identity document (ISO 8601).\n\n- `idDocumentType?: string`\n  Type of the official identity document provided.\n\n- `locality?: string`\n  Locality of the customer's address\n\n- `middleNames?: string`\n  Middle name/s of the customer.\n\n- `name?: string`\n  Complete name of the customer, usually composed of first/given name and last/family/sur- name in a country.  Depending on the country, the order of first/give name and last/family/sur- name varies, and middle name could be included.  It can use givenName, middleNames, familyName and/or familyNameAtBirth. For example, in ESP, name+familyName; in NLD, it can be name+middleNames+familyName or name+middleNames+familyNameAtBirth, etc.\n\n- `nameKanaHankaku?: string`\n  Complete name of the customer in Hankaku-Kana format (reading of name) for Japan.\n\n- `nameKanaZenkaku?: string`\n  Complete name of the customer in Zenkaku-Kana format (reading of name) for Japan.\n\n- `nationality?: string`\n  ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `postalCode?: string`\n  Zip code or postal code\n\n- `region?: string`\n  Region/prefecture of the customer's address\n\n- `streetName?: string`\n  Name of the street of the customer's address. It should not include the type of the street.\n\n- `streetNumber?: string`\n  The street number of the customer's address.  Number identifying a specific property on the 'streetName'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ addressMatch?: 'true' | 'false' | 'not_available'; addressMatchScore?: number; birthdateMatch?: 'true' | 'false' | 'not_available'; cityOfBirthMatch?: 'true' | 'false' | 'not_available'; cityOfBirthMatchScore?: number; countryMatch?: 'true' | 'false' | 'not_available'; countryOfBirthMatch?: 'true' | 'false' | 'not_available'; emailMatch?: 'true' | 'false' | 'not_available'; emailMatchScore?: number; familyNameAtBirthMatch?: 'true' | 'false' | 'not_available'; familyNameAtBirthMatchScore?: number; familyNameMatch?: 'true' | 'false' | 'not_available'; familyNameMatchScore?: number; genderMatch?: 'true' | 'false' | 'not_available'; givenNameMatch?: 'true' | 'false' | 'not_available'; givenNameMatchScore?: number; houseNumberExtensionMatch?: 'true' | 'false' | 'not_available'; idDocumentExpiryDateMatch?: 'true' | 'false' | 'not_available'; idDocumentMatch?: 'true' | 'false' | 'not_available'; idDocumentTypeMatch?: 'true' | 'false' | 'not_available'; localityMatch?: 'true' | 'false' | 'not_available'; localityMatchScore?: number; middleNamesMatch?: 'true' | 'false' | 'not_available'; middleNamesMatchScore?: number; nameKanaHankakuMatch?: 'true' | 'false' | 'not_available'; nameKanaHankakuMatchScore?: number; nameKanaZenkakuMatch?: 'true' | 'false' | 'not_available'; nameKanaZenkakuMatchScore?: number; nameMatch?: 'true' | 'false' | 'not_available'; nameMatchScore?: number; nationalityMatch?: 'true' | 'false' | 'not_available'; postalCodeMatch?: 'true' | 'false' | 'not_available'; regionMatch?: 'true' | 'false' | 'not_available'; regionMatchScore?: number; streetNameMatch?: 'true' | 'false' | 'not_available'; streetNameMatchScore?: number; streetNumberMatch?: 'true' | 'false' | 'not_available'; streetNumberMatchScore?: number; }`\n\n  - `addressMatch?: 'true' | 'false' | 'not_available'`\n  - `addressMatchScore?: number`\n  - `birthdateMatch?: 'true' | 'false' | 'not_available'`\n  - `cityOfBirthMatch?: 'true' | 'false' | 'not_available'`\n  - `cityOfBirthMatchScore?: number`\n  - `countryMatch?: 'true' | 'false' | 'not_available'`\n  - `countryOfBirthMatch?: 'true' | 'false' | 'not_available'`\n  - `emailMatch?: 'true' | 'false' | 'not_available'`\n  - `emailMatchScore?: number`\n  - `familyNameAtBirthMatch?: 'true' | 'false' | 'not_available'`\n  - `familyNameAtBirthMatchScore?: number`\n  - `familyNameMatch?: 'true' | 'false' | 'not_available'`\n  - `familyNameMatchScore?: number`\n  - `genderMatch?: 'true' | 'false' | 'not_available'`\n  - `givenNameMatch?: 'true' | 'false' | 'not_available'`\n  - `givenNameMatchScore?: number`\n  - `houseNumberExtensionMatch?: 'true' | 'false' | 'not_available'`\n  - `idDocumentExpiryDateMatch?: 'true' | 'false' | 'not_available'`\n  - `idDocumentMatch?: 'true' | 'false' | 'not_available'`\n  - `idDocumentTypeMatch?: 'true' | 'false' | 'not_available'`\n  - `localityMatch?: 'true' | 'false' | 'not_available'`\n  - `localityMatchScore?: number`\n  - `middleNamesMatch?: 'true' | 'false' | 'not_available'`\n  - `middleNamesMatchScore?: number`\n  - `nameKanaHankakuMatch?: 'true' | 'false' | 'not_available'`\n  - `nameKanaHankakuMatchScore?: number`\n  - `nameKanaZenkakuMatch?: 'true' | 'false' | 'not_available'`\n  - `nameKanaZenkakuMatchScore?: number`\n  - `nameMatch?: 'true' | 'false' | 'not_available'`\n  - `nameMatchScore?: number`\n  - `nationalityMatch?: 'true' | 'false' | 'not_available'`\n  - `postalCodeMatch?: 'true' | 'false' | 'not_available'`\n  - `regionMatch?: 'true' | 'false' | 'not_available'`\n  - `regionMatchScore?: number`\n  - `streetNameMatch?: 'true' | 'false' | 'not_available'`\n  - `streetNameMatchScore?: number`\n  - `streetNumberMatch?: 'true' | 'false' | 'not_available'`\n  - `streetNumberMatchScore?: number`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.knowyourcustomermatch.match();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'knowyourcustomermatch match',
-        example: "camara knowyourcustomermatch match \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.knowyourcustomermatch.match',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomermatch.match({\n  address: 'Tokyo-to Chiyoda-ku Iidabashi 3-10-10',\n  birthdate: '1978-08-22',\n  cityOfBirth: 'Madrid',\n  country: 'JP',\n  countryOfBirth: 'ES',\n  email: 'abc@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  gender: 'OTHER',\n  givenName: 'Federica',\n  houseNumberExtension: 'VVVV',\n  idDocument: '66666666q',\n  idDocumentExpiryDate: '2027-07-12',\n  idDocumentType: 'passport',\n  locality: 'ZZZZ',\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  nameKanaHankaku: 'federica',\n  nameKanaZenkaku: 'Ｆｅｄｅｒｉｃａ',\n  nationality: 'ES',\n  phoneNumber: '+34629255833',\n  postalCode: '1028460',\n  region: 'Tokyo',\n  streetName: 'Nicolas Salmeron',\n  streetNumber: '4',\n});\n\nconsole.log(response.idDocumentExpiryDateMatch);",
       },
       go: {
         method: 'client.Knowyourcustomermatch.Match',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Knowyourcustomermatch.Match(context.TODO(), camara.KnowyourcustomermatchMatchParams{\n\t\tAddress:              camara.String("Tokyo-to Chiyoda-ku Iidabashi 3-10-10"),\n\t\tBirthdate:            camara.Time(time.Now()),\n\t\tCityOfBirth:          camara.String("Madrid"),\n\t\tCountry:              camara.String("JP"),\n\t\tCountryOfBirth:       camara.String("ES"),\n\t\tEmail:                camara.String("abc@example.com"),\n\t\tFamilyName:           camara.String("Sanchez Arjona"),\n\t\tFamilyNameAtBirth:    camara.String("YYYY"),\n\t\tGender:               camara.KnowyourcustomermatchMatchParamsGenderOther,\n\t\tGivenName:            camara.String("Federica"),\n\t\tHouseNumberExtension: camara.String("VVVV"),\n\t\tIDDocument:           camara.String("66666666q"),\n\t\tIDDocumentExpiryDate: camara.Time(time.Now()),\n\t\tIDDocumentType:       camara.KnowyourcustomermatchMatchParamsIDDocumentTypePassport,\n\t\tLocality:             camara.String("ZZZZ"),\n\t\tMiddleNames:          camara.String("Sanchez"),\n\t\tName:                 camara.String("Federica Sanchez Arjona"),\n\t\tNameKanaHankaku:      camara.String("federica"),\n\t\tNameKanaZenkaku:      camara.String("Ｆｅｄｅｒｉｃａ"),\n\t\tNationality:          camara.String("ES"),\n\t\tPhoneNumber:          camara.String("+34629255833"),\n\t\tPostalCode:           camara.String("1028460"),\n\t\tRegion:               camara.String("Tokyo"),\n\t\tStreetName:           camara.String("Nicolas Salmeron"),\n\t\tStreetNumber:         camara.String("4"),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.IDDocumentExpiryDateMatch)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/knowyourcustomermatch/match \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
+      cli: {
+        method: 'knowyourcustomermatch match',
+        example: "camara knowyourcustomermatch match \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'knowyourcustomermatch->match',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->knowyourcustomermatch->match(\n  address: 'Tokyo-to Chiyoda-ku Iidabashi 3-10-10',\n  birthdate: '1978-08-22',\n  cityOfBirth: 'Madrid',\n  country: 'JP',\n  countryOfBirth: 'ES',\n  email: 'abc@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  gender: 'OTHER',\n  givenName: 'Federica',\n  houseNumberExtension: 'VVVV',\n  idDocument: '66666666q',\n  idDocumentExpiryDate: '2027-07-12',\n  idDocumentType: 'passport',\n  locality: 'ZZZZ',\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  nameKanaHankaku: 'federica',\n  nameKanaZenkaku: 'Ｆｅｄｅｒｉｃａ',\n  nationality: 'ES',\n  phoneNumber: '+34629255833',\n  postalCode: '1028460',\n  region: 'Tokyo',\n  streetName: 'Nicolas Salmeron',\n  streetNumber: '4',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.knowyourcustomermatch.match',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomermatch.match({\n  address: 'Tokyo-to Chiyoda-ku Iidabashi 3-10-10',\n  birthdate: '1978-08-22',\n  cityOfBirth: 'Madrid',\n  country: 'JP',\n  countryOfBirth: 'ES',\n  email: 'abc@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  gender: 'OTHER',\n  givenName: 'Federica',\n  houseNumberExtension: 'VVVV',\n  idDocument: '66666666q',\n  idDocumentExpiryDate: '2027-07-12',\n  idDocumentType: 'passport',\n  locality: 'ZZZZ',\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  nameKanaHankaku: 'federica',\n  nameKanaZenkaku: 'Ｆｅｄｅｒｉｃａ',\n  nationality: 'ES',\n  phoneNumber: '+34629255833',\n  postalCode: '1028460',\n  region: 'Tokyo',\n  streetName: 'Nicolas Salmeron',\n  streetNumber: '4',\n});\n\nconsole.log(response.idDocumentExpiryDateMatch);",
+          'curl https://api.example.com/camara/knowyourcustomermatch/match \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
       },
     },
   },
@@ -347,29 +347,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## verify\n\n`client.tenure.verify(tenureDate: string, phoneNumber?: string, x-correlator?: string): { tenureDateCheck: boolean; contractType?: 'PAYG' | 'PAYM' | 'Business'; }`\n\n**post** `/tenure/check-tenure`\n\nVerifies a specified length of tenure, based on a provided date, for a network subscriber to establish a level of trust for the network subscription identifier.\n\n\n### Parameters\n\n- `tenureDate: string`\n  The date, in RFC 3339 / ISO 8601 compliant format \"YYYY-MM-DD\", from which continuous tenure of the identified network subscriber is required to be confirmed\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ tenureDateCheck: boolean; contractType?: 'PAYG' | 'PAYM' | 'Business'; }`\n\n  - `tenureDateCheck: boolean`\n  - `contractType?: 'PAYG' | 'PAYM' | 'Business'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.tenure.verify({ tenureDate: '2023-07-03' });\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'tenure verify',
+      typescript: {
+        method: 'client.tenure.verify',
         example:
-          "camara tenure verify \\\n  --bearer-token 'My Bearer Token' \\\n  --tenure-date \"'2023-07-03'\"",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.tenure.verify({ tenureDate: '2023-07-03' });\n\nconsole.log(response.tenureDateCheck);",
       },
       go: {
         method: 'client.Tenure.Verify',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Tenure.Verify(context.TODO(), camara.TenureVerifyParams{\n\t\tTenureDate: time.Now(),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.TenureDateCheck)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'tenure verify',
         example:
-          'curl https://api.example.com/camara/tenure/check-tenure \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "tenureDate": "2023-07-03",\n          "phoneNumber": "+123456789"\n        }\'',
+          "camara tenure verify \\\n  --bearer-token 'My Bearer Token' \\\n  --tenure-date \"'2023-07-03'\"",
       },
       php: {
         method: 'tenure->verify',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->tenure->verify(\n  tenureDate: '2023-07-03',\n  phoneNumber: '+123456789',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.tenure.verify',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.tenure.verify({ tenureDate: '2023-07-03' });\n\nconsole.log(response.tenureDateCheck);",
+          'curl https://api.example.com/camara/tenure/check-tenure \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "tenureDate": "2023-07-03",\n          "phoneNumber": "+123456789"\n        }\'',
       },
     },
   },
@@ -386,29 +386,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## check_subscriber_change\n\n`client.numberrecycling.checkSubscriberChange(specifiedDate: string, phoneNumber?: string, x-correlator?: string): { phoneNumberRecycled: boolean; }`\n\n**post** `/numberrecycling/check`\n\nCheck whether the subscriber of the phone number has changed.\n\n### Parameters\n\n- `specifiedDate: string`\n  Specified date to check whether there has been a change in the subscriber associated with the specific phone number, in RFC 3339 calendar date format (YYYY-MM-DD).\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ phoneNumberRecycled: boolean; }`\n\n  - `phoneNumberRecycled: boolean`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.numberrecycling.checkSubscriberChange({ specifiedDate: '2024-10-31' });\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'numberrecycling check_subscriber_change',
+      typescript: {
+        method: 'client.numberrecycling.checkSubscriberChange',
         example:
-          "camara numberrecycling check-subscriber-change \\\n  --bearer-token 'My Bearer Token' \\\n  --specified-date \"'2024-10-31'\"",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.numberrecycling.checkSubscriberChange({\n  specifiedDate: '2024-10-31',\n});\n\nconsole.log(response.phoneNumberRecycled);",
       },
       go: {
         method: 'client.Numberrecycling.CheckSubscriberChange',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Numberrecycling.CheckSubscriberChange(context.TODO(), camara.NumberrecyclingCheckSubscriberChangeParams{\n\t\tSpecifiedDate: time.Now(),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.PhoneNumberRecycled)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'numberrecycling check_subscriber_change',
         example:
-          'curl https://api.example.com/camara/numberrecycling/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "specifiedDate": "2024-10-31",\n          "phoneNumber": "+123456789"\n        }\'',
+          "camara numberrecycling check-subscriber-change \\\n  --bearer-token 'My Bearer Token' \\\n  --specified-date \"'2024-10-31'\"",
       },
       php: {
         method: 'numberrecycling->checkSubscriberChange',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->numberrecycling->checkSubscriberChange(\n  specifiedDate: '2024-10-31',\n  phoneNumber: '+123456789',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.numberrecycling.checkSubscriberChange',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.numberrecycling.checkSubscriberChange({\n  specifiedDate: '2024-10-31',\n});\n\nconsole.log(response.phoneNumberRecycled);",
+          'curl https://api.example.com/camara/numberrecycling/check \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "specifiedDate": "2024-10-31",\n          "phoneNumber": "+123456789"\n        }\'',
       },
     },
   },
@@ -425,29 +425,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## send_code\n\n`client.otpvalidation.sendCode(message: string, phoneNumber: string, x-correlator?: string): { authenticationId: string; }`\n\n**post** `/otpvalidation/send-code`\n\nSends an SMS with the desired message and an OTP code to the received phone number.\n\n### Parameters\n\n- `message: string`\n  Message template used to compose the content of the SMS sent to the phone number. It must include the following label indicating where to include the short code `{{code}}`\n\n- `phoneNumber: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ authenticationId: string; }`\n  Structure to provide authentication identifier\n\n  - `authenticationId: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.otpvalidation.sendCode({ message: '{{code}} is your short code to authenticate with Cool App via SMS', phoneNumber: '+346661113334' });\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'otpvalidation send_code',
+      typescript: {
+        method: 'client.otpvalidation.sendCode',
         example:
-          "camara otpvalidation send-code \\\n  --bearer-token 'My Bearer Token' \\\n  --message '{{code}} is your short code to authenticate with Cool App via SMS' \\\n  --phone-number +346661113334",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.otpvalidation.sendCode({\n  message: '{{code}} is your short code to authenticate with Cool App via SMS',\n  phoneNumber: '+346661113334',\n});\n\nconsole.log(response.authenticationId);",
       },
       go: {
         method: 'client.Otpvalidation.SendCode',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Otpvalidation.SendCode(context.TODO(), camara.OtpvalidationSendCodeParams{\n\t\tMessage:     "{{code}} is your short code to authenticate with Cool App via SMS",\n\t\tPhoneNumber: "+346661113334",\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.AuthenticationID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'otpvalidation send_code',
         example:
-          'curl https://api.example.com/camara/otpvalidation/send-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "message": "{{code}} is your short code to authenticate with Cool App via SMS",\n          "phoneNumber": "+346661113334"\n        }\'',
+          "camara otpvalidation send-code \\\n  --bearer-token 'My Bearer Token' \\\n  --message '{{code}} is your short code to authenticate with Cool App via SMS' \\\n  --phone-number +346661113334",
       },
       php: {
         method: 'otpvalidation->sendCode',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->otpvalidation->sendCode(\n  message: '{{code}} is your short code to authenticate with Cool App via SMS',\n  phoneNumber: '+346661113334',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.otpvalidation.sendCode',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.otpvalidation.sendCode({\n  message: '{{code}} is your short code to authenticate with Cool App via SMS',\n  phoneNumber: '+346661113334',\n});\n\nconsole.log(response.authenticationId);",
+          'curl https://api.example.com/camara/otpvalidation/send-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "message": "{{code}} is your short code to authenticate with Cool App via SMS",\n          "phoneNumber": "+346661113334"\n        }\'',
       },
     },
   },
@@ -463,29 +463,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## validate_code\n\n`client.otpvalidation.validateCode(authenticationId: string, code: string, x-correlator?: string): void`\n\n**post** `/otpvalidation/validate-code`\n\nVerifies the code is valid for the received authenticationId\n\n### Parameters\n\n- `authenticationId: string`\n  unique id of the verification attempt the code belongs to.\n\n- `code: string`\n  temporal, short code to be validated\n\n- `x-correlator?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nawait client.otpvalidation.validateCode({ authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105', code: 'AJY3' })\n```",
     perLanguage: {
-      cli: {
-        method: 'otpvalidation validate_code',
+      typescript: {
+        method: 'client.otpvalidation.validateCode',
         example:
-          "camara otpvalidation validate-code \\\n  --bearer-token 'My Bearer Token' \\\n  --authentication-id ea0840f3-3663-4149-bd10-c7c6b8912105 \\\n  --code AJY3",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.otpvalidation.validateCode({\n  authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105',\n  code: 'AJY3',\n});",
       },
       go: {
         method: 'client.Otpvalidation.ValidateCode',
         example:
           'package main\n\nimport (\n\t"context"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\terr := client.Otpvalidation.ValidateCode(context.TODO(), camara.OtpvalidationValidateCodeParams{\n\t\tAuthenticationID: "ea0840f3-3663-4149-bd10-c7c6b8912105",\n\t\tCode:             "AJY3",\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n}\n',
       },
-      http: {
+      cli: {
+        method: 'otpvalidation validate_code',
         example:
-          'curl https://api.example.com/camara/otpvalidation/validate-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "authenticationId": "ea0840f3-3663-4149-bd10-c7c6b8912105",\n          "code": "AJY3"\n        }\'',
+          "camara otpvalidation validate-code \\\n  --bearer-token 'My Bearer Token' \\\n  --authentication-id ea0840f3-3663-4149-bd10-c7c6b8912105 \\\n  --code AJY3",
       },
       php: {
         method: 'otpvalidation->validateCode',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$result = $client->otpvalidation->validateCode(\n  authenticationID: 'ea0840f3-3663-4149-bd10-c7c6b8912105',\n  code: 'AJY3',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($result);",
       },
-      typescript: {
-        method: 'client.otpvalidation.validateCode',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.otpvalidation.validateCode({\n  authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105',\n  code: 'AJY3',\n});",
+          'curl https://api.example.com/camara/otpvalidation/validate-code \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "authenticationId": "ea0840f3-3663-4149-bd10-c7c6b8912105",\n          "code": "AJY3"\n        }\'',
       },
     },
   },
@@ -504,29 +504,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## check_unconditional_forwarding\n\n`client.callforwardingsignal.checkUnconditionalForwarding(phoneNumber?: string, x-correlator?: string): { active?: boolean; }`\n\n**post** `/callforwardingsignal/unconditional-call-forwardings`\n\nThis endpoint provides information about the status of the unconditional call forwarding, being active or not.\n\n### Parameters\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ active?: boolean; }`\n  resource containing the information about the Unconditional Call Forwarding Service for the given phone number (PhoneNumber)\n\n  - `active?: boolean`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.callforwardingsignal.checkUnconditionalForwarding();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'callforwardingsignal check_unconditional_forwarding',
+      typescript: {
+        method: 'client.callforwardingsignal.checkUnconditionalForwarding',
         example:
-          "camara callforwardingsignal check-unconditional-forwarding \\\n  --bearer-token 'My Bearer Token'",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkUnconditionalForwarding();\n\nconsole.log(response.active);",
       },
       go: {
         method: 'client.Callforwardingsignal.CheckUnconditionalForwarding',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Callforwardingsignal.CheckUnconditionalForwarding(context.TODO(), camara.CallforwardingsignalCheckUnconditionalForwardingParams{\n\t\tCreateCallForwardingSignal: camara.CreateCallForwardingSignalParam{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Active)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'callforwardingsignal check_unconditional_forwarding',
         example:
-          'curl https://api.example.com/camara/callforwardingsignal/unconditional-call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
+          "camara callforwardingsignal check-unconditional-forwarding \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'callforwardingsignal->checkUnconditionalForwarding',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->callforwardingsignal->checkUnconditionalForwarding(\n  phoneNumber: '+123456789', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.callforwardingsignal.checkUnconditionalForwarding',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkUnconditionalForwarding();\n\nconsole.log(response.active);",
+          'curl https://api.example.com/camara/callforwardingsignal/unconditional-call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
       },
     },
   },
@@ -545,29 +545,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## check_active_forwardings\n\n`client.callforwardingsignal.checkActiveForwardings(phoneNumber?: string, x-correlator?: string): string[]`\n\n**post** `/callforwardingsignal/call-forwardings`\n\nThis endpoint provides information about which type of call forwarding service is active. More than one service can be active, e.g. conditional and unconditional. This endpoint exceeds the main scope of the Call Forwarding Signal API, for this reason an error code 501 can be returned.\n\n### Parameters\n\n- `phoneNumber?: string`\n  A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `string[]`\n  resource containing the list of the Call Forwarding Services active for the given phone number (PhoneNumber). The possible states are, 'inactive' (no call forwarding service activated), 'unconditional' (call forwarded independently from the device status), 'conditional_busy' (call forwarded if the device is on an active call), 'conditional_not_reachable' (call forwarded if the device is not reachable), 'conditional_no_answer' (call forwarded if the device doesn't answer the incoming call).\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.callforwardingsignal.checkActiveForwardings();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'callforwardingsignal check_active_forwardings',
+      typescript: {
+        method: 'client.callforwardingsignal.checkActiveForwardings',
         example:
-          "camara callforwardingsignal check-active-forwardings \\\n  --bearer-token 'My Bearer Token'",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkActiveForwardings();\n\nconsole.log(response);",
       },
       go: {
         method: 'client.Callforwardingsignal.CheckActiveForwardings',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Callforwardingsignal.CheckActiveForwardings(context.TODO(), camara.CallforwardingsignalCheckActiveForwardingsParams{\n\t\tCreateCallForwardingSignal: camara.CreateCallForwardingSignalParam{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'callforwardingsignal check_active_forwardings',
         example:
-          'curl https://api.example.com/camara/callforwardingsignal/call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
+          "camara callforwardingsignal check-active-forwardings \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'callforwardingsignal->checkActiveForwardings',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->callforwardingsignal->checkActiveForwardings(\n  phoneNumber: '+123456789', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.callforwardingsignal.checkActiveForwardings',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkActiveForwardings();\n\nconsole.log(response);",
+          'curl https://api.example.com/camara/callforwardingsignal/call-forwardings \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+123456789"\n        }\'',
       },
     },
   },
@@ -593,29 +593,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.devicelocation.subscriptions.create(config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: string[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { id: string; config: device_location_config; protocol: device_location_protocol; sink: string; startsAt: string; types: device_location_subscription_event_type[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**post** `/devicelocation/subscriptions`\n\nCreate a subscription for a device to receive notifications when the device enters or exits a specified area.\n\n### Parameters\n\n- `config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters are needed by the subscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`, `subscriptionMaxEvents`, `initialEvent`.\n\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now.\n\n- `sink: string`\n  The address to which events shall be delivered using the selected protocol.\n\n- `types: string[]`\n  Camara Event types which are eligible to be delivered by this subscription.\nNote: As of now we enforce to have only event type per subscription.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: string[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `startsAt: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.create({\n  config: { subscriptionDetail: { area: { areaType: 'CIRCLE' } } },\n  protocol: 'HTTP',\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: ['org.camaraproject.geofencing-subscriptions.v0.area-entered'],\n});\n\nconsole.log(deviceLocationSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.devicelocation.subscriptions.create',
         example:
-          "camara devicelocation:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {area: {areaType: CIRCLE}}}' \\\n  --protocol HTTP \\\n  --sink https://notificationSendServer12.supertelco.com \\\n  --type org.camaraproject.geofencing-subscriptions.v0.area-entered",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      device: { phoneNumber: '+12345678912' },\n      area: { areaType: 'CIRCLE' },\n    },\n    initialEvent: true,\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2024-03-22T05:40:58.469Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: ['org.camaraproject.geofencing-subscriptions.v0.area-entered'],\n});\n\nconsole.log(deviceLocationSubscription.id);",
       },
       go: {
         method: 'client.Devicelocation.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceLocationSubscription, err := client.Devicelocation.Subscriptions.New(context.TODO(), camara.DevicelocationSubscriptionNewParams{\n\t\tConfig: camara.DevicelocationSubscriptionNewParamsConfig{\n\t\t\tDeviceLocationConfigParam: camara.DeviceLocationConfigParam{\n\t\t\t\tInitialEvent:           camara.Bool(true),\n\t\t\t\tSubscriptionMaxEvents:  camara.Int(10),\n\t\t\t\tSubscriptionExpireTime: camara.Time(time.Now()),\n\t\t\t},\n\t\t\tSubscriptionDetail: camara.DevicelocationSubscriptionNewParamsConfigSubscriptionDetail{\n\t\t\t\tDevice: camara.DeviceLocationDeviceParam{\n\t\t\t\t\tPhoneNumber: camara.String("+12345678912"),\n\t\t\t\t},\n\t\t\t\tArea: camara.DeviceLocationAreaParam{\n\t\t\t\t\tAreaType: camara.DeviceLocationAreaAreaTypeCircle,\n\t\t\t\t},\n\t\t\t},\n\t\t},\n\t\tProtocol: camara.DeviceLocationProtocolHTTP,\n\t\tSink:     "https://notificationSendServer12.supertelco.com",\n\t\tTypes:    []camara.DeviceLocationSubscriptionEventType{camara.DeviceLocationSubscriptionEventTypeOrgCamaraprojectGeofencingSubscriptionsV0AreaEntered},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceLocationSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "initialEvent": true,\n            "subscriptionExpireTime": "2024-03-22T05:40:58.469Z",\n            "subscriptionMaxEvents": 10,\n            "subscriptionDetail": {\n              "area": {\n                "areaType": "CIRCLE"\n              },\n              "device": {\n                "phoneNumber": "+12345678912"\n              }\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://notificationSendServer12.supertelco.com",\n          "types": [\n            "org.camaraproject.geofencing-subscriptions.v0.area-entered"\n          ]\n        }\'',
+          "camara devicelocation:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {area: {areaType: CIRCLE}}}' \\\n  --protocol HTTP \\\n  --sink https://notificationSendServer12.supertelco.com \\\n  --type org.camaraproject.geofencing-subscriptions.v0.area-entered",
       },
       php: {
         method: 'devicelocation->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscription = $client->devicelocation->subscriptions->create(\n  config: [\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2024-03-22T05:40:58.469Z'\n    ),\n    'subscriptionMaxEvents' => 10,\n    'subscriptionDetail' => [\n      'area' => ['areaType' => 'CIRCLE'],\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@domain.com',\n        'phoneNumber' => '+12345678912',\n      ],\n    ],\n  ],\n  protocol: DeviceLocationProtocol::HTTP,\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: [\n    DeviceLocationSubscriptionEventType::ORG_CAMARAPROJECT_GEOFENCING_SUBSCRIPTIONS_V0_AREA_ENTERED,\n  ],\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceLocationSubscription);",
       },
-      typescript: {
-        method: 'client.devicelocation.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      device: { phoneNumber: '+12345678912' },\n      area: { areaType: 'CIRCLE' },\n    },\n    initialEvent: true,\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2024-03-22T05:40:58.469Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: ['org.camaraproject.geofencing-subscriptions.v0.area-entered'],\n});\n\nconsole.log(deviceLocationSubscription.id);",
+          'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "initialEvent": true,\n            "subscriptionExpireTime": "2024-03-22T05:40:58.469Z",\n            "subscriptionMaxEvents": 10,\n            "subscriptionDetail": {\n              "area": {\n                "areaType": "CIRCLE"\n              },\n              "device": {\n                "phoneNumber": "+12345678912"\n              }\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://notificationSendServer12.supertelco.com",\n          "types": [\n            "org.camaraproject.geofencing-subscriptions.v0.area-entered"\n          ]\n        }\'',
       },
     },
   },
@@ -633,28 +633,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.devicelocation.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/devicelocation/subscriptions`\n\nRetrieve a list of geofencing event subscription(s).\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: string[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceLocationSubscriptions = await client.devicelocation.subscriptions.list();\n\nconsole.log(deviceLocationSubscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara devicelocation:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.devicelocation.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscriptions = await client.devicelocation.subscriptions.list();\n\nconsole.log(deviceLocationSubscriptions);",
       },
       go: {
         method: 'client.Devicelocation.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceLocationSubscriptions, err := client.Devicelocation.Subscriptions.List(context.TODO(), camara.DevicelocationSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceLocationSubscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara devicelocation:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'devicelocation->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscriptions = $client->devicelocation->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceLocationSubscriptions);",
       },
-      typescript: {
-        method: 'client.devicelocation.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscriptions = await client.devicelocation.subscriptions.list();\n\nconsole.log(deviceLocationSubscriptions);",
+          'curl https://api.example.com/camara/devicelocation/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -672,29 +672,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.devicelocation.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { id: string; config: device_location_config; protocol: device_location_protocol; sink: string; startsAt: string; types: device_location_subscription_event_type[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**get** `/devicelocation/subscriptions/{subscriptionId}`\n\nRetrieve Geofencing subscription information for a given subscription ID.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: string[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `startsAt: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceLocationSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.devicelocation.subscriptions.retrieve',
         example:
-          "camara devicelocation:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceLocationSubscription.id);",
       },
       go: {
         method: 'client.Devicelocation.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceLocationSubscription, err := client.Devicelocation.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DevicelocationSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceLocationSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara devicelocation:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'devicelocation->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceLocationSubscription = $client->devicelocation->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceLocationSubscription);",
       },
-      typescript: {
-        method: 'client.devicelocation.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceLocationSubscription.id);",
+          'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -711,29 +711,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.devicelocation.subscriptions.delete(subscriptionId: string, x-correlator?: string): { id: string; }`\n\n**delete** `/devicelocation/subscriptions/{subscriptionId}`\n\nDelete a given Geofencing subscription.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; }`\n  Response for an event-type subscription request managed asynchronously (Creation or Deletion).\n\n  - `id: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.devicelocation.subscriptions.delete',
         example:
-          "camara devicelocation:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
       },
       go: {
         method: 'client.Devicelocation.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Devicelocation.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DevicelocationSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara devicelocation:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'devicelocation->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->devicelocation->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.devicelocation.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+          'curl https://api.example.com/camara/devicelocation/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -760,29 +760,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.populationdensitydata.retrieve(area: { areaType: 'POLYGON'; }, endTime: string, startTime: string, precision?: number, sink?: string, sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { status: 'SUPPORTED_AREA' | 'PART_OF_AREA_NOT_SUPPORTED' | 'AREA_NOT_SUPPORTED' | 'OPERATION_NOT_COMPLETED'; timedPopulationDensityData: object[]; statusInfo?: string; }`\n\n**post** `/populationdensitydata/retrieve`\n\nRetrieves population density estimation together with the estimation range related for a time slot for a given area (described as a polygon) as a data set consisting of a sequence of equally-sized objects covering the input polygon area.\n\n### Parameters\n\n- `area: { areaType: 'POLYGON'; }`\n  Base schema for all areas\n  - `areaType: 'POLYGON'`\n    Type of this area.\nPOLYGON - The area is defined as a polygon.\n\n- `endTime: string`\n  End date time. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone. Recommended format is yyyy-MM-dd'T'HH:mm:ss.SSSZ (i.e. which allows 2023-07-03T14:27:08.312+02:00 or 2023-07-03T12:27:08.312Z) The maximum endTime allowed is 3 months from the time of the request.\n\n- `startTime: string`\n  Start date time. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone. Recommended format is yyyy-MM-dd'T'HH:mm:ss.SSSZ\n\n- `precision?: number`\n  Precision required of response cells. Precision defines a geohash level and corresponds to the length of the geohash for each cell. More information at [Geohash system](https://en.wikipedia.org/wiki/Geohash)\" If not included the default precision level 7 is used by default. In case of using a not supported level by the MNO, the API returns the error response `POPULATION_DENSITY_DATA.UNSUPPORTED_PRECISION`.\n\n- `sink?: string`\n  The address where the API response will be asynchronously delivered, using the HTTP protocol.\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ status: 'SUPPORTED_AREA' | 'PART_OF_AREA_NOT_SUPPORTED' | 'AREA_NOT_SUPPORTED' | 'OPERATION_NOT_COMPLETED'; timedPopulationDensityData: { cellPopulationDensityData: { dataType: 'NO_DATA' | 'LOW_DENSITY' | 'DENSITY_ESTIMATION'; geohash: string; }[]; endTime: string; startTime: string; }[]; statusInfo?: string; }`\n  Population density values is represented in time intervals for different cells of the requested area. Each element in `timedPopulationDensityData` array corresponds to a time interval, containing population density data for the grid cells. The intervals are 1 hour long.\n\n  - `status: 'SUPPORTED_AREA' | 'PART_OF_AREA_NOT_SUPPORTED' | 'AREA_NOT_SUPPORTED' | 'OPERATION_NOT_COMPLETED'`\n  - `timedPopulationDensityData: { cellPopulationDensityData: { dataType: 'NO_DATA' | 'LOW_DENSITY' | 'DENSITY_ESTIMATION'; geohash: string; }[]; endTime: string; startTime: string; }[]`\n  - `statusInfo?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst populationdensitydata = await client.populationdensitydata.retrieve({\n  area: { areaType: 'POLYGON' },\n  endTime: '2024-04-23T14:44:18.165Z',\n  startTime: '2024-04-23T14:44:18.165Z',\n});\n\nconsole.log(populationdensitydata);\n```",
     perLanguage: {
-      cli: {
-        method: 'populationdensitydata retrieve',
+      typescript: {
+        method: 'client.populationdensitydata.retrieve',
         example:
-          "camara populationdensitydata retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --area '{areaType: POLYGON}' \\\n  --end-time \"'2024-04-23T14:44:18.165Z'\" \\\n  --start-time \"'2024-04-23T14:44:18.165Z'\"",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst populationdensitydata = await client.populationdensitydata.retrieve({\n  area: { areaType: 'POLYGON' },\n  endTime: '2024-04-23T14:44:18.165Z',\n  startTime: '2024-04-23T14:44:18.165Z',\n  precision: 7,\n});\n\nconsole.log(populationdensitydata.status);",
       },
       go: {
         method: 'client.Populationdensitydata.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tpopulationdensitydata, err := client.Populationdensitydata.Get(context.TODO(), camara.PopulationdensitydataGetParams{\n\t\tArea: camara.PopulationdensitydataGetParamsArea{\n\t\t\tAreaType: "POLYGON",\n\t\t},\n\t\tEndTime:   time.Now(),\n\t\tStartTime: time.Now(),\n\t\tPrecision: camara.Int(7),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", populationdensitydata.Status)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'populationdensitydata retrieve',
         example:
-          'curl https://api.example.com/camara/populationdensitydata/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "POLYGON"\n          },\n          "endTime": "2024-04-23T14:44:18.165Z",\n          "startTime": "2024-04-23T14:44:18.165Z",\n          "sink": "https://endpoint.example.com/sink"\n        }\'',
+          "camara populationdensitydata retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --area '{areaType: POLYGON}' \\\n  --end-time \"'2024-04-23T14:44:18.165Z'\" \\\n  --start-time \"'2024-04-23T14:44:18.165Z'\"",
       },
       php: {
         method: 'populationdensitydata->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$populationdensitydata = $client->populationdensitydata->retrieve(\n  area: ['areaType' => 'POLYGON'],\n  endTime: new \\DateTimeImmutable('2024-04-23T14:44:18.165Z'),\n  startTime: new \\DateTimeImmutable('2024-04-23T14:44:18.165Z'),\n  precision: 7,\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($populationdensitydata);",
       },
-      typescript: {
-        method: 'client.populationdensitydata.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst populationdensitydata = await client.populationdensitydata.retrieve({\n  area: { areaType: 'POLYGON' },\n  endTime: '2024-04-23T14:44:18.165Z',\n  startTime: '2024-04-23T14:44:18.165Z',\n  precision: 7,\n});\n\nconsole.log(populationdensitydata.status);",
+          'curl https://api.example.com/camara/populationdensitydata/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "POLYGON"\n          },\n          "endTime": "2024-04-23T14:44:18.165Z",\n          "startTime": "2024-04-23T14:44:18.165Z",\n          "sink": "https://endpoint.example.com/sink"\n        }\'',
       },
     },
   },
@@ -808,28 +808,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## get_count\n\n`client.regiondevicecount.getCount(area?: { areaType: 'CIRCLE' | 'POLYGON'; }, endtime?: string, filter?: { deviceType?: 'human device' | 'IoT device' | 'other'[]; roamingStatus?: 'roaming' | 'non-roaming'[]; }, sink?: string, sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, starttime?: string, x-correlator?: string): { count?: number; status?: string; }`\n\n**post** `/regiondevicecount/count`\n\nGet the number of devices in the specified area during a certain time interval.\n- The query area can be a circle or a polygon composed of longitude and latitude points.\n- If the areaType is circle, the circleCenter and circleRadius must be provided; if the area is a polygon, the point list must be provided.\n- If starttime and endtime are not passed in,this api should return the current number of devices in the area.\n- If the device appears in the specified area at least once during the certain time interval, it should be counted.\n\n\n### Parameters\n\n- `area?: { areaType: 'CIRCLE' | 'POLYGON'; }`\n  - `areaType: 'CIRCLE' | 'POLYGON'`\n    Type of this area.\nCIRCLE - The area is defined as a circle.\nPOLYGON - The area is defined as a polygon.\n\n- `endtime?: string`\n  Ending timestamp for counting the number of devices in the area. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.\n\n- `filter?: { deviceType?: 'human device' | 'IoT device' | 'other'[]; roamingStatus?: 'roaming' | 'non-roaming'[]; }`\n  This parameter is used to filter devices. Currently, two filtering criteria are defined, `roamingStatus` and `deviceType`, which can be expanded in the future. `IN` logic is used used for multiple filtering items within a single filtering criterion, `AND` logic is used between multiple filtering criteria.\n- If a filtering critera is not provided, it means that there is no need to filter this item.\n- At least one of the criteria must be provided,a filter without any criteria is not allowed.\n- If no filtering is required, this parameter does not need to be provided.\nFor example ,`\"filter\":{\"roamingStatus\": [\"roaming\"],\"deviceType\": [\"human device\",\"IoT device\"]}` means the API need to return the count of human network devices and IoT devices that are in roaming mode.`\"filter\":{\"roamingStatus\": [\"non-roaming\"]}` means that the API need to return the count of all devices that are not in roaming mode.\n\n  - `deviceType?: 'human device' | 'IoT device' | 'other'[]`\n    Filtering by device type, 'human device' represents the need to filter for human network devices, 'IoT device' represents the need to filter for IoT devices, and 'other' represents the need to filter for other types of devices.\n  - `roamingStatus?: 'roaming' | 'non-roaming'[]`\n    Filter whether the device is in roaming mode,'roaming' represents the need to filter devices that are in roaming mode,'non-roaming' represents the need to filter devices that are not roaming.\n\n- `sink?: string`\n  The URL where the API response will be asynchronously delivered, using the HTTP protocol.\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `starttime?: string`\n  Starting timestamp for counting the number of devices in the area. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ count?: number; status?: string; }`\n  RegionDeviceCount result\n\n  - `count?: number`\n  - `status?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.regiondevicecount.getCount();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'regiondevicecount get_count',
-        example: "camara regiondevicecount get-count \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.regiondevicecount.getCount',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.regiondevicecount.getCount({\n  area: { areaType: 'CIRCLE' },\n  endtime: '2023-07-04T14:27:08.312+02:00',\n  filter: { roamingStatus: ['roaming'], deviceType: ['human device', 'IoT device'] },\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  starttime: '2023-07-03T14:27:08.312+02:00',\n});\n\nconsole.log(response.count);",
       },
       go: {
         method: 'client.Regiondevicecount.GetCount',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Regiondevicecount.GetCount(context.TODO(), camara.RegiondevicecountGetCountParams{\n\t\tArea: camara.RegiondevicecountGetCountParamsArea{\n\t\t\tAreaType: "CIRCLE",\n\t\t},\n\t\tEndtime: camara.Time(time.Now()),\n\t\tFilter: camara.RegiondevicecountGetCountParamsFilter{\n\t\t\tRoamingStatus: []string{"roaming"},\n\t\t\tDeviceType:    []string{"human device", "IoT device"},\n\t\t},\n\t\tSink: camara.String("https://endpoint.example.com/sink"),\n\t\tSinkCredential: camara.RegiondevicecountGetCountParamsSinkCredential{\n\t\t\tCredentialType: "ACCESSTOKEN",\n\t\t},\n\t\tStarttime: camara.Time(time.Now()),\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Count)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/regiondevicecount/count \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "endtime": "2023-07-04T14:27:08.312+02:00",\n          "sink": "https://endpoint.example.com/sink",\n          "starttime": "2023-07-03T14:27:08.312+02:00"\n        }\'',
+      cli: {
+        method: 'regiondevicecount get_count',
+        example: "camara regiondevicecount get-count \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'regiondevicecount->getCount',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->regiondevicecount->getCount(\n  area: ['areaType' => 'CIRCLE'],\n  endtime: new \\DateTimeImmutable('2023-07-04T14:27:08.312+02:00'),\n  filter: [\n    'deviceType' => ['human device', 'IoT device'],\n    'roamingStatus' => ['roaming'],\n  ],\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  starttime: new \\DateTimeImmutable('2023-07-03T14:27:08.312+02:00'),\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.regiondevicecount.getCount',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.regiondevicecount.getCount({\n  area: { areaType: 'CIRCLE' },\n  endtime: '2023-07-04T14:27:08.312+02:00',\n  filter: { roamingStatus: ['roaming'], deviceType: ['human device', 'IoT device'] },\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  starttime: '2023-07-03T14:27:08.312+02:00',\n});\n\nconsole.log(response.count);",
+          'curl https://api.example.com/camara/regiondevicecount/count \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "endtime": "2023-07-04T14:27:08.312+02:00",\n          "sink": "https://endpoint.example.com/sink",\n          "starttime": "2023-07-03T14:27:08.312+02:00"\n        }\'',
       },
     },
   },
@@ -860,29 +860,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.webrtc.sessions.create(registrationId: string, answer?: { sdp?: string; }, callType?: 'REGULAR' | 'EMERGENCY', locationDetails?: { confidence?: object; coordinates?: web_rtc_circle_coordinates | web_rtc_ellipsoid_coordinates; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }, mediaSessionId?: string, offer?: { sdp?: string; }, originatorAddress?: string, originatorName?: string, receiverAddress?: string, receiverName?: string, status?: string, x-correlator?: string): { answer?: sdp_descriptor; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: web_rtc_location_details; mediaSessionId?: string; offer?: sdp_descriptor; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n**post** `/webrtc/sessions`\n\nCreates a voice and/or video session\n\n### Parameters\n\n- `registrationId: string`\n\n- `answer?: { sdp?: string; }`\n  **OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\nis used, the content of this element SHALL be embedded in a CDATA\nsection.\n\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\npresent in case there is no answer yet, or the session invitation has\nbeen declined by the Terminating Participant.This element MUST NOT be\npresent in a request from the application to the server to create a\nsession.\n  - `sdp?: string`\n    An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section\n\n- `callType?: 'REGULAR' | 'EMERGENCY'`\n  Type of call. When set to EMERGENCY, the client MAY provide locationDetails. If omitted, treated as REGULAR.\n\n- `locationDetails?: { confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }; coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }`\n  Details about the caller's location and related information. This object adheres to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.\n  - `confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }`\n    The confidence level of the location information.\n  - `coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }`\n    The coordinates of the caller's location, specific to the chosen shape.\n  - `method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'`\n    The method used to obtain the location information.\n* **GPS:** Global Positioning System (highly accurate)\n* **DBH:** Device-Based Hybrid\n* **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location\n* **Other:** Other methods (e.g., landmarks, IP Based etc.)\n  - `shape?: 'Circle' | 'Ellipsoid'`\n    The shape representing the caller's location (Circle or Ellipsoid).\n  - `timestamp?: string`\n    The timestamp (in ISO 8601 format) indicating when the location information was Calculated. \\nThis is crucial for emergency services to assess the timeliness of the data. if not provided current timestamp will be used by default\"\n\n- `mediaSessionId?: string`\n  The media session ID created by the network. The mediaSessionId shall not be included in POST requests by the client, but must be included in the notifications from the network to the client device.\n\n- `offer?: { sdp?: string; }`\n  **OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\nis used, the content of this element SHALL be embedded in a CDATA\nsection.\n\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\npresent in case there is no answer yet, or the session invitation has\nbeen declined by the Terminating Participant.This element MUST NOT be\npresent in a request from the application to the server to create a\nsession.\n  - `sdp?: string`\n    An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section\n\n- `originatorAddress?: string`\n  Subscriber address (Sender or Receiver)\n\n- `originatorName?: string`\n  Friendly name of the call originator\n\n- `receiverAddress?: string`\n  Subscriber address (Sender or Receiver)\n\n- `receiverName?: string`\n  Friendly name of the call terminator\n\n- `status?: string`\n  Provides the status of the media session. During the session creation, this attribute SHALL NOT be included in the request.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ answer?: { sdp?: string; }; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: { confidence?: object; coordinates?: web_rtc_circle_coordinates | web_rtc_ellipsoid_coordinates; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }; mediaSessionId?: string; offer?: { sdp?: string; }; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n  - `answer?: { sdp?: string; }`\n  - `callType?: 'REGULAR' | 'EMERGENCY'`\n  - `locationDetails?: { confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }; coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }`\n  - `mediaSessionId?: string`\n  - `offer?: { sdp?: string; }`\n  - `originatorAddress?: string`\n  - `originatorName?: string`\n  - `receiverAddress?: string`\n  - `receiverName?: string`\n  - `status?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst mediaSessionInformation = await client.webrtc.sessions.create({ registrationId: 'registrationId' });\n\nconsole.log(mediaSessionInformation);\n```",
     perLanguage: {
-      cli: {
-        method: 'sessions create',
+      typescript: {
+        method: 'client.webrtc.sessions.create',
         example:
-          "camara webrtc:sessions create \\\n  --bearer-token 'My Bearer Token' \\\n  --registration-id registrationId",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.create({\n  registrationId: 'registrationId',\n  offer: {\n    sdp: 'v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n',\n  },\n  originatorAddress: 'tel:+17085852753',\n  originatorName: 'tel:+17085852753',\n  receiverAddress: 'tel:+17085854000',\n  receiverName: 'tel:+17085854000',\n});\n\nconsole.log(mediaSessionInformation.answer);",
       },
       go: {
         method: 'client.Webrtc.Sessions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tmediaSessionInformation, err := client.Webrtc.Sessions.New(context.TODO(), camara.WebrtcSessionNewParams{\n\t\tRegistrationID: "registrationId",\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", mediaSessionInformation.Answer)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'sessions create',
         example:
-          'curl https://api.example.com/camara/webrtc/sessions \\\n    -X POST \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara webrtc:sessions create \\\n  --bearer-token 'My Bearer Token' \\\n  --registration-id registrationId",
       },
       php: {
         method: 'webrtc->sessions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->create(\n  registrationID: 'registrationId',\n  answer: ['sdp' => 'sdp'],\n  callType: 'REGULAR',\n  locationDetails: [\n    'confidence' => ['pdf' => 'normal', 'value' => 0],\n    'coordinates' => ['latitude' => 0, 'longitude' => 0, 'radius' => 0],\n    'method' => 'GPS',\n    'shape' => 'Circle',\n    'timestamp' => new \\DateTimeImmutable('2019-12-27T18:11:19.117Z'),\n  ],\n  bodyMediaSessionID: '0AEE1B58BAEEDA3EABA42B32EBB3DFE07E9CFF402EAF9EED8EF',\n  offer: [\n    'sdp' => \"v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n\",\n  ],\n  originatorAddress: 'tel:+17085852753',\n  originatorName: 'tel:+17085852753',\n  receiverAddress: 'tel:+17085854000',\n  receiverName: 'tel:+17085854000',\n  status: 'Ringing',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($mediaSessionInformation);",
       },
-      typescript: {
-        method: 'client.webrtc.sessions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.create({\n  registrationId: 'registrationId',\n  offer: {\n    sdp: 'v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n',\n  },\n  originatorAddress: 'tel:+17085852753',\n  originatorName: 'tel:+17085852753',\n  receiverAddress: 'tel:+17085854000',\n  receiverName: 'tel:+17085854000',\n});\n\nconsole.log(mediaSessionInformation.answer);",
+          'curl https://api.example.com/camara/webrtc/sessions \\\n    -X POST \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -901,29 +901,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.webrtc.sessions.retrieve(mediaSessionId: string, x-correlator?: string): { answer?: sdp_descriptor; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: web_rtc_location_details; mediaSessionId?: string; offer?: sdp_descriptor; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n**get** `/webrtc/sessions/{mediaSessionId}`\n\nGet the media Session description based on `mediaSessionId`.\n\n** The client shall construct the API path using the `mediaSessionId` supplied\nin the session creation response (origination) or in the invitation notification\n(termination). **\n\n\n### Parameters\n\n- `mediaSessionId: string`\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ answer?: { sdp?: string; }; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: { confidence?: object; coordinates?: web_rtc_circle_coordinates | web_rtc_ellipsoid_coordinates; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }; mediaSessionId?: string; offer?: { sdp?: string; }; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n  - `answer?: { sdp?: string; }`\n  - `callType?: 'REGULAR' | 'EMERGENCY'`\n  - `locationDetails?: { confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }; coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }`\n  - `mediaSessionId?: string`\n  - `offer?: { sdp?: string; }`\n  - `originatorAddress?: string`\n  - `originatorName?: string`\n  - `receiverAddress?: string`\n  - `receiverName?: string`\n  - `status?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst mediaSessionInformation = await client.webrtc.sessions.retrieve('mediaSessionId');\n\nconsole.log(mediaSessionInformation);\n```",
     perLanguage: {
-      cli: {
-        method: 'sessions retrieve',
+      typescript: {
+        method: 'client.webrtc.sessions.retrieve',
         example:
-          "camara webrtc:sessions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.retrieve('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
       },
       go: {
         method: 'client.Webrtc.Sessions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tmediaSessionInformation, err := client.Webrtc.Sessions.Get(\n\t\tcontext.TODO(),\n\t\t"mediaSessionId",\n\t\tcamara.WebrtcSessionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", mediaSessionInformation.Answer)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'sessions retrieve',
         example:
-          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara webrtc:sessions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
       },
       php: {
         method: 'webrtc->sessions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->retrieve(\n  'mediaSessionId', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($mediaSessionInformation);",
       },
-      typescript: {
-        method: 'client.webrtc.sessions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.retrieve('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
+          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -940,29 +940,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.webrtc.sessions.delete(mediaSessionId: string, x-correlator?: string): void`\n\n**delete** `/webrtc/sessions/{mediaSessionId}`\n\nCancel a 1-1 media session (as originator),\nDecline a 1-1 media session (as receiver),\nTerminate a 1-1 an ongoing media session\n** The client shall construct the API path using the mediaSessionId supplied in the session creation response (origination) or in the invitation notification (termination). **'\n\n\n### Parameters\n\n- `mediaSessionId: string`\n\n- `x-correlator?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nawait client.webrtc.sessions.delete('mediaSessionId')\n```",
     perLanguage: {
-      cli: {
-        method: 'sessions delete',
+      typescript: {
+        method: 'client.webrtc.sessions.delete',
         example:
-          "camara webrtc:sessions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.webrtc.sessions.delete('mediaSessionId');",
       },
       go: {
         method: 'client.Webrtc.Sessions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\terr := client.Webrtc.Sessions.Delete(\n\t\tcontext.TODO(),\n\t\t"mediaSessionId",\n\t\tcamara.WebrtcSessionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n}\n',
       },
-      http: {
+      cli: {
+        method: 'sessions delete',
         example:
-          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara webrtc:sessions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
       },
       php: {
         method: 'webrtc->sessions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$result = $client->webrtc->sessions->delete(\n  'mediaSessionId', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($result);",
       },
-      typescript: {
-        method: 'client.webrtc.sessions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.webrtc.sessions.delete('mediaSessionId');",
+          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -994,29 +994,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## update_status\n\n`client.webrtc.sessions.updateStatus(mediaSessionId: string, answer?: { sdp?: string; }, callType?: 'REGULAR' | 'EMERGENCY', locationDetails?: { confidence?: object; coordinates?: web_rtc_circle_coordinates | web_rtc_ellipsoid_coordinates; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }, mediaSessionId?: string, offer?: { sdp?: string; }, originatorAddress?: string, originatorName?: string, receiverAddress?: string, receiverName?: string, status?: string, x-correlator?: string): { answer?: sdp_descriptor; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: web_rtc_location_details; mediaSessionId?: string; offer?: sdp_descriptor; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n**put** `/webrtc/sessions/{mediaSessionId}/status`\n\nUpdate the status of the media session, this may include updating SDP media\n\nThe API consumer shall construct the API path using the `mediaSessionId` supplied in the session creation response (origination) or in the invitation notification (termination).\n\n\n### Parameters\n\n- `mediaSessionId: string`\n\n- `answer?: { sdp?: string; }`\n  **OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\nis used, the content of this element SHALL be embedded in a CDATA\nsection.\n\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\npresent in case there is no answer yet, or the session invitation has\nbeen declined by the Terminating Participant.This element MUST NOT be\npresent in a request from the application to the server to create a\nsession.\n  - `sdp?: string`\n    An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section\n\n- `callType?: 'REGULAR' | 'EMERGENCY'`\n  Type of call. When set to EMERGENCY, the client MAY provide locationDetails. If omitted, treated as REGULAR.\n\n- `locationDetails?: { confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }; coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }`\n  Details about the caller's location and related information. This object adheres to 3GPP TS 24.229, RFC 4119, RFC 5139, and RFC 5491 for PIDF-LO compatibility.\n  - `confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }`\n    The confidence level of the location information.\n  - `coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }`\n    The coordinates of the caller's location, specific to the chosen shape.\n  - `method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'`\n    The method used to obtain the location information.\n* **GPS:** Global Positioning System (highly accurate)\n* **DBH:** Device-Based Hybrid\n* **DBH_HELO:** Device-Based Hybrid using Apple Hybridized Emergency Location\n* **Other:** Other methods (e.g., landmarks, IP Based etc.)\n  - `shape?: 'Circle' | 'Ellipsoid'`\n    The shape representing the caller's location (Circle or Ellipsoid).\n  - `timestamp?: string`\n    The timestamp (in ISO 8601 format) indicating when the location information was Calculated. \\nThis is crucial for emergency services to assess the timeliness of the data. if not provided current timestamp will be used by default\"\n\n- `mediaSessionId?: string`\n  The media session ID created by the network. The mediaSessionId shall not be included in POST requests by the client, but must be included in the notifications from the network to the client device.\n\n- `offer?: { sdp?: string; }`\n  **OFFER**: An inlined session description in SDP format [RFC4566].If XML syntax\nis used, the content of this element SHALL be embedded in a CDATA\nsection.\n\n**ANSWER**: This type represents an answer in WebRTC Signaling. This element is not\npresent in case there is no answer yet, or the session invitation has\nbeen declined by the Terminating Participant.This element MUST NOT be\npresent in a request from the application to the server to create a\nsession.\n  - `sdp?: string`\n    An inlined session description in SDP format [RFC4566].If XML syntax is used, the content of this element SHALL be embedded in a CDATA section\n\n- `originatorAddress?: string`\n  Subscriber address (Sender or Receiver)\n\n- `originatorName?: string`\n  Friendly name of the call originator\n\n- `receiverAddress?: string`\n  Subscriber address (Sender or Receiver)\n\n- `receiverName?: string`\n  Friendly name of the call terminator\n\n- `status?: string`\n  Provides the status of the media session. During the session creation, this attribute SHALL NOT be included in the request.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ answer?: { sdp?: string; }; callType?: 'REGULAR' | 'EMERGENCY'; locationDetails?: { confidence?: object; coordinates?: web_rtc_circle_coordinates | web_rtc_ellipsoid_coordinates; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }; mediaSessionId?: string; offer?: { sdp?: string; }; originatorAddress?: string; originatorName?: string; receiverAddress?: string; receiverName?: string; status?: string; }`\n\n  - `answer?: { sdp?: string; }`\n  - `callType?: 'REGULAR' | 'EMERGENCY'`\n  - `locationDetails?: { confidence?: { pdf?: 'normal' | 'uniform'; value?: number; }; coordinates?: { latitude: number; longitude: number; radius: number; } | { latitude: number; longitude: number; orientation: number; semiMajorAxis: number; semiMinorAxis: number; verticalAxis: number; zAxis: number; }; method?: 'GPS' | 'DBH' | 'DBH_HELO' | 'Other'; shape?: 'Circle' | 'Ellipsoid'; timestamp?: string; }`\n  - `mediaSessionId?: string`\n  - `offer?: { sdp?: string; }`\n  - `originatorAddress?: string`\n  - `originatorName?: string`\n  - `receiverAddress?: string`\n  - `receiverName?: string`\n  - `status?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst mediaSessionInformation = await client.webrtc.sessions.updateStatus('mediaSessionId');\n\nconsole.log(mediaSessionInformation);\n```",
     perLanguage: {
-      cli: {
-        method: 'sessions update_status',
+      typescript: {
+        method: 'client.webrtc.sessions.updateStatus',
         example:
-          "camara webrtc:sessions update-status \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.updateStatus('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
       },
       go: {
         method: 'client.Webrtc.Sessions.UpdateStatus',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tmediaSessionInformation, err := client.Webrtc.Sessions.UpdateStatus(\n\t\tcontext.TODO(),\n\t\t"mediaSessionId",\n\t\tcamara.WebrtcSessionUpdateStatusParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", mediaSessionInformation.Answer)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'sessions update_status',
         example:
-          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID/status \\\n    -X PUT \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara webrtc:sessions update-status \\\n  --bearer-token 'My Bearer Token' \\\n  --media-session-id mediaSessionId",
       },
       php: {
         method: 'webrtc->sessions->updateStatus',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$mediaSessionInformation = $client->webrtc->sessions->updateStatus(\n  'mediaSessionId',\n  answer: ['sdp' => 'sdp'],\n  callType: 'REGULAR',\n  locationDetails: [\n    'confidence' => ['pdf' => 'normal', 'value' => 0],\n    'coordinates' => ['latitude' => 0, 'longitude' => 0, 'radius' => 0],\n    'method' => 'GPS',\n    'shape' => 'Circle',\n    'timestamp' => new \\DateTimeImmutable('2019-12-27T18:11:19.117Z'),\n  ],\n  bodyMediaSessionID: '0AEE1B58BAEEDA3EABA42B32EBB3DFE07E9CFF402EAF9EED8EF',\n  offer: ['sdp' => 'sdp'],\n  originatorAddress: 'tel:+11234567899',\n  originatorName: 'Alice',\n  receiverAddress: 'tel:+11234567899',\n  receiverName: 'Bob',\n  status: 'Ringing',\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($mediaSessionInformation);",
       },
-      typescript: {
-        method: 'client.webrtc.sessions.updateStatus',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.updateStatus('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
+          'curl https://api.example.com/camara/webrtc/sessions/$MEDIA_SESSION_ID/status \\\n    -X PUT \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1041,29 +1041,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.connectivityinsights.subscriptions.create(config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { config: config; protocol: protocol; sink: string; startsAt: string; types: event_type[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'; subscriptionId?: string; }`\n\n**post** `/connectivityinsights/subscriptions`\n\nCreate a Connectivity insights subscription for a device\n\n### Parameters\n\n- `config: { subscriptionDetail: { applicationProfileId: string; device: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; applicationServer?: { ipv4Address?: string; ipv6Address?: string; }; applicationServerPorts?: { ports?: number[]; ranges?: object[]; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters needed by the\nsubscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`,\n`subscriptionMaxEvents`, `initialEvent`\nSpecific event type attributes must be defined in `subscriptionDetail`\nNote: if a request is performed for several event type, all subscribed\nevent will use same `config` parameters.\n\n  - `subscriptionDetail: { applicationProfileId: string; device: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; applicationServer?: { ipv4Address?: string; ipv6Address?: string; }; applicationServerPorts?: { ports?: number[]; ranges?: { from: number; to: number; }[]; }; }`\n    The detail of the requested event subscription\n  - `initialEvent?: boolean`\n    Set to `true` by API consumer if consumer wants to get an event as\nsoon as the subscription is created and current situation reflects\nevent request.\n\n  - `subscriptionExpireTime?: string`\n    The subscription expiration time (in date-time format) requested by\nthe API consumer. Up to API project decision to keep it.\nIt must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.\n\n  - `subscriptionMaxEvents?: number`\n    Identifies the maximum number of event reports to be generated\n(>=1) requested by the API consumer - Once this number is reached,\nthe subscription ends.\nNote on combined usage of `initialEvent` and\n`subscriptionMaxEvents`: If an event is triggered following\n`initialEvent` set to `true`, this event will be counted towards\n`subscriptionMaxEvents`.\n\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now\n\n\n- `sink: string`\n  The address to which events shall be delivered using the selected\nprotocol.\n\n\n- `types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]`\n  Camara Event types eligible to be delivered by this subscription.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information\n\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'; subscriptionId?: string; }`\n  Represents a event-type subscription.\n\n  - `config: { subscriptionDetail: { applicationProfileId: string; device: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; applicationServer?: { ipv4Address?: string; ipv6Address?: string; }; applicationServerPorts?: { ports?: number[]; ranges?: object[]; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `startsAt: string`\n  - `types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]`\n  - `expiresAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'`\n  - `subscriptionId?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.connectivityinsights.subscriptions.create({\n  config: { subscriptionDetail: {\n  applicationProfileId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n  device: {},\n} },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'],\n});\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.connectivityinsights.subscriptions.create',
         example:
-          "camara connectivityinsights:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {applicationProfileId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, device: {}}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.connectivity-insights-subscriptions.v0.network-quality",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      applicationProfileId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n      device: {},\n    },\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'],\n});\n\nconsole.log(subscription.config);",
       },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Connectivityinsights.Subscriptions.New(context.TODO(), camara.ConnectivityinsightSubscriptionNewParams{\n\t\tConfig: camara.ConfigParam{\n\t\t\tSubscriptionDetail: camara.ConfigSubscriptionDetailParam{\n\t\t\t\tApplicationProfileID: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",\n\t\t\t\tDevice:               camara.ConfigSubscriptionDetailDeviceParam{},\n\t\t\t},\n\t\t},\n\t\tProtocol: camara.ProtocolHTTP,\n\t\tSink:     "https://endpoint.example.com/sink",\n\t\tTypes:    []camara.EventType{camara.EventTypeOrgCamaraprojectConnectivityInsightsSubscriptionsV0NetworkQuality},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.Config)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "applicationProfileId": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",\n              "device": {}\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"\n          ]\n        }\'',
+          "camara connectivityinsights:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {applicationProfileId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, device: {}}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.connectivity-insights-subscriptions.v0.network-quality",
       },
       php: {
         method: 'connectivityinsights->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->create(\n  config: [\n    'subscriptionDetail' => [\n      'applicationProfileID' => '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@domain.com',\n        'phoneNumber' => '+123456789',\n      ],\n      'applicationServer' => [\n        'ipv4Address' => '192.168.0.1/24',\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n      ],\n      'applicationServerPorts' => [\n        'ports' => [5060, 5070], 'ranges' => [['from' => 5010, 'to' => 5020]]\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-07-03T12:27:08.312Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: Protocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    EventType::ORG_CAMARAPROJECT_CONNECTIVITY_INSIGHTS_SUBSCRIPTIONS_V0_NETWORK_QUALITY,\n  ],\n  sinkCredential: ['credentialType' => 'PLAIN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.connectivityinsights.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      applicationProfileId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n      device: {},\n    },\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'],\n});\n\nconsole.log(subscription.config);",
+          'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "applicationProfileId": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",\n              "device": {}\n            }\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"\n          ]\n        }\'',
       },
     },
   },
@@ -1082,28 +1082,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.connectivityinsights.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/connectivityinsights/subscriptions`\n\nOperation to list subscriptions authorized to be retrieved by the\nprovided access token.\n\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'; subscriptionId?: string; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscriptions = await client.connectivityinsights.subscriptions.list();\n\nconsole.log(subscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara connectivityinsights:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.connectivityinsights.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscriptions = await client.connectivityinsights.subscriptions.list();\n\nconsole.log(subscriptions);",
       },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscriptions, err := client.Connectivityinsights.Subscriptions.List(context.TODO(), camara.ConnectivityinsightSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara connectivityinsights:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'connectivityinsights->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscriptions = $client->connectivityinsights->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscriptions);",
       },
-      typescript: {
-        method: 'client.connectivityinsights.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscriptions = await client.connectivityinsights.subscriptions.list();\n\nconsole.log(subscriptions);",
+          'curl https://api.example.com/camara/connectivityinsights/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1121,29 +1121,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.connectivityinsights.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { config: config; protocol: protocol; sink: string; startsAt: string; types: event_type[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'; subscriptionId?: string; }`\n\n**get** `/connectivityinsights/subscriptions/{subscriptionId}`\n\nRetrieve a given subscription by ID\n\n### Parameters\n\n- `subscriptionId: string`\n  When this information is contained within an event notification, it SHALL be referred to as `subscriptionId` as per the Commonalities Event Notification Model.\n\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; startsAt: string; types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]; expiresAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'; subscriptionId?: string; }`\n  Represents a event-type subscription.\n\n  - `config: { subscriptionDetail: { applicationProfileId: string; device: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; applicationServer?: { ipv4Address?: string; ipv6Address?: string; }; applicationServerPorts?: { ports?: number[]; ranges?: object[]; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `startsAt: string`\n  - `types: 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'[]`\n  - `expiresAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'DEACTIVE' | 'DELETED'`\n  - `subscriptionId?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.connectivityinsights.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.connectivityinsights.subscriptions.retrieve',
         example:
-          "camara connectivityinsights:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.config);",
       },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Connectivityinsights.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.ConnectivityinsightSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.Config)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara connectivityinsights:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'connectivityinsights->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.connectivityinsights.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.config);",
+          'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1160,29 +1160,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.connectivityinsights.subscriptions.delete(subscriptionId: string, x-correlator?: string): { subscriptionId?: string; }`\n\n**delete** `/connectivityinsights/subscriptions/{subscriptionId}`\n\nDelete a given subscription by ID\n\n### Parameters\n\n- `subscriptionId: string`\n  When this information is contained within an event notification, it SHALL be referred to as `subscriptionId` as per the Commonalities Event Notification Model.\n\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ subscriptionId?: string; }`\n  Response for a event-type subscription request managed asynchronously\n(Creation or Deletion)\n\n\n  - `subscriptionId?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.connectivityinsights.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.connectivityinsights.subscriptions.delete',
         example:
-          "camara connectivityinsights:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.subscriptionId);",
       },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Connectivityinsights.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.ConnectivityinsightSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.SubscriptionID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara connectivityinsights:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'connectivityinsights->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectivityinsights->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.connectivityinsights.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.subscriptionId);",
+          'curl https://api.example.com/camara/connectivityinsights/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1206,28 +1206,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_qos_profiles\n\n`client.qualityondemand.retrieveQosProfiles(device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }, name?: string, status?: 'ACTIVE' | 'INACTIVE' | 'DEPRECATED', x-correlator?: string): object[]`\n\n**post** `/qualityondemand/retrieve-qos-profiles`\n\nReturns all QoS Profiles that match the given criteria.\n**NOTES:**\n- The access token may be either a 2-legged or 3-legged access token.\n- If the access token is 3-legged, all returned QoS Profiles will be available to the subject (device) associated with the access token.\n- If the access token is 2-legged and a device filter is provided, all returned QoS Profiles will be available to that device. If multiple device identifiers are provided within the device property, only QoS Profiles available to the device identifier chosen by the implementation will be returned, even if the identifiers do not match the same device. API provider does not perform any logic to validate/correlate that the indicated device identifiers match the same device. No error should be returned if the identifiers are otherwise valid to prevent API consumers correlating different identifiers with a given end user.\n- This call uses the POST method instead of GET to comply with the CAMARA Commonalities guidelines for sending sensitive or complex data in API calls. Since the device field may contain personally identifiable information, it should not be sent via GET. Additionally, this call may include complex data structures.\n  [CAMARA API Design Guidelines](https://github.com/camaraproject/Commonalities/blob/r3.3/documentation/API-design-guidelines.md#post-or-get-for-transferring-sensitive-or-complex-data)\n\n\n### Parameters\n\n- `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  End-user equipment able to connect to a mobile network. Examples of devices include smartphones or IoT sensors/actuators.\n\nThe developer can choose to provide the below specified device identifiers:\n\n* `ipv4Address`\n* `ipv6Address`\n* `phoneNumber`\nNOTE1: the network operator might support only a subset of these options. The API consumer can provide multiple identifiers to be compatible across different operators. In this case the identifiers MUST belong to the same device.\nNOTE2: as for this Commonalities release, we are enforcing that the networkAccessIdentifier is only part of the schema for future-proofing, and CAMARA does not currently allow its use. After the CAMARA meta-release work is concluded and the relevant issues are resolved, its use will need to be explicitly documented in the guidelines.\n\n  - `ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }`\n    The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers).\n\nIf the allocated and observed IP addresses are the same (i.e. NAT is not in use) then  the same address should be specified for both publicAddress and privateAddress.\n\nIf NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object)\n\nIn all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.\n\n  - `ipv6Address?: string`\n    The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).\n\nThe session shall apply to all IP flows between the device subnet and the specified application server, unless further restricted by the optional parameters devicePorts or applicationServerPorts.\n\n  - `networkAccessIdentifier?: string`\n    A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.\n  - `phoneNumber?: string`\n    A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `name?: string`\n  A unique name for identifying a specific QoS profile.\nThis may follow different formats depending on the service providers implementation.\nSome options addresses:\n  - A UUID style string\n  - Support for predefined profile names like `QOS_E`, `QOS_S`, `QOS_M`, and `QOS_L`\n  - A searchable descriptive name\n\n\n- `status?: 'ACTIVE' | 'INACTIVE' | 'DEPRECATED'`\n  The current status of the QoS Profile\n- `ACTIVE`- QoS Profile is available to be used\n- `INACTIVE`- QoS Profile is not currently available to be deployed\n- `DEPRECATED`- QoS profile is actively being used in a QoD session, but can not be deployed in new QoD sessions\n\n\n- `x-correlator?: string`\n  Value for the x-correlator\n\n### Returns\n\n- `{ name: string; status: 'ACTIVE' | 'INACTIVE' | 'DEPRECATED'; countryAvailability?: { countryName: string; networks?: string[]; }[]; description?: string; jitter?: object; l4sQueueType?: 'non-l4s-queue' | 'l4s-queue' | 'mixed-queue'; maxDownstreamBurstRate?: object; maxDownstreamRate?: object; maxDuration?: object; maxUpstreamBurstRate?: object; maxUpstreamRate?: object; minDuration?: object; packetDelayBudget?: object; packetErrorLossRate?: number; priority?: number; serviceClass?: string; targetMinDownstreamRate?: object; targetMinUpstreamRate?: object; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst qosProfiles = await client.qualityondemand.retrieveQosProfiles();\n\nconsole.log(qosProfiles);\n```",
     perLanguage: {
-      cli: {
-        method: 'qualityondemand retrieve_qos_profiles',
-        example: "camara qualityondemand retrieve-qos-profiles \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.qualityondemand.retrieveQosProfiles',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfiles = await client.qualityondemand.retrieveQosProfiles();\n\nconsole.log(qosProfiles);",
       },
       go: {
         method: 'client.Qualityondemand.GetQosProfiles',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tqosProfiles, err := client.Qualityondemand.GetQosProfiles(context.TODO(), camara.QualityondemandGetQosProfilesParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", qosProfiles)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/qualityondemand/retrieve-qos-profiles \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "name": "voice"\n        }\'',
+      cli: {
+        method: 'qualityondemand retrieve_qos_profiles',
+        example: "camara qualityondemand retrieve-qos-profiles \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'qualityondemand->retrieveQosProfiles',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$qosProfiles = $client->qualityondemand->retrieveQosProfiles(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '203.0.113.0',\n      'publicAddress' => '203.0.113.0',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@domain.com',\n    'phoneNumber' => '+123456789',\n  ],\n  name: 'voice',\n  status: QosProfileStatus::ACTIVE,\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($qosProfiles);",
       },
-      typescript: {
-        method: 'client.qualityondemand.retrieveQosProfiles',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfiles = await client.qualityondemand.retrieveQosProfiles();\n\nconsole.log(qosProfiles);",
+          'curl https://api.example.com/camara/qualityondemand/retrieve-qos-profiles \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "name": "voice"\n        }\'',
       },
     },
   },
@@ -1246,29 +1246,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_qos_profile\n\n`client.qualityondemand.retrieveQosProfile(name: string, x-correlator?: string): { name: string; status: qos_profile_status; countryAvailability?: object[]; description?: string; jitter?: duration; l4sQueueType?: 'non-l4s-queue' | 'l4s-queue' | 'mixed-queue'; maxDownstreamBurstRate?: rate; maxDownstreamRate?: rate; maxDuration?: duration; maxUpstreamBurstRate?: rate; maxUpstreamRate?: rate; minDuration?: duration; packetDelayBudget?: duration; packetErrorLossRate?: number; priority?: number; serviceClass?: string; targetMinDownstreamRate?: rate; targetMinUpstreamRate?: rate; }`\n\n**get** `/qualityondemand/qos-profiles/{name}`\n\nReturns a QoS Profile that matches the given name.\n\nThe access token may be either a 2-legged or 3-legged access token. If the access token is 3-legged, a QoS Profile is only returned if available to all subjects associated with the access token.\n\n\n### Parameters\n\n- `name: string`\n  A unique name for identifying a specific QoS profile.\nThis may follow different formats depending on the service providers implementation.\nSome options addresses:\n  - A UUID style string\n  - Support for predefined profile names like `QOS_E`, `QOS_S`, `QOS_M`, and `QOS_L`\n  - A searchable descriptive name\n\n\n- `x-correlator?: string`\n  Value for the x-correlator\n\n### Returns\n\n- `{ name: string; status: 'ACTIVE' | 'INACTIVE' | 'DEPRECATED'; countryAvailability?: { countryName: string; networks?: string[]; }[]; description?: string; jitter?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }; l4sQueueType?: 'non-l4s-queue' | 'l4s-queue' | 'mixed-queue'; maxDownstreamBurstRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; maxDownstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; maxDuration?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }; maxUpstreamBurstRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; maxUpstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; minDuration?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }; packetDelayBudget?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }; packetErrorLossRate?: number; priority?: number; serviceClass?: string; targetMinDownstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; targetMinUpstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }; }`\n  Data type with attributes of a QosProfile\n\n\n  - `name: string`\n  - `status: 'ACTIVE' | 'INACTIVE' | 'DEPRECATED'`\n  - `countryAvailability?: { countryName: string; networks?: string[]; }[]`\n  - `description?: string`\n  - `jitter?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }`\n  - `l4sQueueType?: 'non-l4s-queue' | 'l4s-queue' | 'mixed-queue'`\n  - `maxDownstreamBurstRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n  - `maxDownstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n  - `maxDuration?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }`\n  - `maxUpstreamBurstRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n  - `maxUpstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n  - `minDuration?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }`\n  - `packetDelayBudget?: { unit?: 'Days' | 'Hours' | 'Minutes' | 'Seconds' | 'Milliseconds' | 'Microseconds' | 'Nanoseconds'; value?: number; }`\n  - `packetErrorLossRate?: number`\n  - `priority?: number`\n  - `serviceClass?: string`\n  - `targetMinDownstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n  - `targetMinUpstreamRate?: { unit?: 'bps' | 'kbps' | 'Mbps' | 'Gbps' | 'Tbps'; value?: number; }`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst qosProfile = await client.qualityondemand.retrieveQosProfile('voice');\n\nconsole.log(qosProfile);\n```",
     perLanguage: {
-      cli: {
-        method: 'qualityondemand retrieve_qos_profile',
+      typescript: {
+        method: 'client.qualityondemand.retrieveQosProfile',
         example:
-          "camara qualityondemand retrieve-qos-profile \\\n  --bearer-token 'My Bearer Token' \\\n  --name voice",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfile = await client.qualityondemand.retrieveQosProfile('voice');\n\nconsole.log(qosProfile.name);",
       },
       go: {
         method: 'client.Qualityondemand.GetQosProfile',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tqosProfile, err := client.Qualityondemand.GetQosProfile(\n\t\tcontext.TODO(),\n\t\t"voice",\n\t\tcamara.QualityondemandGetQosProfileParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", qosProfile.Name)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'qualityondemand retrieve_qos_profile',
         example:
-          'curl https://api.example.com/camara/qualityondemand/qos-profiles/$NAME \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara qualityondemand retrieve-qos-profile \\\n  --bearer-token 'My Bearer Token' \\\n  --name voice",
       },
       php: {
         method: 'qualityondemand->retrieveQosProfile',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$qosProfile = $client->qualityondemand->retrieveQosProfile(\n  'voice', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($qosProfile);",
       },
-      typescript: {
-        method: 'client.qualityondemand.retrieveQosProfile',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfile = await client.qualityondemand.retrieveQosProfile('voice');\n\nconsole.log(qosProfile.name);",
+          'curl https://api.example.com/camara/qualityondemand/qos-profiles/$NAME \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1289,28 +1289,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_identifier\n\n`client.deviceidentifier.retrieveIdentifier(device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }, x-correlator?: string): { device?: device_identifier_device; imei?: string; imeisv?: string; lastChecked?: string; manufacturer?: string; model?: string; tac?: string; }`\n\n**post** `/deviceidentifier/retrieve-identifier`\n\nGet details about the specific device being used by a given mobile subscriber\n\n### Parameters\n\n- `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  End-user equipment able to connect to a mobile network. Examples of devices include smartphones or IoT sensors/actuators.\nThe developer can choose to provide the below specified device identifiers:\n* `ipv4Address`\n* `ipv6Address`\n* `phoneNumber`\n* `networkAccessIdentifier`\nNOTE 1: The MNO might support only a subset of these options. The API invoker can provide multiple identifiers to be compatible across different MNOs. In this case the identifiers MUST belong to the same device.\nNOTE 2: For the current Commonalities release, we are enforcing that the networkAccessIdentifier is only part of the schema for future-proofing, and CAMARA does not currently allow its use. After the CAMARA meta-release work is concluded and the relevant issues are resolved, its use will need to be explicitly documented in the guidelines.\n\n  - `ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }`\n    The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers).\n\nIf the allocated and observed IP addresses are the same (i.e. NAT is not in use) then  the same address should be specified for both publicAddress and privateAddress.\n\nIf NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object)\n\nIn all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.\n\n  - `ipv6Address?: string`\n    The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).\n\n  - `networkAccessIdentifier?: string`\n    A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.\n  - `phoneNumber?: string`\n    A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; imei?: string; imeisv?: string; lastChecked?: string; manufacturer?: string; model?: string; tac?: string; }`\n\n  - `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  - `imei?: string`\n  - `imeisv?: string`\n  - `lastChecked?: string`\n  - `manufacturer?: string`\n  - `model?: string`\n  - `tac?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.deviceidentifier.retrieveIdentifier();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'deviceidentifier retrieve_identifier',
-        example: "camara deviceidentifier retrieve-identifier \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceidentifier.retrieveIdentifier',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveIdentifier();\n\nconsole.log(response.device);",
       },
       go: {
         method: 'client.Deviceidentifier.GetIdentifier',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Deviceidentifier.GetIdentifier(context.TODO(), camara.DeviceidentifierGetIdentifierParams{\n\t\tDeviceIdentifierRequestBody: camara.DeviceIdentifierRequestBodyParam{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Device)\n}\n',
       },
-      http: {
-        example:
-          "curl https://api.example.com/camara/deviceidentifier/retrieve-identifier \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+      cli: {
+        method: 'deviceidentifier retrieve_identifier',
+        example: "camara deviceidentifier retrieve-identifier \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceidentifier->retrieveIdentifier',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrieveIdentifier(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.deviceidentifier.retrieveIdentifier',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveIdentifier();\n\nconsole.log(response.device);",
+          "curl https://api.example.com/camara/deviceidentifier/retrieve-identifier \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
     },
   },
@@ -1331,28 +1331,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_type\n\n`client.deviceidentifier.retrieveType(device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }, x-correlator?: string): { device?: device_identifier_device; lastChecked?: string; manufacturer?: string; model?: string; tac?: string; }`\n\n**post** `/deviceidentifier/retrieve-type`\n\nGet details about the type of device being used by a given mobile subscriber\n\n### Parameters\n\n- `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  End-user equipment able to connect to a mobile network. Examples of devices include smartphones or IoT sensors/actuators.\nThe developer can choose to provide the below specified device identifiers:\n* `ipv4Address`\n* `ipv6Address`\n* `phoneNumber`\n* `networkAccessIdentifier`\nNOTE 1: The MNO might support only a subset of these options. The API invoker can provide multiple identifiers to be compatible across different MNOs. In this case the identifiers MUST belong to the same device.\nNOTE 2: For the current Commonalities release, we are enforcing that the networkAccessIdentifier is only part of the schema for future-proofing, and CAMARA does not currently allow its use. After the CAMARA meta-release work is concluded and the relevant issues are resolved, its use will need to be explicitly documented in the guidelines.\n\n  - `ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }`\n    The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers).\n\nIf the allocated and observed IP addresses are the same (i.e. NAT is not in use) then  the same address should be specified for both publicAddress and privateAddress.\n\nIf NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object)\n\nIn all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.\n\n  - `ipv6Address?: string`\n    The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).\n\n  - `networkAccessIdentifier?: string`\n    A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.\n  - `phoneNumber?: string`\n    A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; lastChecked?: string; manufacturer?: string; model?: string; tac?: string; }`\n\n  - `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  - `lastChecked?: string`\n  - `manufacturer?: string`\n  - `model?: string`\n  - `tac?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.deviceidentifier.retrieveType();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'deviceidentifier retrieve_type',
-        example: "camara deviceidentifier retrieve-type \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceidentifier.retrieveType',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveType();\n\nconsole.log(response.device);",
       },
       go: {
         method: 'client.Deviceidentifier.GetType',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Deviceidentifier.GetType(context.TODO(), camara.DeviceidentifierGetTypeParams{\n\t\tDeviceIdentifierRequestBody: camara.DeviceIdentifierRequestBodyParam{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Device)\n}\n',
       },
-      http: {
-        example:
-          "curl https://api.example.com/camara/deviceidentifier/retrieve-type \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+      cli: {
+        method: 'deviceidentifier retrieve_type',
+        example: "camara deviceidentifier retrieve-type \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceidentifier->retrieveType',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrieveType(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.deviceidentifier.retrieveType',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveType();\n\nconsole.log(response.device);",
+          "curl https://api.example.com/camara/deviceidentifier/retrieve-type \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
     },
   },
@@ -1373,28 +1373,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve_ppid\n\n`client.deviceidentifier.retrievePpid(device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }, x-correlator?: string): { device?: device_identifier_device; lastChecked?: string; ppid?: string; }`\n\n**post** `/deviceidentifier/retrieve-ppid`\n\nGet a pseudonymous identifier for device being used by a given mobile subscriber\n\n### Parameters\n\n- `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  End-user equipment able to connect to a mobile network. Examples of devices include smartphones or IoT sensors/actuators.\nThe developer can choose to provide the below specified device identifiers:\n* `ipv4Address`\n* `ipv6Address`\n* `phoneNumber`\n* `networkAccessIdentifier`\nNOTE 1: The MNO might support only a subset of these options. The API invoker can provide multiple identifiers to be compatible across different MNOs. In this case the identifiers MUST belong to the same device.\nNOTE 2: For the current Commonalities release, we are enforcing that the networkAccessIdentifier is only part of the schema for future-proofing, and CAMARA does not currently allow its use. After the CAMARA meta-release work is concluded and the relevant issues are resolved, its use will need to be explicitly documented in the guidelines.\n\n  - `ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }`\n    The device should be identified by either the public (observed) IP address and port as seen by the application server, or the private (local) and any public (observed) IP addresses in use by the device (this information can be obtained by various means, for example from some DNS servers).\n\nIf the allocated and observed IP addresses are the same (i.e. NAT is not in use) then  the same address should be specified for both publicAddress and privateAddress.\n\nIf NAT64 is in use, the device should be identified by its publicAddress and publicPort, or separately by its allocated IPv6 address (field ipv6Address of the Device object)\n\nIn all cases, publicAddress must be specified, along with at least one of either privateAddress or publicPort, dependent upon which is known. In general, mobile devices cannot be identified by their public IPv4 address alone.\n\n  - `ipv6Address?: string`\n    The device should be identified by the observed IPv6 address, or by any single IPv6 address from within the subnet allocated to the device (e.g. adding ::0 to the /64 prefix).\n\n  - `networkAccessIdentifier?: string`\n    A public identifier addressing a subscription in a mobile network. In 3GPP terminology, it corresponds to the GPSI formatted with the External Identifier ({Local Identifier}@{Domain Identifier}). Unlike the telephone number, the network access identifier is not subjected to portability ruling in force, and is individually managed by each operator.\n  - `phoneNumber?: string`\n    A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ device?: { ipv4Address?: device_identifier_device_ipv4_addr; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; lastChecked?: string; ppid?: string; }`\n\n  - `device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }`\n  - `lastChecked?: string`\n  - `ppid?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst response = await client.deviceidentifier.retrievePpid();\n\nconsole.log(response);\n```",
     perLanguage: {
-      cli: {
-        method: 'deviceidentifier retrieve_ppid',
-        example: "camara deviceidentifier retrieve-ppid \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceidentifier.retrievePpid',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrievePpid();\n\nconsole.log(response.ppid);",
       },
       go: {
         method: 'client.Deviceidentifier.GetPpid',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tresponse, err := client.Deviceidentifier.GetPpid(context.TODO(), camara.DeviceidentifierGetPpidParams{\n\t\tDeviceIdentifierRequestBody: camara.DeviceIdentifierRequestBodyParam{},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", response.Ppid)\n}\n',
       },
-      http: {
-        example:
-          "curl https://api.example.com/camara/deviceidentifier/retrieve-ppid \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+      cli: {
+        method: 'deviceidentifier retrieve_ppid',
+        example: "camara deviceidentifier retrieve-ppid \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceidentifier->retrievePpid',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$response = $client->deviceidentifier->retrievePpid(\n  device: [\n    'ipv4Address' => [\n      'privateAddress' => '84.125.93.10',\n      'publicAddress' => '84.125.93.10',\n      'publicPort' => 59765,\n    ],\n    'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n    'networkAccessIdentifier' => '123456789@example.com',\n    'phoneNumber' => '+123456789',\n  ],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($response);",
       },
-      typescript: {
-        method: 'client.deviceidentifier.retrievePpid',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrievePpid();\n\nconsole.log(response.ppid);",
+          "curl https://api.example.com/camara/deviceidentifier/retrieve-ppid \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
       },
     },
   },
@@ -1419,29 +1419,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.simswap.subscriptions.create(config: { subscriptionDetail: object; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { id: string; config: sim_swap_config; protocol: sim_swap_protocol; sink: string; types: sim_swap_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**post** `/simswap/subscriptions`\n\nCreate a sim swap event subscription for a phone number\n\n### Parameters\n\n- `config: { subscriptionDetail: { phoneNumber?: string; }; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters needed by the subscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime` or `subscriptionMaxEvents` to limit subscription lifetime.\nEvent type attributes must be defined in `subscriptionDetail`\n\n  - `subscriptionDetail: { phoneNumber?: string; }`\n    The detail of the requested event subscription\n  - `subscriptionExpireTime?: string`\n    The subscription expiration time (in date-time format) requested by the API consumer. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.\n  - `subscriptionMaxEvents?: number`\n    Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends.\n\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now\n\n- `sink: string`\n  The address to which events shall be delivered using the selected protocol.\n\n- `types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]`\n  Camara Event types eligible for subscription:\n- org.camaraproject.sim-swap-subscriptions.v0.swapped: receive a notification when a sim swap is performed on the line.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential. With the current API version the type MUST be set to ACCESSTOKEN.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { phoneNumber?: string; }; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst simSwapSubscription = await client.simswap.subscriptions.create({\n  config: { subscriptionDetail: {} },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.sim-swap-subscriptions.v0.swapped'],\n});\n\nconsole.log(simSwapSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.simswap.subscriptions.create',
         example:
-          "camara simswap:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.sim-swap-subscriptions.v0.swapped",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.create({\n  config: {\n    subscriptionDetail: { phoneNumber: '+123456789' },\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2025-01-17T13:18:23.682Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.sim-swap-subscriptions.v0.swapped'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(simSwapSubscription.id);",
       },
       go: {
         method: 'client.Simswap.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsimSwapSubscription, err := client.Simswap.Subscriptions.New(context.TODO(), camara.SimswapSubscriptionNewParams{\n\t\tConfig: camara.SimSwapConfigParam{\n\t\t\tSubscriptionDetail: camara.SimSwapConfigSubscriptionDetailParam{\n\t\t\t\tPhoneNumber: camara.String("+123456789"),\n\t\t\t},\n\t\t\tSubscriptionMaxEvents:  camara.Int(10),\n\t\t\tSubscriptionExpireTime: camara.Time(time.Now()),\n\t\t},\n\t\tProtocol: camara.SimSwapProtocolHTTP,\n\t\tSink:     "https://endpoint.example.com/sink",\n\t\tTypes:    []camara.SimSwapSubscriptionEventType{camara.SimSwapSubscriptionEventTypeOrgCamaraprojectSimSwapSubscriptionsV0Swapped},\n\t\tSinkCredential: camara.SimswapSubscriptionNewParamsSinkCredential{\n\t\t\tCredentialType: "ACCESSTOKEN",\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", simSwapSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "phoneNumber": "+123456789"\n            },\n            "subscriptionExpireTime": "2025-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 10\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.sim-swap-subscriptions.v0.swapped"\n          ]\n        }\'',
+          "camara simswap:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.sim-swap-subscriptions.v0.swapped",
       },
       php: {
         method: 'simswap->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscription = $client->simswap->subscriptions->create(\n  config: [\n    'subscriptionDetail' => ['phoneNumber' => '+123456789'],\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2025-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 10,\n  ],\n  protocol: SimSwapProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    SimSwapSubscriptionEventType::ORG_CAMARAPROJECT_SIM_SWAP_SUBSCRIPTIONS_V0_SWAPPED,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($simSwapSubscription);",
       },
-      typescript: {
-        method: 'client.simswap.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.create({\n  config: {\n    subscriptionDetail: { phoneNumber: '+123456789' },\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2025-01-17T13:18:23.682Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.sim-swap-subscriptions.v0.swapped'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(simSwapSubscription.id);",
+          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "phoneNumber": "+123456789"\n            },\n            "subscriptionExpireTime": "2025-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 10\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.sim-swap-subscriptions.v0.swapped"\n          ]\n        }\'',
       },
     },
   },
@@ -1459,28 +1459,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.simswap.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/simswap/subscriptions`\n\nRetrieve a list of sim swap event subscription(s)\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst simSwapSubscriptions = await client.simswap.subscriptions.list();\n\nconsole.log(simSwapSubscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara simswap:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.simswap.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscriptions = await client.simswap.subscriptions.list();\n\nconsole.log(simSwapSubscriptions);",
       },
       go: {
         method: 'client.Simswap.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsimSwapSubscriptions, err := client.Simswap.Subscriptions.List(context.TODO(), camara.SimswapSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", simSwapSubscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara simswap:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'simswap->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscriptions = $client->simswap->subscriptions->list(\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($simSwapSubscriptions);",
       },
-      typescript: {
-        method: 'client.simswap.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscriptions = await client.simswap.subscriptions.list();\n\nconsole.log(simSwapSubscriptions);",
+          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1498,29 +1498,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.simswap.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { id: string; config: sim_swap_config; protocol: sim_swap_protocol; sink: string; types: sim_swap_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**get** `/simswap/subscriptions/{subscriptionId}`\n\nretrieve event subscription information for a given subscription.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { phoneNumber?: string; }; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: 'org.camaraproject.sim-swap-subscriptions.v0.swapped'[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst simSwapSubscription = await client.simswap.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(simSwapSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.simswap.subscriptions.retrieve',
         example:
-          "camara simswap:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(simSwapSubscription.id);",
       },
       go: {
         method: 'client.Simswap.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsimSwapSubscription, err := client.Simswap.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.SimswapSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", simSwapSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara simswap:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'simswap->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$simSwapSubscription = $client->simswap->subscriptions->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($simSwapSubscription);",
       },
-      typescript: {
-        method: 'client.simswap.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(simSwapSubscription.id);",
+          'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1537,29 +1537,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.simswap.subscriptions.delete(subscriptionId: string, x-correlator?: string): { id?: string; }`\n\n**delete** `/simswap/subscriptions/{subscriptionId}`\n\ndelete a  given event subscription.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id?: string; }`\n  Response for a event-type subscription request managed asynchronously (Creation or Deletion)\n\n  - `id?: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.simswap.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.simswap.subscriptions.delete',
         example:
-          "camara simswap:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.simswap.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
       },
       go: {
         method: 'client.Simswap.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Simswap.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.SimswapSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara simswap:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'simswap->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->simswap->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.simswap.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.simswap.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+          'curl https://api.example.com/camara/simswap/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1584,29 +1584,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.deviceroamingstatus.subscriptions.create(config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: string[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { id: string; config: device_roaming_status_config; protocol: device_roaming_status_protocol; sink: string; types: device_roaming_status_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**post** `/deviceroamingstatus/subscriptions`\n\nCreate a device roaming status event subscription for a device\n\n### Parameters\n\n- `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters needed by the subscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`, `subscriptionMaxEvents`, `initialEvent`\nSpecific event type attributes must be defined in `subscriptionDetail`\nNote: if a request is performed for several event type, all subscribed event will use same `config` parameters.\n\n  - `subscriptionDetail: { device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }`\n    The detail of the requested event subscription.\n  - `initialEvent?: boolean`\n    Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request.\nExample: Consumer request Roaming event. If consumer sets initialEvent to true and device is in roaming situation, an event is triggered.\n\n  - `subscriptionExpireTime?: string`\n    The subscription expiration time (in date-time format) requested by the API consumer. It must follow [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) and must have time zone.\n  - `subscriptionMaxEvents?: number`\n    Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends.\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now\n\n- `sink: string`\n  The address to which events shall be delivered using the selected protocol.\n\n- `types: string[]`\n  Camara Event types eligible to be delivered by this subscription.\nNote: for the current Commonalities version (v0.5) only one event type per subscription is allowed, yet in the following releases use of array of event types SHALL be specified without changing this definition.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.create({\n  config: { subscriptionDetail: {} },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status'],\n});\n\nconsole.log(deviceRoamingStatusSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.deviceroamingstatus.subscriptions.create',
         example:
-          "camara deviceroamingstatus:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(deviceRoamingStatusSubscription.id);",
       },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceRoamingStatusSubscription, err := client.Deviceroamingstatus.Subscriptions.New(context.TODO(), camara.DeviceroamingstatusSubscriptionNewParams{\n\t\tConfig: camara.DeviceRoamingStatusConfigParam{\n\t\t\tSubscriptionDetail: camara.DeviceRoamingStatusConfigSubscriptionDetailParam{\n\t\t\t\tDevice: camara.DeviceRoamingStatusConfigSubscriptionDetailDeviceParam{\n\t\t\t\t\tPhoneNumber: camara.String("+123456789"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubscriptionExpireTime: camara.Time(time.Now()),\n\t\t\tSubscriptionMaxEvents:  camara.Int(5),\n\t\t\tInitialEvent:           camara.Bool(true),\n\t\t},\n\t\tProtocol: camara.DeviceRoamingStatusProtocolHTTP,\n\t\tSink:     "https://endpoint.example.com/sink",\n\t\tTypes:    []camara.DeviceRoamingStatusSubscriptionEventType{camara.DeviceRoamingStatusSubscriptionEventTypeOrgCamaraprojectDeviceRoamingStatusSubscriptionsV0RoamingStatus},\n\t\tSinkCredential: camara.DeviceroamingstatusSubscriptionNewParamsSinkCredential{\n\t\t\tCredentialType: "ACCESSTOKEN",\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceRoamingStatusSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"\n          ]\n        }\'',
+          "camara deviceroamingstatus:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status",
       },
       php: {
         method: 'deviceroamingstatus->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscription = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: DeviceRoamingStatusProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    DeviceRoamingStatusSubscriptionEventType::ORG_CAMARAPROJECT_DEVICE_ROAMING_STATUS_SUBSCRIPTIONS_V0_ROAMING_STATUS,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceRoamingStatusSubscription);",
       },
-      typescript: {
-        method: 'client.deviceroamingstatus.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(deviceRoamingStatusSubscription.id);",
+          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"\n          ]\n        }\'',
       },
     },
   },
@@ -1624,28 +1624,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.deviceroamingstatus.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/deviceroamingstatus/subscriptions`\n\nRetrieve a list of device roaming status event subscription(s)\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceRoamingStatusSubscriptions = await client.deviceroamingstatus.subscriptions.list();\n\nconsole.log(deviceRoamingStatusSubscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara deviceroamingstatus:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.deviceroamingstatus.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscriptions = await client.deviceroamingstatus.subscriptions.list();\n\nconsole.log(deviceRoamingStatusSubscriptions);",
       },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceRoamingStatusSubscriptions, err := client.Deviceroamingstatus.Subscriptions.List(context.TODO(), camara.DeviceroamingstatusSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceRoamingStatusSubscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara deviceroamingstatus:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'deviceroamingstatus->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscriptions = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($deviceRoamingStatusSubscriptions);",
       },
-      typescript: {
-        method: 'client.deviceroamingstatus.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscriptions = await client.deviceroamingstatus.subscriptions.list();\n\nconsole.log(deviceRoamingStatusSubscriptions);",
+          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1663,29 +1663,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.deviceroamingstatus.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { id: string; config: device_roaming_status_config; protocol: device_roaming_status_protocol; sink: string; types: device_roaming_status_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**get** `/deviceroamingstatus/subscriptions/{subscriptionId}`\n\nretrieve device roaming status subscription information for a given subscription.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceRoamingStatusSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.deviceroamingstatus.subscriptions.retrieve',
         example:
-          "camara deviceroamingstatus:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceRoamingStatusSubscription.id);",
       },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceRoamingStatusSubscription, err := client.Deviceroamingstatus.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DeviceroamingstatusSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceRoamingStatusSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara deviceroamingstatus:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'deviceroamingstatus->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceRoamingStatusSubscription = $client\n  ->deviceroamingstatus\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceRoamingStatusSubscription);",
       },
-      typescript: {
-        method: 'client.deviceroamingstatus.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceRoamingStatusSubscription.id);",
+          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1702,29 +1702,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.deviceroamingstatus.subscriptions.delete(subscriptionId: string, x-correlator?: string): { id: string; }`\n\n**delete** `/deviceroamingstatus/subscriptions/{subscriptionId}`\n\nDelete a given device-roaming-status subscription by ID\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; }`\n  Response for a device reachability status operation managed asynchronously (Creation or Deletion)\n\n  - `id: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.deviceroamingstatus.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.deviceroamingstatus.subscriptions.delete',
         example:
-          "camara deviceroamingstatus:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.deviceroamingstatus.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
       },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Deviceroamingstatus.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DeviceroamingstatusSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara deviceroamingstatus:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'deviceroamingstatus->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->deviceroamingstatus->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.deviceroamingstatus.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.deviceroamingstatus.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1749,29 +1749,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.devicereachabilitystatus.subscriptions.create(config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: string[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { id: string; config: device_reachability_status_config; protocol: device_reachability_status_protocol; sink: string; types: device_reachability_status_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**post** `/devicereachabilitystatus/subscriptions`\n\nCreate a device reachability status event subscription for a device\n\n### Parameters\n\n- `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters needed by the subscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`, `subscriptionMaxEvents`, `initialEvent`\nSpecific event type attributes must be defined in `subscriptionDetail`\nNote: if a request is performed for several event type, all subscribed event will use same `config` parameters.\n\n  - `subscriptionDetail: { device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }`\n    The detail of the requested event subscription.\n  - `initialEvent?: boolean`\n    Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request.\nExample: Consumer subscribes to reachability SMS. If consumer sets initialEvent to true and device is already reachable by SMS, an event is triggered.\n\n  - `subscriptionExpireTime?: string`\n    The subscription expiration time (in date-time format) requested by the API consumer.\n  - `subscriptionMaxEvents?: number`\n    Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends.\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now\n\n- `sink: string`\n  The address to which events shall be delivered using the selected protocol.\n\n- `types: string[]`\n  Camara Event types eligible to be delivered by this subscription.\nNote: For the current Commonalities API design guidelines, only one event type per subscription is allowed, yet in the following releases use of array of event types SHALL be specified without changing this definition.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceReachabilityStatusSubscription = await client.devicereachabilitystatus.subscriptions.create({\n  config: { subscriptionDetail: {} },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data'],\n});\n\nconsole.log(deviceReachabilityStatusSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.devicereachabilitystatus.subscriptions.create',
         example:
-          "camara devicereachabilitystatus:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.create({\n    config: {\n      subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n      subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n      subscriptionMaxEvents: 5,\n      initialEvent: true,\n    },\n    protocol: 'HTTP',\n    sink: 'https://endpoint.example.com/sink',\n    types: ['org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data'],\n    sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  });\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
       },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceReachabilityStatusSubscription, err := client.Devicereachabilitystatus.Subscriptions.New(context.TODO(), camara.DevicereachabilitystatusSubscriptionNewParams{\n\t\tConfig: camara.DeviceReachabilityStatusConfigParam{\n\t\t\tSubscriptionDetail: camara.DeviceReachabilityStatusConfigSubscriptionDetailParam{\n\t\t\t\tDevice: camara.DeviceReachabilityStatusConfigSubscriptionDetailDeviceParam{\n\t\t\t\t\tPhoneNumber: camara.String("+123456789"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubscriptionExpireTime: camara.Time(time.Now()),\n\t\t\tSubscriptionMaxEvents:  camara.Int(5),\n\t\t\tInitialEvent:           camara.Bool(true),\n\t\t},\n\t\tProtocol: camara.DeviceReachabilityStatusProtocolHTTP,\n\t\tSink:     "https://endpoint.example.com/sink",\n\t\tTypes:    []camara.DeviceReachabilityStatusSubscriptionEventType{camara.DeviceReachabilityStatusSubscriptionEventTypeOrgCamaraprojectDeviceReachabilityStatusSubscriptionsV0ReachabilityData},\n\t\tSinkCredential: camara.DevicereachabilitystatusSubscriptionNewParamsSinkCredential{\n\t\t\tCredentialType: "ACCESSTOKEN",\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceReachabilityStatusSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"\n          ]\n        }\'',
+          "camara devicereachabilitystatus:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data",
       },
       php: {
         method: 'devicereachabilitystatus->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscription = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: DeviceReachabilityStatusProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    DeviceReachabilityStatusSubscriptionEventType::ORG_CAMARAPROJECT_DEVICE_REACHABILITY_STATUS_SUBSCRIPTIONS_V0_REACHABILITY_DATA,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($deviceReachabilityStatusSubscription);",
       },
-      typescript: {
-        method: 'client.devicereachabilitystatus.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.create({\n    config: {\n      subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n      subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n      subscriptionMaxEvents: 5,\n      initialEvent: true,\n    },\n    protocol: 'HTTP',\n    sink: 'https://endpoint.example.com/sink',\n    types: ['org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data'],\n    sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  });\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
+          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"\n          ]\n        }\'',
       },
     },
   },
@@ -1789,28 +1789,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.devicereachabilitystatus.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/devicereachabilitystatus/subscriptions`\n\nRetrieve a list of device reachability status event subscription(s)\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceReachabilityStatusSubscriptions = await client.devicereachabilitystatus.subscriptions.list();\n\nconsole.log(deviceReachabilityStatusSubscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara devicereachabilitystatus:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.devicereachabilitystatus.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscriptions =\n  await client.devicereachabilitystatus.subscriptions.list();\n\nconsole.log(deviceReachabilityStatusSubscriptions);",
       },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceReachabilityStatusSubscriptions, err := client.Devicereachabilitystatus.Subscriptions.List(context.TODO(), camara.DevicereachabilitystatusSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceReachabilityStatusSubscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara devicereachabilitystatus:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'devicereachabilitystatus->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscriptions = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($deviceReachabilityStatusSubscriptions);",
       },
-      typescript: {
-        method: 'client.devicereachabilitystatus.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscriptions =\n  await client.devicereachabilitystatus.subscriptions.list();\n\nconsole.log(deviceReachabilityStatusSubscriptions);",
+          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1828,29 +1828,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.devicereachabilitystatus.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { id: string; config: device_reachability_status_config; protocol: device_reachability_status_protocol; sink: string; types: device_reachability_status_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**get** `/devicereachabilitystatus/subscriptions/{subscriptionId}`\n\nRetrieve a given subscription by ID\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: string[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: string[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst deviceReachabilityStatusSubscription = await client.devicereachabilitystatus.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceReachabilityStatusSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.devicereachabilitystatus.subscriptions.retrieve',
         example:
-          "camara devicereachabilitystatus:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
       },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tdeviceReachabilityStatusSubscription, err := client.Devicereachabilitystatus.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DevicereachabilitystatusSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", deviceReachabilityStatusSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara devicereachabilitystatus:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'devicereachabilitystatus->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$deviceReachabilityStatusSubscription = $client\n  ->devicereachabilitystatus\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($deviceReachabilityStatusSubscription);",
       },
-      typescript: {
-        method: 'client.devicereachabilitystatus.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
+          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1867,29 +1867,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.devicereachabilitystatus.subscriptions.delete(subscriptionId: string, x-correlator?: string): { id: string; }`\n\n**delete** `/devicereachabilitystatus/subscriptions/{subscriptionId}`\n\nDelete a given subscription by ID\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; }`\n  Response for a device reachability status operation managed asynchronously (Creation or Deletion)\n\n  - `id: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.devicereachabilitystatus.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.devicereachabilitystatus.subscriptions.delete',
         example:
-          "camara devicereachabilitystatus:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicereachabilitystatus.subscriptions.delete(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.id);",
       },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Devicereachabilitystatus.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.DevicereachabilitystatusSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara devicereachabilitystatus:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'devicereachabilitystatus->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->devicereachabilitystatus->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.devicereachabilitystatus.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicereachabilitystatus.subscriptions.delete(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.id);",
+          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1916,29 +1916,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## create\n\n`client.connectednetworktype.subscriptions.create(config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }, protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA', sink: string, types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[], sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }, x-correlator?: string): { id: string; config: connected_network_type_config; protocol: connected_network_type_protocol; sink: string; types: connected_network_type_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**post** `/connectednetworktype/subscriptions`\n\nCreate a subscription for receiving notifications on changes to the connected network type of a device.\n\n### Parameters\n\n- `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  Implementation-specific configuration parameters needed by the subscription manager for acquiring events.\nIn CAMARA we have predefined attributes like `subscriptionExpireTime`, `subscriptionMaxEvents`, `initialEvent`\nSpecific event type attributes must be defined in `subscriptionDetail`\nNote: if a request is performed for several event type, all subscribed event will use same `config` parameters.\n\n  - `subscriptionDetail: { device?: { ipv4Address?: { privateAddress?: string; publicAddress?: string; publicPort?: number; }; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }`\n    The detail of the requested event subscription.\n  - `initialEvent?: boolean`\n    Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request.\nExample: Consumer request area entered event. If consumer sets initialEvent to true and device is already in the geofence, an event is triggered\n\n  - `subscriptionExpireTime?: string`\n    The subscription expiration time (in date-time format) requested by the API consumer.\n  - `subscriptionMaxEvents?: number`\n    Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends.\n\n- `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  Identifier of a delivery protocol. Only HTTP is allowed for now\n\n- `sink: string`\n  The address to which events shall be delivered using the selected protocol.\n\n- `types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]`\n  Camara Event types eligible to be delivered by this subscription.\nNote: As of now we enforce to have only event type per subscription.\n\n\n- `sinkCredential?: { credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'; }`\n  A sink credential provides authentication or authorization information necessary to enable delivery of events to a target.\n  - `credentialType: 'PLAIN' | 'ACCESSTOKEN' | 'REFRESHTOKEN'`\n    The type of the credential.\nNote: Type of the credential - MUST be set to ACCESSTOKEN for now\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.create({\n  config: { subscriptionDetail: {} },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'],\n});\n\nconsole.log(connectedNetworkTypeSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions create',
+      typescript: {
+        method: 'client.connectednetworktype.subscriptions.create',
         example:
-          "camara connectednetworktype:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(connectedNetworkTypeSubscription.id);",
       },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.New',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\t"time"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tconnectedNetworkTypeSubscription, err := client.Connectednetworktype.Subscriptions.New(context.TODO(), camara.ConnectednetworktypeSubscriptionNewParams{\n\t\tConfig: camara.ConnectedNetworkTypeConfigParam{\n\t\t\tSubscriptionDetail: camara.ConnectedNetworkTypeConfigSubscriptionDetailParam{\n\t\t\t\tDevice: camara.ConnectedNetworkTypeConfigSubscriptionDetailDeviceParam{\n\t\t\t\t\tPhoneNumber: camara.String("+123456789"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSubscriptionExpireTime: camara.Time(time.Now()),\n\t\t\tSubscriptionMaxEvents:  camara.Int(5),\n\t\t\tInitialEvent:           camara.Bool(true),\n\t\t},\n\t\tProtocol: camara.ConnectedNetworkTypeProtocolHTTP,\n\t\tSink:     "https://endpoint.example.com/sink",\n\t\tTypes:    []camara.ConnectedNetworkTypeSubscriptionEventType{camara.ConnectedNetworkTypeSubscriptionEventTypeOrgCamaraprojectConnectedNetworkTypeSubscriptionsV0NetworkTypeChanged},\n\t\tSinkCredential: camara.ConnectednetworktypeSubscriptionNewParamsSinkCredential{\n\t\t\tCredentialType: "ACCESSTOKEN",\n\t\t},\n\t})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", connectedNetworkTypeSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions create',
         example:
-          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"\n          ]\n        }\'',
+          "camara connectednetworktype:subscriptions create \\\n  --bearer-token 'My Bearer Token' \\\n  --config '{subscriptionDetail: {}}' \\\n  --protocol HTTP \\\n  --sink https://endpoint.example.com/sink \\\n  --type org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed",
       },
       php: {
         method: 'connectednetworktype->subscriptions->create',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscription = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->create(\n  config: [\n    'subscriptionDetail' => [\n      'device' => [\n        'ipv4Address' => [\n          'privateAddress' => '84.125.93.10',\n          'publicAddress' => '84.125.93.10',\n          'publicPort' => 59765,\n        ],\n        'ipv6Address' => '2001:db8:85a3:8d3:1319:8a2e:370:7344',\n        'networkAccessIdentifier' => '123456789@example.com',\n        'phoneNumber' => '+123456789',\n      ],\n    ],\n    'initialEvent' => true,\n    'subscriptionExpireTime' => new \\DateTimeImmutable(\n      '2023-01-17T13:18:23.682Z'\n    ),\n    'subscriptionMaxEvents' => 5,\n  ],\n  protocol: ConnectedNetworkTypeProtocol::HTTP,\n  sink: 'https://endpoint.example.com/sink',\n  types: [\n    ConnectedNetworkTypeSubscriptionEventType::ORG_CAMARAPROJECT_CONNECTED_NETWORK_TYPE_SUBSCRIPTIONS_V0_NETWORK_TYPE_CHANGED,\n  ],\n  sinkCredential: ['credentialType' => 'ACCESSTOKEN'],\n  xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46',\n);\n\nvar_dump($connectedNetworkTypeSubscription);",
       },
-      typescript: {
-        method: 'client.connectednetworktype.subscriptions.create',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(connectedNetworkTypeSubscription.id);",
+          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"\n          ]\n        }\'',
       },
     },
   },
@@ -1956,28 +1956,28 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## list\n\n`client.connectednetworktype.subscriptions.list(x-correlator?: string): object[]`\n\n**get** `/connectednetworktype/subscriptions`\n\nRetrieve a list of device connected network type event subscription(s)\n\n### Parameters\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: object; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }[]`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst connectedNetworkTypeSubscriptions = await client.connectednetworktype.subscriptions.list();\n\nconsole.log(connectedNetworkTypeSubscriptions);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions list',
-        example: "camara connectednetworktype:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
+      typescript: {
+        method: 'client.connectednetworktype.subscriptions.list',
+        example:
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscriptions = await client.connectednetworktype.subscriptions.list();\n\nconsole.log(connectedNetworkTypeSubscriptions);",
       },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.List',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tconnectedNetworkTypeSubscriptions, err := client.Connectednetworktype.Subscriptions.List(context.TODO(), camara.ConnectednetworktypeSubscriptionListParams{})\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", connectedNetworkTypeSubscriptions)\n}\n',
       },
-      http: {
-        example:
-          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+      cli: {
+        method: 'subscriptions list',
+        example: "camara connectednetworktype:subscriptions list \\\n  --bearer-token 'My Bearer Token'",
       },
       php: {
         method: 'connectednetworktype->subscriptions->list',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscriptions = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->list(xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46');\n\nvar_dump($connectedNetworkTypeSubscriptions);",
       },
-      typescript: {
-        method: 'client.connectednetworktype.subscriptions.list',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscriptions = await client.connectednetworktype.subscriptions.list();\n\nconsole.log(connectedNetworkTypeSubscriptions);",
+          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -1995,29 +1995,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## retrieve\n\n`client.connectednetworktype.subscriptions.retrieve(subscriptionId: string, x-correlator?: string): { id: string; config: connected_network_type_config; protocol: connected_network_type_protocol; sink: string; types: connected_network_type_subscription_event_type[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n\n**get** `/connectednetworktype/subscriptions/{subscriptionId}`\n\nretrieve ConnectedNetworkType subscription information for a given subscription ID.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; config: { subscriptionDetail: object; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }; protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'; sink: string; types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]; expiresAt?: string; startsAt?: string; status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'; }`\n  Represents a event-type subscription.\n\n  - `id: string`\n  - `config: { subscriptionDetail: { device?: { ipv4Address?: object; ipv6Address?: string; networkAccessIdentifier?: string; phoneNumber?: string; }; }; initialEvent?: boolean; subscriptionExpireTime?: string; subscriptionMaxEvents?: number; }`\n  - `protocol: 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'`\n  - `sink: string`\n  - `types: 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'[]`\n  - `expiresAt?: string`\n  - `startsAt?: string`\n  - `status?: 'ACTIVATION_REQUESTED' | 'ACTIVE' | 'EXPIRED' | 'INACTIVE' | 'DELETED'`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(connectedNetworkTypeSubscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions retrieve',
+      typescript: {
+        method: 'client.connectednetworktype.subscriptions.retrieve',
         example:
-          "camara connectednetworktype:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(connectedNetworkTypeSubscription.id);",
       },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.Get',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tconnectedNetworkTypeSubscription, err := client.Connectednetworktype.Subscriptions.Get(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.ConnectednetworktypeSubscriptionGetParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", connectedNetworkTypeSubscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions retrieve',
         example:
-          'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara connectednetworktype:subscriptions retrieve \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'connectednetworktype->subscriptions->retrieve',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$connectedNetworkTypeSubscription = $client\n  ->connectednetworktype\n  ->subscriptions\n  ->retrieve(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($connectedNetworkTypeSubscription);",
       },
-      typescript: {
-        method: 'client.connectednetworktype.subscriptions.retrieve',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(connectedNetworkTypeSubscription.id);",
+          'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
@@ -2034,29 +2034,29 @@ const EMBEDDED_METHODS: MethodEntry[] = [
     markdown:
       "## delete\n\n`client.connectednetworktype.subscriptions.delete(subscriptionId: string, x-correlator?: string): { id: string; }`\n\n**delete** `/connectednetworktype/subscriptions/{subscriptionId}`\n\ndelete a given ConnectedNetworkType subscription.\n\n### Parameters\n\n- `subscriptionId: string`\n  The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.\n\n- `x-correlator?: string`\n\n### Returns\n\n- `{ id: string; }`\n  Response for a event-type subscription request managed asynchronously (Creation or Deletion)\n\n  - `id: string`\n\n### Example\n\n```typescript\nimport Camara from 'camara-sdk';\n\nconst client = new Camara();\n\nconst subscription = await client.connectednetworktype.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription);\n```",
     perLanguage: {
-      cli: {
-        method: 'subscriptions delete',
+      typescript: {
+        method: 'client.connectednetworktype.subscriptions.delete',
         example:
-          "camara connectednetworktype:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
+          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectednetworktype.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
       },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.Delete',
         example:
           'package main\n\nimport (\n\t"context"\n\t"fmt"\n\n\t"github.com/stainless-sdks/camara-go"\n\t"github.com/stainless-sdks/camara-go/option"\n)\n\nfunc main() {\n\tclient := camara.NewClient(\n\t\toption.WithBearerToken("My Bearer Token"),\n\t)\n\tsubscription, err := client.Connectednetworktype.Subscriptions.Delete(\n\t\tcontext.TODO(),\n\t\t"qs15-h556-rt89-1298",\n\t\tcamara.ConnectednetworktypeSubscriptionDeleteParams{},\n\t)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\tfmt.Printf("%+v\\n", subscription.ID)\n}\n',
       },
-      http: {
+      cli: {
+        method: 'subscriptions delete',
         example:
-          'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
+          "camara connectednetworktype:subscriptions delete \\\n  --bearer-token 'My Bearer Token' \\\n  --subscription-id qs15-h556-rt89-1298",
       },
       php: {
         method: 'connectednetworktype->subscriptions->delete',
         example:
           "<?php\n\nrequire_once dirname(__DIR__) . '/vendor/autoload.php';\n\n$client = new Client(bearerToken: 'My Bearer Token');\n\n$subscription = $client->connectednetworktype->subscriptions->delete(\n  'qs15-h556-rt89-1298', xCorrelator: 'b4333c46-49c0-4f62-80d7-f0ef930f1c46'\n);\n\nvar_dump($subscription);",
       },
-      typescript: {
-        method: 'client.connectednetworktype.subscriptions.delete',
+      http: {
         example:
-          "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectednetworktype.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+          'curl https://api.example.com/camara/connectednetworktype/subscriptions/$SUBSCRIPTION_ID \\\n    -X DELETE \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN"',
       },
     },
   },
