@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.17.7 (2026-04-26)
+
+Full Changelog: [v0.17.6...v0.17.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.6...v0.17.7)
+
+### Chores
+
+* **formatter:** run prettier and eslint separately ([9eee46a](https://github.com/andreibesleaga/camara-sdk/commit/9eee46ac9dce3f1f95cd3c74a4539e82d1b270a2))
+* **internal:** codegen related update ([184c90f](https://github.com/andreibesleaga/camara-sdk/commit/184c90f4ce2c4de39f7503686b901f44047e2278))
+* **internal:** codegen related update ([77a9ae8](https://github.com/andreibesleaga/camara-sdk/commit/77a9ae857df0b88f6a57001ef0197cec80af47db))
+* **internal:** more robust bootstrap script ([709d3d9](https://github.com/andreibesleaga/camara-sdk/commit/709d3d94b4bf700a520c53d812fb15fcc572a2a2))
+* **internal:** show error causes in MCP servers when running in local mode ([4526478](https://github.com/andreibesleaga/camara-sdk/commit/452647817c006b80cf337c5b8035ef25f1824a25))
+* **internal:** update docs ordering ([f8140fa](https://github.com/andreibesleaga/camara-sdk/commit/f8140fa8b98248c22b811fb7662d14c40c0dfd18))
+* **mcp-server:** increase local docs search result count from 5 to 10 ([c63b1f6](https://github.com/andreibesleaga/camara-sdk/commit/c63b1f65395fee26fc76136f59cdeca9c8673708))
+* restructure docs search code ([330e8e6](https://github.com/andreibesleaga/camara-sdk/commit/330e8e6c7bad87276b475cc9917f9b309d7cf1e4))
+* update CLI documentation ([6b282ec](https://github.com/andreibesleaga/camara-sdk/commit/6b282ecd1ec891f524442d6237aaff1bb7cbb4e7))
+
 ## 0.17.6 (2026-04-07)
 
 Full Changelog: [v0.17.5...v0.17.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.5...v0.17.6)
