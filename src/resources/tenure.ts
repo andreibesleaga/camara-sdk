@@ -22,15 +22,8 @@ export class Tenure extends APIResource {
    * ```
    */
   verify(params: TenureVerifyParams, options?: RequestOptions): APIPromise<TenureVerifyResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/tenure/check-tenure', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/tenure/check-tenure', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -77,5 +70,8 @@ export interface TenureVerifyParams {
 }
 
 export declare namespace Tenure {
-  export { type TenureVerifyResponse as TenureVerifyResponse, type TenureVerifyParams as TenureVerifyParams };
+  export {
+    type TenureVerifyResponse as TenureVerifyResponse,
+    type TenureVerifyParams as TenureVerifyParams
+  };
 }

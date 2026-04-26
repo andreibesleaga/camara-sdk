@@ -33,15 +33,8 @@ export class Subscriptions extends APIResource {
    * ```
    */
   create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<Subscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/connectivityinsights/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/connectivityinsights/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -55,19 +48,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<Subscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/connectivityinsights/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<Subscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/connectivityinsights/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -80,18 +63,9 @@ export class Subscriptions extends APIResource {
    *   await client.connectivityinsights.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/connectivityinsights/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/connectivityinsights/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -105,19 +79,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/connectivityinsights/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/connectivityinsights/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -374,12 +338,12 @@ export namespace Config {
 /**
  * event-type - Event triggered when an event-type event occurred
  */
-export type EventType = 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality';
+export type EventType = 'org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'
 
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type Protocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type Protocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -454,7 +418,7 @@ export interface Subscription {
   subscriptionId?: string;
 }
 
-export type SubscriptionListResponse = Array<Subscription>;
+export type SubscriptionListResponse = Array<Subscription>
 
 /**
  * Response for a event-type subscription request managed asynchronously (Creation
@@ -553,6 +517,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

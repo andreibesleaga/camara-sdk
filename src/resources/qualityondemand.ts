@@ -23,19 +23,9 @@ export class Qualityondemand extends APIResource {
    *   await client.qualityondemand.retrieveQosProfile('voice');
    * ```
    */
-  retrieveQosProfile(
-    name: string,
-    params: QualityondemandRetrieveQosProfileParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<QosProfile> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/qualityondemand/qos-profiles/${name}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieveQosProfile(name: string, params: QualityondemandRetrieveQosProfileParams | null | undefined = {}, options?: RequestOptions): APIPromise<QosProfile> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/qualityondemand/qos-profiles/${name}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -66,19 +56,9 @@ export class Qualityondemand extends APIResource {
    *   await client.qualityondemand.retrieveQosProfiles();
    * ```
    */
-  retrieveQosProfiles(
-    params: QualityondemandRetrieveQosProfilesParams,
-    options?: RequestOptions,
-  ): APIPromise<QualityondemandRetrieveQosProfilesResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/qualityondemand/retrieve-qos-profiles', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieveQosProfiles(params: QualityondemandRetrieveQosProfilesParams, options?: RequestOptions): APIPromise<QualityondemandRetrieveQosProfilesResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/qualityondemand/retrieve-qos-profiles', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -257,16 +237,7 @@ export interface QosProfile {
    * | Standard              | DF(CS0)   | 0                    | 000000              | 0               | Undifferentiated applications - also:                                |
    * |                       |           |                      |                     |                 | Microsoft QOSTrafficTypeBestEffort                                   |
    */
-  serviceClass?:
-    | 'microsoft_voice'
-    | 'microsoft_audio_video'
-    | 'real_time_interactive'
-    | 'multimedia_streaming'
-    | 'broadcast_video'
-    | 'low_latency_data'
-    | 'high_throughput_data'
-    | 'low_priority_data'
-    | 'standard';
+  serviceClass?: 'microsoft_voice' | 'microsoft_audio_video' | 'real_time_interactive' | 'multimedia_streaming' | 'broadcast_video' | 'low_latency_data' | 'high_throughput_data' | 'low_priority_data' | 'standard';
 
   /**
    * Specification of rate
@@ -303,7 +274,7 @@ export namespace QosProfile {
  * - `DEPRECATED`- QoS profile is actively being used in a QoD session, but can not
  *   be deployed in new QoD sessions
  */
-export type QosProfileStatus = 'ACTIVE' | 'INACTIVE' | 'DEPRECATED';
+export type QosProfileStatus = 'ACTIVE' | 'INACTIVE' | 'DEPRECATED'
 
 /**
  * Specification of rate
@@ -320,7 +291,7 @@ export interface Rate {
   value?: number;
 }
 
-export type QualityondemandRetrieveQosProfilesResponse = Array<QosProfile>;
+export type QualityondemandRetrieveQosProfilesResponse = Array<QosProfile>
 
 export interface QualityondemandRetrieveQosProfileParams {
   /**
@@ -491,6 +462,6 @@ export declare namespace Qualityondemand {
     type Rate as Rate,
     type QualityondemandRetrieveQosProfilesResponse as QualityondemandRetrieveQosProfilesResponse,
     type QualityondemandRetrieveQosProfileParams as QualityondemandRetrieveQosProfileParams,
-    type QualityondemandRetrieveQosProfilesParams as QualityondemandRetrieveQosProfilesParams,
+    type QualityondemandRetrieveQosProfilesParams as QualityondemandRetrieveQosProfilesParams
   };
 }

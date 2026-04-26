@@ -36,19 +36,9 @@ export class Regiondevicecount extends APIResource {
    * });
    * ```
    */
-  getCount(
-    params: RegiondevicecountGetCountParams,
-    options?: RequestOptions,
-  ): APIPromise<RegiondevicecountGetCountResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/regiondevicecount/count', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  getCount(params: RegiondevicecountGetCountParams, options?: RequestOptions): APIPromise<RegiondevicecountGetCountResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/regiondevicecount/count', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -78,12 +68,7 @@ export interface RegiondevicecountGetCountResponse {
    * TIME_INTERVAL_NO_DATA_FOUND: Unable to find device count data within the
    * requested time interval
    */
-  status?:
-    | 'SUPPORTED_AREA'
-    | 'PART_OF_AREA_NOT_SUPPORTED'
-    | 'AREA_NOT_SUPPORTED'
-    | 'DENSITY_BELOW_PRIVACY_THRESHOLD'
-    | 'TIME_INTERVAL_NO_DATA_FOUND';
+  status?: 'SUPPORTED_AREA' | 'PART_OF_AREA_NOT_SUPPORTED' | 'AREA_NOT_SUPPORTED' | 'DENSITY_BELOW_PRIVACY_THRESHOLD' | 'TIME_INTERVAL_NO_DATA_FOUND';
 }
 
 export interface RegiondevicecountGetCountParams {
@@ -205,6 +190,6 @@ export namespace RegiondevicecountGetCountParams {
 export declare namespace Regiondevicecount {
   export {
     type RegiondevicecountGetCountResponse as RegiondevicecountGetCountResponse,
-    type RegiondevicecountGetCountParams as RegiondevicecountGetCountParams,
+    type RegiondevicecountGetCountParams as RegiondevicecountGetCountParams
   };
 }

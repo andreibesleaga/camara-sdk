@@ -35,19 +35,9 @@ export class Subscriptions extends APIResource {
    *   });
    * ```
    */
-  create(
-    params: SubscriptionCreateParams,
-    options?: RequestOptions,
-  ): APIPromise<ConnectedNetworkTypeSubscription> {
-    const { 'x-correlator': xCorrelator, ...body } = params;
-    return this._client.post('/connectednetworktype/subscriptions', {
-      body,
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  create(params: SubscriptionCreateParams, options?: RequestOptions): APIPromise<ConnectedNetworkTypeSubscription> {
+    const { 'x-correlator': xCorrelator, ...body } = params
+    return this._client.post('/connectednetworktype/subscriptions', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -62,19 +52,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  retrieve(
-    subscriptionID: string,
-    params: SubscriptionRetrieveParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ConnectedNetworkTypeSubscription> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get(path`/connectednetworktype/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  retrieve(subscriptionID: string, params: SubscriptionRetrieveParams | null | undefined = {}, options?: RequestOptions): APIPromise<ConnectedNetworkTypeSubscription> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get(path`/connectednetworktype/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -86,18 +66,9 @@ export class Subscriptions extends APIResource {
    *   await client.connectednetworktype.subscriptions.list();
    * ```
    */
-  list(
-    params: SubscriptionListParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionListResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.get('/connectednetworktype/subscriptions', {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  list(params: SubscriptionListParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionListResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.get('/connectednetworktype/subscriptions', { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 
   /**
@@ -111,19 +82,9 @@ export class Subscriptions extends APIResource {
    *   );
    * ```
    */
-  delete(
-    subscriptionID: string,
-    params: SubscriptionDeleteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<SubscriptionDeleteResponse> {
-    const { 'x-correlator': xCorrelator } = params ?? {};
-    return this._client.delete(path`/connectednetworktype/subscriptions/${subscriptionID}`, {
-      ...options,
-      headers: buildHeaders([
-        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
-        options?.headers,
-      ]),
-    });
+  delete(subscriptionID: string, params: SubscriptionDeleteParams | null | undefined = {}, options?: RequestOptions): APIPromise<SubscriptionDeleteResponse> {
+    const { 'x-correlator': xCorrelator } = params ?? {}
+    return this._client.delete(path`/connectednetworktype/subscriptions/${subscriptionID}`, { ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
   }
 }
 
@@ -289,7 +250,7 @@ export namespace ConnectedNetworkTypeConfig {
 /**
  * Identifier of a delivery protocol. Only HTTP is allowed for now
  */
-export type ConnectedNetworkTypeProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA';
+export type ConnectedNetworkTypeProtocol = 'HTTP' | 'MQTT3' | 'MQTT5' | 'AMQP' | 'NATS' | 'KAFKA'
 
 /**
  * Represents a event-type subscription.
@@ -373,10 +334,9 @@ export interface ConnectedNetworkTypeSubscription {
  * network-type-changed - Event triggered when the connected network type of the
  * device changes.
  */
-export type ConnectedNetworkTypeSubscriptionEventType =
-  'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed';
+export type ConnectedNetworkTypeSubscriptionEventType = 'org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'
 
-export type SubscriptionListResponse = Array<ConnectedNetworkTypeSubscription>;
+export type SubscriptionListResponse = Array<ConnectedNetworkTypeSubscription>
 
 /**
  * Response for a event-type subscription request managed asynchronously (Creation
@@ -478,6 +438,6 @@ export declare namespace Subscriptions {
     type SubscriptionCreateParams as SubscriptionCreateParams,
     type SubscriptionRetrieveParams as SubscriptionRetrieveParams,
     type SubscriptionListParams as SubscriptionListParams,
-    type SubscriptionDeleteParams as SubscriptionDeleteParams,
+    type SubscriptionDeleteParams as SubscriptionDeleteParams
   };
 }

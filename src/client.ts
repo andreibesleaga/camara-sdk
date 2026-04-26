@@ -17,80 +17,17 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import {
-  Callforwardingsignal,
-  CallforwardingsignalCheckActiveForwardingsParams,
-  CallforwardingsignalCheckActiveForwardingsResponse,
-  CallforwardingsignalCheckUnconditionalForwardingParams,
-  CallforwardingsignalCheckUnconditionalForwardingResponse,
-  CreateCallForwardingSignal,
-} from './resources/callforwardingsignal';
-import {
-  DeviceIdentifierDevice,
-  DeviceIdentifierDeviceIpv4Addr,
-  DeviceIdentifierRequestBody,
-  Deviceidentifier,
-  DeviceidentifierRetrieveIdentifierParams,
-  DeviceidentifierRetrieveIdentifierResponse,
-  DeviceidentifierRetrievePpidParams,
-  DeviceidentifierRetrievePpidResponse,
-  DeviceidentifierRetrieveTypeParams,
-  DeviceidentifierRetrieveTypeResponse,
-} from './resources/deviceidentifier';
-import {
-  Deviceswap,
-  DeviceswapCheckParams,
-  DeviceswapCheckResponse,
-  DeviceswapRetrieveDateParams,
-  DeviceswapRetrieveDateResponse,
-} from './resources/deviceswap';
-import {
-  Knowyourcustomerageverification,
-  KnowyourcustomerageverificationVerifyParams,
-  KnowyourcustomerageverificationVerifyResponse,
-} from './resources/knowyourcustomerageverification';
-import {
-  KnowyourcustomerfillIn,
-  KnowyourcustomerfillInCreateParams,
-  KnowyourcustomerfillInCreateResponse,
-} from './resources/knowyourcustomerfill-in';
-import {
-  Knowyourcustomermatch,
-  KnowyourcustomermatchMatchParams,
-  KnowyourcustomermatchMatchResponse,
-  MatchResult,
-} from './resources/knowyourcustomermatch';
-import {
-  Numberrecycling,
-  NumberrecyclingCheckSubscriberChangeParams,
-  NumberrecyclingCheckSubscriberChangeResponse,
-} from './resources/numberrecycling';
-import {
-  Otpvalidation,
-  OtpvalidationSendCodeParams,
-  OtpvalidationSendCodeResponse,
-  OtpvalidationValidateCodeParams,
-} from './resources/otpvalidation';
-import {
-  Populationdensitydata,
-  PopulationdensitydataRetrieveParams,
-  PopulationdensitydataRetrieveResponse,
-} from './resources/populationdensitydata';
-import {
-  Duration,
-  QosProfile,
-  QosProfileStatus,
-  Qualityondemand,
-  QualityondemandRetrieveQosProfileParams,
-  QualityondemandRetrieveQosProfilesParams,
-  QualityondemandRetrieveQosProfilesResponse,
-  Rate,
-} from './resources/qualityondemand';
-import {
-  Regiondevicecount,
-  RegiondevicecountGetCountParams,
-  RegiondevicecountGetCountResponse,
-} from './resources/regiondevicecount';
+import { Callforwardingsignal, CallforwardingsignalCheckActiveForwardingsParams, CallforwardingsignalCheckActiveForwardingsResponse, CallforwardingsignalCheckUnconditionalForwardingParams, CallforwardingsignalCheckUnconditionalForwardingResponse, CreateCallForwardingSignal } from './resources/callforwardingsignal';
+import { DeviceIdentifierDevice, DeviceIdentifierDeviceIpv4Addr, DeviceIdentifierRequestBody, Deviceidentifier, DeviceidentifierRetrieveIdentifierParams, DeviceidentifierRetrieveIdentifierResponse, DeviceidentifierRetrievePpidParams, DeviceidentifierRetrievePpidResponse, DeviceidentifierRetrieveTypeParams, DeviceidentifierRetrieveTypeResponse } from './resources/deviceidentifier';
+import { Deviceswap, DeviceswapCheckParams, DeviceswapCheckResponse, DeviceswapRetrieveDateParams, DeviceswapRetrieveDateResponse } from './resources/deviceswap';
+import { Knowyourcustomerageverification, KnowyourcustomerageverificationVerifyParams, KnowyourcustomerageverificationVerifyResponse } from './resources/knowyourcustomerageverification';
+import { KnowyourcustomerfillIn, KnowyourcustomerfillInCreateParams, KnowyourcustomerfillInCreateResponse } from './resources/knowyourcustomerfill-in';
+import { Knowyourcustomermatch, KnowyourcustomermatchMatchParams, KnowyourcustomermatchMatchResponse, MatchResult } from './resources/knowyourcustomermatch';
+import { Numberrecycling, NumberrecyclingCheckSubscriberChangeParams, NumberrecyclingCheckSubscriberChangeResponse } from './resources/numberrecycling';
+import { Otpvalidation, OtpvalidationSendCodeParams, OtpvalidationSendCodeResponse, OtpvalidationValidateCodeParams } from './resources/otpvalidation';
+import { Populationdensitydata, PopulationdensitydataRetrieveParams, PopulationdensitydataRetrieveResponse } from './resources/populationdensitydata';
+import { Duration, QosProfile, QosProfileStatus, Qualityondemand, QualityondemandRetrieveQosProfileParams, QualityondemandRetrieveQosProfilesParams, QualityondemandRetrieveQosProfilesResponse, Rate } from './resources/qualityondemand';
+import { Regiondevicecount, RegiondevicecountGetCountParams, RegiondevicecountGetCountResponse } from './resources/regiondevicecount';
 import { Tenure, TenureVerifyParams, TenureVerifyResponse } from './resources/tenure';
 import { Connectednetworktype } from './resources/connectednetworktype/connectednetworktype';
 import { Connectivityinsights } from './resources/connectivityinsights/connectivityinsights';
@@ -104,13 +41,7 @@ import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
 import { readEnv } from './internal/utils/env';
-import {
-  type LogLevel,
-  type Logger,
-  formatRequestDetails,
-  loggerFor,
-  parseLogLevel,
-} from './internal/utils/log';
+import { type LogLevel, type Logger, formatRequestDetails, loggerFor, parseLogLevel } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 
 export interface ClientOptions {
@@ -334,7 +265,7 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Camara API.
+ * API Client for interfacing with the Camara API. 
  */
 export class Camara {
   bearerToken: string;
@@ -446,167 +377,163 @@ export class Camara {
     connectedNetworkTypeToken = readEnv('CAMARA_BEARER_TOKEN'),
     deviceLocationNotificationsAPIKey = readEnv('CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY'),
     notificationsAPIKey = readEnv('CAMARA_NOTIFICATIONS_API_KEY'),
-    populationDensityDataNotificationsAPIKey = readEnv(
-      'CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY',
-    ),
+    populationDensityDataNotificationsAPIKey = readEnv('CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY'),
     regionDeviceCountNotificationsAPIKey = readEnv('CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY'),
     connectivityInsightsNotificationsAPIKey = readEnv('CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY'),
     simSwapNotificationsAPIKey = readEnv('CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY'),
     deviceRoamingStatusNotificationsAPIKey = readEnv('CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY'),
-    deviceReachabilityStatusNotificationsAPIKey = readEnv(
-      'CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY',
-    ),
+    deviceReachabilityStatusNotificationsAPIKey = readEnv('CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY'),
     connectedNetworkTypeNotificationsAPIKey = readEnv('CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (bearerToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an bearerToken option, like new Camara({ bearerToken: 'My Bearer Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an bearerToken option, like new Camara({ bearerToken: \'My Bearer Token\' }).'
       );
     }
     if (customerInsightsToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an customerInsightsToken option, like new Camara({ customerInsightsToken: 'My Customer Insights Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an customerInsightsToken option, like new Camara({ customerInsightsToken: \'My Customer Insights Token\' }).'
       );
     }
     if (deviceSwapToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceSwapToken option, like new Camara({ deviceSwapToken: 'My Device Swap Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceSwapToken option, like new Camara({ deviceSwapToken: \'My Device Swap Token\' }).'
       );
     }
     if (kycAgeVerificationToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycAgeVerificationToken option, like new Camara({ kycAgeVerificationToken: 'My KYC Age Verification Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycAgeVerificationToken option, like new Camara({ kycAgeVerificationToken: \'My KYC Age Verification Token\' }).'
       );
     }
     if (kycFillInToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycFillInToken option, like new Camara({ kycFillInToken: 'My KYC Fill In Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycFillInToken option, like new Camara({ kycFillInToken: \'My KYC Fill In Token\' }).'
       );
     }
     if (kycMatchToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycMatchToken option, like new Camara({ kycMatchToken: 'My KYC Match Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an kycMatchToken option, like new Camara({ kycMatchToken: \'My KYC Match Token\' }).'
       );
     }
     if (tenureToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an tenureToken option, like new Camara({ tenureToken: 'My Tenure Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an tenureToken option, like new Camara({ tenureToken: \'My Tenure Token\' }).'
       );
     }
     if (numberRecyclingToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an numberRecyclingToken option, like new Camara({ numberRecyclingToken: 'My Number Recycling Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an numberRecyclingToken option, like new Camara({ numberRecyclingToken: \'My Number Recycling Token\' }).'
       );
     }
     if (otpValidationToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an otpValidationToken option, like new Camara({ otpValidationToken: 'My Otp Validation Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an otpValidationToken option, like new Camara({ otpValidationToken: \'My Otp Validation Token\' }).'
       );
     }
     if (callForwardingSignalToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an callForwardingSignalToken option, like new Camara({ callForwardingSignalToken: 'My Call Forwarding Signal Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an callForwardingSignalToken option, like new Camara({ callForwardingSignalToken: \'My Call Forwarding Signal Token\' }).'
       );
     }
     if (deviceLocationToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationToken option, like new Camara({ deviceLocationToken: 'My Device Location Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationToken option, like new Camara({ deviceLocationToken: \'My Device Location Token\' }).'
       );
     }
     if (populationDensityDataToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an populationDensityDataToken option, like new Camara({ populationDensityDataToken: 'My Population Density Data Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an populationDensityDataToken option, like new Camara({ populationDensityDataToken: \'My Population Density Data Token\' }).'
       );
     }
     if (regionDeviceCountToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an regionDeviceCountToken option, like new Camara({ regionDeviceCountToken: 'My Region Device Count Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an regionDeviceCountToken option, like new Camara({ regionDeviceCountToken: \'My Region Device Count Token\' }).'
       );
     }
     if (webRtcToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an webRtcToken option, like new Camara({ webRtcToken: 'My Web Rtc Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an webRtcToken option, like new Camara({ webRtcToken: \'My Web Rtc Token\' }).'
       );
     }
     if (connectivityInsightsToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectivityInsightsToken option, like new Camara({ connectivityInsightsToken: 'My Connectivity Insights Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectivityInsightsToken option, like new Camara({ connectivityInsightsToken: \'My Connectivity Insights Token\' }).'
       );
     }
     if (qualityOnDemandToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an qualityOnDemandToken option, like new Camara({ qualityOnDemandToken: 'My Quality On Demand Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an qualityOnDemandToken option, like new Camara({ qualityOnDemandToken: \'My Quality On Demand Token\' }).'
       );
     }
     if (deviceIdentifierToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceIdentifierToken option, like new Camara({ deviceIdentifierToken: 'My Device Identifier Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceIdentifierToken option, like new Camara({ deviceIdentifierToken: \'My Device Identifier Token\' }).'
       );
     }
     if (simSwapToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an simSwapToken option, like new Camara({ simSwapToken: 'My Sim Swap Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an simSwapToken option, like new Camara({ simSwapToken: \'My Sim Swap Token\' }).'
       );
     }
     if (deviceRoamingStatusToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceRoamingStatusToken option, like new Camara({ deviceRoamingStatusToken: 'My Device Roaming Status Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceRoamingStatusToken option, like new Camara({ deviceRoamingStatusToken: \'My Device Roaming Status Token\' }).'
       );
     }
     if (deviceReachabilityStatusToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceReachabilityStatusToken option, like new Camara({ deviceReachabilityStatusToken: 'My Device Reachability Status Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceReachabilityStatusToken option, like new Camara({ deviceReachabilityStatusToken: \'My Device Reachability Status Token\' }).'
       );
     }
     if (connectedNetworkTypeToken === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectedNetworkTypeToken option, like new Camara({ connectedNetworkTypeToken: 'My Connected Network Type Token' }).",
+        'The CAMARA_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectedNetworkTypeToken option, like new Camara({ connectedNetworkTypeToken: \'My Connected Network Type Token\' }).'
       );
     }
     if (deviceLocationNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationNotificationsAPIKey option, like new Camara({ deviceLocationNotificationsAPIKey: 'My Device Location Notifications API Key' }).",
+        'The CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceLocationNotificationsAPIKey option, like new Camara({ deviceLocationNotificationsAPIKey: \'My Device Location Notifications API Key\' }).'
       );
     }
     if (notificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an notificationsAPIKey option, like new Camara({ notificationsAPIKey: 'My Notifications API Key' }).",
+        'The CAMARA_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an notificationsAPIKey option, like new Camara({ notificationsAPIKey: \'My Notifications API Key\' }).'
       );
     }
     if (populationDensityDataNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an populationDensityDataNotificationsAPIKey option, like new Camara({ populationDensityDataNotificationsAPIKey: 'My Population Density Data Notifications API Key' }).",
+        'The CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an populationDensityDataNotificationsAPIKey option, like new Camara({ populationDensityDataNotificationsAPIKey: \'My Population Density Data Notifications API Key\' }).'
       );
     }
     if (regionDeviceCountNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an regionDeviceCountNotificationsAPIKey option, like new Camara({ regionDeviceCountNotificationsAPIKey: 'My Region Device Count Notifications API Key' }).",
+        'The CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an regionDeviceCountNotificationsAPIKey option, like new Camara({ regionDeviceCountNotificationsAPIKey: \'My Region Device Count Notifications API Key\' }).'
       );
     }
     if (connectivityInsightsNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectivityInsightsNotificationsAPIKey option, like new Camara({ connectivityInsightsNotificationsAPIKey: 'My Connectivity Insights Notifications API Key' }).",
+        'The CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectivityInsightsNotificationsAPIKey option, like new Camara({ connectivityInsightsNotificationsAPIKey: \'My Connectivity Insights Notifications API Key\' }).'
       );
     }
     if (simSwapNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an simSwapNotificationsAPIKey option, like new Camara({ simSwapNotificationsAPIKey: 'My Sim Swap Notifications API Key' }).",
+        'The CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an simSwapNotificationsAPIKey option, like new Camara({ simSwapNotificationsAPIKey: \'My Sim Swap Notifications API Key\' }).'
       );
     }
     if (deviceRoamingStatusNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceRoamingStatusNotificationsAPIKey option, like new Camara({ deviceRoamingStatusNotificationsAPIKey: 'My Device Roaming Status Notifications API Key' }).",
+        'The CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceRoamingStatusNotificationsAPIKey option, like new Camara({ deviceRoamingStatusNotificationsAPIKey: \'My Device Roaming Status Notifications API Key\' }).'
       );
     }
     if (deviceReachabilityStatusNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceReachabilityStatusNotificationsAPIKey option, like new Camara({ deviceReachabilityStatusNotificationsAPIKey: 'My Device Reachability Status Notifications API Key' }).",
+        'The CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an deviceReachabilityStatusNotificationsAPIKey option, like new Camara({ deviceReachabilityStatusNotificationsAPIKey: \'My Device Reachability Status Notifications API Key\' }).'
       );
     }
     if (connectedNetworkTypeNotificationsAPIKey === undefined) {
       throw new Errors.CamaraError(
-        "The CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectedNetworkTypeNotificationsAPIKey option, like new Camara({ connectedNetworkTypeNotificationsAPIKey: 'My Connected Network Type Notifications API Key' }).",
+        'The CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Camara client with an connectedNetworkTypeNotificationsAPIKey option, like new Camara({ connectedNetworkTypeNotificationsAPIKey: \'My Connected Network Type Notifications API Key\' }).'
       );
     }
 
@@ -651,10 +578,7 @@ export class Camara {
     const defaultLogLevel = 'warn';
     // Set default logLevel early so that we can log a warning in parseLogLevel.
     this.logLevel = defaultLogLevel;
-    this.logLevel =
-      parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ??
-      parseLogLevel(readEnv('CAMARA_LOG'), "process.env['CAMARA_LOG']", this) ??
-      defaultLogLevel;
+    this.logLevel = parseLogLevel(options.logLevel, 'ClientOptions.logLevel', this) ?? parseLogLevel(readEnv('CAMARA_LOG'), 'process.env[\'CAMARA_LOG\']', this) ?? defaultLogLevel;
     this.fetchOptions = options.fetchOptions;
     this.maxRetries = options.maxRetries ?? 2;
     this.fetch = options.fetch ?? Shims.getDefaultFetch();
@@ -737,7 +661,7 @@ export class Camara {
       deviceRoamingStatusNotificationsAPIKey: this.deviceRoamingStatusNotificationsAPIKey,
       deviceReachabilityStatusNotificationsAPIKey: this.deviceReachabilityStatusNotificationsAPIKey,
       connectedNetworkTypeNotificationsAPIKey: this.connectedNetworkTypeNotificationsAPIKey,
-      ...options,
+      ...options
     });
     return client;
   }
@@ -750,7 +674,7 @@ export class Camara {
   }
 
   protected defaultQuery(): Record<string, string | undefined> | undefined {
-    return this._options.defaultQuery;
+    return this._options.defaultQuery
   }
 
   protected validateHeaders({ values, nulls }: NullableHeaders) {
@@ -758,43 +682,10 @@ export class Camara {
   }
 
   protected async authHeaders(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
-    return buildHeaders([
-      await this.customerInsightsopenIDAuth(opts),
-      await this.openIDAuth(opts),
-      await this.deviceSwapopenIDAuth(opts),
-      await this.knowYourCustomerAgeVerificationopenIDAuth(opts),
-      await this.knowYourCustomerFillInopenIDAuth(opts),
-      await this.knowYourCustomerMatchopenIDAuth(opts),
-      await this.tenureopenIDAuth(opts),
-      await this.numberRecyclingopenIDAuth(opts),
-      await this.otpValidationopenIDAuth(opts),
-      await this.callForwardingSignalopenIDAuth(opts),
-      await this.deviceLocationopenIDAuth(opts),
-      await this.deviceLocationnotificationsBearerAuth(opts),
-      await this.notificationsBearerAuth(opts),
-      await this.populationDensityDataopenIDAuth(opts),
-      await this.populationDensityDatanotificationsBearerAuth(opts),
-      await this.regionDeviceCountopenIDAuth(opts),
-      await this.regionDeviceCountnotificationsBearerAuth(opts),
-      await this.webRtCopenIDAuth(opts),
-      await this.connectivityInsightsopenIDAuth(opts),
-      await this.connectivityInsightsnotificationsBearerAuth(opts),
-      await this.qualityOnDemandopenIDAuth(opts),
-      await this.deviceIdentifieropenIDAuth(opts),
-      await this.simSwapopenIDAuth(opts),
-      await this.simSwapnotificationsBearerAuth(opts),
-      await this.deviceRoamingStatusopenIDAuth(opts),
-      await this.deviceRoamingStatusnotificationsBearerAuth(opts),
-      await this.deviceReachabilityStatusopenIDAuth(opts),
-      await this.deviceReachabilityStatusnotificationsBearerAuth(opts),
-      await this.connectedNetworkTypeopenIDAuth(opts),
-      await this.connectedNetworkTypenotificationsBearerAuth(opts),
-    ]);
+    return buildHeaders([await this.customerInsightsopenIDAuth(opts), await this.openIDAuth(opts), await this.deviceSwapopenIDAuth(opts), await this.knowYourCustomerAgeVerificationopenIDAuth(opts), await this.knowYourCustomerFillInopenIDAuth(opts), await this.knowYourCustomerMatchopenIDAuth(opts), await this.tenureopenIDAuth(opts), await this.numberRecyclingopenIDAuth(opts), await this.otpValidationopenIDAuth(opts), await this.callForwardingSignalopenIDAuth(opts), await this.deviceLocationopenIDAuth(opts), await this.deviceLocationnotificationsBearerAuth(opts), await this.notificationsBearerAuth(opts), await this.populationDensityDataopenIDAuth(opts), await this.populationDensityDatanotificationsBearerAuth(opts), await this.regionDeviceCountopenIDAuth(opts), await this.regionDeviceCountnotificationsBearerAuth(opts), await this.webRtCopenIDAuth(opts), await this.connectivityInsightsopenIDAuth(opts), await this.connectivityInsightsnotificationsBearerAuth(opts), await this.qualityOnDemandopenIDAuth(opts), await this.deviceIdentifieropenIDAuth(opts), await this.simSwapopenIDAuth(opts), await this.simSwapnotificationsBearerAuth(opts), await this.deviceRoamingStatusopenIDAuth(opts), await this.deviceRoamingStatusnotificationsBearerAuth(opts), await this.deviceReachabilityStatusopenIDAuth(opts), await this.deviceReachabilityStatusnotificationsBearerAuth(opts), await this.connectedNetworkTypeopenIDAuth(opts), await this.connectedNetworkTypenotificationsBearerAuth(opts)]);
   }
 
-  protected async customerInsightsopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async customerInsightsopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.customerInsightsToken}` }]);
   }
 
@@ -806,21 +697,15 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceSwapToken}` }]);
   }
 
-  protected async knowYourCustomerAgeVerificationopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async knowYourCustomerAgeVerificationopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.kycAgeVerificationToken}` }]);
   }
 
-  protected async knowYourCustomerFillInopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async knowYourCustomerFillInopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.kycFillInToken}` }]);
   }
 
-  protected async knowYourCustomerMatchopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async knowYourCustomerMatchopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.kycMatchToken}` }]);
   }
 
@@ -836,9 +721,7 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.otpValidationToken}` }]);
   }
 
-  protected async callForwardingSignalopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async callForwardingSignalopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.callForwardingSignalToken}` }]);
   }
 
@@ -846,9 +729,7 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceLocationToken}` }]);
   }
 
-  protected async deviceLocationnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceLocationnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceLocationNotificationsAPIKey}` }]);
   }
 
@@ -856,27 +737,19 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.notificationsAPIKey}` }]);
   }
 
-  protected async populationDensityDataopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async populationDensityDataopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.populationDensityDataToken}` }]);
   }
 
-  protected async populationDensityDatanotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async populationDensityDatanotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.populationDensityDataNotificationsAPIKey}` }]);
   }
 
-  protected async regionDeviceCountopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async regionDeviceCountopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.regionDeviceCountToken}` }]);
   }
 
-  protected async regionDeviceCountnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async regionDeviceCountnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.regionDeviceCountNotificationsAPIKey}` }]);
   }
 
@@ -884,15 +757,11 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.webRtcToken}` }]);
   }
 
-  protected async connectivityInsightsopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async connectivityInsightsopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.connectivityInsightsToken}` }]);
   }
 
-  protected async connectivityInsightsnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async connectivityInsightsnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.connectivityInsightsNotificationsAPIKey}` }]);
   }
 
@@ -900,9 +769,7 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.qualityOnDemandToken}` }]);
   }
 
-  protected async deviceIdentifieropenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceIdentifieropenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceIdentifierToken}` }]);
   }
 
@@ -910,45 +777,31 @@ export class Camara {
     return buildHeaders([{ Authorization: `Bearer ${this.simSwapToken}` }]);
   }
 
-  protected async simSwapnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async simSwapnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.simSwapNotificationsAPIKey}` }]);
   }
 
-  protected async deviceRoamingStatusopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceRoamingStatusopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceRoamingStatusToken}` }]);
   }
 
-  protected async deviceRoamingStatusnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceRoamingStatusnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceRoamingStatusNotificationsAPIKey}` }]);
   }
 
-  protected async deviceReachabilityStatusopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceReachabilityStatusopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceReachabilityStatusToken}` }]);
   }
 
-  protected async deviceReachabilityStatusnotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async deviceReachabilityStatusnotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.deviceReachabilityStatusNotificationsAPIKey}` }]);
   }
 
-  protected async connectedNetworkTypeopenIDAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async connectedNetworkTypeopenIDAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.connectedNetworkTypeToken}` }]);
   }
 
-  protected async connectedNetworkTypenotificationsBearerAuth(
-    opts: FinalRequestOptions,
-  ): Promise<NullableHeaders | undefined> {
+  protected async connectedNetworkTypenotificationsBearerAuth(opts: FinalRequestOptions): Promise<NullableHeaders | undefined> {
     return buildHeaders([{ Authorization: `Bearer ${this.connectedNetworkTypeNotificationsAPIKey}` }]);
   }
 
@@ -976,11 +829,7 @@ export class Camara {
     return Errors.APIError.generate(status, error, message, headers);
   }
 
-  buildURL(
-    path: string,
-    query: Record<string, unknown> | null | undefined,
-    defaultBaseURL?: string | undefined,
-  ): string {
+  buildURL(path: string, query: Record<string, unknown> | null | undefined, defaultBaseURL?: string | undefined): string {
     const baseURL = (!this.#baseURLOverridden() && defaultBaseURL) || this.baseURL;
     const url =
       isAbsoluteURL(path) ?
@@ -1068,9 +917,7 @@ export class Camara {
 
     await this.prepareOptions(options);
 
-    const { req, url, timeout } = await this.buildRequest(options, {
-      retryCount: maxRetries - retriesRemaining,
-    });
+    const { req, url, timeout } = await this.buildRequest(options, { retryCount: maxRetries - retriesRemaining });
 
     await this.prepareRequest(req, { url, options });
 
@@ -1079,16 +926,7 @@ export class Camara {
     const retryLogStr = retryOfRequestLogID === undefined ? '' : `, retryOf: ${retryOfRequestLogID}`;
     const startTime = Date.now();
 
-    loggerFor(this).debug(
-      `[${requestLogID}] sending request`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        method: options.method,
-        url,
-        options,
-        headers: req.headers,
-      }),
-    );
+    loggerFor(this).debug(`[${requestLogID}] sending request`, formatRequestDetails({ retryOfRequestLogID, method: options.method, url, options, headers: req.headers }));
 
     if (options.signal?.aborted) {
       throw new Errors.APIUserAbortError();
@@ -1107,45 +945,21 @@ export class Camara {
       // deno throws "TypeError: error sending request for url (https://example/): client error (Connect): tcp connect error: Operation timed out (os error 60): Operation timed out (os error 60)"
       // undici throws "TypeError: fetch failed" with cause "ConnectTimeoutError: Connect Timeout Error (attempted address: example:443, timeout: 1ms)"
       // others do not provide enough information to distinguish timeouts from other connection errors
-      const isTimeout =
-        isAbortError(response) ||
-        /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''));
+      const isTimeout = isAbortError(response) || /timed? ?out/i.test(String(response) + ('cause' in response ? String(response.cause) : ''))
       if (retriesRemaining) {
-        loggerFor(this).info(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`,
-        );
-        loggerFor(this).debug(
-          `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url,
-            durationMs: headersTime - startTime,
-            message: response.message,
-          }),
-        );
+        loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
         return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID);
       }
-      loggerFor(this).info(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`,
-      );
-      loggerFor(this).debug(
-        `[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url,
-          durationMs: headersTime - startTime,
-          message: response.message,
-        }),
-      );
+      loggerFor(this).info(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} - error; no more retries left`)
+      loggerFor(this).debug(`[${requestLogID}] connection ${isTimeout ? 'timed out' : 'failed'} (error; no more retries left)`, formatRequestDetails({ retryOfRequestLogID, url, durationMs: headersTime - startTime, message: response.message }));
       if (isTimeout) {
         throw new Errors.APIConnectionTimeoutError();
       }
       throw new Errors.APIConnectionError({ cause: response });
     }
 
-    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${
-      response.ok ? 'succeeded' : 'failed'
-    } with status ${response.status} in ${headersTime - startTime}ms`;
+    const responseInfo = `[${requestLogID}${retryLogStr}] ${req.method} ${url} ${response.ok ? 'succeeded' : 'failed'} with status ${response.status} in ${headersTime - startTime}ms`;
 
     if (!response.ok) {
       const shouldRetry = await this.shouldRetry(response);
@@ -1154,60 +968,27 @@ export class Camara {
 
         // We don't need the body of this response.
         await Shims.CancelReadableStream(response.body);
-        loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
-        loggerFor(this).debug(
-          `[${requestLogID}] response error (${retryMessage})`,
-          formatRequestDetails({
-            retryOfRequestLogID,
-            url: response.url,
-            status: response.status,
-            headers: response.headers,
-            durationMs: headersTime - startTime,
-          }),
-        );
-        return this.retryRequest(
-          options,
-          retriesRemaining,
-          retryOfRequestLogID ?? requestLogID,
-          response.headers,
-        );
+        loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
+        loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
+        return this.retryRequest(options, retriesRemaining, retryOfRequestLogID ?? requestLogID, response.headers);
       }
 
       const retryMessage = shouldRetry ? `error; no more retries left` : `error; not retryable`;
 
-      loggerFor(this).info(`${responseInfo} - ${retryMessage}`);
+      loggerFor(this).info(`${responseInfo} - ${retryMessage}`)
 
       const errText = await response.text().catch((err: any) => castToError(err).message);
       const errJSON = safeJSON(errText) as any;
       const errMessage = errJSON ? undefined : errText;
 
-      loggerFor(this).debug(
-        `[${requestLogID}] response error (${retryMessage})`,
-        formatRequestDetails({
-          retryOfRequestLogID,
-          url: response.url,
-          status: response.status,
-          headers: response.headers,
-          message: errMessage,
-          durationMs: Date.now() - startTime,
-        }),
-      );
+      loggerFor(this).debug(`[${requestLogID}] response error (${retryMessage})`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, message: errMessage, durationMs: Date.now() - startTime }));
 
       const err = this.makeStatusError(response.status, errJSON, errMessage, response.headers);
       throw err;
     }
 
-    loggerFor(this).info(responseInfo);
-    loggerFor(this).debug(
-      `[${requestLogID}] response start`,
-      formatRequestDetails({
-        retryOfRequestLogID,
-        url: response.url,
-        status: response.status,
-        headers: response.headers,
-        durationMs: headersTime - startTime,
-      }),
-    );
+    loggerFor(this).info(responseInfo)
+    loggerFor(this).debug(`[${requestLogID}] response start`, formatRequestDetails({ retryOfRequestLogID, url: response.url, status: response.status, headers: response.headers, durationMs: headersTime - startTime }));
 
     return { response, options, controller, requestLogID, retryOfRequestLogID, startTime };
   }
@@ -1224,9 +1005,7 @@ export class Camara {
 
     const timeout = setTimeout(abort, ms);
 
-    const isReadableBody =
-      ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) ||
-      (typeof options.body === 'object' && options.body !== null && Symbol.asyncIterator in options.body);
+    const isReadableBody = ((globalThis as any).ReadableStream && options.body instanceof (globalThis as any).ReadableStream) || (typeof options.body === "object" && options.body !== null && Symbol.asyncIterator in options.body);
 
     const fetchOptions: RequestInit = {
       signal: controller.signal as any,
@@ -1241,6 +1020,7 @@ export class Camara {
     }
 
     try {
+
       // use undefined this binding; fetch errors if bound to something else in browser/cloudflare
       return await this.fetch.call(undefined, url, fetchOptions);
     } finally {
@@ -1341,12 +1121,11 @@ export class Camara {
     const req: FinalizedRequestInit = {
       method,
       headers: reqHeaders,
-      ...(options.signal && { signal: options.signal }),
-      ...((globalThis as any).ReadableStream &&
-        body instanceof (globalThis as any).ReadableStream && { duplex: 'half' }),
+      ...(options.signal && { signal: options.signal}),
+      ...((globalThis as any).ReadableStream && body instanceof (globalThis as any).ReadableStream && { duplex: "half" }),
       ...(body && { body }),
-      ...((this.fetchOptions as any) ?? {}),
-      ...((options.fetchOptions as any) ?? {}),
+      ...(this.fetchOptions as any ?? {}),
+      ...(options.fetchOptions as any ?? {}),
     };
 
     return { req, url, timeout: options.timeout };
@@ -1371,17 +1150,15 @@ export class Camara {
 
     const headers = buildHeaders([
       idempotencyHeaders,
-      {
-        Accept: 'application/json',
-        'User-Agent': this.getUserAgent(),
-        'X-Stainless-Retry-Count': String(retryCount),
-        ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
-        ...getPlatformHeaders(),
-      },
+      {Accept: 'application/json',
+      'User-Agent': this.getUserAgent(),
+      'X-Stainless-Retry-Count': String(retryCount),
+      ...(options.timeout ? { 'X-Stainless-Timeout': String(Math.trunc(options.timeout / 1000)) } : {}),
+      ...getPlatformHeaders()},
       await this.authHeaders(options),
       this._options.defaultHeaders,
       bodyHeaders,
-      options.headers,
+      options.headers
     ]);
 
     this.validateHeaders(headers);
@@ -1408,9 +1185,11 @@ export class Camara {
       ArrayBuffer.isView(body) ||
       body instanceof ArrayBuffer ||
       body instanceof DataView ||
-      (typeof body === 'string' &&
+      (
+        typeof body === 'string' &&
         // Preserve legacy string encoding behavior for now
-        headers.values.has('content-type')) ||
+        headers.values.has('content-type')
+      ) ||
       // `Blob` is superset of `File`
       ((globalThis as any).Blob && body instanceof (globalThis as any).Blob) ||
       // `FormData` -> `multipart/form-data`
@@ -1441,7 +1220,7 @@ export class Camara {
   }
 
   static Camara = this;
-  static DEFAULT_TIMEOUT = 60000; // 1 minute
+  static DEFAULT_TIMEOUT = 60000 // 1 minute
 
   static CamaraError = Errors.CamaraError;
   static APIError = Errors.APIError;
@@ -1467,8 +1246,7 @@ export class Camara {
   /**
    * Know Your Customer Age Verification
    */
-  knowyourcustomerageverification: API.Knowyourcustomerageverification =
-    new API.Knowyourcustomerageverification(this);
+  knowyourcustomerageverification: API.Knowyourcustomerageverification = new API.Knowyourcustomerageverification(this);
   /**
    * Know Your Customer Fill-in
    */
@@ -1540,112 +1318,128 @@ Camara.Devicereachabilitystatus = Devicereachabilitystatus;
 Camara.Connectednetworktype = Connectednetworktype;
 
 export declare namespace Camara {
-  export type RequestOptions = Opts.RequestOptions;
+      export type RequestOptions = Opts.RequestOptions;
 
-  export { Customerinsights as Customerinsights };
+      export {
+  Customerinsights as Customerinsights
+};
 
-  export {
-    Deviceswap as Deviceswap,
-    type DeviceswapCheckResponse as DeviceswapCheckResponse,
-    type DeviceswapRetrieveDateResponse as DeviceswapRetrieveDateResponse,
-    type DeviceswapCheckParams as DeviceswapCheckParams,
-    type DeviceswapRetrieveDateParams as DeviceswapRetrieveDateParams,
-  };
+export {
+  Deviceswap as Deviceswap,
+  type DeviceswapCheckResponse as DeviceswapCheckResponse,
+  type DeviceswapRetrieveDateResponse as DeviceswapRetrieveDateResponse,
+  type DeviceswapCheckParams as DeviceswapCheckParams,
+  type DeviceswapRetrieveDateParams as DeviceswapRetrieveDateParams
+};
 
-  export {
-    Knowyourcustomerageverification as Knowyourcustomerageverification,
-    type KnowyourcustomerageverificationVerifyResponse as KnowyourcustomerageverificationVerifyResponse,
-    type KnowyourcustomerageverificationVerifyParams as KnowyourcustomerageverificationVerifyParams,
-  };
+export {
+  Knowyourcustomerageverification as Knowyourcustomerageverification,
+  type KnowyourcustomerageverificationVerifyResponse as KnowyourcustomerageverificationVerifyResponse,
+  type KnowyourcustomerageverificationVerifyParams as KnowyourcustomerageverificationVerifyParams
+};
 
-  export {
-    KnowyourcustomerfillIn as KnowyourcustomerfillIn,
-    type KnowyourcustomerfillInCreateResponse as KnowyourcustomerfillInCreateResponse,
-    type KnowyourcustomerfillInCreateParams as KnowyourcustomerfillInCreateParams,
-  };
+export {
+  KnowyourcustomerfillIn as KnowyourcustomerfillIn,
+  type KnowyourcustomerfillInCreateResponse as KnowyourcustomerfillInCreateResponse,
+  type KnowyourcustomerfillInCreateParams as KnowyourcustomerfillInCreateParams
+};
 
-  export {
-    Knowyourcustomermatch as Knowyourcustomermatch,
-    type MatchResult as MatchResult,
-    type KnowyourcustomermatchMatchResponse as KnowyourcustomermatchMatchResponse,
-    type KnowyourcustomermatchMatchParams as KnowyourcustomermatchMatchParams,
-  };
+export {
+  Knowyourcustomermatch as Knowyourcustomermatch,
+  type MatchResult as MatchResult,
+  type KnowyourcustomermatchMatchResponse as KnowyourcustomermatchMatchResponse,
+  type KnowyourcustomermatchMatchParams as KnowyourcustomermatchMatchParams
+};
 
-  export {
-    Tenure as Tenure,
-    type TenureVerifyResponse as TenureVerifyResponse,
-    type TenureVerifyParams as TenureVerifyParams,
-  };
+export {
+  Tenure as Tenure,
+  type TenureVerifyResponse as TenureVerifyResponse,
+  type TenureVerifyParams as TenureVerifyParams
+};
 
-  export {
-    Numberrecycling as Numberrecycling,
-    type NumberrecyclingCheckSubscriberChangeResponse as NumberrecyclingCheckSubscriberChangeResponse,
-    type NumberrecyclingCheckSubscriberChangeParams as NumberrecyclingCheckSubscriberChangeParams,
-  };
+export {
+  Numberrecycling as Numberrecycling,
+  type NumberrecyclingCheckSubscriberChangeResponse as NumberrecyclingCheckSubscriberChangeResponse,
+  type NumberrecyclingCheckSubscriberChangeParams as NumberrecyclingCheckSubscriberChangeParams
+};
 
-  export {
-    Otpvalidation as Otpvalidation,
-    type OtpvalidationSendCodeResponse as OtpvalidationSendCodeResponse,
-    type OtpvalidationSendCodeParams as OtpvalidationSendCodeParams,
-    type OtpvalidationValidateCodeParams as OtpvalidationValidateCodeParams,
-  };
+export {
+  Otpvalidation as Otpvalidation,
+  type OtpvalidationSendCodeResponse as OtpvalidationSendCodeResponse,
+  type OtpvalidationSendCodeParams as OtpvalidationSendCodeParams,
+  type OtpvalidationValidateCodeParams as OtpvalidationValidateCodeParams
+};
 
-  export {
-    Callforwardingsignal as Callforwardingsignal,
-    type CreateCallForwardingSignal as CreateCallForwardingSignal,
-    type CallforwardingsignalCheckActiveForwardingsResponse as CallforwardingsignalCheckActiveForwardingsResponse,
-    type CallforwardingsignalCheckUnconditionalForwardingResponse as CallforwardingsignalCheckUnconditionalForwardingResponse,
-    type CallforwardingsignalCheckActiveForwardingsParams as CallforwardingsignalCheckActiveForwardingsParams,
-    type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams,
-  };
+export {
+  Callforwardingsignal as Callforwardingsignal,
+  type CreateCallForwardingSignal as CreateCallForwardingSignal,
+  type CallforwardingsignalCheckActiveForwardingsResponse as CallforwardingsignalCheckActiveForwardingsResponse,
+  type CallforwardingsignalCheckUnconditionalForwardingResponse as CallforwardingsignalCheckUnconditionalForwardingResponse,
+  type CallforwardingsignalCheckActiveForwardingsParams as CallforwardingsignalCheckActiveForwardingsParams,
+  type CallforwardingsignalCheckUnconditionalForwardingParams as CallforwardingsignalCheckUnconditionalForwardingParams
+};
 
-  export { Devicelocation as Devicelocation };
+export {
+  Devicelocation as Devicelocation
+};
 
-  export {
-    Populationdensitydata as Populationdensitydata,
-    type PopulationdensitydataRetrieveResponse as PopulationdensitydataRetrieveResponse,
-    type PopulationdensitydataRetrieveParams as PopulationdensitydataRetrieveParams,
-  };
+export {
+  Populationdensitydata as Populationdensitydata,
+  type PopulationdensitydataRetrieveResponse as PopulationdensitydataRetrieveResponse,
+  type PopulationdensitydataRetrieveParams as PopulationdensitydataRetrieveParams
+};
 
-  export {
-    Regiondevicecount as Regiondevicecount,
-    type RegiondevicecountGetCountResponse as RegiondevicecountGetCountResponse,
-    type RegiondevicecountGetCountParams as RegiondevicecountGetCountParams,
-  };
+export {
+  Regiondevicecount as Regiondevicecount,
+  type RegiondevicecountGetCountResponse as RegiondevicecountGetCountResponse,
+  type RegiondevicecountGetCountParams as RegiondevicecountGetCountParams
+};
 
-  export { Webrtc as Webrtc };
+export {
+  Webrtc as Webrtc
+};
 
-  export { Connectivityinsights as Connectivityinsights };
+export {
+  Connectivityinsights as Connectivityinsights
+};
 
-  export {
-    Qualityondemand as Qualityondemand,
-    type Duration as Duration,
-    type QosProfile as QosProfile,
-    type QosProfileStatus as QosProfileStatus,
-    type Rate as Rate,
-    type QualityondemandRetrieveQosProfilesResponse as QualityondemandRetrieveQosProfilesResponse,
-    type QualityondemandRetrieveQosProfileParams as QualityondemandRetrieveQosProfileParams,
-    type QualityondemandRetrieveQosProfilesParams as QualityondemandRetrieveQosProfilesParams,
-  };
+export {
+  Qualityondemand as Qualityondemand,
+  type Duration as Duration,
+  type QosProfile as QosProfile,
+  type QosProfileStatus as QosProfileStatus,
+  type Rate as Rate,
+  type QualityondemandRetrieveQosProfilesResponse as QualityondemandRetrieveQosProfilesResponse,
+  type QualityondemandRetrieveQosProfileParams as QualityondemandRetrieveQosProfileParams,
+  type QualityondemandRetrieveQosProfilesParams as QualityondemandRetrieveQosProfilesParams
+};
 
-  export {
-    Deviceidentifier as Deviceidentifier,
-    type DeviceIdentifierDevice as DeviceIdentifierDevice,
-    type DeviceIdentifierDeviceIpv4Addr as DeviceIdentifierDeviceIpv4Addr,
-    type DeviceIdentifierRequestBody as DeviceIdentifierRequestBody,
-    type DeviceidentifierRetrieveIdentifierResponse as DeviceidentifierRetrieveIdentifierResponse,
-    type DeviceidentifierRetrievePpidResponse as DeviceidentifierRetrievePpidResponse,
-    type DeviceidentifierRetrieveTypeResponse as DeviceidentifierRetrieveTypeResponse,
-    type DeviceidentifierRetrieveIdentifierParams as DeviceidentifierRetrieveIdentifierParams,
-    type DeviceidentifierRetrievePpidParams as DeviceidentifierRetrievePpidParams,
-    type DeviceidentifierRetrieveTypeParams as DeviceidentifierRetrieveTypeParams,
-  };
+export {
+  Deviceidentifier as Deviceidentifier,
+  type DeviceIdentifierDevice as DeviceIdentifierDevice,
+  type DeviceIdentifierDeviceIpv4Addr as DeviceIdentifierDeviceIpv4Addr,
+  type DeviceIdentifierRequestBody as DeviceIdentifierRequestBody,
+  type DeviceidentifierRetrieveIdentifierResponse as DeviceidentifierRetrieveIdentifierResponse,
+  type DeviceidentifierRetrievePpidResponse as DeviceidentifierRetrievePpidResponse,
+  type DeviceidentifierRetrieveTypeResponse as DeviceidentifierRetrieveTypeResponse,
+  type DeviceidentifierRetrieveIdentifierParams as DeviceidentifierRetrieveIdentifierParams,
+  type DeviceidentifierRetrievePpidParams as DeviceidentifierRetrievePpidParams,
+  type DeviceidentifierRetrieveTypeParams as DeviceidentifierRetrieveTypeParams
+};
 
-  export { Simswap as Simswap };
+export {
+  Simswap as Simswap
+};
 
-  export { Deviceroamingstatus as Deviceroamingstatus };
+export {
+  Deviceroamingstatus as Deviceroamingstatus
+};
 
-  export { Devicereachabilitystatus as Devicereachabilitystatus };
+export {
+  Devicereachabilitystatus as Devicereachabilitystatus
+};
 
-  export { Connectednetworktype as Connectednetworktype };
-}
+export {
+  Connectednetworktype as Connectednetworktype
+};
+    }
