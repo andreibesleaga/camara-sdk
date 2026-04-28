@@ -26,9 +26,19 @@ export class Populationdensitydata extends APIResource {
    *   });
    * ```
    */
-  retrieve(params: PopulationdensitydataRetrieveParams, options?: RequestOptions): APIPromise<PopulationdensitydataRetrieveResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/populationdensitydata/retrieve', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  retrieve(
+    params: PopulationdensitydataRetrieveParams,
+    options?: RequestOptions,
+  ): APIPromise<PopulationdensitydataRetrieveResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/populationdensitydata/retrieve', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -196,6 +206,6 @@ export namespace PopulationdensitydataRetrieveParams {
 export declare namespace Populationdensitydata {
   export {
     type PopulationdensitydataRetrieveResponse as PopulationdensitydataRetrieveResponse,
-    type PopulationdensitydataRetrieveParams as PopulationdensitydataRetrieveParams
+    type PopulationdensitydataRetrieveParams as PopulationdensitydataRetrieveParams,
   };
 }
