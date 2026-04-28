@@ -21,9 +21,19 @@ export class KnowyourcustomerfillIn extends APIResource {
    *   });
    * ```
    */
-  create(params: KnowyourcustomerfillInCreateParams, options?: RequestOptions): APIPromise<KnowyourcustomerfillInCreateResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/knowyourcustomerfill-in/fill-in', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  create(
+    params: KnowyourcustomerfillInCreateParams,
+    options?: RequestOptions,
+  ): APIPromise<KnowyourcustomerfillInCreateResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/knowyourcustomerfill-in/fill-in', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -109,7 +119,14 @@ export interface KnowyourcustomerfillInCreateResponse {
   /**
    * Type of the official identity document provided.
    */
-  idDocumentType?: 'passport' | 'national_id_card' | 'residence_permit' | 'diplomatic_id' | 'driver_licence' | 'social_security_id' | 'other';
+  idDocumentType?:
+    | 'passport'
+    | 'national_id_card'
+    | 'residence_permit'
+    | 'diplomatic_id'
+    | 'driver_licence'
+    | 'social_security_id'
+    | 'other';
 
   /**
    * Locality of the customer's address, stored on the Operator's system.
@@ -200,6 +217,6 @@ export interface KnowyourcustomerfillInCreateParams {
 export declare namespace KnowyourcustomerfillIn {
   export {
     type KnowyourcustomerfillInCreateResponse as KnowyourcustomerfillInCreateResponse,
-    type KnowyourcustomerfillInCreateParams as KnowyourcustomerfillInCreateParams
+    type KnowyourcustomerfillInCreateParams as KnowyourcustomerfillInCreateParams,
   };
 }

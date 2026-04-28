@@ -23,8 +23,15 @@ export class Scoring extends APIResource {
    * ```
    */
   retrieve(params: ScoringRetrieveParams, options?: RequestOptions): APIPromise<ScoringRetrieveResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/customerinsights/scoring/retrieve', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/customerinsights/scoring/retrieve', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -85,6 +92,6 @@ export interface ScoringRetrieveParams {
 export declare namespace Scoring {
   export {
     type ScoringRetrieveResponse as ScoringRetrieveResponse,
-    type ScoringRetrieveParams as ScoringRetrieveParams
+    type ScoringRetrieveParams as ScoringRetrieveParams,
   };
 }

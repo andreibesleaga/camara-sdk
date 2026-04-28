@@ -20,9 +20,19 @@ export class Numberrecycling extends APIResource {
    *   });
    * ```
    */
-  checkSubscriberChange(params: NumberrecyclingCheckSubscriberChangeParams, options?: RequestOptions): APIPromise<NumberrecyclingCheckSubscriberChangeResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/numberrecycling/check', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  checkSubscriberChange(
+    params: NumberrecyclingCheckSubscriberChangeParams,
+    options?: RequestOptions,
+  ): APIPromise<NumberrecyclingCheckSubscriberChangeResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/numberrecycling/check', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -59,6 +69,6 @@ export interface NumberrecyclingCheckSubscriberChangeParams {
 export declare namespace Numberrecycling {
   export {
     type NumberrecyclingCheckSubscriberChangeResponse as NumberrecyclingCheckSubscriberChangeResponse,
-    type NumberrecyclingCheckSubscriberChangeParams as NumberrecyclingCheckSubscriberChangeParams
+    type NumberrecyclingCheckSubscriberChangeParams as NumberrecyclingCheckSubscriberChangeParams,
   };
 }

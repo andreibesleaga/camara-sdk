@@ -58,9 +58,19 @@ export class Knowyourcustomermatch extends APIResource {
    * });
    * ```
    */
-  match(params: KnowyourcustomermatchMatchParams, options?: RequestOptions): APIPromise<KnowyourcustomermatchMatchResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/knowyourcustomermatch/match', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  match(
+    params: KnowyourcustomermatchMatchParams,
+    options?: RequestOptions,
+  ): APIPromise<KnowyourcustomermatchMatchResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/knowyourcustomermatch/match', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -70,7 +80,7 @@ export class Knowyourcustomermatch extends APIResource {
  * not match with the one in the Operator systems. not_available - the attribute is
  * not available to validate.
  */
-export type MatchResult = 'true' | 'false' | 'not_available'
+export type MatchResult = 'true' | 'false' | 'not_available';
 
 export interface KnowyourcustomermatchMatchResponse {
   /**
@@ -470,7 +480,14 @@ export interface KnowyourcustomermatchMatchParams {
   /**
    * Body param: Type of the official identity document provided.
    */
-  idDocumentType?: 'passport' | 'national_id_card' | 'residence_permit' | 'diplomatic_id' | 'driver_licence' | 'social_security_id' | 'other';
+  idDocumentType?:
+    | 'passport'
+    | 'national_id_card'
+    | 'residence_permit'
+    | 'diplomatic_id'
+    | 'driver_licence'
+    | 'social_security_id'
+    | 'other';
 
   /**
    * Body param: Locality of the customer's address
@@ -551,6 +568,6 @@ export declare namespace Knowyourcustomermatch {
   export {
     type MatchResult as MatchResult,
     type KnowyourcustomermatchMatchResponse as KnowyourcustomermatchMatchResponse,
-    type KnowyourcustomermatchMatchParams as KnowyourcustomermatchMatchParams
+    type KnowyourcustomermatchMatchParams as KnowyourcustomermatchMatchParams,
   };
 }
