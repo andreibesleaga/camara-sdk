@@ -16,7 +16,9 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
         "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
         "CAMARA_BEARER_TOKEN": "${user_config.CAMARA_BEARER_TOKEN}",
@@ -240,5 +242,7 @@
       "node": ">=18.0.0"
     }
   },
-  "keywords": ["api"]
+  "keywords": [
+    "api"
+  ]
 }
