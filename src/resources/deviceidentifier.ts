@@ -19,9 +19,19 @@ export class Deviceidentifier extends APIResource {
    *   await client.deviceidentifier.retrieveIdentifier();
    * ```
    */
-  retrieveIdentifier(params: DeviceidentifierRetrieveIdentifierParams, options?: RequestOptions): APIPromise<DeviceidentifierRetrieveIdentifierResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/deviceidentifier/retrieve-identifier', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  retrieveIdentifier(
+    params: DeviceidentifierRetrieveIdentifierParams,
+    options?: RequestOptions,
+  ): APIPromise<DeviceidentifierRetrieveIdentifierResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/deviceidentifier/retrieve-identifier', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 
   /**
@@ -33,9 +43,19 @@ export class Deviceidentifier extends APIResource {
    *   await client.deviceidentifier.retrievePpid();
    * ```
    */
-  retrievePpid(params: DeviceidentifierRetrievePpidParams, options?: RequestOptions): APIPromise<DeviceidentifierRetrievePpidResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/deviceidentifier/retrieve-ppid', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  retrievePpid(
+    params: DeviceidentifierRetrievePpidParams,
+    options?: RequestOptions,
+  ): APIPromise<DeviceidentifierRetrievePpidResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/deviceidentifier/retrieve-ppid', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 
   /**
@@ -47,9 +67,19 @@ export class Deviceidentifier extends APIResource {
    *   await client.deviceidentifier.retrieveType();
    * ```
    */
-  retrieveType(params: DeviceidentifierRetrieveTypeParams, options?: RequestOptions): APIPromise<DeviceidentifierRetrieveTypeResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/deviceidentifier/retrieve-type', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  retrieveType(
+    params: DeviceidentifierRetrieveTypeParams,
+    options?: RequestOptions,
+  ): APIPromise<DeviceidentifierRetrieveTypeResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/deviceidentifier/retrieve-type', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -223,8 +253,7 @@ export namespace DeviceidentifierRetrieveIdentifierResponse {
    * identifier is being returned. If this property is not present, then the device
    * subscription identifier specified in the request was used.
    */
-  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {
-  }
+  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {}
 }
 
 export interface DeviceidentifierRetrievePpidResponse {
@@ -255,8 +284,7 @@ export namespace DeviceidentifierRetrievePpidResponse {
    * identifier is being returned. If this property is not present, then the device
    * subscription identifier specified in the request was used.
    */
-  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {
-  }
+  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {}
 }
 
 export interface DeviceidentifierRetrieveTypeResponse {
@@ -297,8 +325,7 @@ export namespace DeviceidentifierRetrieveTypeResponse {
    * identifier is being returned. If this property is not present, then the device
    * subscription identifier specified in the request was used.
    */
-  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {
-  }
+  export interface Device extends DeviceidentifierAPI.DeviceIdentifierDevice {}
 }
 
 export interface DeviceidentifierRetrieveIdentifierParams {
@@ -389,6 +416,6 @@ export declare namespace Deviceidentifier {
     type DeviceidentifierRetrieveTypeResponse as DeviceidentifierRetrieveTypeResponse,
     type DeviceidentifierRetrieveIdentifierParams as DeviceidentifierRetrieveIdentifierParams,
     type DeviceidentifierRetrievePpidParams as DeviceidentifierRetrievePpidParams,
-    type DeviceidentifierRetrieveTypeParams as DeviceidentifierRetrieveTypeParams
+    type DeviceidentifierRetrieveTypeParams as DeviceidentifierRetrieveTypeParams,
   };
 }

@@ -20,8 +20,15 @@ export class Deviceswap extends APIResource {
    * ```
    */
   check(params: DeviceswapCheckParams, options?: RequestOptions): APIPromise<DeviceswapCheckResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/deviceswap/check', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/deviceswap/check', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 
   /**
@@ -33,9 +40,19 @@ export class Deviceswap extends APIResource {
    * const response = await client.deviceswap.retrieveDate();
    * ```
    */
-  retrieveDate(params: DeviceswapRetrieveDateParams, options?: RequestOptions): APIPromise<DeviceswapRetrieveDateResponse> {
-    const { 'x-correlator': xCorrelator, ...body } = params
-    return this._client.post('/deviceswap/retrieve-date', { body, ...options, headers: buildHeaders([{...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined)}, options?.headers]) });
+  retrieveDate(
+    params: DeviceswapRetrieveDateParams,
+    options?: RequestOptions,
+  ): APIPromise<DeviceswapRetrieveDateResponse> {
+    const { 'x-correlator': xCorrelator, ...body } = params;
+    return this._client.post('/deviceswap/retrieve-date', {
+      body,
+      ...options,
+      headers: buildHeaders([
+        { ...(xCorrelator != null ? { 'x-correlator': xCorrelator } : undefined) },
+        options?.headers,
+      ]),
+    });
   }
 }
 
@@ -103,6 +120,6 @@ export declare namespace Deviceswap {
     type DeviceswapCheckResponse as DeviceswapCheckResponse,
     type DeviceswapRetrieveDateResponse as DeviceswapRetrieveDateResponse,
     type DeviceswapCheckParams as DeviceswapCheckParams,
-    type DeviceswapRetrieveDateParams as DeviceswapRetrieveDateParams
+    type DeviceswapRetrieveDateParams as DeviceswapRetrieveDateParams,
   };
 }
