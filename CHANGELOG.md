@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.18.0 (2026-05-06)
+
+Full Changelog: [v0.17.7...v0.18.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.7...v0.18.0)
+
+### Features
+
+* support setting headers via env ([63c3642](https://github.com/andreibesleaga/camara-sdk/commit/63c3642ce19b0fd2a18480446efa3c543590d539))
+
+
+### Chores
+
+* avoid formatting file that gets changed during releases ([21acbf1](https://github.com/andreibesleaga/camara-sdk/commit/21acbf14443ccf061e8714ff3ba79999bbcc494b))
+* **format:** run eslint and prettier separately ([02c6643](https://github.com/andreibesleaga/camara-sdk/commit/02c66435736ec2eec809ebe85524b3400da89e6b))
+* **internal:** codegen related update ([9df7cf5](https://github.com/andreibesleaga/camara-sdk/commit/9df7cf58c869812e8aa91998463bcc32e9ed217f))
+* **internal:** fix MCP cloudflare worker builds ([fbbc288](https://github.com/andreibesleaga/camara-sdk/commit/fbbc2881440ab420e7ba85246951a596e1a124b8))
+* **internal:** fix MCP cloudflare worker initialization ([a25f387](https://github.com/andreibesleaga/camara-sdk/commit/a25f387fd7a6093dbd622356909969aa1e51e873))
+
 ## 0.17.7 (2026-04-26)
 
 Full Changelog: [v0.17.6...v0.17.7](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.6...v0.17.7)
