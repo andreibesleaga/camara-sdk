@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.18.1 (2026-05-13)
+
+Full Changelog: [v0.18.0...v0.18.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.0...v0.18.1)
+
+### Chores
+
+* redact api-key headers in debug logs ([ac5936d](https://github.com/andreibesleaga/camara-sdk/commit/ac5936d151c02e6a266f0c987d7e346f754273a6))
+
+
+### Documentation
+
+* update http mcp docs ([272c070](https://github.com/andreibesleaga/camara-sdk/commit/272c070cdb149ea9fb3175dbaa6df16c276418dd))
+
 ## 0.18.0 (2026-05-06)
 
 Full Changelog: [v0.17.7...v0.18.0](https://github.com/andreibesleaga/camara-sdk/compare/v0.17.7...v0.18.0)
