@@ -90,7 +90,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          "curl https://api.example.com/camara/customerinsights/scoring/retrieve \\\n    -H 'Content-Type: application/json' \\\n    -H \"Authorization: Bearer $CAMARA_BEARER_TOKEN\" \\\n    -d '{}'",
+          'curl https://api.example.com/camara/customerinsights/scoring/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "scoringType": "gaugeMetric"\n        }\'',
       },
     },
   },
@@ -221,7 +221,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/knowyourcustomerageverification/verify \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "ageThreshold": 18,\n          "phoneNumber": "+34629255833"\n        }\'',
+          'curl https://api.example.com/camara/knowyourcustomerageverification/verify \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "ageThreshold": 18,\n          "birthdate": "1978-08-22",\n          "email": "federicaSanchez.Arjona@example.com",\n          "familyName": "Sanchez Arjona",\n          "familyNameAtBirth": "YYYY",\n          "givenName": "Federica",\n          "idDocument": "66666666q",\n          "includeContentLock": true,\n          "includeParentalControl": true,\n          "middleNames": "Sanchez",\n          "name": "Federica Sanchez Arjona",\n          "phoneNumber": "+34629255833"\n        }\'',
       },
     },
   },
@@ -329,7 +329,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/knowyourcustomermatch/match \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "phoneNumber": "+34629255833"\n        }\'',
+          'curl https://api.example.com/camara/knowyourcustomermatch/match \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "address": "Tokyo-to Chiyoda-ku Iidabashi 3-10-10",\n          "birthdate": "1978-08-22",\n          "cityOfBirth": "Madrid",\n          "country": "JP",\n          "countryOfBirth": "ES",\n          "email": "abc@example.com",\n          "familyName": "Sanchez Arjona",\n          "familyNameAtBirth": "YYYY",\n          "gender": "OTHER",\n          "givenName": "Federica",\n          "houseNumberExtension": "VVVV",\n          "idDocument": "66666666q",\n          "idDocumentExpiryDate": "2027-07-12",\n          "idDocumentType": "passport",\n          "locality": "ZZZZ",\n          "middleNames": "Sanchez",\n          "name": "Federica Sanchez Arjona",\n          "nameKanaHankaku": "federica",\n          "nameKanaZenkaku": "Ｆｅｄｅｒｉｃａ",\n          "nationality": "ES",\n          "phoneNumber": "+34629255833",\n          "postalCode": "1028460",\n          "region": "Tokyo",\n          "streetName": "Nicolas Salmeron",\n          "streetNumber": "4"\n        }\'',
       },
     },
   },
@@ -782,7 +782,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/populationdensitydata/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "POLYGON"\n          },\n          "endTime": "2024-04-23T14:44:18.165Z",\n          "startTime": "2024-04-23T14:44:18.165Z",\n          "sink": "https://endpoint.example.com/sink"\n        }\'',
+          'curl https://api.example.com/camara/populationdensitydata/retrieve \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "POLYGON"\n          },\n          "endTime": "2024-04-23T14:44:18.165Z",\n          "startTime": "2024-04-23T14:44:18.165Z",\n          "precision": 7,\n          "sink": "https://endpoint.example.com/sink"\n        }\'',
       },
     },
   },
@@ -829,7 +829,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/regiondevicecount/count \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "endtime": "2023-07-04T14:27:08.312+02:00",\n          "sink": "https://endpoint.example.com/sink",\n          "starttime": "2023-07-03T14:27:08.312+02:00"\n        }\'',
+          'curl https://api.example.com/camara/regiondevicecount/count \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "area": {\n            "areaType": "CIRCLE"\n          },\n          "endtime": "2023-07-04T14:27:08.312+02:00",\n          "filter": {\n            "deviceType": [\n              "human device",\n              "IoT device"\n            ],\n            "roamingStatus": [\n              "roaming"\n            ]\n          },\n          "sink": "https://endpoint.example.com/sink",\n          "sinkCredential": {\n            "credentialType": "ACCESSTOKEN"\n          },\n          "starttime": "2023-07-03T14:27:08.312+02:00"\n        }\'',
       },
     },
   },
@@ -1441,7 +1441,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "phoneNumber": "+123456789"\n            },\n            "subscriptionExpireTime": "2025-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 10\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.sim-swap-subscriptions.v0.swapped"\n          ]\n        }\'',
+          'curl https://api.example.com/camara/simswap/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "phoneNumber": "+123456789"\n            },\n            "subscriptionExpireTime": "2025-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 10\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.sim-swap-subscriptions.v0.swapped"\n          ],\n          "sinkCredential": {\n            "credentialType": "ACCESSTOKEN"\n          }\n        }\'',
       },
     },
   },
@@ -1606,7 +1606,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"\n          ]\n        }\'',
+          'curl https://api.example.com/camara/deviceroamingstatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"\n          ],\n          "sinkCredential": {\n            "credentialType": "ACCESSTOKEN"\n          }\n        }\'',
       },
     },
   },
@@ -1771,7 +1771,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"\n          ]\n        }\'',
+          'curl https://api.example.com/camara/devicereachabilitystatus/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"\n          ],\n          "sinkCredential": {\n            "credentialType": "ACCESSTOKEN"\n          }\n        }\'',
       },
     },
   },
@@ -1938,7 +1938,7 @@ const EMBEDDED_METHODS: MethodEntry[] = [
       },
       http: {
         example:
-          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"\n          ]\n        }\'',
+          'curl https://api.example.com/camara/connectednetworktype/subscriptions \\\n    -H \'Content-Type: application/json\' \\\n    -H "Authorization: Bearer $CAMARA_BEARER_TOKEN" \\\n    -d \'{\n          "config": {\n            "subscriptionDetail": {\n              "device": {\n                "phoneNumber": "+123456789"\n              }\n            },\n            "initialEvent": true,\n            "subscriptionExpireTime": "2023-01-17T13:18:23.682Z",\n            "subscriptionMaxEvents": 5\n          },\n          "protocol": "HTTP",\n          "sink": "https://endpoint.example.com/sink",\n          "types": [\n            "org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"\n          ],\n          "sinkCredential": {\n            "credentialType": "ACCESSTOKEN"\n          }\n        }\'',
       },
     },
   },
