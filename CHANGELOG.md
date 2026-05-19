@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.18.2 (2026-05-19)
+
+Full Changelog: [v0.18.1...v0.18.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.1...v0.18.2)
+
+### Bug Fixes
+
+* **typescript:** upgrade tsc-multi so that it works with Node 26 ([241b043](https://github.com/andreibesleaga/camara-sdk/commit/241b04348e380cf6016d50c81e37d78eecef8502))
+
+
+### Chores
+
+* **tests:** remove redundant File import ([8fe82d8](https://github.com/andreibesleaga/camara-sdk/commit/8fe82d81726ba42c25ec53f6c453f17124ee8a75))
+
 ## 0.18.1 (2026-05-13)
 
 Full Changelog: [v0.18.0...v0.18.1](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.0...v0.18.1)
