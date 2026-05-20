@@ -310,7 +310,7 @@ const INSTRUCTIONS_FETCH_TIMEOUT_MS = 5000;
 
 function fallbackMcpServer(): McpServer {
   return new McpServer(
-    { name: 'camara_sdk_api', version: '0.18.1' },
+    { name: 'camara_sdk_api', version: '0.18.2' },
     { capabilities: { tools: {}, logging: {} } },
   );
 }
