@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.18.3 (2026-05-29)
+
+Full Changelog: [v0.18.2...v0.18.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.2...v0.18.3)
+
+### Bug Fixes
+
+* **mcp:** use `pure-lockfile` when building mcp server ([78e5bac](https://github.com/andreibesleaga/camara-sdk/commit/78e5bacd3cf0930bbb221609702de9a6ffeade7c))
+
+
+### Chores
+
+* **internal:** codegen related update ([4b27633](https://github.com/andreibesleaga/camara-sdk/commit/4b2763317693bb1079bd47f53ef8a734b35e6186))
+
 ## 0.18.2 (2026-05-19)
 
 Full Changelog: [v0.18.1...v0.18.2](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.1...v0.18.2)
