@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.4 (2026-06-17)
+
+Full Changelog: [v0.18.3...v0.18.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.3...v0.18.4)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([ba10922](https://github.com/andreibesleaga/camara-sdk/commit/ba10922565a01917bfee72657260317df28342df))
+
 ## 0.18.3 (2026-05-29)
 
 Full Changelog: [v0.18.2...v0.18.3](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.2...v0.18.3)
