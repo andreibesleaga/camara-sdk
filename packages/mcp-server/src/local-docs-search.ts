@@ -74,6 +74,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst scoring = await client.customerinsights.scoring.retrieve({ scoringType: 'gaugeMetric' });\n\nconsole.log(scoring.scoringType);",
       },
+      python: {
+        method: 'customerinsights.scoring.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nscoring = client.customerinsights.scoring.retrieve(\n    scoring_type="gaugeMetric",\n)\nprint(scoring.scoring_type)',
+      },
       go: {
         method: 'client.Customerinsights.Scoring.Get',
         example:
@@ -112,6 +117,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.retrieveDate();\n\nconsole.log(response.latestDeviceChange);",
       },
+      python: {
+        method: 'deviceswap.retrieve_date',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.deviceswap.retrieve_date()\nprint(response.latest_device_change)',
+      },
       go: {
         method: 'client.Deviceswap.GetDate',
         example:
@@ -149,6 +159,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.deviceswap.check',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceswap.check({ maxAge: 120 });\n\nconsole.log(response.swapped);",
+      },
+      python: {
+        method: 'deviceswap.check',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.deviceswap.check(\n    max_age=120,\n)\nprint(response.swapped)',
       },
       go: {
         method: 'client.Deviceswap.Check',
@@ -204,6 +219,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomerageverification.verify({\n  ageThreshold: 18,\n  birthdate: '1978-08-22',\n  email: 'federicaSanchez.Arjona@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  givenName: 'Federica',\n  idDocument: '66666666q',\n  includeContentLock: true,\n  includeParentalControl: true,\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(response.identityMatchScore);",
       },
+      python: {
+        method: 'knowyourcustomerageverification.verify',
+        example:
+          'import os\nfrom datetime import date\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.knowyourcustomerageverification.verify(\n    age_threshold=18,\n    birthdate=date.fromisoformat("1978-08-22"),\n    email="federicaSanchez.Arjona@example.com",\n    family_name="Sanchez Arjona",\n    family_name_at_birth="YYYY",\n    given_name="Federica",\n    id_document="66666666q",\n    include_content_lock=True,\n    include_parental_control=True,\n    middle_names="Sanchez",\n    name="Federica Sanchez Arjona",\n    phone_number="+34629255833",\n)\nprint(response.identity_match_score)',
+      },
       go: {
         method: 'client.Knowyourcustomerageverification.Verify',
         example:
@@ -245,6 +265,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.knowyourcustomerfillIn.create',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst knowyourcustomerfillIn = await client.knowyourcustomerfillIn.create({\n  phoneNumber: '+34629255833',\n});\n\nconsole.log(knowyourcustomerfillIn.idDocument);",
+      },
+      python: {
+        method: 'knowyourcustomerfill_in.create',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nknowyourcustomerfill_in = client.knowyourcustomerfill_in.create(\n    phone_number="+34629255833",\n)\nprint(knowyourcustomerfill_in.id_document)',
       },
       go: {
         method: 'client.KnowyourcustomerfillIn.New',
@@ -313,6 +338,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.knowyourcustomermatch.match({\n  address: 'Tokyo-to Chiyoda-ku Iidabashi 3-10-10',\n  birthdate: '1978-08-22',\n  cityOfBirth: 'Madrid',\n  country: 'JP',\n  countryOfBirth: 'ES',\n  email: 'abc@example.com',\n  familyName: 'Sanchez Arjona',\n  familyNameAtBirth: 'YYYY',\n  gender: 'OTHER',\n  givenName: 'Federica',\n  houseNumberExtension: 'VVVV',\n  idDocument: '66666666q',\n  idDocumentExpiryDate: '2027-07-12',\n  idDocumentType: 'passport',\n  locality: 'ZZZZ',\n  middleNames: 'Sanchez',\n  name: 'Federica Sanchez Arjona',\n  nameKanaHankaku: 'federica',\n  nameKanaZenkaku: 'Ｆｅｄｅｒｉｃａ',\n  nationality: 'ES',\n  phoneNumber: '+34629255833',\n  postalCode: '1028460',\n  region: 'Tokyo',\n  streetName: 'Nicolas Salmeron',\n  streetNumber: '4',\n});\n\nconsole.log(response.idDocumentExpiryDateMatch);",
       },
+      python: {
+        method: 'knowyourcustomermatch.match',
+        example:
+          'import os\nfrom datetime import date\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.knowyourcustomermatch.match(\n    address="Tokyo-to Chiyoda-ku Iidabashi 3-10-10",\n    birthdate=date.fromisoformat("1978-08-22"),\n    city_of_birth="Madrid",\n    country="JP",\n    country_of_birth="ES",\n    email="abc@example.com",\n    family_name="Sanchez Arjona",\n    family_name_at_birth="YYYY",\n    gender="OTHER",\n    given_name="Federica",\n    house_number_extension="VVVV",\n    id_document="66666666q",\n    id_document_expiry_date=date.fromisoformat("2027-07-12"),\n    id_document_type="passport",\n    locality="ZZZZ",\n    middle_names="Sanchez",\n    name="Federica Sanchez Arjona",\n    name_kana_hankaku="federica",\n    name_kana_zenkaku="Ｆｅｄｅｒｉｃａ",\n    nationality="ES",\n    phone_number="+34629255833",\n    postal_code="1028460",\n    region="Tokyo",\n    street_name="Nicolas Salmeron",\n    street_number="4",\n)\nprint(response.id_document_expiry_date_match)',
+      },
       go: {
         method: 'client.Knowyourcustomermatch.Match',
         example:
@@ -351,6 +381,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.tenure.verify',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.tenure.verify({ tenureDate: '2023-07-03' });\n\nconsole.log(response.tenureDateCheck);",
+      },
+      python: {
+        method: 'tenure.verify',
+        example:
+          'import os\nfrom datetime import date\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.tenure.verify(\n    tenure_date=date.fromisoformat("2023-07-03"),\n)\nprint(response.tenure_date_check)',
       },
       go: {
         method: 'client.Tenure.Verify',
@@ -391,6 +426,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.numberrecycling.checkSubscriberChange({\n  specifiedDate: '2024-10-31',\n});\n\nconsole.log(response.phoneNumberRecycled);",
       },
+      python: {
+        method: 'numberrecycling.check_subscriber_change',
+        example:
+          'import os\nfrom datetime import date\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.numberrecycling.check_subscriber_change(\n    specified_date=date.fromisoformat("2024-10-31"),\n)\nprint(response.phone_number_recycled)',
+      },
       go: {
         method: 'client.Numberrecycling.CheckSubscriberChange',
         example:
@@ -430,6 +470,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.otpvalidation.sendCode({\n  message: '{{code}} is your short code to authenticate with Cool App via SMS',\n  phoneNumber: '+346661113334',\n});\n\nconsole.log(response.authenticationId);",
       },
+      python: {
+        method: 'otpvalidation.send_code',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.otpvalidation.send_code(\n    message="{{code}} is your short code to authenticate with Cool App via SMS",\n    phone_number="+346661113334",\n)\nprint(response.authentication_id)',
+      },
       go: {
         method: 'client.Otpvalidation.SendCode',
         example:
@@ -467,6 +512,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.otpvalidation.validateCode',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.otpvalidation.validateCode({\n  authenticationId: 'ea0840f3-3663-4149-bd10-c7c6b8912105',\n  code: 'AJY3',\n});",
+      },
+      python: {
+        method: 'otpvalidation.validate_code',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nclient.otpvalidation.validate_code(\n    authentication_id="ea0840f3-3663-4149-bd10-c7c6b8912105",\n    code="AJY3",\n)',
       },
       go: {
         method: 'client.Otpvalidation.ValidateCode',
@@ -509,6 +559,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkUnconditionalForwarding();\n\nconsole.log(response.active);",
       },
+      python: {
+        method: 'callforwardingsignal.check_unconditional_forwarding',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.callforwardingsignal.check_unconditional_forwarding()\nprint(response.active)',
+      },
       go: {
         method: 'client.Callforwardingsignal.CheckUnconditionalForwarding',
         example:
@@ -549,6 +604,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.callforwardingsignal.checkActiveForwardings',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.callforwardingsignal.checkActiveForwardings();\n\nconsole.log(response);",
+      },
+      python: {
+        method: 'callforwardingsignal.check_active_forwardings',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.callforwardingsignal.check_active_forwardings()\nprint(response)',
       },
       go: {
         method: 'client.Callforwardingsignal.CheckActiveForwardings',
@@ -598,6 +658,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      device: { phoneNumber: '+12345678912' },\n      area: { areaType: 'CIRCLE' },\n    },\n    initialEvent: true,\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2024-03-22T05:40:58.469Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://notificationSendServer12.supertelco.com',\n  types: ['org.camaraproject.geofencing-subscriptions.v0.area-entered'],\n});\n\nconsole.log(deviceLocationSubscription.id);",
       },
+      python: {
+        method: 'devicelocation.subscriptions.create',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_location_subscription = client.devicelocation.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "device": {\n                "phone_number": "+12345678912"\n            },\n            "area": {\n                "area_type": "CIRCLE"\n            },\n        },\n        "initial_event": True,\n        "subscription_max_events": 10,\n        "subscription_expire_time": datetime.fromisoformat("2024-03-22T05:40:58.469"),\n    },\n    protocol="HTTP",\n    sink="https://notificationSendServer12.supertelco.com",\n    types=["org.camaraproject.geofencing-subscriptions.v0.area-entered"],\n)\nprint(device_location_subscription.id)',
+      },
       go: {
         method: 'client.Devicelocation.Subscriptions.New',
         example:
@@ -638,6 +703,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscriptions = await client.devicelocation.subscriptions.list();\n\nconsole.log(deviceLocationSubscriptions);",
       },
+      python: {
+        method: 'devicelocation.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_location_subscriptions = client.devicelocation.subscriptions.list()\nprint(device_location_subscriptions)',
+      },
       go: {
         method: 'client.Devicelocation.Subscriptions.List',
         example:
@@ -677,6 +747,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceLocationSubscription = await client.devicelocation.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceLocationSubscription.id);",
       },
+      python: {
+        method: 'devicelocation.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_location_subscription = client.devicelocation.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(device_location_subscription.id)',
+      },
       go: {
         method: 'client.Devicelocation.Subscriptions.Get',
         example:
@@ -715,6 +790,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.devicelocation.subscriptions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicelocation.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+      },
+      python: {
+        method: 'devicelocation.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.devicelocation.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.id)',
       },
       go: {
         method: 'client.Devicelocation.Subscriptions.Delete',
@@ -765,6 +845,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst populationdensitydata = await client.populationdensitydata.retrieve({\n  area: { areaType: 'POLYGON' },\n  endTime: '2024-04-23T14:44:18.165Z',\n  startTime: '2024-04-23T14:44:18.165Z',\n  precision: 7,\n});\n\nconsole.log(populationdensitydata.status);",
       },
+      python: {
+        method: 'populationdensitydata.retrieve',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\npopulationdensitydata = client.populationdensitydata.retrieve(\n    area={\n        "area_type": "POLYGON"\n    },\n    end_time=datetime.fromisoformat("2024-04-23T14:44:18.165"),\n    start_time=datetime.fromisoformat("2024-04-23T14:44:18.165"),\n    precision=7,\n)\nprint(populationdensitydata.status)',
+      },
       go: {
         method: 'client.Populationdensitydata.Get',
         example:
@@ -812,6 +897,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.regiondevicecount.getCount',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.regiondevicecount.getCount({\n  area: { areaType: 'CIRCLE' },\n  endtime: '2023-07-04T14:27:08.312+02:00',\n  filter: { roamingStatus: ['roaming'], deviceType: ['human device', 'IoT device'] },\n  sink: 'https://endpoint.example.com/sink',\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  starttime: '2023-07-03T14:27:08.312+02:00',\n});\n\nconsole.log(response.count);",
+      },
+      python: {
+        method: 'regiondevicecount.get_count',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.regiondevicecount.get_count(\n    area={\n        "area_type": "CIRCLE"\n    },\n    endtime=datetime.fromisoformat("2023-07-04T14:27:08.312+02:00"),\n    filter={\n        "roaming_status": ["roaming"],\n        "device_type": ["human device", "IoT device"],\n    },\n    sink="https://endpoint.example.com/sink",\n    sink_credential={\n        "credential_type": "ACCESSTOKEN"\n    },\n    starttime=datetime.fromisoformat("2023-07-03T14:27:08.312+02:00"),\n)\nprint(response.count)',
       },
       go: {
         method: 'client.Regiondevicecount.GetCount',
@@ -865,6 +955,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.create({\n  registrationId: 'registrationId',\n  offer: {\n    sdp: 'v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n',\n  },\n  originatorAddress: 'tel:+17085852753',\n  originatorName: 'tel:+17085852753',\n  receiverAddress: 'tel:+17085854000',\n  receiverName: 'tel:+17085854000',\n});\n\nconsole.log(mediaSessionInformation.answer);",
       },
+      python: {
+        method: 'webrtc.sessions.create',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nmedia_session_information = client.webrtc.sessions.create(\n    registration_id="registrationId",\n    offer={\n        "sdp": "v=0\\r\\no=- 8066321617929821805 2 IN IP4 127.0.0.1\\r\\ns=-\\r\\nt=0 0\\r\\nm=audio 42988 RTP/SAVPF 102 113\\r\\nc=IN IP6 2001:e0:410:2448:7a05:9b11:66f2:c9e\\r\\nb=AS:64\\r\\na=rtcp:9 IN IP4 0.0.0.0\\r\\na=candidate:1645903805 1 udp 2122262783 2001:e0:410:2448:7a05:9b11:66f2:c9e 42988 typ host generation 0 network-id 3 network-cost 900\\r\\na=ice-ufrag:4eKp\\r\\na=ice-pwd:D4sF5Pv9vx9ggaqxBlHbAFMx\\r\\na=ice-options:trickle renomination\\r\\na=mid:audio\\r\\na=extmap:2 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\\r\\na=sendrecv\\r\\na=rtcp-mux\\r\\na=crypto:1 AES_CM_128_HMAC_SHA1_80 inline:Xm3YciqVIWFNSwy19e9MvfZ2YOdAZil7oT/tHjdf\\r\\na=rtpmap:102 AMR-WB/16000\\r\\na=fmtp:102 octet-align=0; mode-set=0,1,2; mode-change-capability=2\\r\\na=rtpmap:113 telephone-event/16000\\r\\n"\n    },\n    originator_address="tel:+17085852753",\n    originator_name="tel:+17085852753",\n    receiver_address="tel:+17085854000",\n    receiver_name="tel:+17085854000",\n)\nprint(media_session_information.answer)',
+      },
       go: {
         method: 'client.Webrtc.Sessions.New',
         example:
@@ -906,6 +1001,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.retrieve('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
       },
+      python: {
+        method: 'webrtc.sessions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nmedia_session_information = client.webrtc.sessions.retrieve(\n    media_session_id="mediaSessionId",\n)\nprint(media_session_information.answer)',
+      },
       go: {
         method: 'client.Webrtc.Sessions.Get',
         example:
@@ -944,6 +1044,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.webrtc.sessions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nawait client.webrtc.sessions.delete('mediaSessionId');",
+      },
+      python: {
+        method: 'webrtc.sessions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nclient.webrtc.sessions.delete(\n    media_session_id="mediaSessionId",\n)',
       },
       go: {
         method: 'client.Webrtc.Sessions.Delete',
@@ -999,6 +1104,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst mediaSessionInformation = await client.webrtc.sessions.updateStatus('mediaSessionId');\n\nconsole.log(mediaSessionInformation.answer);",
       },
+      python: {
+        method: 'webrtc.sessions.update_status',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nmedia_session_information = client.webrtc.sessions.update_status(\n    media_session_id="mediaSessionId",\n)\nprint(media_session_information.answer)',
+      },
       go: {
         method: 'client.Webrtc.Sessions.UpdateStatus',
         example:
@@ -1046,6 +1156,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.create({\n  config: {\n    subscriptionDetail: {\n      applicationProfileId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',\n      device: {},\n    },\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connectivity-insights-subscriptions.v0.network-quality'],\n});\n\nconsole.log(subscription.config);",
       },
+      python: {
+        method: 'connectivityinsights.subscriptions.create',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.connectivityinsights.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "application_profile_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",\n            "device": {},\n        }\n    },\n    protocol="HTTP",\n    sink="https://endpoint.example.com/sink",\n    types=["org.camaraproject.connectivity-insights-subscriptions.v0.network-quality"],\n)\nprint(subscription.config)',
+      },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.New',
         example:
@@ -1087,6 +1202,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscriptions = await client.connectivityinsights.subscriptions.list();\n\nconsole.log(subscriptions);",
       },
+      python: {
+        method: 'connectivityinsights.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscriptions = client.connectivityinsights.subscriptions.list()\nprint(subscriptions)',
+      },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.List',
         example:
@@ -1126,6 +1246,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.config);",
       },
+      python: {
+        method: 'connectivityinsights.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.connectivityinsights.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.config)',
+      },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.Get',
         example:
@@ -1164,6 +1289,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.connectivityinsights.subscriptions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectivityinsights.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.subscriptionId);",
+      },
+      python: {
+        method: 'connectivityinsights.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.connectivityinsights.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.subscription_id)',
       },
       go: {
         method: 'client.Connectivityinsights.Subscriptions.Delete',
@@ -1211,6 +1341,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfiles = await client.qualityondemand.retrieveQosProfiles();\n\nconsole.log(qosProfiles);",
       },
+      python: {
+        method: 'qualityondemand.retrieve_qos_profiles',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nqos_profiles = client.qualityondemand.retrieve_qos_profiles()\nprint(qos_profiles)',
+      },
       go: {
         method: 'client.Qualityondemand.GetQosProfiles',
         example:
@@ -1250,6 +1385,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.qualityondemand.retrieveQosProfile',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst qosProfile = await client.qualityondemand.retrieveQosProfile('voice');\n\nconsole.log(qosProfile.name);",
+      },
+      python: {
+        method: 'qualityondemand.retrieve_qos_profile',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nqos_profile = client.qualityondemand.retrieve_qos_profile(\n    name="voice",\n)\nprint(qos_profile.name)',
       },
       go: {
         method: 'client.Qualityondemand.GetQosProfile',
@@ -1294,6 +1434,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveIdentifier();\n\nconsole.log(response.device);",
       },
+      python: {
+        method: 'deviceidentifier.retrieve_identifier',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.deviceidentifier.retrieve_identifier()\nprint(response.device)',
+      },
       go: {
         method: 'client.Deviceidentifier.GetIdentifier',
         example:
@@ -1336,6 +1481,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrieveType();\n\nconsole.log(response.device);",
       },
+      python: {
+        method: 'deviceidentifier.retrieve_type',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.deviceidentifier.retrieve_type()\nprint(response.device)',
+      },
       go: {
         method: 'client.Deviceidentifier.GetType',
         example:
@@ -1377,6 +1527,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.deviceidentifier.retrievePpid',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst response = await client.deviceidentifier.retrievePpid();\n\nconsole.log(response.ppid);",
+      },
+      python: {
+        method: 'deviceidentifier.retrieve_ppid',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nresponse = client.deviceidentifier.retrieve_ppid()\nprint(response.ppid)',
       },
       go: {
         method: 'client.Deviceidentifier.GetPpid',
@@ -1424,6 +1579,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.create({\n  config: {\n    subscriptionDetail: { phoneNumber: '+123456789' },\n    subscriptionMaxEvents: 10,\n    subscriptionExpireTime: '2025-01-17T13:18:23.682Z',\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.sim-swap-subscriptions.v0.swapped'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(simSwapSubscription.id);",
       },
+      python: {
+        method: 'simswap.subscriptions.create',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsim_swap_subscription = client.simswap.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "phone_number": "+123456789"\n        },\n        "subscription_max_events": 10,\n        "subscription_expire_time": datetime.fromisoformat("2025-01-17T13:18:23.682"),\n    },\n    protocol="HTTP",\n    sink="https://endpoint.example.com/sink",\n    types=["org.camaraproject.sim-swap-subscriptions.v0.swapped"],\n    sink_credential={\n        "credential_type": "ACCESSTOKEN"\n    },\n)\nprint(sim_swap_subscription.id)',
+      },
       go: {
         method: 'client.Simswap.Subscriptions.New',
         example:
@@ -1464,6 +1624,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscriptions = await client.simswap.subscriptions.list();\n\nconsole.log(simSwapSubscriptions);",
       },
+      python: {
+        method: 'simswap.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsim_swap_subscriptions = client.simswap.subscriptions.list()\nprint(sim_swap_subscriptions)',
+      },
       go: {
         method: 'client.Simswap.Subscriptions.List',
         example:
@@ -1503,6 +1668,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst simSwapSubscription = await client.simswap.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(simSwapSubscription.id);",
       },
+      python: {
+        method: 'simswap.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsim_swap_subscription = client.simswap.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(sim_swap_subscription.id)',
+      },
       go: {
         method: 'client.Simswap.Subscriptions.Get',
         example:
@@ -1541,6 +1711,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.simswap.subscriptions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.simswap.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+      },
+      python: {
+        method: 'simswap.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.simswap.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.id)',
       },
       go: {
         method: 'client.Simswap.Subscriptions.Delete',
@@ -1589,6 +1764,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(deviceRoamingStatusSubscription.id);",
       },
+      python: {
+        method: 'deviceroamingstatus.subscriptions.create',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_roaming_status_subscription = client.deviceroamingstatus.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "device": {\n                "phone_number": "+123456789"\n            }\n        },\n        "subscription_expire_time": datetime.fromisoformat("2023-01-17T13:18:23.682"),\n        "subscription_max_events": 5,\n        "initial_event": True,\n    },\n    protocol="HTTP",\n    sink="https://endpoint.example.com/sink",\n    types=["org.camaraproject.device-roaming-status-subscriptions.v0.roaming-status"],\n    sink_credential={\n        "credential_type": "ACCESSTOKEN"\n    },\n)\nprint(device_roaming_status_subscription.id)',
+      },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.New',
         example:
@@ -1629,6 +1809,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscriptions = await client.deviceroamingstatus.subscriptions.list();\n\nconsole.log(deviceRoamingStatusSubscriptions);",
       },
+      python: {
+        method: 'deviceroamingstatus.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_roaming_status_subscriptions = client.deviceroamingstatus.subscriptions.list()\nprint(device_roaming_status_subscriptions)',
+      },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.List',
         example:
@@ -1668,6 +1853,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceRoamingStatusSubscription = await client.deviceroamingstatus.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(deviceRoamingStatusSubscription.id);",
       },
+      python: {
+        method: 'deviceroamingstatus.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_roaming_status_subscription = client.deviceroamingstatus.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(device_roaming_status_subscription.id)',
+      },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.Get',
         example:
@@ -1706,6 +1896,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.deviceroamingstatus.subscriptions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.deviceroamingstatus.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
+      },
+      python: {
+        method: 'deviceroamingstatus.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.deviceroamingstatus.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.id)',
       },
       go: {
         method: 'client.Deviceroamingstatus.Subscriptions.Delete',
@@ -1754,6 +1949,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.create({\n    config: {\n      subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n      subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n      subscriptionMaxEvents: 5,\n      initialEvent: true,\n    },\n    protocol: 'HTTP',\n    sink: 'https://endpoint.example.com/sink',\n    types: ['org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data'],\n    sinkCredential: { credentialType: 'ACCESSTOKEN' },\n  });\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
       },
+      python: {
+        method: 'devicereachabilitystatus.subscriptions.create',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_reachability_status_subscription = client.devicereachabilitystatus.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "device": {\n                "phone_number": "+123456789"\n            }\n        },\n        "subscription_expire_time": datetime.fromisoformat("2023-01-17T13:18:23.682"),\n        "subscription_max_events": 5,\n        "initial_event": True,\n    },\n    protocol="HTTP",\n    sink="https://endpoint.example.com/sink",\n    types=["org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"],\n    sink_credential={\n        "credential_type": "ACCESSTOKEN"\n    },\n)\nprint(device_reachability_status_subscription.id)',
+      },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.New',
         example:
@@ -1794,6 +1994,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscriptions =\n  await client.devicereachabilitystatus.subscriptions.list();\n\nconsole.log(deviceReachabilityStatusSubscriptions);",
       },
+      python: {
+        method: 'devicereachabilitystatus.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_reachability_status_subscriptions = client.devicereachabilitystatus.subscriptions.list()\nprint(device_reachability_status_subscriptions)',
+      },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.List',
         example:
@@ -1833,6 +2038,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst deviceReachabilityStatusSubscription =\n  await client.devicereachabilitystatus.subscriptions.retrieve('qs15-h556-rt89-1298');\n\nconsole.log(deviceReachabilityStatusSubscription.id);",
       },
+      python: {
+        method: 'devicereachabilitystatus.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\ndevice_reachability_status_subscription = client.devicereachabilitystatus.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(device_reachability_status_subscription.id)',
+      },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.Get',
         example:
@@ -1871,6 +2081,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.devicereachabilitystatus.subscriptions.delete',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.devicereachabilitystatus.subscriptions.delete(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(subscription.id);",
+      },
+      python: {
+        method: 'devicereachabilitystatus.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.devicereachabilitystatus.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.id)',
       },
       go: {
         method: 'client.Devicereachabilitystatus.Subscriptions.Delete',
@@ -1921,6 +2136,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.create({\n  config: {\n    subscriptionDetail: { device: { phoneNumber: '+123456789' } },\n    subscriptionExpireTime: '2023-01-17T13:18:23.682Z',\n    subscriptionMaxEvents: 5,\n    initialEvent: true,\n  },\n  protocol: 'HTTP',\n  sink: 'https://endpoint.example.com/sink',\n  types: ['org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed'],\n  sinkCredential: { credentialType: 'ACCESSTOKEN' },\n});\n\nconsole.log(connectedNetworkTypeSubscription.id);",
       },
+      python: {
+        method: 'connectednetworktype.subscriptions.create',
+        example:
+          'import os\nfrom datetime import datetime\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nconnected_network_type_subscription = client.connectednetworktype.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "device": {\n                "phone_number": "+123456789"\n            }\n        },\n        "subscription_expire_time": datetime.fromisoformat("2023-01-17T13:18:23.682"),\n        "subscription_max_events": 5,\n        "initial_event": True,\n    },\n    protocol="HTTP",\n    sink="https://endpoint.example.com/sink",\n    types=["org.camaraproject.connected-network-type-subscriptions.v0.network-type-changed"],\n    sink_credential={\n        "credential_type": "ACCESSTOKEN"\n    },\n)\nprint(connected_network_type_subscription.id)',
+      },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.New',
         example:
@@ -1961,6 +2181,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscriptions = await client.connectednetworktype.subscriptions.list();\n\nconsole.log(connectedNetworkTypeSubscriptions);",
       },
+      python: {
+        method: 'connectednetworktype.subscriptions.list',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nconnected_network_type_subscriptions = client.connectednetworktype.subscriptions.list()\nprint(connected_network_type_subscriptions)',
+      },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.List',
         example:
@@ -1999,6 +2224,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         method: 'client.connectednetworktype.subscriptions.retrieve',
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst connectedNetworkTypeSubscription = await client.connectednetworktype.subscriptions.retrieve(\n  'qs15-h556-rt89-1298',\n);\n\nconsole.log(connectedNetworkTypeSubscription.id);",
+      },
+      python: {
+        method: 'connectednetworktype.subscriptions.retrieve',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nconnected_network_type_subscription = client.connectednetworktype.subscriptions.retrieve(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(connected_network_type_subscription.id)',
       },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.Get',
@@ -2039,6 +2269,11 @@ const EMBEDDED_METHODS: MethodEntry[] = [
         example:
           "import Camara from 'camara-sdk';\n\nconst client = new Camara({\n  bearerToken: process.env['CAMARA_BEARER_TOKEN'], // This is the default and can be omitted\n});\n\nconst subscription = await client.connectednetworktype.subscriptions.delete('qs15-h556-rt89-1298');\n\nconsole.log(subscription.id);",
       },
+      python: {
+        method: 'connectednetworktype.subscriptions.delete',
+        example:
+          'import os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\nsubscription = client.connectednetworktype.subscriptions.delete(\n    subscription_id="qs15-h556-rt89-1298",\n)\nprint(subscription.id)',
+      },
       go: {
         method: 'client.Connectednetworktype.Subscriptions.Delete',
         example:
@@ -2077,6 +2312,11 @@ const EMBEDDED_READMES: { language: string; content: string }[] = [
     language: 'php',
     content:
       '# Camara PHP API Library\n\nThe Camara PHP library provides convenient access to the Camara REST API from any PHP 8.1.0+ application.\n\n## Installation\n\nTo use this package, install via Composer by adding the following to your application\'s `composer.json`:\n\n<!-- x-release-please-start-version -->\n```json\n{\n  "repositories": [\n    {\n      "type": "vcs",\n      "url": "git@github.com:andreibesleaga/camara-php.git"\n    }\n  ],\n  "require": {\n    "andreibesleaga/camara-php": "dev-main"\n  }\n}\n```\n<!-- x-release-please-end -->\n\n## Usage\n\n```php\n<?php\n\n$client = new Client(\n  bearerToken: getenv(\'CAMARA_BEARER_TOKEN\') ?: \'My Bearer Token\'\n);\n\n$scoring = $client->customerinsights->scoring->retrieve();\n\nvar_dump($scoring->scoringType);\n```',
+  },
+  {
+    language: 'python',
+    content:
+      '# Camara Python API library\n\n<!-- prettier-ignore -->\n[![PyPI version](https://img.shields.io/pypi/v/camara.svg?label=pypi%20(stable))](https://pypi.org/project/camara/)\n\nThe Camara Python library provides convenient access to the Camara REST API from any Python 3.9+\napplication. The library includes type definitions for all request params and response fields,\nand offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).\n\n\n\nIt is generated with [Stainless](https://www.stainless.com/).\n\n## MCP Server\n\nUse the Camara MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.\n\n[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=camara-sdk-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsImNhbWFyYS1zZGstbWNwIl0sImVudiI6eyJDQU1BUkFfQkVBUkVSX1RPS0VOIjoiTXkgQ29ubmVjdGVkIE5ldHdvcmsgVHlwZSBUb2tlbiIsIkNBTUFSQV9ERVZJQ0VfTE9DQVRJT05fTk9USUZJQ0FUSU9OU19BUElfS0VZIjoiTXkgRGV2aWNlIExvY2F0aW9uIE5vdGlmaWNhdGlvbnMgQVBJIEtleSIsIkNBTUFSQV9OT1RJRklDQVRJT05TX0FQSV9LRVkiOiJNeSBOb3RpZmljYXRpb25zIEFQSSBLZXkiLCJDQU1BUkFfUE9QVUxBVElPTl9ERU5TSVRZX0RBVEFfTk9USUZJQ0FUSU9OU19BUElfS0VZIjoiTXkgUG9wdWxhdGlvbiBEZW5zaXR5IERhdGEgTm90aWZpY2F0aW9ucyBBUEkgS2V5IiwiQ0FNQVJBX1JFR0lPTl9ERVZJQ0VfQ09VTlRfTk9USUZJQ0FUSU9OU19BUElfS0VZIjoiTXkgUmVnaW9uIERldmljZSBDb3VudCBOb3RpZmljYXRpb25zIEFQSSBLZXkiLCJDQU1BUkFfQ09OTkVDVElWSVRZX0lOU0lHSFRTX05PVElGSUNBVElPTlNfQVBJX0tFWSI6Ik15IENvbm5lY3Rpdml0eSBJbnNpZ2h0cyBOb3RpZmljYXRpb25zIEFQSSBLZXkiLCJDQU1BUkFfU0lNX1NXQVBfTk9USUZJQ0FUSU9OU19BUElfS0VZIjoiTXkgU2ltIFN3YXAgTm90aWZpY2F0aW9ucyBBUEkgS2V5IiwiQ0FNQVJBX0RFVklDRV9ST0FNSU5HX1NUQVRVU19OT1RJRklDQVRJT05TX0FQSV9LRVkiOiJNeSBEZXZpY2UgUm9hbWluZyBTdGF0dXMgTm90aWZpY2F0aW9ucyBBUEkgS2V5IiwiQ0FNQVJBX0RFVklDRV9SRUFDSEFCSUxJVFlfU1RBVFVTX05PVElGSUNBVElPTlNfQVBJX0tFWSI6Ik15IERldmljZSBSZWFjaGFiaWxpdHkgU3RhdHVzIE5vdGlmaWNhdGlvbnMgQVBJIEtleSIsIkNBTUFSQV9DT05ORUNURURfTkVUV09SS19UWVBFX05PVElGSUNBVElPTlNfQVBJX0tFWSI6Ik15IENvbm5lY3RlZCBOZXR3b3JrIFR5cGUgTm90aWZpY2F0aW9ucyBBUEkgS2V5In19)\n[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22camara-sdk-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22camara-sdk-mcp%22%5D%2C%22env%22%3A%7B%22CAMARA_BEARER_TOKEN%22%3A%22My%20Connected%20Network%20Type%20Token%22%2C%22CAMARA_DEVICE_LOCATION_NOTIFICATIONS_API_KEY%22%3A%22My%20Device%20Location%20Notifications%20API%20Key%22%2C%22CAMARA_NOTIFICATIONS_API_KEY%22%3A%22My%20Notifications%20API%20Key%22%2C%22CAMARA_POPULATION_DENSITY_DATA_NOTIFICATIONS_API_KEY%22%3A%22My%20Population%20Density%20Data%20Notifications%20API%20Key%22%2C%22CAMARA_REGION_DEVICE_COUNT_NOTIFICATIONS_API_KEY%22%3A%22My%20Region%20Device%20Count%20Notifications%20API%20Key%22%2C%22CAMARA_CONNECTIVITY_INSIGHTS_NOTIFICATIONS_API_KEY%22%3A%22My%20Connectivity%20Insights%20Notifications%20API%20Key%22%2C%22CAMARA_SIM_SWAP_NOTIFICATIONS_API_KEY%22%3A%22My%20Sim%20Swap%20Notifications%20API%20Key%22%2C%22CAMARA_DEVICE_ROAMING_STATUS_NOTIFICATIONS_API_KEY%22%3A%22My%20Device%20Roaming%20Status%20Notifications%20API%20Key%22%2C%22CAMARA_DEVICE_REACHABILITY_STATUS_NOTIFICATIONS_API_KEY%22%3A%22My%20Device%20Reachability%20Status%20Notifications%20API%20Key%22%2C%22CAMARA_CONNECTED_NETWORK_TYPE_NOTIFICATIONS_API_KEY%22%3A%22My%20Connected%20Network%20Type%20Notifications%20API%20Key%22%7D%7D)\n\n> Note: You may need to set environment variables in your MCP client.\n\n## Documentation\n\n The full API of this library can be found in [api.md](api.md).\n\n## Installation\n\n```sh\n# install from this staging repo\npip install git+ssh://git@github.com/stainless-sdks/camara-python.git\n```\n> [!NOTE]\n> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install camara`\n\n## Usage\n\nThe full API of this library can be found in [api.md](api.md).\n\n```python\nimport os\nfrom camara import Camara\n\nclient = Camara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\n\nscoring = client.customerinsights.scoring.retrieve()\nprint(scoring.scoring_type)\n```\n\nWhile you can provide a `customer_insights_token` keyword argument,\nwe recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)\nto add `CAMARA_BEARER_TOKEN="My Customer Insights Token"` to your `.env` file\nso that your Customer Insights Token is not stored in source control.\n\n## Async usage\n\nSimply import `AsyncCamara` instead of `Camara` and use `await` with each API call:\n\n```python\nimport os\nimport asyncio\nfrom camara import AsyncCamara\n\nclient = AsyncCamara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n)\n\nasync def main() -> None:\n  scoring = await client.customerinsights.scoring.retrieve()\n  print(scoring.scoring_type)\n\nasyncio.run(main())\n```\n\nFunctionality between the synchronous and asynchronous clients is otherwise identical.\n\n### With aiohttp\n\nBy default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.\n\nYou can enable this by installing `aiohttp`:\n\n```sh\n# install from this staging repo\npip install \'camara[aiohttp] @ git+ssh://git@github.com/stainless-sdks/camara-python.git\'\n```\n\nThen you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:\n\n```python\nimport os\nimport asyncio\nfrom camara import DefaultAioHttpClient\nfrom camara import AsyncCamara\n\nasync def main() -> None:\n  async with AsyncCamara(\n    bearer_token=os.environ.get("CAMARA_BEARER_TOKEN"),  # This is the default and can be omitted\n    http_client=DefaultAioHttpClient(),\n) as client:\n    scoring = await client.customerinsights.scoring.retrieve()\n    print(scoring.scoring_type)\n\nasyncio.run(main())\n```\n\n\n\n## Using types\n\nNested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev) which also provide helper methods for things like:\n\n- Serializing back into JSON, `model.to_json()`\n- Converting to a dictionary, `model.to_dict()`\n\nTyped requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.\n\n\n\n## Nested params\n\nNested parameters are dictionaries, typed using `TypedDict`, for example:\n\n```python\nfrom camara import Camara\n\nclient = Camara()\n\ndevice_location_subscription = client.devicelocation.subscriptions.create(\n    config={\n        "subscription_detail": {\n            "area": {\n                "area_type": "CIRCLE"\n            }\n        }\n    },\n    protocol="HTTP",\n    sink="https://notificationSendServer12.supertelco.com",\n    types=["org.camaraproject.geofencing-subscriptions.v0.area-entered"],\n    sink_credential={\n        "credential_type": "PLAIN"\n    },\n)\nprint(device_location_subscription.sink_credential)\n```\n\n\n\n## Handling errors\n\nWhen the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `camara.APIConnectionError` is raised.\n\nWhen the API returns a non-success status code (that is, 4xx or 5xx\nresponse), a subclass of `camara.APIStatusError` is raised, containing `status_code` and `response` properties.\n\nAll errors inherit from `camara.APIError`.\n\n```python\nimport camara\nfrom camara import Camara\n\nclient = Camara()\n\ntry:\n    client.customerinsights.scoring.retrieve()\nexcept camara.APIConnectionError as e:\n    print("The server could not be reached")\n    print(e.__cause__) # an underlying Exception, likely raised within httpx.\nexcept camara.RateLimitError as e:\n    print("A 429 status code was received; we should back off a bit.")\nexcept camara.APIStatusError as e:\n    print("Another non-200-range status code was received")\n    print(e.status_code)\n    print(e.response)\n```\n\nError codes are as follows:\n\n| Status Code | Error Type                 |\n| ----------- | -------------------------- |\n| 400         | `BadRequestError`          |\n| 401         | `AuthenticationError`      |\n| 403         | `PermissionDeniedError`    |\n| 404         | `NotFoundError`            |\n| 422         | `UnprocessableEntityError` |\n| 429         | `RateLimitError`           |\n| >=500       | `InternalServerError`      |\n| N/A         | `APIConnectionError`       |\n\n### Retries\n\nCertain errors are automatically retried 2 times by default, with a short exponential backoff.\nConnection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,\n429 Rate Limit, and >=500 Internal errors are all retried by default.\n\nYou can use the `max_retries` option to configure or disable retry settings:\n\n```python\nfrom camara import Camara\n\n# Configure the default for all requests:\nclient = Camara(\n    # default is 2\n    max_retries=0,\n)\n\n# Or, configure per-request:\nclient.with_options(max_retries = 5).customerinsights.scoring.retrieve()\n```\n\n### Timeouts\n\nBy default requests time out after 1 minute. You can configure this with a `timeout` option,\nwhich accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:\n\n```python\nfrom camara import Camara\n\n# Configure the default for all requests:\nclient = Camara(\n    # 20 seconds (default is 1 minute)\n    timeout=20.0,\n)\n\n# More granular control:\nclient = Camara(\n    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),\n)\n\n# Override per-request:\nclient.with_options(timeout = 5.0).customerinsights.scoring.retrieve()\n```\n\nOn timeout, an `APITimeoutError` is thrown.\n\nNote that requests that time out are [retried twice by default](#retries).\n\n\n\n## Advanced\n\n### Logging\n\nWe use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.\n\nYou can enable logging by setting the environment variable `CAMARA_LOG` to `info`.\n\n```shell\n$ export CAMARA_LOG=info\n```\n\nOr to `debug` for more verbose logging.\n\n### How to tell whether `None` means `null` or missing\n\nIn an API response, a field may be explicitly `null`, or missing entirely; in either case, its value is `None` in this library. You can differentiate the two cases with `.model_fields_set`:\n\n```py\nif response.my_field is None:\n  if \'my_field\' not in response.model_fields_set:\n    print(\'Got json like {}, without a "my_field" key present at all.\')\n  else:\n    print(\'Got json like {"my_field": null}.\')\n```\n\n### Accessing raw response data (e.g. headers)\n\nThe "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,\n\n```py\nfrom camara import Camara\n\nclient = Camara()\nresponse = client.customerinsights.scoring.with_raw_response.retrieve()\nprint(response.headers.get(\'X-My-Header\'))\n\nscoring = response.parse()  # get the object that `customerinsights.scoring.retrieve()` would have returned\nprint(scoring.scoring_type)\n```\n\nThese methods return an [`APIResponse`](https://github.com/stainless-sdks/camara-python/tree/main/src/camara/_response.py) object.\n\nThe async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/camara-python/tree/main/src/camara/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.\n\n#### `.with_streaming_response`\n\nThe above interface eagerly reads the full response body when you make the request, which may not always be what you want.\n\nTo stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.\n\n```python\nwith client.customerinsights.scoring.with_streaming_response.retrieve() as response :\n    print(response.headers.get(\'X-My-Header\'))\n\n    for line in response.iter_lines():\n      print(line)\n```\n\nThe context manager is required so that the response will reliably be closed.\n\n### Making custom/undocumented requests\n\nThis library is typed for convenient access to the documented API.\n\nIf you need to access undocumented endpoints, params, or response properties, the library can still be used.\n\n#### Undocumented endpoints\n\nTo make requests to undocumented endpoints, you can make requests using `client.get`, `client.post`, and other\nhttp verbs. Options on the client will be respected (such as retries) when making this request.\n\n```py\nimport httpx\n\nresponse = client.post(\n    "/foo",\n    cast_to=httpx.Response,\n    body={"my_param": True},\n)\n\nprint(response.headers.get("x-foo"))\n```\n\n#### Undocumented request params\n\nIf you want to explicitly send an extra param, you can do so with the `extra_query`, `extra_body`, and `extra_headers` request\noptions.\n\n#### Undocumented response properties\n\nTo access undocumented response properties, you can access the extra fields like `response.unknown_prop`. You\ncan also get all the extra fields on the Pydantic model as a dict with\n[`response.model_extra`](https://docs.pydantic.dev/latest/api/base_model/#pydantic.BaseModel.model_extra).\n\n### Configuring the HTTP client\n\nYou can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:\n\n- Support for [proxies](https://www.python-httpx.org/advanced/proxies/)\n- Custom [transports](https://www.python-httpx.org/advanced/transports/)\n- Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality\n\n```python\nimport httpx\nfrom camara import Camara, DefaultHttpxClient\n\nclient = Camara(\n    # Or use the `CAMARA_BASE_URL` env var\n    base_url="http://my.test.server.example.com:8083",\n    http_client=DefaultHttpxClient(proxy="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),\n)\n```\n\nYou can also customize the client on a per-request basis by using `with_options()`:\n\n```python\nclient.with_options(http_client=DefaultHttpxClient(...))\n```\n\n### Managing HTTP resources\n\nBy default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.\n\n```py\nfrom camara import Camara\n\nwith Camara() as client:\n  # make requests here\n  ...\n\n# HTTP client is now closed\n```\n\n## Versioning\n\nThis package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:\n\n1. Changes that only affect static types, without breaking runtime behavior.\n2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals.)_\n3. Changes that we do not expect to impact the vast majority of users in practice.\n\nWe take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.\n\nWe are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/camara-python/issues) with questions, bugs, or suggestions.\n\n### Determining the installed version\n\nIf you\'ve upgraded to the latest version but aren\'t seeing any new features you were expecting then your python environment is likely still using an older version.\n\nYou can determine the version that is being used at runtime with:\n\n```py\nimport camara\nprint(camara.__version__)\n```\n\n## Requirements\n\nPython 3.9 or higher.\n\n## Contributing\n\nSee [the contributing documentation](./CONTRIBUTING.md).\n',
   },
   {
     language: 'typescript',
