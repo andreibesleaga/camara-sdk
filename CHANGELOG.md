@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.18.5 (2026-06-19)
+
+Full Changelog: [v0.18.4...v0.18.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.4...v0.18.5)
+
+### Chores
+
+* configure new SDK language ([02c9161](https://github.com/andreibesleaga/camara-sdk/commit/02c9161be9785076aabbbcf724e2dd2ce96d42bb))
+* update SDK settings ([a0dac4e](https://github.com/andreibesleaga/camara-sdk/commit/a0dac4e326cb0600098810316dabf1df7dc91ee2))
+* update SDK settings ([69471ff](https://github.com/andreibesleaga/camara-sdk/commit/69471ffa046f5bccada18057031943d01c9cc434))
+* update SDK settings ([8319ac3](https://github.com/andreibesleaga/camara-sdk/commit/8319ac3a3269aa8acd5424abede7e2fe6968b50f))
+* update SDK settings ([c4ff97c](https://github.com/andreibesleaga/camara-sdk/commit/c4ff97c818e21a9f748101c86e0e96203fdc425e))
+
 ## 0.18.4 (2026-06-17)
 
 Full Changelog: [v0.18.3...v0.18.4](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.3...v0.18.4)
