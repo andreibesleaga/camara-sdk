@@ -1,16 +1,19 @@
 ---
-name: camara-sdk 
+name: camara-sdk
 description: How to use the camara SDK. For access to more information, try out the camara MCP server.
 ---
+
 Based on my exploration of the CAMARA TypeScript SDK, I can now create a concise guide focused on the most common use cases.
 
-```markdown
+````markdown
 # CAMARA TypeScript SDK Guide
 
 ## Overview
+
 The CAMARA SDK provides access to telco network APIs for device verification, location services, SIM management, KYC validation, and more. It uses bearer token authentication with automatic retries and supports TypeScript with full type definitions.
 
 ## Core Concepts
+
 - **Client initialization**: Create a `Camara` instance with appropriate tokens
 - **Resource namespaces**: APIs organized by function (e.g., `simswap`, `devicelocation`, `otpvalidation`)
 - **Subscriptions**: Event-driven notifications for real-time updates
@@ -19,6 +22,7 @@ The CAMARA SDK provides access to telco network APIs for device verification, lo
 ## Common Use Cases
 
 ### 1. SIM Swap Detection
+
 Check if a SIM card was recently swapped (fraud prevention):
 
 ```ts
@@ -37,8 +41,10 @@ const result = await client.simswap.subscriptions.create({
   types: ['org.camaraproject.sim-swap-subscriptions.v0.swapped'],
 });
 ```
+````
 
 ### 2. Device Swap Verification
+
 Verify if device was changed:
 
 ```ts
@@ -60,6 +66,7 @@ console.log('Last swap:', swapDate.latestDeviceChange);
 ```
 
 ### 3. OTP Validation
+
 Send and validate one-time passwords:
 
 ```ts
@@ -77,6 +84,7 @@ await client.otpvalidation.validateCode({
 ```
 
 ### 4. KYC Customer Match
+
 Verify customer identity data:
 
 ```ts
@@ -97,12 +105,13 @@ if (matchResult.givenNameMatch === 'true') {
 ```
 
 ### 5. Device Location Subscriptions
+
 Subscribe to location change events:
 
 ```ts
 const subscription = await client.devicelocation.subscriptions.create({
   config: {
-    subscriptionDetail: { 
+    subscriptionDetail: {
       device: { phoneNumber: '+123456789' },
     },
     subscriptionExpireTime: '2025-12-31T23:59:59Z',
@@ -122,12 +131,14 @@ await client.devicelocation.subscriptions.delete(subscription.subscriptionId);
 ## Advanced Features
 
 ### Access Raw Response
+
 ```ts
 const { data, response } = await client.deviceswap.check({ maxAge: 120 }).withResponse();
 console.log('Headers:', response.headers);
 ```
 
 ### Error Handling
+
 ```ts
 try {
   await client.otpvalidation.validateCode({ authenticationId, code });
@@ -141,13 +152,18 @@ try {
 ```
 
 ### Retry Configuration
+
 ```ts
 const client = new Camara({ maxRetries: 5, timeout: 30000 });
 ```
 
 ## Response Patterns
+
 - **Boolean checks**: Return `{ swapped: boolean }` or similar
 - **Match results**: Return `'true' | 'false' | 'not_available'` with optional match scores
 - **Subscriptions**: Return subscription objects with IDs for management
 - **Timestamps**: ISO 8601 format strings (RFC 3339)
+
+```
+
 ```
