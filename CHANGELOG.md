@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.18.6 (2026-06-25)
+
+Full Changelog: [v0.18.5...v0.18.6](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.5...v0.18.6)
+
+### Bug Fixes
+
+* **ci:** restore executable bit on scripts, fix bearer env test and SKILL.md ([92630c6](https://github.com/andreibesleaga/camara-sdk/commit/92630c64d2f64fe0180a6ebd518aa8546abc0124))
+
+
+### Chores
+
+* update SDK settings ([1c704df](https://github.com/andreibesleaga/camara-sdk/commit/1c704dfdcced52a19f91dc8be89f9b5dc08154af))
+* update SDK settings ([2731c6c](https://github.com/andreibesleaga/camara-sdk/commit/2731c6c98018c12d3a4ddd4a40ec13fc302da024))
+
 ## 0.18.5 (2026-06-19)
 
 Full Changelog: [v0.18.4...v0.18.5](https://github.com/andreibesleaga/camara-sdk/compare/v0.18.4...v0.18.5)
